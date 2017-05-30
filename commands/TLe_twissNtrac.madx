@@ -6,7 +6,8 @@ call, file="parameters/ebeam.madx";
 
 ! Machine files
 ! Elements strength is a function of the currents
-call, file="currents/currents.madx";//loading current dataset
+call, file="currents/eTLe_currents.madx";//loading current dataset
+call, file="currents/eMRe_20160628_1517_2e01_fondi_bassi.madx";//using only current of SXPEL100
 call, file="currents/checkcur.madx";!stop;
 CALL, FILE="parameters/TLe_ae.par";
 CALL, FILE="elements/TL_markers.d";

@@ -18,10 +18,10 @@ parameter: et   double value:          1.357e-05
 parameter: sigt   double value:            0.01357
 parameter: sige   double value:              0.001
 parameter: kbunch   double value:                100
-parameter: npart   double value:    2.080787877e+10
+parameter: npart   double value:     2.08141246e+10
 parameter: bcurrent   double value:               0.01
-parameter: freq0   double value:        2.999590845
-parameter: circ   double value:            99.9444
+parameter: freq0   double value:        2.998690737
+parameter: circ   double value:            99.9744
 parameter: dtbyds   double value:                  0
 parameter: deltap   double value:                  0
 parameter: alfa   double value:    1.005892644e-06

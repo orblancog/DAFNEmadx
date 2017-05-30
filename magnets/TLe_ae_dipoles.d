@@ -30,7 +30,8 @@ e2b2d := 0;
 ! Quad component
 ! K1=dBy/dx*I/Inom*1/Brho  dBy/dx from Tech Note MM-7, Fig.~6
 ! To Tesla : 1e-4, to m : 1e-3
-k1b2d := 0*0.18*1e-4/(1e-3*ib2d)*clight/(1e9*eEnergy);
+k1b2d := 0.18*1e-4/(1e-3*ib2d)*clight/(1e9*eEnergy);
+!value, k1b2d;
 ! Field index = n =K1*L^2/ANGLE^2
 
 ! DAFNE Technical Note : C-17, pag.~5
@@ -44,7 +45,7 @@ e1b34d := 0;
 e2b34d := 0;
 c1b34d := 1.28*lb34d*clight/(1e9*eEnergy)*3.9324e-4;
 c0b34d := 1.3*lb34d*clight/(1e9*eEnergy)*0;
-k1b34d := 0.0000;
+k1b34d := 0.0094720*1e-3*10;//0.0094720 from kseptum fit in the MRe
 
 ! DAFNE Technical Note : C-17 pag.~5
 !   Dipoles DVRTR001
