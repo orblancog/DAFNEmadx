@@ -1,0 +1,144 @@
+// ===================================================
+// CONSTANTS AND GENERAL PARAMETERS
+// ---------------------------------------------------
+eps := 0.0;
+
+kang_qd0 := 46.0e-3;
+kang_qf1 := -0.0e-3;
+
+// septum quadrupole effect on the beam
+
+//  kseptum := 0.0085;        ! January 2011
+kseptum := 0.0085/2.;
+
+// Multipoles in the IR2 Quads QUAI2001 QUAI2007 and in the DHC 
+angh_QI2001 := -0.0;
+angh_QI2002 := -0.0; 
+angh_QI2006 := -0.0; 
+
+kang_DHCPL201 := -0.013084;   // NOV-2010 I = 153.475 A
+kang_DHCPS201 :=  0.013084;
+kang_DHCPL101 := 0.00928;
+kang_DHCPS101 :=-0.00928;
+
+
+// IPs cross angles, used for evaluation of the dispersion contribution from IRs
+
+ip2_cross_ang := 0.073; 
+ip1_cross_ang := 0.02564863;
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!! Fine vecchi dati
+
+en := 510.;
+BEAM_ENE = 510.0;
+ 
+dpp := 1.;
+br0 := 1.701176886;
+bro := br0*dpp;
+
+CKLOE := 2300.0;  // Kloe Solenoid Current, Kloe field = 0.52 T
+
+TQPS103 :=  -1.5812E-02;
+TQPS102 :=   1.5812E-02;
+TQPS101 :=  -2.396116E-01;
+QFSTILT :=  -7.823082E-02;
+qdsTilt :=  0.00;
+TQPL108 :=  1.5812E-02;
+TQPL109 := -1.5812E-02;
+TQPL110 :=  2.396116E-01;
+QFLTILT :=  7.823082E-02;
+qdlTilt :=  0.0;
+
+CCOMP2 := 72.4835;
+CCOMP1 := 72.4835;
+
+
+QFRFUDGE := 9.819043E-01;      ! valore da fit, da usare per current_nov22_wcoupl1.dat
+				 qflfudge := 9.819043E-01; 
+
+qdrfudge := 1.002990E+00;  ! valore da fit
+qdlfudge := 1.002990E+00;
+
+// nuovi
+saqds := 1.;  !0.0 // fattore di scala della componente dipolare dovuta al passaggio fuori asse nel QD short
+saqdl := 1.;  !0.0   // QD long
+
+ang_w := -0.1127;
+
+// Match 17_11_10 
+
+qdrfudge := 0.995; !!1.002990E+00
+qdlfudge := 0.995;
+QFRFUDGE  := 9.819043E-01;
+qflfudge := 9.819043E-01;
+
+Fint_wig := 0.37;
+k1fw := -0.003;
+ang_w := -0.1122;
+
+
+// Match 13_12_10  valori medi e+ ed e-
+ang_w := -.1113171;
+k1fw := -0.002173798;
+QDRFUDGE  := 0.9993025;
+qdlfudge := 0.9993025;
+
+// /*
+// !  Match 12_1_11  solo e-,   kseptum = 0.0085/2.
+// 
+//  ANG_W :=  -1.104406E-01;
+//  K1FW := -2.052595E-03;
+//  QDRFUDGE := 1.003423E+00;
+//  QDLFUDGE := 1.003423E+00;
+// 
+// */
+
+// Parameters fitted from measurements 29_11_11
+ANG_W := -0.11065;
+K1FW := -0.0038123;
+QFRFUDGE := 0.98383;
+QDRFUDGE := 0.99843;
+QFLFUDGE := 0.98383;
+QDLFUDGE := 0.99843;
+KSEPTUM := 0.0094720;
+
+// Parameters fitted from measurements Mar 12
+dllong = 0.0003;    //e
+dlshort = 0.0013;
+
+ldqd := 0.005 + dlshort;
+ldqdl := 0.005 + dllong;
+LDQF := 1.596262E-02 + dlshort;
+LDQFL := 1.596262E-02 + dllong;
+//           e                p              ave
+ANG_W :=-0.11105;
+K1FW :=-0.0040453;
+QFRFUDGE :=0.98039;
+QDRFUDGE :=0.99731;
+QFLFUDGE :=0.98039;
+QDLFUDGE :=0.99731;
+KI2_6FUDGE := 1.;
+
+// Parameters fitted from measurements Settembre 12
+// dopo le misure della IR  il doppietto viene avvicinato a IP di 1mm in longitudinale rispetto alla posizione nominale
+dllong = 0.001;
+dlshort = 0.001;
+
+ldqd := 0.005 + dlshort;
+ldqdl := 0.005 + dllong;
+LDQF := 1.596262E-02 + dlshort;
+LDQFL := 1.596262E-02 + dllong;
+
+
+// Fit result 25/10/12 average
+ANG_W     := -0.11149;
+K1FW      := -0.0035202;
+QFRFUDGE  := 0.97896;
+QDRFUDGE  := 0.99584;
+QFLFUDGE  := 0.97896;
+QDLFUDGE  := 0.99584;
+KI2_6FUDGE:= 1.0074;
+
+lcws := 0.015;   // spostati i CW SXTs
+
+return;

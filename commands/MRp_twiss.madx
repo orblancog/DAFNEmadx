@@ -1,0 +1,57 @@
+// ======================================================================
+// TWISS FUNCTION FOR DAFNE POSITRON MACHINE
+// ----------------------------------------------------------------------
+option, -echo, -warn, -info;
+//
+// load currents settings
+//call,file = "currents/MRe_27_11_12altaOraria.cur";
+call,file = "currents/MRp_today.cur";
+
+// load machine scheme
+call,file="lines/MRp_ring.d"; //  positron ring new definitions
+
+mid2 : marker;
+ms1  : marker;
+wholeIP1: LINE=(KLOEsCW,PS1,PS2,finudashort,
+		 IP2,finudalong,pl2,pl1,KLOElCW,IP1);
+wholekf: LINE=(mid2,pl1,KLOElCW,IP1,KLOEsCW,PS1,ms1,PS2,
+		finudashort,IP2,finudalong,pl2);
+
+rfcav: rfcavity,l=lcav/2,volt=0.0,lag=0.49,harmon=120;
+// data from accumulator
+emitx   = 2.8e-7;
+emity   = 1.4e-7;
+delp    = 1.e-3;
+
+beam, particle=electron,energy=0.51,radiate=true,ex=emitx,ey=emity,deltap=delp,bunched=true,kbunch=100,bcurrent=0.01;
+
+use, sequence = wholekf;
+save,sequence = wholekf,file="lines/MRp_ring.seq"; 
+
+
+envx := 1.0*sqrt(emitx*table(twiss,betx)+(table(twiss,dx)*delp)*(table(twiss,dx)*delp));
+envy := 1.0*sqrt(emity*table(twiss,bety)+(table(twiss,dy)*delp)*(table(twiss,dy)*delp));
+select, flag=twiss, column=name,s,x,betx,alfx,mux,dx,dpx,envx,y,bety,alfy,muy,dy,dpy,envy;
+
+title,'MRp13  (no chrom)';
+twiss,sequence= wholekf,centre,X:=0.015,Y:=0.002,file="outputs/MRp_twiss_today.tfs";
+title,'MRp13 beta (no chrom)';
+plot,haxis=s,hmin=0.,hmax=100.0,spline,vaxis1=betx,bety,colour=100,file="plots/MRp_twiss_today";
+title,'MRp13 alfa (chrom)';
+plot,haxis=s,hmin=0.,hmax=100.0,spline,vaxis1=alfx,alfy,colour=100,file="plots/MRp_twiss_today";
+title,'MRp13 beta IR1 (no chrom)';
+plot,haxis=s,hmin=0.,hmax=40.0,spline,vaxis1=betx,bety,colour=100,file="plots/MRp_twiss_today";
+title,'MRp13 disp. (no chrom)';
+plot,haxis=s,hmin=0.,hmax=100.0,spline,vaxis1=dx,dy,colour=100,file="plots/MRp_twiss_today";
+title,'MRp13  (chrom)';
+twiss,chrom,sequence= wholekf,centre,X:=0.015,Y:=0.002,file="outputs/MRp_twiss_today_chrom.tfs";
+title,'MRp13 beta (chrom)';
+plot,haxis=s,hmin=0.,hmax=100.0,spline,vaxis1=betx,bety,colour=100,file="plots/MRp_twiss_today";
+title,'MRp13 alfa (chrom)';
+plot,haxis=s,hmin=0.,hmax=100.0,spline,vaxis1=alfx,alfy,colour=100,file="plots/MRp_twiss_today";
+title,'MRp13 beta IR1 (chrom)';
+plot,haxis=s,hmin=0.,hmax=40.0,spline,vaxis1=betx,bety,colour=100,file="plots/MRp_twiss_today";
+title,'MRp13 disp. (chrom)';
+plot,haxis=s,hmin=0.,hmax=100.0,spline,vaxis1=dx,dy,colour=100,file="plots/MRp_twiss_today";
+
+return;

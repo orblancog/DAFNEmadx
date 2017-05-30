@@ -1,0 +1,33 @@
+command: beam  module: control
+parameter: particle   string: electron
+parameter: sequence   string: default_beam
+parameter: bunched   logical: true
+parameter: radiate   logical: false
+parameter: mass   double value:    0.0005109989461
+parameter: charge   double value:                 -1
+parameter: energy   double value:             0.5095
+parameter: pc   double value:       0.5094997437
+parameter: gamma   double value:        997.0666356
+parameter: beta   double value:       0.9999994971
+parameter: brho   double value:         1.69950821
+parameter: ex   double value:            2.8e-07
+parameter: exn   double value:    0.0002791785175
+parameter: ey   double value:            2.8e-08
+parameter: eyn   double value:    2.791785175e-05
+parameter: et   double value:          1.357e-05
+parameter: sigt   double value:            0.01357
+parameter: sige   double value:              0.001
+parameter: kbunch   double value:                100
+parameter: npart   double value:    2.080787877e+10
+parameter: bcurrent   double value:               0.01
+parameter: freq0   double value:        2.999590845
+parameter: circ   double value:            99.9444
+parameter: dtbyds   double value:                  0
+parameter: deltap   double value:                  0
+parameter: alfa   double value:    1.005892644e-06
+parameter: u0   double value:                  0
+parameter: qs   double value:                  0
+parameter: arad   double value:    2.817940323e-15
+parameter: bv   double value:                  1
+parameter: pdamp   double array: 1.000000e+00 1.000000e+00 2.000000e+00 
+parameter: n1min   double value:                 -1

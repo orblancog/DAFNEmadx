@@ -1,0 +1,30 @@
+! Beam parameters from IPAC15
+call, file="parameters/beamparams.madx";
+
+! Beam params, data from accumulator
+eEnergy := 1.019/2;![GeV]
+emitx   := 2.8e-7;![m]
+emity   := 0.20*1.4e-7;![m]
+esprd   := 0.1e-2;![1]
+bunchl  := 1.357e-2;![m] = clight/(120*368.667MHz)
+! backward compatibility between Antonio's MRep and Catia's TLe models
+en := eEnergy*1e3; ! [MeV]
+
+! EAE SETUP
+emitx_ae := emitx;!2.8e-7;![m]
+emity_ae := emity;![m]
+delp_ae  := delp;![1]
+
+// =====
+// Optic function at A septa from Oct 2013 measurements
+// =====
+!emitx   = 1.e-6;
+!emity   = 1.e-6;
+!delp    = 5.e-3;
+
+! Radiate=false because Urad is negligible (some eV)
+!   and beam passes only once/twice max 
+beam, particle=electron,energy=eEnergy,radiate=false,
+      ex=emitx,ey=emity,
+      sigt=bunchl,sige=esprd,et=bunchl*esprd,
+      bunched=true,kbunch=100,bcurrent=0.01;

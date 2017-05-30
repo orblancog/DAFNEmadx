@@ -1,0 +1,22 @@
+! Parameters from IPAC 2015, MOPWA049, ISBN 978-3-95450-168-7
+Nbunches     :=  95;
+Bunchspacing :=   2.7e-9;![ns]
+FHCrossAngle :=  50e-3;![rad] full horizontal cross angle
+Nelectrons   :=   2.05e10;
+Npositrons   :=   2.05e10;
+exele        :=   0.28e-6;![m]
+eyele        :=   2.1e-9;![m]
+expos        :=   0.28e-6;![m]
+eypos        :=   2.1e-9;![m]
+momspread    :=   5.5e-4;![m]
+eblength     :=  15.5e-3;![m]
+pblength     :=  16.0e-3;![m] 
+tunxe        :=   0.130;
+tunye        :=   0.170;
+tunxp        :=   0.098;
+tunyp        :=   0.130;
+dampingdecrx :=   1.1e-5;
+dampingdecry :=   1.1e-5;
+dampingdecrz :=   1.1e-5;
+betaxIP      := 250e-3;![m]
+betayIP      := 8.4e-3;![m]

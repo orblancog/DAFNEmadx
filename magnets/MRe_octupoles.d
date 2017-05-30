@@ -1,0 +1,18 @@
+// ===========================================
+// ELECTRON RING OCTUPOLES DEFINITION
+// ===========================================
+//
+// Notes:
+// ------
+
+
+KOCTES104 := 8.388 * IOCTES104;
+KOCTEL210 := 8.388 * IOCTEL210;
+KOCTEL101 := 8.388 * IOCTEL101;
+
+OCTES104: MULTIPOLE,KNL:={0,0,0,KOCTES104};
+OCTEL210: MULTIPOLE,KNL:={0,0,0,KOCTEL210};
+OCTEL101: MULTIPOLE,KNL:={0,0,0,KOCTEL101};
+OCTEL201: MULTIPOLE,KNL:={0,0,0,KOCTEL201};
+
+return;
