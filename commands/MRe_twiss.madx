@@ -1,44 +1,41 @@
+// ======================================================================
 // TWISS FUNCTION FOR DAFNE ELECTRON MACHINE
-option, echo, warn, info;
+// ----------------------------------------------------------------------
+option, -echo, -warn, -info;
+//
+// load currents settings
+//call,file = "currents/MRe_27_11_12altaOraria.cur";
+call,file = "currents/MRe_today.cur";
 
-! the beam
-call, file="parameters/ebeam.madx";
-
-! the cavity
-rfcav: rfcavity,l:=lcav/2,volt:=0.120/2,lag=0.22,harmon=120;
-
-! load currents settings
-! call,file = "currents/MRe_27_11_12altaOraria.cur";
-!call,file = "currents/MRe_today.cur";
-! call,file = "currents/MRe_20160630_1108_misureBeta.cur";
-call,file = "currents/eMRe_20160628_1517_2e01_fondi_bassi.madx";
-
-!! the lattice
-! load machine scheme
+// load machine scheme
 call,file="lines/MRe_ring.d"; // e_ring == electron ring definition
+
+
 mid2 : marker;
 ms1  : marker;
 wholeIP1: LINE=(KLOEsCW,ES1,ES2,finudashort,
 		 IP2,finudalong,EL2,EL1,KLOElCW,IP1);
 wholekf: LINE=(mid2,EL1,KLOElCW,IP1,KLOEsCW,ES1,ms1,ES2,
 		finudashort,IP2,finudalong,EL2);
-! save
-use, sequence= wholekf;
-save,sequence= wholekf,file="lines/MRe_ring.seq"; 
-use, sequence= wholekf;
 
-! miscelaneous variables 
-! x and y envelope definition
-envx := 1.0*sqrt(emitx*table(twiss,betx)+(table(twiss,dx)*esprd)*(table(twiss,dx)*esprd));
-envy := 1.0*sqrt(emity*table(twiss,bety)+(table(twiss,dy)*esprd)*(table(twiss,dy)*esprd));
+rfcav: rfcavity,l=lcav/2,volt=0.0,lag=0.49,harmon=120;
 
-! twiss
+// data from accumulator
+emitx   = 2.8e-7;
+emity   = 1.4e-7;
+delp    = 1.e-3;
+
+beam, particle=electron,energy=0.51,radiate=true,ex=emitx,ey=emity,deltap=delp,bunched=true,kbunch=100,bcurrent=0.01;
+
+use, sequence= wholekf;
+save,sequence=wholekf,file="lines/MRe_ring.seq"; 
+
+envx := 1.0*sqrt(emitx*table(twiss,betx)+(table(twiss,dx)*delp)*(table(twiss,dx)*delp));
+envy := 1.0*sqrt(emity*table(twiss,bety)+(table(twiss,dy)*delp)*(table(twiss,dy)*delp));
 select, flag=twiss, column=name,s,x,betx,alfx,mux,dx,dpx,envx,y,bety,alfy,muy,dy,dpy,envy;
-title,'MRe13  (no chrom)';
-twiss,sequence= wholekf,file="outputs/MRe_twiss_today.tfs";
-!twiss,sequence= wholekf,centre,X:=0.015,Y:=0.002,file="outputs/MRe_twiss_today.tfs";
-stop;
 
+title,'MRe13  (no chrom)';
+twiss,sequence= wholekf,centre,X:=0.015,Y:=0.002,file="outputs/MRe_twiss_today.tfs";
 title,'MRe13 beta (no chrom)';
 plot,haxis=s,hmin=0.,hmax=100.0,spline,vaxis1=betx,bety,colour=100,file="plots/MRe_twiss_today";
 title,'MRe13 alfa (chrom)';
@@ -57,20 +54,5 @@ title,'MRe13 beta IR1 (chrom)';
 plot,haxis=s,hmin=0.,hmax=40.0,spline,vaxis1=betx,bety,colour=100,file="plots/MRe_twiss_today";
 title,'MRe13 disp. (chrom)';
 plot,haxis=s,hmin=0.,hmax=100.0,spline,vaxis1=dx,dy,colour=100,file="plots/MRe_twiss_today";
-
-
-! !! touschek
-! touschek, file="outputs/myMRe.tou", tolerance=1e-7;
-
-! !! ptc_twiss
-! !###PTC  To produce fort.18
-! ptc_create_universe;
-! ptc_create_layout,model=2,method=6,nst=10;
-! !ptc_normal,icase=5,no=8,deltap=0.00;
-! select, flag=ptc_twiss,clear;
-! select, flag=ptc_twiss,column=name,keyword,s,beta11, beta22, alfa11, alfa22;
-! ptc_twiss,icase=5,closed_orbit,file="myDAFNE.ptctwiss",summary_file,table;
-! ptc_end;
-! !! END ptc
 
 return;

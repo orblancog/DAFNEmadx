@@ -11,9 +11,9 @@ parameter: y   double value:                  0
 parameter: py   double value:                  0
 parameter: t   double value:                  0
 parameter: pt   double value:                  0
-parameter: dx   double value:       0.2166557213
+parameter: dx   double value:                  0
 parameter: dpx   double value:                  0
-parameter: dy   double value:      -0.1632144358
+parameter: dy   double value:     -0.05440481193
 parameter: dpy   double value:                  0
 parameter: wx   double value:                  0
 parameter: phix   double value:                  0

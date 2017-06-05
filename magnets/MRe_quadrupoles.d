@@ -13,7 +13,26 @@
 // is used for the equivalent line segment. 
 //
 // ---------------------------------------------------------------------
-call, file="magnets/quadfamilies.d";
+
+// septum quadrupole component
+sept_quad:multipole,knl :={0, kseptum};
+
+quad: quadrupole;
+
+// Quadrupole lenght and calibration constants
+
+lsq  := 0.29; // large quadrupoles
+c1s  := 9.1277;
+c2s  := 4.53;
+
+llq  := 0.30;   // small quadrupoles
+c1l  := 16.963;
+c2l  := 5.62;
+
+lla  := 0.38;    // large aperture quadrupoles
+c1la := 3.9786;
+c2la := 2.72;
+
 
 // Quadrupole  k**2 [m**-2] as a function of the Energy [MeV] and
 // power supply Current [A]

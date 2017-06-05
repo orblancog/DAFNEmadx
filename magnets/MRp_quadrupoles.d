@@ -14,10 +14,28 @@
 //
 // ---------------------------------------------------------------------
 
+// septum quadrupole component
+sept_quad:multipole,knl :={0, kseptum};
+
+quad: quadrupole;
+
+// Quadrupole lenght and calibration constants
+
+lsq  := 0.29; // large quadrupoles
+c1s  := 9.1277;
+c2s  := 4.53;
+
+llq  := 0.30;   // small quadrupoles
+c1l  := 16.963;
+c2l  := 5.62;
+
+lla  := 0.38;    // large aperture quadrupoles
+c1la := 3.9786;
+c2la := 2.72;
+
+
 // Quadrupole  k**2 [m**-2] as a function of the Energy [MeV] and
 // power supply Current [A]
-
-call, file="quadfamilies.d";
 
 pkl101 := (cpl101/ABS(cpl101))*(c1s*(abs(cpl101)+eps+dpl101)+c2s)/BEAM_ENE;
 pkl102 := (cpl102/ABS(cpl102))*(c1s*(abs(cpl102)+eps+dpl102)+c2s)/BEAM_ENE;
@@ -63,7 +81,10 @@ psk207 := (cps207/ABS(cps207))*(c1s*(ABS(cps207)+eps+dps207)+c2s)/BEAM_ENE;
 psk208 := (cps208/ABS(cps208))*(c1s*(ABS(cps208)+eps+dps208)+c2s)/BEAM_ENE;
 psk209 := (cps209/ABS(cps209))*(c1s*(ABS(cps209)+eps+dps209)+c2s)/BEAM_ENE;
 
+
+
 //  PL1 section
+
 QUAPL101:   quad,L := llq/2, K1 := pkl101;
 QUAPL102:   quad,L := llq/2, K1 := pkl102;
 QUAPL103a:  quad,L := ((lla/2)-0.089), K1 := pkl103;
@@ -85,6 +106,7 @@ QUAPL110:   quad,L := llq/2, K1 := pkl110, TILT := tqpl110;
 //QUAPL111: quad,L := llq/2, K1 := pkl111, TILT := tqpl111;
 
 // PL2 section
+
 QUAPL201:   quad,L := llq/2, K1 := pkl201;
 QUAPL202:   quad,L := llq/2, K1 := pkl202;
 QUAPL203:   quad,L := llq/2, K1 := pkl203;
@@ -106,6 +128,7 @@ QUAPL209:   quad,L := llq/2, K1 := pkl209;
 QUAPL210:   quad,L := llq/2, K1 := pkl210;
 
 //  PS1 section
+
 //QUAPS100: quadrupole,L := llq/2, K1 := psk100, TILT := tqps100
 QUAPS101:   quad,L := llq/2, K1 := psk101, TILT := tqps101;
 QUAPS102:   quad,L := llq/2, K1 := psk102, TILT := tqps102;

@@ -4,10 +4,8 @@
 ! Flags for test
 tkon = 0; !! track with kicker on
 yron = 0; !! beam coordinate rotation on
-vdon = 0; !! vertical dipole on
-hdon = 0; !! horizontal dipole on
-
-
+vdon = 1; !! vertical dipole on
+hdon = 1; !! horizontal dipole on
 
 !!!!!!!!!! ... now the magnets parameters...
 ! DAFNE Technical Note : C-17 pag.~6, MM-7 pag.~2, I-16 pag.~14, I-10
@@ -31,7 +29,6 @@ e2b2d := 0;
 ! K1=dBy/dx*I/Inom*1/Brho  dBy/dx from Tech Note MM-7, Fig.~6
 ! To Tesla : 1e-4, to m : 1e-3
 k1b2d := 0.18*1e-4/(1e-3*ib2d)*clight/(1e9*eEnergy);
-!value, k1b2d;
 ! Field index = n =K1*L^2/ANGLE^2
 
 ! DAFNE Technical Note : C-17, pag.~5
@@ -45,7 +42,7 @@ e1b34d := 0;
 e2b34d := 0;
 c1b34d := 1.28*lb34d*clight/(1e9*eEnergy)*3.9324e-4;
 c0b34d := 1.3*lb34d*clight/(1e9*eEnergy)*0;
-k1b34d := 0.0094720*1e-3*10;//0.0094720 from kseptum fit in the MRe
+k1b34d := 0;
 
 ! DAFNE Technical Note : C-17 pag.~5
 !   Dipoles DVRTR001
