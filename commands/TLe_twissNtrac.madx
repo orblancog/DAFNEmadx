@@ -35,9 +35,7 @@ survey,file="outputs/TLe_survey.dat",
   z0 =     49.32205924,
   theta0 =  4.063777781;
 stop;
-survey,file="outputs/TLe_surveyALL.dat";
-exit;
-CALL,FILE="commands/TLe_ae_twiss.cmd";
+call,FILE="commands/TLe_ae_twiss.cmd";
 !stop;
 ! store twiss params in files
 call, file="commands/TLe_showbeta.madx";
