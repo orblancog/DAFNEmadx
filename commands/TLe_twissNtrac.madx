@@ -51,7 +51,7 @@ system, "ln -s outputs/TLe_beam0.txt beam0.txt";
 system, 'root -l -x -q "commands/GenerateInrays.C(\"START\",1e3)"';
 system, "rm -f betaSTART.txt beam0.txt";
 system, "mv madxInrays.madx debug.txt trackTABLE outputs/";
-stop;
+!stop;
 
 ! beggining track
 tkon := 1;
@@ -69,12 +69,8 @@ call, file="commands/TLe_observe.ptc.madx";
 !ptc_start, X=1e-3, PX=1e-3, Y=1e-3, PY=1e-3, T=1e-9, PT=1e-9;
 call, file="outputs/madxInrays.madx";
 !run
-!ptc_track, icase=6,element_by_element,turns=1,dump,onetable,norm_no=1,file;!,
-!norm_no is order of the normal form : 1=linear, 2 ...!
-!ptc_setcavities;
-!ptc_setswitch,debuglevel=1,maxacceleration=false,totalpath=false,
-!	radiation=true,fringe=false,time=true,nocavity=false;
-Rpipe := 40e-3;
+!!norm_no is order of the normal form : 1=linear, 2 ...!
+Rpipe := 44e-3;
 AngMax := 1;
 ptc_track, icase=6,turns=1,dump,onetable,element_by_element,
 maxaper={Rpipe,AngMax,Rpipe,AngMax,1,1},
