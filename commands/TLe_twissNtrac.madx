@@ -17,7 +17,6 @@ CALL, FILE="magnets/TL_quad.d";
 CALL, FILE="magnets/TL_sextupoles.d";
 CALL, FILE="magnets/TLe_ae_dipoles.d";
 CALL, FILE="lines/TL_lattice.d";
-!use, sequence= e_ae, range=#s/#e;
 use, sequence= e_ae, range=#s/#e;
 !stop;
 
@@ -54,7 +53,7 @@ system, "mv madxInrays.madx debug.txt trackTABLE outputs/";
 !stop;
 
 ! beggining track
-tkon := 0;
+tkon := 1;! this switch activate the kickers modelling the dipoles
 ! NO purpuse tracking in PTC
 !set parameters
 !system, "rm -f track*";

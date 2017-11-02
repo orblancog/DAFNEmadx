@@ -206,7 +206,7 @@ int DrawProfile (const char * k, const char * invaxis = NULL) {//k is the flag n
   // c1->Update();
 
 
-  TEllipse *bpipe=new TEllipse(0,0,120e-3*scalehv,120e-3*scalehv);
+  TEllipse *bpipe=new TEllipse(0,0,44e-3*scalehv,44e-3*scalehv);
    bpipe->SetFillColorAlpha(kWhite,0.0);
    bpipe->SetFillStyle(4000);
    bpipe->SetLineWidth(2);
@@ -243,7 +243,7 @@ int DrawProfile (const char * k, const char * invaxis = NULL) {//k is the flag n
 
   TString * trackfl = new TString("track");
   trackfl->Append(k);
-  TH2 * trackh = new TH2F(trackfl->Data(),trackfl->Data(),500,-250,250,500,-250,250);
+  TH2 * trackh = new TH2F(trackfl->Data(),trackfl->Data(),201,-50,50,201,-50,50);
   //  betafl->Append(".txt");
   track0in.open(trackfl->Data());
   //  track0in.open("trackSTART");
