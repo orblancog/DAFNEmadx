@@ -115,7 +115,7 @@
  D53B   : DRIFT,L=   0.51;
  D54    : DRIFT,L=   1.74;
  D55A   : DRIFT,L=   1.05+0.05;//+ half corrector size
- D55B   : DRIFT,L=   0.30+0.05;//+ half corrector size
+ D55B   : DRIFT,L=   0.33+0.05;//+ half corrector size
  D55C   : DRIFT,L=   0.40;
  D56A   : DRIFT,L=   0.50;
  D56B   : DRIFT,L=   1.61;
