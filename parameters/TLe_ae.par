@@ -10,9 +10,9 @@
 
 !************* e-  ACCUM. EXTRACTION  **********************************
 ! quadrupoles sign for e- accum. extr. to dafne
-pertr   =  -1;
-pertt12 =  -1;
-pertt3  =   1;
-perte   =  -1;
+pertr   =  1;
+pertt12 =  1;
+pertt3  =  1;
+perte   =  1;
 
 RETURN;

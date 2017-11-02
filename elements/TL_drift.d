@@ -84,14 +84,15 @@
  D22:DRIFT ,L=2.387;
  D23A:DRIFT ,L=0.907-.256;
  D23B:DRIFT ,L=0.256;
+ D23C:DRIFT ,L=0.0;!??
  D24:DRIFT ,L=1.109;
 
- D25A :DRIFT,L=   1.418;
- D25B :DRIFT,L=   0.2945;
- D25C :DRIFT,L=   0.2945;
- D26A   :DRIFT,L=   3.696-1.18-0.37-0.256+0.05;//+ half corrector size
- D26B   :DRIFT,L=   0.256+0.05;//+ half corrector size
- D26C   :DRIFT,L=   1.18+0.37;! CHVT Tech.Note C-17 pag..~8. Lmag=0.2242
+ D25A   :DRIFT,L=   1.418;
+ D25B   :DRIFT,L=   0.2945;
+ D25C   :DRIFT,L=   0.2945;
+ D26A   :DRIFT,L=   3.696-1.18-0.37-0.256+0.05;//+ half corrector size 
+ D26B   :DRIFT,L=   0.256+0.05-0.10;//+ half corrector size - half magnet
+ D26C   :DRIFT,L=   1.18+0.37-0.10;! CHVT Tech.Note C-17 pag..~8. Lmag=0.2242; - half magnet
 
 ! TP
  D27:DRIFT ,L=1.863-0.45;
@@ -125,8 +126,8 @@
  D58   :DRIFT,L=   1.78;
  D59   :DRIFT,L=   2.49;
  D159  :DRIFT,L=   4.00;
- D60A  :DRIFT,L=   0.40+0.05;//+ half corrector size
- D60B  :DRIFT,L=   1.12+0.05;//+ half corrector size
+ D60A  :DRIFT,L=   0.40;//+ half corrector size
+ D60B  :DRIFT,L=   1.12;//+ half corrector size
  D60C  :DRIFT,L=   1.40;
  D61A  :DRIFT,L=   0.58; 
  D61B  :DRIFT,L=   0.81-0.55;

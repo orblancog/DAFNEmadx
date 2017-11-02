@@ -295,6 +295,8 @@ vkes104 := 1;
 koctes104 := 8.388*ioctes104;
 eks108 := (ces108/abs(ces108))*(c1s*(abs(ces108)+eps+des108)+c2s)/beam_ene;
 ces108 = 80.091;
+rf_on := 1;
+rf_lag := 0.5-0.031;
 hkes105 := 1;
 vkes105 := 1;
 eks109 := (ces109/abs(ces109))*(c1s*(abs(ces109)+eps+des109)+c2s)/beam_ene;
@@ -914,7 +916,7 @@ chves104: kicker,hkick:=hkes104 * cskw * ihhes104 ,vkick:=vkes104 * cskw * ivves
 bpbes107: monitor;
 octes104: multipole,knl:={ 0, 0, 0,koctes104 };
 quaes108: quad,l:=llq / 2 ,k1:=eks108 ;
-rfcav: rfcavity,l:= 0.92,volt:= 0,lag:= 0.49,harmon:= 120;
+rfcav: rfcavity,l:= 0.92,volt:=rf_on * 0.120 ,lag:=rf_lag ,harmon:= 120;
 chves105: kicker,l:=0.10 / 2. ,hkick:=hkes105 * csqr * ihhes105 ,vkick:=vkes105 * csqr * ivves105 ;
 quaes109: quad,l:=llq / 2 ,k1:=eks109 ;
 bpbes108: monitor;

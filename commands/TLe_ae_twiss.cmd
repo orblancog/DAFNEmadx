@@ -12,10 +12,10 @@
  betyacc = 4.041;!4.53;
  alfxacc = 1.017;!0.66;
  alfyacc = 0.458;!0.37;
- dxacc   = *0.2166557213;
- dyacc   = -0.05440481193;
- dpxacc  = 0;
- dpyacc  = 0;
+ dxacc   = 0.2166557213;
+ dyacc   = 0.05440481193;
+ dpxacc  = 0;!1.2;
+ dpyacc  = 0;!-0.1;
 ! forward twiss
 !use, sequence= e_ae;
 value,QUATR001->k1;
@@ -34,7 +34,7 @@ twiss,deltap=0,sequence=e_AE,BETX=betxacc,BETY=betyacc,
 file="outputs/tle_ae.tls",tolerance=1e-10;
 call, file="commands/plottwiss.madx";			  
 !stop;
-return;
+!return;
 //save, sequence= e_ae, file='e_ae_seq';
 
 

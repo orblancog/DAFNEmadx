@@ -17,9 +17,9 @@ ktrh:marker;
 ktrv:marker;
 
 // RF cavity
-
-lcav=1.84;
-
-rfcav: rfcavity,l=lcav/2,volt=0.10,lag=0.49,harmon=120; // tfill=1.,shunt=0.2,pg=0.1
+RF_ON:=0;
+lcav:=1.84;
+RF_LAG:=0.49;
+rfcav: rfcavity,l=lcav/2,volt:=RF_ON*0.120,lag:=RF_LAG,harmon=120; // tfill=1.,shunt=0.2,pg=0.1
 
 return !

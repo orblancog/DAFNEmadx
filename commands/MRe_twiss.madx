@@ -2,13 +2,16 @@
 // TWISS FUNCTION FOR DAFNE ELECTRON MACHINE
 // ----------------------------------------------------------------------
 option, -echo, -warn, -info;
-//
+
 // load currents settings
 //call,file = "currents/MRe_27_11_12altaOraria.cur";
 call,file = "currents/MRe_today.cur";
-
 // load machine scheme
 call,file="lines/MRe_ring.d"; // e_ring == electron ring definition
+
+RF_ON:=1;
+RF_LAG:=0.5-0.031;
+!rfcav: rfcavity,l=lcav/2,volt:=RF_ON*0.120,lag:=RF_LAG,harmon=120;
 
 
 mid2 : marker;
@@ -17,8 +20,6 @@ wholeIP1: LINE=(KLOEsCW,ES1,ES2,finudashort,
 		 IP2,finudalong,EL2,EL1,KLOElCW,IP1);
 wholekf: LINE=(mid2,EL1,KLOElCW,IP1,KLOEsCW,ES1,ms1,ES2,
 		finudashort,IP2,finudalong,EL2);
-
-rfcav: rfcavity,l=lcav/2,volt=0.0,lag=0.49,harmon=120;
 
 // data from accumulator
 emitx   = 2.8e-7;
@@ -29,10 +30,11 @@ beam, particle=electron,energy=0.51,radiate=true,ex=emitx,ey=emity,deltap=delp,b
 
 use, sequence= wholekf;
 save,sequence=wholekf,file="lines/MRe_ring.seq"; 
+use, sequence= wholekf;
 
 envx := 1.0*sqrt(emitx*table(twiss,betx)+(table(twiss,dx)*delp)*(table(twiss,dx)*delp));
 envy := 1.0*sqrt(emity*table(twiss,bety)+(table(twiss,dy)*delp)*(table(twiss,dy)*delp));
-select, flag=twiss, column=name,s,x,betx,alfx,mux,dx,dpx,envx,y,bety,alfy,muy,dy,dpy,envy;
+select, flag=twiss, column=name,keyword,s,x,betx,alfx,mux,dx,dpx,envx,y,bety,alfy,muy,dy,dpy,envy;
 
 title,'MRe13  (no chrom)';
 twiss,sequence= wholekf,centre,X:=0.015,Y:=0.002,file="outputs/MRe_twiss_today.tfs";
@@ -54,5 +56,5 @@ title,'MRe13 beta IR1 (chrom)';
 plot,haxis=s,hmin=0.,hmax=40.0,spline,vaxis1=betx,bety,colour=100,file="plots/MRe_twiss_today";
 title,'MRe13 disp. (chrom)';
 plot,haxis=s,hmin=0.,hmax=100.0,spline,vaxis1=dx,dy,colour=100,file="plots/MRe_twiss_today";
-
+emit;
 return;

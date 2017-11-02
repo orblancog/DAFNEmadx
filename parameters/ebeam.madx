@@ -4,7 +4,7 @@ call, file="parameters/beamparams.madx";
 ! Beam params, data from accumulator
 eEnergy := 1.019/2;![GeV]
 emitx   := 2.8e-7;![m]
-emity   := 0.20*1.4e-7;![m]
+emity   := 1.4e-7;![m]
 esprd   := 0.1e-2;![1]
 bunchl  := 1.357e-2;![m] = clight/(120*368.667MHz)
 ! backward compatibility between Antonio's MRep and Catia's TLe models
@@ -27,4 +27,4 @@ delp_ae  := delp;![1]
 beam, particle=electron,energy=eEnergy,radiate=false,
       ex=emitx,ey=emity,
       sigt=bunchl,sige=esprd,et=bunchl*esprd,
-      bunched=true,kbunch=100,bcurrent=0.01;
+      bunched=true,kbunch=100,bcurrent=0.01,bv=-1;

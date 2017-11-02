@@ -17,8 +17,8 @@ CALL, FILE="magnets/TL_quad.d";
 CALL, FILE="magnets/TL_sextupoles.d";
 CALL, FILE="magnets/TLe_ae_dipoles.d";
 CALL, FILE="lines/TL_lattice.d";
-!use, sequence= e_ae, range=#s/#e;
-use, sequence=e_ae,range=#s/QUATE002;
+use, sequence= e_ae, range=#s/#e;
+!use, sequence=e_ae,range=QUATR001[2]/#e;
 !save,sequence= e_ae, file="outputs/TLe.seq";
 !call,file="temp.seq";
 !use, sequence= e_ae, range=#s/dhptt002;
@@ -29,8 +29,14 @@ use, sequence=e_ae,range=#s/QUATE002;
 ! savebeta in flags...
 call, file="commands/TLe_savebeta.madx";
 !stop;
-! Twiss with initial betas
-survey,file="outputs/TLe_survey.dat";
+!! Twiss with initial betas
+survey,file="outputs/TLe_survey.dat",
+  x0=16.26044+2.651496,
+  z0=48.33945+0.9846383599999982,
+  theta0=twopi/4+3.1213-0.628318546;
+stop;
+survey,file="outputs/TLe_surveyALL.dat";
+exit;
 CALL,FILE="commands/TLe_ae_twiss.cmd";
 !stop;
 ! store twiss params in files
