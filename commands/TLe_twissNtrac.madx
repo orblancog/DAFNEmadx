@@ -95,8 +95,10 @@ ptc_end;
 system, "./commands/getobservedata trackone";
 system, "mv track* outputs/";
 !system, "mv trackLOW_EMIT_RING\$END trackEND";
-! plot the phase  space
+! ! $ cd to outputs and plot the phase  space with
 !system, 'root -x -l -q "../commands/DrawPhaseSpace.C(\"START\")" ';
 !system, 'root -x -l -q "../commands/DrawPhaseSpace.C(\"END\")" ';
+! !  or the beam profile 
+!system, 'root -x -l -q "../commands/DrawProfile.C(\"END\")" ';
 
 stop;
