@@ -91,8 +91,8 @@
  D25B   : DRIFT , L =   0.2945;
  D25C   : DRIFT , L =   0.2945;
  D26A   : DRIFT , L =   3.696-1.18-0.37-0.256+0.05;//+ half corrector size 
- D26B   : DRIFT , L =   0.256+0.05-0.10;//+ half corrector size - half magnet
- D26C   : DRIFT , L =   1.18+0.37-0.10;! CHVT Tech.Note C-17 pag..~8. Lmag=0.2242; - half magnet
+ D26B   : DRIFT , L =   0.256+0.05;//+ half corrector size
+ D26C   : DRIFT , L =   1.18+0.37;
 
 ! TP
  D27:DRIFT ,L=1.863-0.45;
