@@ -1,9 +1,8 @@
- !!!!! beam out EXTRACTION ELECTRONS FROM ACCUM. TO TR
+!! Dipoles in the TLe
 ! ! units : \alpha [rad (°)], L [m], Energy [GeV]
 
 ! ! Flags for test
-! tkon = 0; !! track with kicker on
-! yron = 0; !! beam coordinate rotation on
+tkon = 0; !! track with kicker on
 ! vdon = 1; !! vertical dipole on
 ! hdon = 1; !! horizontal dipole on
 
@@ -70,56 +69,56 @@ b11dangle (theangle,cur,sign) : macro = {
     + d2b11d*cur^2 + d1b11d*abs(cur) + d0b11d); }
 };
 
-! ! DAFNE Technical Note : C-17 pag.~4
-! !   Dipoles DHPTT001
-! !   \alpha = 0.7854 (45°), L nom = 1.113, I nom=570.81
-! ! \alpha [rad], L [m], I [A]
-! ! kickangle = Length*clight/(1e9*Energy[GeV]) * B[T](I[A])
-! lb45d  := 1.113;
-! ib45d  := 570.81;
-! ib45dm := 650;
-! e1b45d := 0;
-! e2b45d := 0;
-! k1b45d := -0.00005;
-! ! linear
-! c0b45d := lb45d*clight/(1e9*eEnergy)*1.2129e-4;
-! c1b45d := lb45d*clight/(1e9*eEnergy)*2.419e-3;
-! ! non-linear
-! d0b45d := lb45d*clight/(1e9*eEnergy)*(-0.56665);
-! d1b45d := lb45d*clight/(1e9*eEnergy)*6.2805e-3;
-! d2b45d := lb45d*clight/(1e9*eEnergy)*(-7.7012e-6);
-! d3b45d := lb45d*clight/(1e9*eEnergy)*3.7969e-9;
-! d4b45d := lb45d*clight/(1e9*eEnergy)*(-1.3699e-13);
-! ! magnetic angle, sign is applied later
-! b45dangle (theangle,cur,sign) : macro = {
-!   if (abs(cur) <= 300){theangle := sign*(c0b45d + c1b45d*abs(cur));}
-!   else {theangle := sign*(d4b45d*cur^4 + d3b45d*abs(cur)^3
-!     + d2b45d*(cur)^2 + d1b45d*abs(cur) + d0b45d); }
-! };
+! DAFNE Technical Note : C-17 pag.~4
+!   Dipoles DHPTT001
+!   \alpha = 0.7854 (45°), L nom = 1.113, I nom=570.81
+! \alpha [rad], L [m], I [A]
+! kickangle = Length*clight/(1e9*Energy[GeV]) * B[T](I[A])
+lb45d  := 1.113;
+ib45d  := 570.81;
+ib45dm := 650;
+e1b45d := 0;
+e2b45d := 0;
+k1b45d := -0.00005;
+! linear
+c0b45d := lb45d*clight/(1e9*eEnergy)*1.2129e-4;
+c1b45d := lb45d*clight/(1e9*eEnergy)*2.419e-3;
+! non-linear
+d0b45d := lb45d*clight/(1e9*eEnergy)*(-0.56665);
+d1b45d := lb45d*clight/(1e9*eEnergy)*6.2805e-3;
+d2b45d := lb45d*clight/(1e9*eEnergy)*(-7.7012e-6);
+d3b45d := lb45d*clight/(1e9*eEnergy)*3.7969e-9;
+d4b45d := lb45d*clight/(1e9*eEnergy)*(-1.3699e-13);
+! magnetic angle, sign is applied later
+b45dangle (theangle,cur,sign) : macro = {
+  if (abs(cur) <= 300){theangle := sign*(c0b45d + c1b45d*abs(cur));}
+  else {theangle := sign*(d4b45d*cur^4 + d3b45d*abs(cur)^3
+    + d2b45d*(cur)^2 + d1b45d*abs(cur) + d0b45d); }
+};
 
-! ! DAFNE Tech. Note : DI-10 pag.~33 and 37, I-10 pag.~10., I-16 pag.~15
-! ! DHRTE003 1.22[T] 31° (0.5411 [rad])
-! ! I nom=155[A]
-! ! \alpha [rad], L [m], I [A]
-! ! kickangle = Length*clight/(1e9*Energy[GeV]) * B[T](I[A])
-! ib31d  := 155;
-! lb31d  := 0.757;
-! c1b31d := lb31d*clight/(1e9*eEnergy)*1.22/ib31d;
-! e1b31d := 0.2705;
-! e2b31d := 0.2705;
-! k1b31d := 0;
+! DAFNE Tech. Note : DI-10 pag.~33 and 37, I-10 pag.~10., I-16 pag.~15
+! DHRTE003 1.22[T] 31° (0.5411 [rad])
+! I nom=155[A]
+! \alpha [rad], L [m], I [A]
+! kickangle = Length*clight/(1e9*Energy[GeV]) * B[T](I[A])
+ib31d  := 155;
+lb31d  := 0.757;
+c1b31d := lb31d*clight/(1e9*eEnergy)*1.22/ib31d;
+e1b31d := 0.2705;
+e2b31d := 0.2705;
+k1b31d := 0;
 
-! ! DAFNE Tech. Note : DI-10 pag.~25, I-10 pag.~10., I-16 pag.~15
-! ! DHRTE001 1.18[T] 30° (0.5236 [rad])
-! ! I nom=233[A]
-! ! \alpha [rad], L [m], I [A]
-! ! kickangle = Length*clight/(1e9*Energy[GeV]) * B[T](I[A])
-! ib30d  := 233;
-! lb30d  := 0.757;
-! c1b30d := lb30d*clight/(1e9*eEnergy)*1.18/ib30d;
-! k1b30d := 0;
-! e1b30d := 0.2618;
-! e2b30d := 0.2618;
+! DAFNE Tech. Note : DI-10 pag.~25, I-10 pag.~10., I-16 pag.~15
+! DHRTE001 1.18[T] 30° (0.5236 [rad])
+! I nom=233[A]
+! \alpha [rad], L [m], I [A]
+! kickangle = Length*clight/(1e9*Energy[GeV]) * B[T](I[A])
+ib30d  := 233;
+lb30d  := 0.757;
+c1b30d := lb30d*clight/(1e9*eEnergy)*1.18/ib30d;
+k1b30d := 0;
+e1b30d := 0.2618;
+e2b30d := 0.2618;
 
 !Y  magnet for e- extraction  beam out  FROM ACCUMULATOR
 ! DAFNE Technical Note : C-17 pag.~4
@@ -138,26 +137,26 @@ k1b36d := 0;
 
 !!!!!!!!!!!!! ... now the magnets definitions ... 
 ! old first 
-SPTA2001: SBEND,L= .623,              ANGLE= .0349066;
-SPTA2002: SBEND,L=1.233,              ANGLE= .593411946; 
-DVRTR001: SBEND,L= .35 ,TILT:=twopi/4,ANGLE= .191986,    E1=0.095993,   E2=0.095993;
-DVRTR002: SBEND,L= .35 ,TILT:=twopi/4,ANGLE=-.191986,    E1=0.095993,   E2=0.095993;  
-DHYTT001: SBEND,L=1.   ,              ANGLE=-.6283185308,E1=0.6283185308;
+SPTA2001: SBEND,L= .623,              ANGLE= 0.0349066;
+SPTA2002: SBEND,L=1.233,              ANGLE= 0.593411946; 
+DVRTR001: SBEND,L= .35 ,TILT:=twopi/4,ANGLE= 0.191986,    E1=0.095993,   E2=0.095993;
+DVRTR002: SBEND,L= .35 ,TILT:=twopi/4,ANGLE=-0.191986,    E1=0.095993,   E2=0.095993;  
+DHYTT001: SBEND,L=1.   ,              ANGLE=-0.6283185308,E1=0.6283185308;
 DHPTT001: SBEND,L=1.113,              ANGLE= 0.785398163;
 DHPTT002: SBEND,L=1.113,              ANGLE=-0.785398163;
-DHRTT001: SBEND,L=0.757,              ANGLE=-0.52359878, E1=0.261799388,E2=0.261799388;
-DHSTT001: SBEND,L = 1.113, ANGLE = -0.785398163;
-DVRTT001: SBEND,L=.35,TILT:=twopi/4,ANGLE= .191986,E1=0.095993,E2=0.095993;
-DVRTT002: SBEND,L=.35,TILT:=twopi/4,ANGLE=-.191986,E1=0.095993,E2=0.095993;
-DVRTE001: SBEND,L=.35,TILT:=twopi/4,ANGLE= .191986,E1=0.095993,E2=0.095993;
-DVRTE002: SBEND,L=.35,TILT:=twopi/4,ANGLE=-.191986,E1=0.095993,E2=0.095993;
-DHRTE001: SBEND,L=0.757,ANGLE=.528679953,E1=.26433976,E2=.26433976;
-DHRTE002: SBEND,L=0.757,ANGLE=-.542099266,E1=-.271049633,E2=-.271049633;
-DHRTE003: SBEND,L=0.757,ANGLE=-.542099266,E1=-.271049633,E2=-.271049633;
-DVRTE003: SBEND,L=.35,TILT:=twopi/4,ANGLE=-.191986,E1=0.095993,E2=0.095993;
-DVRTE004: SBEND,L=.35,TILT:=twopi/4,ANGLE= .191986,E1=0.095993,E2=0.095993;
-SPTEL101: SBEND, L = 1.233, ANGLE = -0.593411946;
-SPTEL102: SBEND, L = 0.623, ANGLE = -0.034906585;
+DHRTT001: SBEND,L=0.757,              ANGLE=-0.52359878,  E1=0.261799388,E2=0.261799388;
+DHSTT001: SBEND,L=1.113,              ANGLE=-0.785398163;
+DVRTT001: SBEND,L=.35,  TILT:=twopi/4,ANGLE= 0.191986,    E1=0.095993,   E2=0.095993;
+DVRTT002: SBEND,L=.35,  TILT:=twopi/4,ANGLE=-0.191986,    E1=0.095993,   E2=0.095993;
+DVRTE001: SBEND,L=.35,  TILT:=twopi/4,ANGLE= 0.191986,    E1=0.095993,   E2=0.095993;
+DVRTE002: SBEND,L=.35,  TILT:=twopi/4,ANGLE=-0.191986,    E1=0.095993,   E2=0.095993;
+DHRTE001: SBEND,L=0.757,              ANGLE=.528679953,   E1=.26433976,  E2=.26433976;
+DHRTE002: SBEND,L=0.757,              ANGLE=-.542099266,  E1=-.271049633,E2=-.271049633;
+DHRTE003: SBEND,L=0.757,              ANGLE=-.542099266,  E1=-.271049633,E2=-.271049633;
+DVRTE003: SBEND,L=.35,  TILT:=twopi/4,ANGLE=-.191986,     E1=0.095993,   E2=0.095993;
+DVRTE004: SBEND,L=.35,  TILT:=twopi/4,ANGLE= .191986,     E1=0.095993,   E2=0.095993;
+SPTEL101: SBEND, L = 1.233,           ANGLE = -0.593411946;
+SPTEL102: SBEND, L = 0.623,           ANGLE = -0.034906585;
 ! end of old
 !! finally the model
 ! horizontal

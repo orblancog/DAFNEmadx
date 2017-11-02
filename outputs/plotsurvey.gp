@@ -1,3 +1,7 @@
+# this plot compares the output of a survey with the data 
+# from the mechanical design
+
+
 set size ratio 1.45
 
 set xlabel "x [m]" font ',18' offset 0

@@ -1,13 +1,13 @@
 TITLE, "TLe";
-option, info, -echo, warn;
+option, -info,-echo,-warn;
 
-! Creating the beam
+! the beam
 call, file="parameters/ebeam.madx";
 
 ! Machine files
 ! Elements strength is a function of the currents
 call, file="currents/eTLe_currents.madx";//loading current dataset
-call, file="currents/eMRe_20160628_1517_2e01_fondi_bassi.madx";//using only current of SXPEL100
+call, file="currents/eMRe_20160628_1517_2e01_fondi_bassi.madx";//using only SXPEL100 from the MRe
 call, file="currents/checkcur.madx";!stop;
 CALL, FILE="parameters/TLe_ae.par";
 CALL, FILE="elements/TL_markers.d";
@@ -18,25 +18,26 @@ CALL, FILE="magnets/TL_sextupoles.d";
 CALL, FILE="magnets/TLe_ae_dipoles.d";
 CALL, FILE="lines/TL_lattice.d";
 use, sequence= e_ae, range=#s/#e;
-!use, sequence=e_ae,range=QUATR001[2]/#e;
-!save,sequence= e_ae, file="outputs/TLe.seq";
-!call,file="temp.seq";
-!use, sequence= e_ae, range=#s/dhptt002;
-!value,dvrtr001->s;
 !stop;
-//CALL,FILE="rematch7_2l.cmd";
-//CALL,FILE="rematch_quate.cmd";
-! savebeta in flags...
-call, file="commands/TLe_savebeta.madx";
-!stop;
-!! Twiss with initial betas
+
+! Survey checked vs the mechanical design and measurements
+!   precision should be around some cm.
+!   Vertical dipoles still unchecked
+!   specially the last pair of vertical magnets seem to differ by 30cm in
+!   longitudinal position
+! For a quick comparison, use gnuplot and load outputs/plotsurvey.gp
 survey,file="outputs/TLe_survey.dat",
   x0 =     18.81195659,
   z0 =     49.32205924,
   theta0 =  4.063777781;
-stop;
-call,FILE="commands/TLe_ae_twiss.cmd";
 !stop;
+
+
+!! Twiss with initial betas
+! savebeta in flags...
+call, file="commands/TLe_savebeta.madx";
+!call,FILE="commands/TLe_ae_twiss.cmd";
+stop;
 ! store twiss params in files
 call, file="commands/TLe_showbeta.madx";
 !stop;
