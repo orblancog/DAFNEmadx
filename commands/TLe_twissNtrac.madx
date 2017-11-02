@@ -33,10 +33,12 @@ survey,file="outputs/TLe_survey.dat",
   theta0 =  4.063777781;
 !stop;
 
+
+!! FROM HERE ON the model is under experiment
 !! Twiss with initial betas
 call, file="commands/TLe_savebeta.madx";! savebeta in flags...
 call, file="commands/TLe_ae_twiss.cmd";
-stop;
+!stop;
 ! store twiss params in files
 call, file="commands/TLe_showbeta.madx";
 !stop;
@@ -45,12 +47,14 @@ call, file="commands/TLe_showbeta.madx";
 ! Generating particles needs two parameters : (flagname,Nparticles)
 system, "ln -s outputs/TLe_betaSTART.txt betaSTART.txt";
 system, "ln -s outputs/TLe_beam0.txt beam0.txt";
+! edit commands/GenerateInrays.C when offsets in the phase space are needed
 system, 'root -l -x -q "commands/GenerateInrays.C(\"START\",1e3)"';
 system, "rm -f betaSTART.txt beam0.txt";
 system, "mv madxInrays.madx debug.txt trackTABLE outputs/";
-!stop;
+stop;
 
 ! beggining track
+tkon := 1;
 ! NO purpuse tracking in PTC
 !set parameters
 !system, "rm -f track*";

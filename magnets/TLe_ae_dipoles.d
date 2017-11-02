@@ -153,6 +153,8 @@ c1b36d := lb36d*clight/(1e9*eEnergy)*1.1171e-2;
 e1b36d := 0.6283185308;
 e2b36d := 0;
 k1b36d := 0;
+!! end of magnet parameters
+
 
 !!!!!!!!!!!!! ... now the magnets definitions ... 
 ! ! old bending definition
@@ -258,31 +260,58 @@ DVRTE003 : SBEND,L:=lb11d,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d,
 	 E1=e1b11d,E2=e2b11d;
 DVRTE004 : SBEND,L:=lb11d,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d,
 	 E1=e1b11d,E2=e2b11d;
-SPTEL101 : SBEND,L:=lb34d,			ANGLE:=-1*hdon*ab31d,       
+SPTEL101 : SBEND,L:=lb34d,			ANGLE:=-1*hdon*ab34d,       
 	 K1:=k1b34d*abs(SPTEL101);
 SPTEL102 : SBEND,L:=lb2d,			ANGLE:=-1*hdon*ab2d,       
 	 K1:=k1b2d*abs(SPTEL102);
-! ! kicks for tracking
-SPTA2001K: KICKER,L=0,HKICK:=tkon*(PANGSPTA2001 - MANGSPTA2001);
-SPTA2002K: KICKER,L=0,HKICK:=tkon*(PANGSPTA2002 - MANGSPTA2002);
-DVRTR001K: KICKER,L=0,VKICK:=tkon*(PANGDVRTR001 - MANGDVRTR001);
-DVRTR002K: KICKER,L=0,VKICK:=tkon*(PANGDVRTR002 - MANGDVRTR002);
-DHYTT001K: KICKER,L=0,hKICK:=tkon*(PANGDHYTT001 - MANGDHYTT001);
-DHPTT001K: KICKER,L=0,hKICK:=tkon*(PANGDHPTT001 - MANGDHPTT001);
-DHPTT002K: KICKER,L=0,hKICK:=tkon*(PANGDHPTT002 - MANGDHPTT002);
-DHRTT001K: KICKER,L=0,hKICK:=tkon*(PANGDHRTT001 - MANGDHRTT001);
-DHSTT001K: KICKER,L=0,hKICK:=tkon*(PANGDHSTT001 - MANGDHSTT001);
-DVRTT001K: KICKER,L=0,VKICK:=tkon*(PANGDVRTT001 - MANGDVRTT001);
-DVRTT002K: KICKER,L=0,VKICK:=tkon*(PANGDVRTT002 - MANGDVRTT002);
-DVRTE001K: KICKER,L=0,VKICK:=tkon*(PANGDVRTE001 - MANGDVRTE001);
-DVRTE002K: KICKER,L=0,VKICK:=tkon*(PANGDVRTE002 - MANGDVRTE002);
-DHRTE001K: KICKER,L=0,HKICK:=tkon*(PANGDHRTE001 - MANGDHRTE001);
-DHRTE002K: KICKER,L=0,HKICK:=tkon*(PANGDHRTE002 - MANGDHRTE002);
-DHRTE003K: KICKER,L=0,HKICK:=tkon*(PANGDHRTE003 - MANGDHRTE003);
-DVRTE003K: KICKER,L=0,VKICK:=tkon*(PANGDVRTE003 - MANGDVRTE003);
-DVRTE004K: KICKER,L=0,VKICK:=tkon*(PANGDVRTE004 - MANGDVRTE004);
-SPTEL102K: KICKER,L=0,HKICK:=tkon*(PANGSPTEL102 - MANGSPTEL102);
-SPTEL101K: KICKER,L=0,HKICK:=tkon*(PANGSPTEL101 - MANGSPTEL101);
+! end of new bending def
+! start of magnetic angle from currents+sign def (vertical + is downwards )
+! this is used to kick the beam during tracking
+! therefore only relevant when tkon = 1
+n=-1;p=1;! silly but it is the only way I could pass the negative sign
+         ! when the angle is not linear with current
+mangSPTA2001 :=     c1b2d*abs(SPTA2001)+c0b2d;
+mangSPTA2002 :=     c1b34d*abs(SPTA2002)+c0b34d;
+exec, b11dangle(mangDVRTR001,DVRTR001,p);
+exec, b11dangle(mangDVRTR002,DVRTR002,n);
+mangDHYTT001 := -1*(c0b36d + c1b36d*abs(DHYTT001));
+exec, b45dangle(mangDHPTT001,DHPTT001,p);
+exec, b45dangle(mangDHPTT002,DHPTT002,n);
+mangDHRTT001 := -1*c1b30*abs(DHRTT001);
+exec, b45dangle(mangDHSTT001,DHSTT001,n);
+exec, b11dangle(mangDVRTT001,DVRTT001,p);
+exec, b11dangle(mangDVRTT002,DVRTT002,n);
+exec, b11dangle(mangDVRTE001,DVRTE001,p);
+exec, b11dangle(mangDVRTE002,DVRTE002,n);
+mangDHRTE001 :=    c1b30d*abs(DHRTE001);
+mangDHRTE002 := -1*c1b31d*abs(DHRTE002);
+mangDHRTE003 := -1*c1b31d*abs(DHRTE003);
+exec, b11dangle(mangDVRTE003,DVRTE003,n);
+exec, b11dangle(mangDVRTE004,DVRTE004,p);
+mangSPTEL101 := -1*(c1b34d*abs(SPTEL101)+c2b34d); 
+mangSPTEL102 := -1*(c1b2d*abs(SPTEL102)+c2b2d);
+! end of magnetic angle definitions
+! start of  kicks for tracking
+SPTA2001K: KICKER,L=0,HKICK:=tkon*( ab2d    - mangSPTA2001);
+SPTA2002K: KICKER,L=0,HKICK:=tkon*( ab34d   - mangSPTA2002);
+DVRTR001K: KICKER,L=0,VKICK:=tkon*( ab11d   - mangDVRTR001);
+DVRTR002K: KICKER,L=0,VKICK:=tkon*(-ab11d   - mangDVRTR002);
+DHYTT001K: KICKER,L=0,HKICK:=tkon*(-ab36d   - mangDHYTT001);
+DHPTT001K: KICKER,L=0,HKICK:=tkon*( ab45d   - mangDHPTT001);
+DHPTT002K: KICKER,L=0,HKICK:=tkon*(-ab45d   - mangDHPTT002);
+DHRTT001K: KICKER,L=0,HKICK:=tkon*(-ab30d   - mangDHRTT001);
+DHSTT001K: KICKER,L=0,HKICK:=tkon*(-ab45d   - mangDHSTT001);
+DVRTT001K: KICKER,L=0,VKICK:=tkon*( b11d    - mangDVRTT001);
+DVRTT002K: KICKER,L=0,VKICK:=tkon*(-b11d    - mangDVRTT002);
+DVRTE001K: KICKER,L=0,VKICK:=tkon*( b11d    - mangDVRTE001);
+DVRTE002K: KICKER,L=0,VKICK:=tkon*(-b11d    - mangDVRTE002);
+DHRTE001K: KICKER,L=0,HKICK:=tkon*( ab30p3d - mangDHRTE001);
+DHRTE002K: KICKER,L=0,HKICK:=tkon*(-ab31d   - mangDHRTE002);
+DHRTE003K: KICKER,L=0,HKICK:=tkon*(-ab31d   - mangDHRTE003);
+DVRTE003K: KICKER,L=0,VKICK:=tkon*(-b11d    - mangDVRTE003);
+DVRTE004K: KICKER,L=0,VKICK:=tkon*( b11d    - mangDVRTE004);
+SPTEL102K: KICKER,L=0,HKICK:=tkon*(-ab34    - mangSPTEL102);
+SPTEL101K: KICKER,L=0,HKICK:=tkon*(-ab2d    - mangSPTEL101);
 !! finally the model
 mSPTA2001: line=(SPTA2001, SPTA2001k);
 mSPTA2002: line=(SPTA2002, SPTA2002k);
@@ -313,36 +342,6 @@ DHSTB001: sbend,l=1.353,angle=0.0;    !bend to ...???
 VBM: SBEND,L=.35,TILT:= pi/2,ANGLE=-.191986,E1=-0.095993,E2=-0.095993;! Bends upward ???
 ! Bends downwstiltard ???
 VBP: SBEND,L=.35,TILT:= pi/2,ANGLE=.191986,E1=0.095993,E2=0.095993;
-
-
-
-
-
-
-! !magnetic angle from currents+sign def (vertical + is downwards )
-n=-1;p=1;
-! ! horizontal
-MANGSPTA2001 :=     c1b2d*abs(SPTA2001)+c0b2d;
-MANGSPTA2002 :=     c1b34d*abs(SPTA2002)+c0b34d;
-MANGDHYTT001 := -1.0*(c0b36d + c1b36d*abs(DHYTT001));
-! exec, b45dangle(MANGDHPTT001,DHPTT001,p);
-! exec, b45dangle(MANGDHPTT002,DHPTT002,n);
-! MANGDHRTT001 := -1*c1b30*abs(DHRTT001);
-! exec, b45dangle(MANGDHSTT001,DHSTT001,n);
-! MANGDHRTE001 := c1b30d*abs(DHRTE001);
-! MANGDHRTE002 := -1*c1b31d*abs(DHRTE002);
-! MANGDHRTE003 := -1*c1b31d*abs(DHRTE003);
-! MANGSPTEL101 := -1*(c1b34d*abs(SPTEL101)+c2b34d); 
-! MANGSPTEL102 := -1*(c1b2d*abs(SPTEL102)+c2b2d);
-! ! vertical
-exec, b11dangle(MANGDVRTR001,DVRTR001,p);
-exec, b11dangle(MANGDVRTR002,DVRTR002,n);
-! exec, b11dangle(MANGDVRTT001,DVRTT001,p);
-! exec, b11dangle(MANGDVRTT002,DVRTT002,n);
-! exec, b11dangle(MANGDVRTE001,DVRTE001,p);
-! exec, b11dangle(MANGDVRTE002,DVRTE002,n);
-! exec, b11dangle(MANGDVRTE003,DVRTE003,n);
-! exec, b11dangle(MANGDVRTE004,DVRTE004,p);
 
 
 
