@@ -127,8 +127,8 @@
  D59    : DRIFT , L =   2.40;
  D159   : DRIFT , L =   4.00;
  D60A   : DRIFT , L =   0.25;//+ half corrector size
- D60B   : DRIFT , L =   1.12;//+ half corrector size
- D60C   : DRIFT , L =   1.40;
+ D60B   : DRIFT , L =   1.25;//+ half corrector size
+ D60C   : DRIFT , L =   1.50;
  D61A   : DRIFT , L =   0.58; 
  D61B   : DRIFT , L =   0.81-0.55;
  D61C   : DRIFT , L =   0.55;
