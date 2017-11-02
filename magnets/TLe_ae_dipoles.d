@@ -200,7 +200,7 @@ k1b36d := 0;
 ! mDVRTE002: line=(DVRTE002);
 ! mDVRTE003: line=(DVRTE003);
 ! mDVRTE004: line=(DVRTE004);
-! ! end of old
+! ! end of old def
 
 
 ! new bending def
@@ -342,14 +342,6 @@ DHSTB001: sbend,l=1.353,angle=0.0;    !bend to ...???
 VBM: SBEND,L=.35,TILT:= pi/2,ANGLE=-.191986,E1=-0.095993,E2=-0.095993;! Bends upward ???
 ! Bends downwstiltard ???
 VBP: SBEND,L=.35,TILT:= pi/2,ANGLE=.191986,E1=0.095993,E2=0.095993;
-
-
-
-value, SPTA2001kr->angle, pangspta2001,mangspta2001;
-value, SPTA2002k->hkick, pangspta2002,mangspta2002;
-value, dvrtr001k->angle, pangdvrtr001,mangdvrtr001;
-value, dvrtr002k->angle, pangdvrtr002,mangdvrtr002;
-value, DHYTT001k->angle, pangdhytt001,mangdhytt001;
 
 !stop;
 RETURN;
