@@ -132,7 +132,7 @@
  D61A   : DRIFT , L =   0.58; 
  D61B   : DRIFT , L =   0.81-0.55;
  D61C   : DRIFT , L =   0.55;
- D62    : DRIFT , L =   0.87;
+ D62    : DRIFT , L =   0.83;
  D63A   : DRIFT , L =   0.80-0.45;
  D63B   : DRIFT , L =   0.45;
  D64A   : DRIFT , L =   0.58+0.05;//+ half corrector size
