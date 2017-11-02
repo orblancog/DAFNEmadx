@@ -157,6 +157,15 @@ DVRTE003: SBEND,L=.35,  TILT:=twopi/4,ANGLE=-.191986,     E1=0.095993,   E2=0.09
 DVRTE004: SBEND,L=.35,  TILT:=twopi/4,ANGLE= .191986,     E1=0.095993,   E2=0.095993;
 SPTEL101: SBEND, L = 1.233,           ANGLE = -0.593411946;
 SPTEL102: SBEND, L = 0.623,           ANGLE = -0.034906585;
+! some others
+DHRTP001  :SBEND,L=0.40,ANGLE=0,E1=0,E2=0;! pulsed dipole not used during e- injection
+! what are these ???
+DHSTB001: sbend,l=1.353,angle=0.0;    !bend to ...???
+VBM: SBEND,L=.35,TILT:= pi/2,ANGLE=-.191986,E1=-0.095993,E2=-0.095993;! Bends upward ???
+! Bends downwstiltard ???
+VBP: SBEND,L=.35,TILT:= pi/2,ANGLE=.191986,E1=0.095993,E2=0.095993;
+
+
 ! end of old
 !! finally the model
 ! horizontal
@@ -312,43 +321,12 @@ DHYTT001K: KICKER,L=0,hKICK:=1*(PANGDHYTT001 - MANGDHYTT001);
 ! SPTEL102K: KICKER,L=0,HKICK:=tkon*(PANGSPTEL102 - MANGSPTEL102);
 ! SPTEL101K: KICKER,L=0,HKICK:=tkon*(PANGSPTEL101 - MANGSPTEL101);
 
-! ! rotations for twiss
-SPTA2001yr: yrotation,angle:=(PANGSPTA2001 - MANGSPTA2001);
-SPTA2002yr: yrotation,angle:=-(PANGSPTA2002 - MANGSPTA2002)/50;
-DVRTR001yr: yrotation,angle:=1*(PANGDVRTR001 - MANGDVRTR001);
-DVRTR002yr: yrotation,angle:=1*(PANGDVRTR002 - MANGDVRTR002);
-DHYTT001yr: yrotation,angle:=1*(PANGDHYTT001 - MANGDHYTT001);
-! DHPTT001yr: yrotation,angle:=yron*(PANGDHPTT001 - MANGDHPTT001);
-! DHPTT002yr: yrotation,angle:=yron*(PANGDHPTT002 - MANGDHPTT002);
-! DHRTT001yr: yrotation,angle:=yron*(PANGDHRTT001 - MANGDHRTT001);
-! DHSTT001yr: yrotation,angle:=yron*(PANGDHSTT001 - MANGDHSTT001);
-! DVRTT001yr: yrotation,angle:=yron*(PANGDVRTT001 - MANGDVRTT001);
-! DVRTT002yr: yrotation,angle:=yron*(PANGDVRTT002 - MANGDVRTT002);
-! DVRTE001yr: yrotation,angle:=yron*(PANGDVRTE001 - MANGDVRTE001);
-! DVRTE002yr: yrotation,angle:=yron*(PANGDVRTE002 - MANGDVRTE002);
-! DHRTE001yr: yrotation,angle:=yron*(PANGDHRTE001 - MANGDHRTE001);
-! DHRTE002yr: yrotation,angle:=yron*(PANGDHRTE002 - MANGDHRTE002);
-! DHRTE003yr: yrotation,angle:=yron*(PANGDHRTE003 - MANGDHRTE003);
-! DVRTE003yr: yrotation,angle:=yron*(PANGDVRTE003 - MANGDVRTE003);
-! DVRTE004yr: yrotation,angle:=yron*(PANGDVRTE004 - MANGDVRTE004);
-! SPTEL102yr: yrotation,angle:=yron*(PANGSPTEL102 - MANGSPTEL102);
-! SPTEL101yr: yrotation,angle:=yron*(PANGSPTEL101 - MANGSPTEL101);
-! ! translations for twiss
-! SPTA2002tr: translation,x:=-yron*lb34d*(PANGSPTA2002 - MANGSPTA2002);
-! value,spta2002tr->x;
-
-value, SPTA2001yr->angle, pangspta2001,mangspta2001;
+value, SPTA2001kr->angle, pangspta2001,mangspta2001;
 value, SPTA2002k->hkick, pangspta2002,mangspta2002;
-value, dvrtr001yr->angle, pangdvrtr001,mangdvrtr001;
-value, dvrtr002yr->angle, pangdvrtr002,mangdvrtr002;
-value, DHYTT001yr->angle, pangdhytt001,mangdhytt001;
-! value, DHPTT001yr->angle, pangdhptt001,mangdhptt001;
-! stop;
-! !stop;
-! ! to define vertical misalignment wrt the reference orbit : 
-! ! vbend=roll1*yrot*roll2
-ROLL1: SROTATION, ANGLE=  TWOPI/4.;
-ROLL2: SROTATION, ANGLE= -TWOPI/4.;
+value, dvrtr001k->angle, pangdvrtr001,mangdvrtr001;
+value, dvrtr002k->angle, pangdvrtr002,mangdvrtr002;
+value, DHYTT001k->angle, pangdhytt001,mangdhytt001;
+
 
 ! !! finally the model
 ! ! horizontal
@@ -373,15 +351,6 @@ ROLL2: SROTATION, ANGLE= -TWOPI/4.;
 ! mDVRTE002: line=(DVRTE002,DVRTE002K);!,roll1,DVRTE002YR,roll2);
 ! mDVRTE003: line=(DVRTE003,DVRTE003K);!,roll1,DVRTE003YR,roll2);
 ! mDVRTE004: line=(DVRTE004,DVRTE004K);!,roll1,DVRTE004YR,roll2);
-
-! pulsed dipole not used during e- injection
-DHRTP001  :SBEND,L=0.40,ANGLE=0,E1=0,E2=0;
-! what are these ???
-DHSTB001: sbend,l=1.353,angle=0.0;    !bend to ...???
-! Bends upward ???
-VBM: SBEND,L=.35,TILT:= pi/2,ANGLE=-.191986,E1=-0.095993,E2=-0.095993;
-! Bends downwstiltard ???
-VBP: SBEND,L=.35,TILT:= pi/2,ANGLE=.191986,E1=0.095993,E2=0.095993;
 
 !stop;
 RETURN;

@@ -8,36 +8,34 @@
  dxacc   = 0.2166557213;
  dyacc   = 0.05440481193;
 */
- betxacc = 3.07;!3.22;
- betyacc = 4.041;!4.53;
- alfxacc = 1.017;!0.66;
- alfyacc = 0.458;!0.37;
- dxacc   = 0.2166557213;
- dyacc   = 0.05440481193;
- dpxacc  = 0;!1.2;
- dpyacc  = 0;!-0.1;
-! forward twiss
-!use, sequence= e_ae;
-value,QUATR001->k1;
-value,QUATT001->k1;
+ betxacc := 3.07;!3.22;
+ betyacc := 4.041;!4.53;
+ alfxacc := 1.017;!0.66;
+ alfyacc := 0.458;!0.37;
+ dxacc   := 0.2166557213;
+ dyacc   := 0.05440481193;
+ dpxacc  := 0;!1.2;
+ dpyacc  := 0;!-0.1;
 
-select, flag=twiss,clear;
+! forward twiss
+! the envelopes
 envx := 3.0*sqrt(emitx_ae*table(twiss,betx)+(table(twiss,dx)*delp_ae)*(table(twiss,dx)*delp_ae));
 envy := 3.0*sqrt(emity_ae*table(twiss,bety)+(table(twiss,dy)*delp_ae)*(table(twiss,dy)*delp_ae));
+select, flag=twiss,clear;
 select, flag=twiss, column=NAME, KEYWORD, S, L, BETX, BETY, ALFX, ALFY,
-MUX, MUY, DX, DPX, DY, DPY, ANGLE,K1L, K2L, K3L, K4L, envx, envy,k0l,ddx,ddy;
+  MUX, MUY, DX, DPX, DY, DPY, ANGLE,K1L, K2L, K3L, K4L, envx, envy,k0l,ddx,ddy;
 !name,s,betx,bety,dx,dy,envx,envy, alfx,alfy,mux,RE56,
 !angle,k1l,l;
 !coguess, tolerance=1e10;
-twiss,deltap=0,sequence=e_AE,BETX=betxacc,BETY=betyacc,
+twiss,deltap=0,sequence=e_ae,BETX=betxacc,BETY=betyacc,
   ALFX=alfxacc,ALFY=alfyacc,dx=dxacc,dy=dyacc,dpx=dpxacc,dpy=dpyacc,
-file="outputs/tle_ae.tls",tolerance=1e-10;
-call, file="commands/plottwiss.madx";			  
+  file="outputs/tle_ae.tls",tolerance=1e-10;
+call, file="commands/plotTLetwiss.madx";			  
 !stop;
-!return;
-//save, sequence= e_ae, file='e_ae_seq';
+return;
 
 
+!!! Some test with backwards propagation from Catia
 ! reverse twiss 
 e_ae_rev: line = (-e_ae);
 use, sequence= e_ae_rev;

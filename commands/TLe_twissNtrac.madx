@@ -20,7 +20,7 @@ CALL, FILE="lines/TL_lattice.d";
 use, sequence= e_ae, range=#s/#e;
 !stop;
 
-! Survey checked vs the mechanical design and measurements
+! Survey checked vs the mechanical design 2017/SEP/20 and other measurements
 !   precision should be around some cm.
 !   Vertical dipoles still unchecked
 !   specially the last pair of vertical magnets seem to differ by 30cm in
@@ -32,11 +32,9 @@ survey,file="outputs/TLe_survey.dat",
   theta0 =  4.063777781;
 !stop;
 
-
 !! Twiss with initial betas
-! savebeta in flags...
-call, file="commands/TLe_savebeta.madx";
-!call,FILE="commands/TLe_ae_twiss.cmd";
+call, file="commands/TLe_savebeta.madx";! savebeta in flags...
+call, file="commands/TLe_ae_twiss.cmd";
 stop;
 ! store twiss params in files
 call, file="commands/TLe_showbeta.madx";
