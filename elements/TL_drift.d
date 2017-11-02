@@ -110,10 +110,10 @@
  D51B   : DRIFT,L=   0.24;
  D51C   : DRIFT,L=   2.87;
  D52A   : DRIFT,L=   1.31;
- D52B   : DRIFT,L=   0.26;
+ D52B   : DRIFT,L=   0.26;! ??? unknow distances btw vertical dipoles
  D53A   : DRIFT,L=   1.10;
  D53B   : DRIFT,L=   0.51;
- D54    : DRIFT,L=   1.90;
+ D54    : DRIFT,L=   1.74;
  D55A   : DRIFT,L=   1.00+0.05;//+ half corrector size
  D55B   : DRIFT,L=   0.30+0.05;//+ half corrector size
  D55C   : DRIFT,L=   0.40;
