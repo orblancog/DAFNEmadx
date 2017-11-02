@@ -139,9 +139,9 @@
  D64B   : DRIFT , L =   0.20;//+ half corrector size
  D65A   : DRIFT , L =   0.82-0.25;
  D65B   : DRIFT , L =   0.22;
- D66A   : DRIFT , L =   1.050;
- D66B   : DRIFT , L =   0.10+0.05;//+ half corrector size
- D66C   : DRIFT , L =   0.14+0.05;//+ half corrector size
+ D66A   : DRIFT , L =   1.05;
+ D66B   : DRIFT , L =   0.10;//+ half corrector size
+ D66C   : DRIFT , L =   0.14;//+ half corrector size
  D66D   : DRIFT , L =   0.30;
  D67A   : DRIFT , L =   0.36;
  D67B   : DRIFT , L =   1.46;
