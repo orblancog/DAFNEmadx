@@ -1,8 +1,0 @@
-system, "rm -rf plots/TLe_twiss_today.ps";
-plot, colour=100,haxis=s,vaxis1=betx,bety,vaxis2=dx,dy,file="plots/TLe_twiss_today";
-plot, colour=100,haxis=s,hmin=0,hmax=40,vaxis1=betx,bety,vaxis2=dx,dy,file="plots/TLe_twiss_today";
-plot, colour=100,haxis=s,hmin=40,hmax=70,vaxis1=betx,bety,vaxis2=dx,dy,file="plots/TLe_twiss_today";
-plot, colour=100,haxis=s,hmin=65,hmax=90,vaxis1=betx,bety,vaxis2=dx,dy,file="plots/TLe_twiss_today";
-!plot, colour=100,haxis=s,hmin=90,hmax=100,vmin=0,-50,vmax=5000,50, vaxis1=betx,bety,vaxis2=dx,dy,file="plots/TLe_twiss_today";
-plot, colour=100,haxis=s,hmin=90,hmax=100,vaxis1=betx,bety,vaxis2=dx,dy,file="plots/TLe_twiss_today";
-system, "ps2pdf plots/TLe_twiss_today.ps plots/TLe_twiss_today.pdf";

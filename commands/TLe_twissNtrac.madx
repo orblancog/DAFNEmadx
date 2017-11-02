@@ -17,6 +17,7 @@ CALL, FILE="magnets/TL_quad.d";
 CALL, FILE="magnets/TL_sextupoles.d";
 CALL, FILE="magnets/TLe_ae_dipoles.d";
 CALL, FILE="lines/TL_lattice.d";
+!use, sequence= e_ae, range=#s/#e;
 use, sequence= e_ae, range=#s/#e;
 !stop;
 
@@ -40,7 +41,8 @@ stop;
 call, file="commands/TLe_showbeta.madx";
 !stop;
 
-! ! Generating particles(flagname,Nparticles)
+
+! Generating particles needs two parameters : (flagname,Nparticles)
 system, "ln -s outputs/TLe_betaSTART.txt betaSTART.txt";
 system, "ln -s outputs/TLe_beam0.txt beam0.txt";
 system, 'root -l -x -q "commands/GenerateInrays.C(\"START\",1e3)"';
@@ -50,7 +52,6 @@ system, "mv madxInrays.madx debug.txt trackTABLE outputs/";
 
 ! beggining track
 ! NO purpuse tracking in PTC
-!stop;
 !set parameters
 !system, "rm -f track*";
 ptc_create_universe;

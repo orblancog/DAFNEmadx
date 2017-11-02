@@ -1,10 +1,12 @@
 !! Dipoles in the TLe
 ! ! units : \alpha [rad (°)], L [m], Energy [GeV]
+! about the var names : b2d means 2deg bending magnet, and so on
+
 
 ! ! Flags for test
-tkon = 0; !! track with kicker on
-! vdon = 1; !! vertical dipole on
-! hdon = 1; !! horizontal dipole on
+tkon := 0; !! track with kicker on
+vdon := 1; !! vertical dipole on
+hdon := 1; !! horizontal dipole on
 
 ! !!!!!!!!!! ... now the magnets parameters...
 ! ! DAFNE Technical Note : C-17 pag.~6, MM-7 pag.~2, I-16 pag.~14, I-10
@@ -18,6 +20,7 @@ tkon = 0; !! track with kicker on
 ! !a               = 0.564897         +/- 0.00066      (0.1168%)
 ! !b               = -2.94169         +/- 0.901        (30.63%)
 lb2d  := 0.623;
+ab2d  := 0.0349066;!???
 ib2d  := 1811.2;
 ib2dm := 2300;
 c1b2d := lb2d*clight/(1e9*eEnergy)*1e-4*0.5649;
@@ -27,7 +30,8 @@ e2b2d := 0;
 ! Quad component
 ! K1=dBy/dx*I/Inom*1/Brho  dBy/dx from Tech Note MM-7, Fig.~6
 ! To Tesla : 1e-4, to m : 1e-3
-k1b2d := 0.18*1e-4/(1e-3*ib2d)*clight/(1e9*eEnergy);
+!k1b2d := 0.18*1e-4/(1e-3*ib2d)*clight/(1e9*eEnergy);
+k1b2d := 0;
 ! Field index = n =K1*L^2/ANGLE^2
 
 ! DAFNE Technical Note : C-17, pag.~5
@@ -35,6 +39,7 @@ k1b2d := 0.18*1e-4/(1e-3*ib2d)*clight/(1e9*eEnergy);
 ! \alpha [rad], L [m]
 ! kickangle = Length*clight/(1e9*Energy[GeV]) * B[T](I[A])
 lb34d  := 1.233;	    
+ab34d  := 0.593411946;
 ib34d  := 2082.1;
 ib34dm := 2300;
 e1b34d := 0;
@@ -49,6 +54,7 @@ k1b34d := 0;
 ! \alpha [rad], L [m]
 ! kickangle = Length*clight/(1e9*Energy[GeV]) * B[T](I[A])
 lb11d  := 0.35;
+ab11d  := 0.192;
 ib11d  := 100.19;
 ib11dm := 120;
 e1b11d := 0.095993;
@@ -75,6 +81,7 @@ b11dangle (theangle,cur,sign) : macro = {
 ! \alpha [rad], L [m], I [A]
 ! kickangle = Length*clight/(1e9*Energy[GeV]) * B[T](I[A])
 lb45d  := 1.113;
+ab45d  := 0.7854;
 ib45d  := 570.81;
 ib45dm := 650;
 e1b45d := 0;
@@ -101,24 +108,35 @@ b45dangle (theangle,cur,sign) : macro = {
 ! I nom=155[A]
 ! \alpha [rad], L [m], I [A]
 ! kickangle = Length*clight/(1e9*Energy[GeV]) * B[T](I[A])
-ib31d  := 155;
 lb31d  := 0.757;
+ab31d  := 0.542099266;
+ib31d  := 155;
 c1b31d := lb31d*clight/(1e9*eEnergy)*1.22/ib31d;
 e1b31d := 0.2705;
 e2b31d := 0.2705;
 k1b31d := 0;
 
 ! DAFNE Tech. Note : DI-10 pag.~25, I-10 pag.~10., I-16 pag.~15
-! DHRTE001 1.18[T] 30° (0.5236 [rad])
+! DHRTT001 1.18[T] 30° (0.5236 [rad])
 ! I nom=233[A]
 ! \alpha [rad], L [m], I [A]
 ! kickangle = Length*clight/(1e9*Energy[GeV]) * B[T](I[A])
-ib30d  := 233;
 lb30d  := 0.757;
+ab30d  := 0.5236;
+ib30d  := 233;
 c1b30d := lb30d*clight/(1e9*eEnergy)*1.18/ib30d;
 k1b30d := 0;
 e1b30d := 0.2618;
 e2b30d := 0.2618;
+! A very similar magnet with a small difference in angle important during survey
+! DHRTE001 1.18[T] 30° (0.5236 [rad])
+lb30p3d  := 0.757;
+ab30p3d  := 0.528679953;
+ib30p3d  := 233;
+c1b30p3d := lb30d*clight/(1e9*eEnergy)*1.18/ib30d;
+k1b3p30d := 0;
+e1b30p3d := 0.2618;
+e2b30p3d := 0.2618;
 
 !Y  magnet for e- extraction  beam out  FROM ACCUMULATOR
 ! DAFNE Technical Note : C-17 pag.~4
@@ -127,6 +145,7 @@ e2b30d := 0.2618;
 ! \alpha [rad], L [m]
 ! kickangle = Length*clight/(1e9*Energy[GeV]) * B[T](I[A])
 lb36d  := 1;
+ab36d  := 0.62832;
 ib36d  := 95.34;
 ib36dm := 120;
 c0b36d := lb36d*clight/(1e9*eEnergy)*3.8349e-3;
@@ -136,28 +155,158 @@ e2b36d := 0;
 k1b36d := 0;
 
 !!!!!!!!!!!!! ... now the magnets definitions ... 
-! old first 
-SPTA2001: SBEND,L= .623,              ANGLE= 0.0349066;
-SPTA2002: SBEND,L=1.233,              ANGLE= 0.593411946; 
-DVRTR001: SBEND,L= .35 ,TILT:=twopi/4,ANGLE= 0.191986,    E1=0.095993,   E2=0.095993;
-DVRTR002: SBEND,L= .35 ,TILT:=twopi/4,ANGLE=-0.191986,    E1=0.095993,   E2=0.095993;  
-DHYTT001: SBEND,L=1.   ,              ANGLE=-0.6283185308,E1=0.6283185308;
-DHPTT001: SBEND,L=1.113,              ANGLE= 0.785398163;
-DHPTT002: SBEND,L=1.113,              ANGLE=-0.785398163;
-DHRTT001: SBEND,L=0.757,              ANGLE=-0.52359878,  E1=0.261799388,E2=0.261799388;
-DHSTT001: SBEND,L=1.113,              ANGLE=-0.785398163;
-DVRTT001: SBEND,L=.35,  TILT:=twopi/4,ANGLE= 0.191986,    E1=0.095993,   E2=0.095993;
-DVRTT002: SBEND,L=.35,  TILT:=twopi/4,ANGLE=-0.191986,    E1=0.095993,   E2=0.095993;
-DVRTE001: SBEND,L=.35,  TILT:=twopi/4,ANGLE= 0.191986,    E1=0.095993,   E2=0.095993;
-DVRTE002: SBEND,L=.35,  TILT:=twopi/4,ANGLE=-0.191986,    E1=0.095993,   E2=0.095993;
-DHRTE001: SBEND,L=0.757,              ANGLE=.528679953,   E1=.26433976,  E2=.26433976;
-DHRTE002: SBEND,L=0.757,              ANGLE=-.542099266,  E1=-.271049633,E2=-.271049633;
-DHRTE003: SBEND,L=0.757,              ANGLE=-.542099266,  E1=-.271049633,E2=-.271049633;
-DVRTE003: SBEND,L=.35,  TILT:=twopi/4,ANGLE=-.191986,     E1=0.095993,   E2=0.095993;
-DVRTE004: SBEND,L=.35,  TILT:=twopi/4,ANGLE= .191986,     E1=0.095993,   E2=0.095993;
-SPTEL101: SBEND, L = 1.233,           ANGLE = -0.593411946;
-SPTEL102: SBEND, L = 0.623,           ANGLE = -0.034906585;
-! some others
+! ! old bending definition
+! SPTA2001: SBEND,L= .623,              ANGLE= 0.0349066;
+! SPTA2002: SBEND,L=1.233,              ANGLE= 0.593411946; 
+! DVRTR001: SBEND,L= .35 ,TILT:=twopi/4,ANGLE= 0.191986,    E1=0.095993,   E2=0.095993;
+! DVRTR002: SBEND,L= .35 ,TILT:=twopi/4,ANGLE=-0.191986,    E1=0.095993,   E2=0.095993;  
+! DHYTT001: SBEND,L=1.   ,              ANGLE=-0.6283185308,E1=0.6283185308;
+! DHPTT001: SBEND,L=1.113,              ANGLE= 0.785398163;
+! DHPTT002: SBEND,L=1.113,              ANGLE=-0.785398163;
+! DHRTT001: SBEND,L=0.757,              ANGLE=-0.52359878,  E1=0.261799388,E2=0.261799388;
+! DHSTT001: SBEND,L=1.113,              ANGLE=-0.785398163;
+! DVRTT001: SBEND,L=.35,  TILT:=twopi/4,ANGLE= 0.191986,    E1=0.095993,   E2=0.095993;
+! DVRTT002: SBEND,L=.35,  TILT:=twopi/4,ANGLE=-0.191986,    E1=0.095993,   E2=0.095993;
+! DVRTE001: SBEND,L=.35,  TILT:=twopi/4,ANGLE= 0.191986,    E1=0.095993,   E2=0.095993;
+! DVRTE002: SBEND,L=.35,  TILT:=twopi/4,ANGLE=-0.191986,    E1=0.095993,   E2=0.095993;
+! DHRTE001: SBEND,L=0.757,              ANGLE=.528679953,   E1=.26433976,  E2=.26433976;
+! DHRTE002: SBEND,L=0.757,              ANGLE=-.542099266,  E1=-.271049633,E2=-.271049633;
+! DHRTE003: SBEND,L=0.757,              ANGLE=-.542099266,  E1=-.271049633,E2=-.271049633;
+! DVRTE003: SBEND,L=.35,  TILT:=twopi/4,ANGLE=-.191986,     E1=0.095993,   E2=0.095993;
+! DVRTE004: SBEND,L=.35,  TILT:=twopi/4,ANGLE= .191986,     E1=0.095993,   E2=0.095993;
+! SPTEL101: SBEND, L = 1.233,           ANGLE = -0.593411946;
+! SPTEL102: SBEND, L = 0.623,           ANGLE = -0.034906585;
+! ! old model
+! mSPTA2001: line=(SPTA2001);
+! mSPTA2002: line=(SPTA2002);
+! mDHYTT001: line=(DHYTT001);
+! mDHPTT001: line=(DHPTT001);!
+! mDHPTT002: line=(DHPTT002);
+! mDHRTT001: line=(DHRTT001);
+! mDHSTT001: line=(DHSTT001);
+! mDHRTE001: line=(DHRTE001);
+! mDHRTE002: line=(DHRTE002);
+! mDHRTE003: line=(DHRTE003);
+! mSPTEL101: line=(SPTEL101);
+! mSPTEL102: line=(SPTEL102);
+! ! vertical
+! mDVRTR001: line=(DVRTR001);
+! mDVRTR002: line=(DVRTR002);
+! mDVRTT001: line=(DVRTT001);
+! mDVRTT002: line=(DVRTT002);
+! mDVRTE001: line=(DVRTE001);
+! mDVRTE002: line=(DVRTE002);
+! mDVRTE003: line=(DVRTE003);
+! mDVRTE004: line=(DVRTE004);
+! ! end of old
+
+
+! new bending def
+!   horizontal ( + is towards negative x ), vertical ( + is downwards )
+SPTA2001 : SBEND,L:=lb2d,     	       	    	ANGLE:=   hdon*ab2d,       
+	 K1:=k1b2d*abs(SPTA2001);
+SPTA2002 : SBEND,L:=lb34d,			ANGLE:=   hdon*ab34d,      
+	 K1:=k1b34d*abs(SPTA2002);
+DVRTR001a: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d/2.0,
+	 E1=e1b11d,E2=0;
+DVRTR001b: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d/2.0,
+	 E1=0,E2=e2b11d;
+DVRTR002a: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=-1*vdon*ab11d/2.0,
+	 E1=e1b11d,E2=0;
+DVRTR002b: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=-1*vdon*ab11d/2.0,
+	 E1=0,E2=e2b11d;
+DHYTT001a: SBEND,L:=lb36d/2.0,			ANGLE:=-1*hdon*ab36d/2.0,
+	 K1:=k1b36d*abs(DHYTT001),
+	 E1=e1b36d,E2=0;
+DHYTT001b: SBEND,L:=lb36d/2.0,			ANGLE:=-1*hdon*ab36d/2.0,
+	 K1:=k1b36d*abs(DHYTT001),
+	 E1=0,E2=e2b36d;
+DHPTT001 : SBEND,L:=lb45d/2.0,			ANGLE:=   hdon*ab45d/2.0,
+	 K1:=k1b45d*abs(DHPTT001);
+DHPTT002 : SBEND,L:=lb45d/2.0,			ANGLE:=-1*hdon*ab45d/2.0,
+	 K1:=k1b45d*abs(DHPTT002);
+DHRTT001a: SBEND,L:=lb30d/2,			ANGLE:=-1*hdon*ab30d/2.0,
+	 K1:=k1b30d*abs(DHRTT001),
+	 E1=e1b30d,E2=0;
+DHRTT001b: SBEND,L:=lb30d/2,			ANGLE:=-1*hdon*ab30d/2.0,
+	 K1:=k1b30d*abs(DHRTT001),
+	 E1=0,E2=e2b30d;
+DHSTT001 : SBEND,L:=lb45d,			ANGLE:=-1*hdon*ab45d,
+	 K1:=k1b45d*abs(DHSTT001);
+DVRTT001a: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d/2.0,
+	 E1=lb11d,E2=0;
+DVRTT001b: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d/2.0,
+	 E1=0,E2=lb11d;
+DVRTT002a: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=-1*vdon*ab11d/2.0,
+	 E1=e1b11d,E2=0;
+DVRTT002b: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=-1*vdon*ab11d/2.0,
+         E1=0,E2=e2b11d;
+DVRTE001 : SBEND,L:=lb11d,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d,
+	 E1=e1b11d,E2=e2b11d;
+DVRTE002 : SBEND,L:=lb11d,TILT:=TWOPI/4,	ANGLE:=-1*vdon*ab11d,
+	 E1=e1b11d,E2=e2b11d;
+DHRTE001 : SBEND,L:=lb30p3d,			ANGLE:=   hdon*ab30p3d,       
+	 K1:=k1b30p3d*abs(DHRTE001),
+	 E1=e1b30p3d,E2=e2b30p3d;
+DHRTE002 : SBEND,L:=lb31d,			ANGLE:=-1*hdon*ab31d,       
+	 K1:=k1b31d*abs(DHRTE002),
+	 E1=e1b31d,E2=e2b31d;
+DHRTE003 : SBEND,L:=lb31d,			ANGLE:=-1*hdon*ab31d,
+	 K1:=k1b31d*abs(DHRTE003),
+	 E1=e1b31d,E2=e2b31d;
+DVRTE003 : SBEND,L:=lb11d,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d,
+	 E1=e1b11d,E2=e2b11d;
+DVRTE004 : SBEND,L:=lb11d,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d,
+	 E1=e1b11d,E2=e2b11d;
+SPTEL101 : SBEND,L:=lb34d,			ANGLE:=-1*hdon*ab31d,       
+	 K1:=k1b34d*abs(SPTEL101);
+SPTEL102 : SBEND,L:=lb2d,			ANGLE:=-1*hdon*ab2d,       
+	 K1:=k1b2d*abs(SPTEL102);
+! ! kicks for tracking
+SPTA2001K: KICKER,L=0,HKICK:=tkon*(PANGSPTA2001 - MANGSPTA2001);
+SPTA2002K: KICKER,L=0,HKICK:=tkon*(PANGSPTA2002 - MANGSPTA2002);
+DVRTR001K: KICKER,L=0,VKICK:=tkon*(PANGDVRTR001 - MANGDVRTR001);
+DVRTR002K: KICKER,L=0,VKICK:=tkon*(PANGDVRTR002 - MANGDVRTR002);
+DHYTT001K: KICKER,L=0,hKICK:=tkon*(PANGDHYTT001 - MANGDHYTT001);
+DHPTT001K: KICKER,L=0,hKICK:=tkon*(PANGDHPTT001 - MANGDHPTT001);
+DHPTT002K: KICKER,L=0,hKICK:=tkon*(PANGDHPTT002 - MANGDHPTT002);
+DHRTT001K: KICKER,L=0,hKICK:=tkon*(PANGDHRTT001 - MANGDHRTT001);
+DHSTT001K: KICKER,L=0,hKICK:=tkon*(PANGDHSTT001 - MANGDHSTT001);
+DVRTT001K: KICKER,L=0,VKICK:=tkon*(PANGDVRTT001 - MANGDVRTT001);
+DVRTT002K: KICKER,L=0,VKICK:=tkon*(PANGDVRTT002 - MANGDVRTT002);
+DVRTE001K: KICKER,L=0,VKICK:=tkon*(PANGDVRTE001 - MANGDVRTE001);
+DVRTE002K: KICKER,L=0,VKICK:=tkon*(PANGDVRTE002 - MANGDVRTE002);
+DHRTE001K: KICKER,L=0,HKICK:=tkon*(PANGDHRTE001 - MANGDHRTE001);
+DHRTE002K: KICKER,L=0,HKICK:=tkon*(PANGDHRTE002 - MANGDHRTE002);
+DHRTE003K: KICKER,L=0,HKICK:=tkon*(PANGDHRTE003 - MANGDHRTE003);
+DVRTE003K: KICKER,L=0,VKICK:=tkon*(PANGDVRTE003 - MANGDVRTE003);
+DVRTE004K: KICKER,L=0,VKICK:=tkon*(PANGDVRTE004 - MANGDVRTE004);
+SPTEL102K: KICKER,L=0,HKICK:=tkon*(PANGSPTEL102 - MANGSPTEL102);
+SPTEL101K: KICKER,L=0,HKICK:=tkon*(PANGSPTEL101 - MANGSPTEL101);
+!! finally the model
+mSPTA2001: line=(SPTA2001, SPTA2001k);
+mSPTA2002: line=(SPTA2002, SPTA2002k);
+mDVRTR001: line=(DVRTR001a,DVRTR001b);
+mDVRTR002: line=(DVRTR002a,DVRTR002b);
+mDHYTT001: line=(DHYTT001a,DHYTT001b);
+mDHPTT001: line=(DHPTT001 ,DHPTT001k, DHPTT001);!
+mDHPTT002: line=(DHPTT002 ,DHPTT002k, DHPTT002);
+mDHRTT001: line=(DHRTT001a,DHRTT001b);
+mDHSTT001: line=(DHSTT001,DHSTT001K);
+mDVRTT001: line=(DVRTT001a,DVRTT001k,DVRTT001b);
+mDVRTT002: line=(DVRTT002a,DVRTT001k,DVRTT002b);
+mDVRTE001: line=(DVRTE001,DVRTE001K);
+mDVRTE002: line=(DVRTE002,DVRTE002K);
+mDHRTE001: line=(DHRTE001,DHRTE001K);
+mDHRTE002: line=(DHRTE002,DHRTE002K);
+mDHRTE003: line=(DHRTE003,DHRTE003K);
+mDVRTE003: line=(DVRTE003,DVRTE003K);
+mDVRTE004: line=(DVRTE004,DVRTE004K);
+mSPTEL101: line=(SPTEL101,SPTEL101K);
+mSPTEL102: line=(SPTEL102,SPTEL102K);
+! end of new model
+
+! some others bends
 DHRTP001  :SBEND,L=0.40,ANGLE=0,E1=0,E2=0;! pulsed dipole not used during e- injection
 ! what are these ???
 DHSTB001: sbend,l=1.353,angle=0.0;    !bend to ...???
@@ -166,30 +315,7 @@ VBM: SBEND,L=.35,TILT:= pi/2,ANGLE=-.191986,E1=-0.095993,E2=-0.095993;! Bends up
 VBP: SBEND,L=.35,TILT:= pi/2,ANGLE=.191986,E1=0.095993,E2=0.095993;
 
 
-! end of old
-!! finally the model
-! horizontal
-mSPTA2001: line=(SPTA2001);!,SPTA2001YR);
-mSPTA2002: line=(SPTA2002);
-mDHYTT001: line=(DHYTT001);
-mDHPTT001: line=(DHPTT001);!
-mDHPTT002: line=(DHPTT002);
-mDHRTT001: line=(DHRTT001);
-mDHSTT001: line=(DHSTT001);!,DHSTT001YR);
-mDHRTE001: line=(DHRTE001);!,DHRTE001YR);
-mDHRTE002: line=(DHRTE002);!,DHRTE002YR);
-mDHRTE003: line=(DHRTE003);!,DHRTE003YR);
-mSPTEL101: line=(SPTEL101);!,SPTEL101YR);
-mSPTEL102: line=(SPTEL102);!,SPTEL102YR);
-! vertical
-mDVRTR001: line=(DVRTR001);
-mDVRTR002: line=(DVRTR002);
-mDVRTT001: line=(DVRTT001);
-mDVRTT002: line=(DVRTT002);
-mDVRTE001: line=(DVRTE001);!,roll1,DVRTE001YR,roll2);
-mDVRTE002: line=(DVRTE002);!,roll1,DVRTE002YR,roll2);
-mDVRTE003: line=(DVRTE003);!,roll1,DVRTE003YR,roll2);
-mDVRTE004: line=(DVRTE004);!,roll1,DVRTE004YR,roll2);
+
 
 
 
@@ -218,139 +344,13 @@ exec, b11dangle(MANGDVRTR002,DVRTR002,n);
 ! exec, b11dangle(MANGDVRTE003,DVRTE003,n);
 ! exec, b11dangle(MANGDVRTE004,DVRTE004,p);
 
-! ! new bending def
-! ! horizontal
-! ! 2 deg
-!SPTA2001 : SBEND,L:=lb2d,ANGLE:=MANGSPTA2001,K1=k1b2d*abs(SPTA2001);
-! SPTEL102 : SBEND,L:=lb2d,ANGLE:=hdon*MANGSPTEL102,K1=k1b2d*abs(SPTEL102);
-! ! 30 deg
-! DHRTE001 : SBEND,L:=lb30d,ANGLE:=hdon*MANGDHRTE001,K1:=k1b30d*abs(DHRTE001),
-! 	 E1=e1b30d,E2=e2b30d;
-! DHRTT001a: SBEND,L:=lb30d/2.0,ANGLE:=hdon*MANGDHRTT001/2.0,K1:=k1b30d*abs(DHRTT001),
-! 	 E1=e1b30d,E2=0;
-! DHRTT001b: SBEND,L:=lb30d/2.0,ANGLE:=hdon*MANGDHRTT001/2.0,K1:=k1b30d*abs(DHRTT001),
-! 	 E1=0,E2=e2b30d;
-! ! 31 deg
-! DHRTE002 : SBEND,L:=lb31d,ANGLE:=hdon*MANGDHRTE002,K1:=k1b31d*abs(DHRTE002),
-! 	 E1=e1b31d,E2=e2b31d;
-! DHRTE003 : SBEND,L:=lb31d,ANGLE:=hdon*MANGDHRTE003,K1:=k1b31d*abs(DHRTE003),
-! 	 E1=e1b31d,E2=e2b31d;
-! ! 34 deg
-!SPTA2002 : SBEND,L:=lb34d/50,ANGLE:=MANGSPTA2002/50,K1:=k1b34d*abs(SPTA2002)/50;
-! SPTEL101 : SBEND,L:=lb34d,ANGLE:=hdon*MANGSPTEL101,K1:=k1b34d*abs(SPTEL101);
-! ! 36 deg
-!DHYTT001a: SBEND,L:=lb36d/2.0,ANGLE:=1*MANGDHYTT001/2.0,K1:=k1b36d*abs(DHYTT001),
-!	 E1=e1b36d,E2=0;
-!DHYTT001b: SBEND,L:=lb36d/2.0,ANGLE:=1*MANGDHYTT001/2.0,K1:=k1b36d*abs(DHYTT001),
-!	 E1=0,E2=e2b36d;
-! value,DHYTT001b->k1;
-! ! 45 deg
-! DHSTT001 : SBEND,L:=lb45d,ANGLE:=hdon*MANGDHSTT001,K1:=k1b45d*abs(DHSTT001);
-! DHPTT002 : SBEND,L:=lb45d/2.0,ANGLE:=hdon*MANGDHPTT002/2.0,K1:=k1b45d*abs(DHPTT002);
-! DHPTT001 : SBEND,L:=lb45d/2.0,ANGLE:=hdon*MANGDHPTT001/2.0,K1:=k1b45d*abs(DHPTT001);
-! ! vertical ( + is downwards )
-! ! 11 deg
-!DVRTR001a: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,ANGLE:=1*MANGDVRTR001/2.0,
-!	 E1=e1b11d,E2=0;
-!DVRTR001b: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,ANGLE:=1*MANGDVRTR001/2.0,
-!	 E1=0,E2=e2b11d;
-!DVRTR002a: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,ANGLE:=1*MANGDVRTR002/2.0,
-!	 E1=e1b11d,E2=0;
-!DVRTR002b: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,ANGLE:=1*MANGDVRTR002/2.0,
-!	 E1=0,E2=e2b11d;
-! DVRTT001a: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,ANGLE:=vdon*MANGDVRTT001/2.0,
-! 	 E1=lb11d,E2=0;
-! DVRTT001b: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,ANGLE:=vdon*MANGDVRTT001/2.0,
-! 	 E1=0,E2=lb11d;
-! DVRTT002a: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,ANGLE:=vdon*MANGDVRTT002/2.0,
-! 	 E1=e1b11d,E2=0;
-! DVRTT002b: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,ANGLE:=vdon*MANGDVRTT002/2.0,
-! 	 E1=0,E2=e2b11d;
-! DVRTE001 : SBEND,L:=lb11d,TILT:=TWOPI/4,ANGLE:=vdon*MANGDVRTE001,
-! 	 E1=e1b11d,E2=e2b11d;
-! DVRTE002 : SBEND,L:=lb11d,TILT:=TWOPI/4,ANGLE:=vdon*MANGDVRTE002,
-! 	 E1=e1b11d,E2=e2b11d;
-! DVRTE003 : SBEND,L:=lb11d,TILT:=TWOPI/4,ANGLE:=vdon*MANGDVRTE003,
-! 	 E1=e1b11d,E2=e2b11d;
-! DVRTE004 : SBEND,L:=lb11d,TILT:=TWOPI/4,ANGLE:=vdon*MANGDVRTE004,
-! 	 E1=e1b11d,E2=e2b11d;
 
-! !!!!!! dipole model
-! ! physical angle, to compare with mang and rotate beam if required
-! ! horizontal
-PANGSPTA2001 :=  0.0349; 
-! PANGSPTEL102 := -0.038;
-! PANGDHRTT001 := -0.5326;
-! PANGDHRTE001 :=  0.5326;  
-! PANGDHRTE002 := -0.5411;  
-! PANGDHRTE003 := -0.5411;  
-! PANGSPTEL101 := -0.5934;  
-PANGSPTA2002 :=  0.5934;    
-PANGDHYTT001 := -0.62832; 
-! PANGDHPTT001 :=  0.7854;
-! PANGDHPTT002 := -0.7854; 
-! PANGDHSTT001 := -0.7854;
-! ! vertical
-PANGDVRTR001 :=  0.192;
-PANGDVRTR002 := -0.192;
-! PANGDVRTT001 :=  0.192;
-! PANGDVRTT002 := -0.192;
-! PANGDVRTE001 :=  0.192;
-! PANGDVRTE002 := -0.192;
-! PANGDVRTE003 := -0.192;
-! PANGDVRTE004 :=  0.192;
-! ! kicks for tracking
-SPTA2001K: KICKER,L=0,HKICK:=(PANGSPTA2001 - MANGSPTA2001);
-SPTA2002K: KICKER,L=0,HKICK:=(PANGSPTA2002 - MANGSPTA2002)/50;
-DVRTR001K: KICKER,L=0,VKICK:=1*(PANGDVRTR001 - MANGDVRTR001);
-DVRTR002K: KICKER,L=0,VKICK:=1*(PANGDVRTR002 - MANGDVRTR002);
-DHYTT001K: KICKER,L=0,hKICK:=1*(PANGDHYTT001 - MANGDHYTT001);
-! DHPTT001K: KICKER,L=0,hKICK:=tkon*(PANGDHPTT001 - MANGDHPTT001);
-! DHPTT002K: KICKER,L=0,hKICK:=tkon*(PANGDHPTT002 - MANGDHPTT002);
-! DHRTT001K: KICKER,L=0,hKICK:=tkon*(PANGDHRTT001 - MANGDHRTT001);
-! DHSTT001K: KICKER,L=0,hKICK:=tkon*(PANGDHSTT001 - MANGDHSTT001);
-! DVRTT001K: KICKER,L=0,VKICK:=tkon*(PANGDVRTT001 - MANGDVRTT001);
-! DVRTT002K: KICKER,L=0,VKICK:=tkon*(PANGDVRTT002 - MANGDVRTT002);
-! DVRTE001K: KICKER,L=0,VKICK:=tkon*(PANGDVRTE001 - MANGDVRTE001);
-! DVRTE002K: KICKER,L=0,VKICK:=tkon*(PANGDVRTE002 - MANGDVRTE002);
-! DHRTE001K: KICKER,L=0,HKICK:=tkon*(PANGDHRTE001 - MANGDHRTE001);
-! DHRTE002K: KICKER,L=0,HKICK:=tkon*(PANGDHRTE002 - MANGDHRTE002);
-! DHRTE003K: KICKER,L=0,HKICK:=tkon*(PANGDHRTE003 - MANGDHRTE003);
-! DVRTE003K: KICKER,L=0,VKICK:=tkon*(PANGDVRTE003 - MANGDVRTE003);
-! DVRTE004K: KICKER,L=0,VKICK:=tkon*(PANGDVRTE004 - MANGDVRTE004);
-! SPTEL102K: KICKER,L=0,HKICK:=tkon*(PANGSPTEL102 - MANGSPTEL102);
-! SPTEL101K: KICKER,L=0,HKICK:=tkon*(PANGSPTEL101 - MANGSPTEL101);
 
 value, SPTA2001kr->angle, pangspta2001,mangspta2001;
 value, SPTA2002k->hkick, pangspta2002,mangspta2002;
 value, dvrtr001k->angle, pangdvrtr001,mangdvrtr001;
 value, dvrtr002k->angle, pangdvrtr002,mangdvrtr002;
 value, DHYTT001k->angle, pangdhytt001,mangdhytt001;
-
-
-! !! finally the model
-! ! horizontal
-!mSPTA2001: line=    (SPTA2001, SPTA2001k, SPTA2001yr);
-!mSPTA2002: line=(50*(SPTA2002, SPTA2002yr));
-!mDHYTT001: line=(DHYTT001a,DHYTT001b);
-! mDHPTT001: line=(DHPTT001 ,DHPTT001YR, DHPTT001);!
-! mDHPTT002: line=(DHPTT002 ,DHPTT002YR, DHPTT002);
-! mDHRTT001: line=(DHRTT001a,DHRTT001b);
-! mDHSTT001: line=(DHSTT001,DHSTT001K);!,DHSTT001YR);
-! mDHRTE001: line=(DHRTE001,DHRTE001K);!,DHRTE001YR);
-! mDHRTE002: line=(DHRTE002,DHRTE002K);!,DHRTE002YR);
-! mDHRTE003: line=(DHRTE003,DHRTE003K);!,DHRTE003YR);
-! mSPTEL101: line=(SPTEL101,SPTEL101K);!,SPTEL101YR);
-! mSPTEL102: line=(SPTEL102,SPTEL102K);!,SPTEL102YR);
-! ! vertical
-!mDVRTR001: line=(DVRTR001a,DVRTR001b);
-!mDVRTR002: line=(DVRTR002a,DVRTR002b);
-! mDVRTT001: line=(DVRTT001a,roll1,DVRTT001YR,roll2,DVRTT001b);
-! mDVRTT002: line=(DVRTT002a,roll1,DVRTT002YR,roll2,DVRTT001b);
-! mDVRTE001: line=(DVRTE001,DVRTE001K);!,roll1,DVRTE001YR,roll2);
-! mDVRTE002: line=(DVRTE002,DVRTE002K);!,roll1,DVRTE002YR,roll2);
-! mDVRTE003: line=(DVRTE003,DVRTE003K);!,roll1,DVRTE003YR,roll2);
-! mDVRTE004: line=(DVRTE004,DVRTE004K);!,roll1,DVRTE004YR,roll2);
 
 !stop;
 RETURN;
