@@ -90,9 +90,9 @@
  D25A   : DRIFT , L =   1.418;
  D25B   : DRIFT , L =   0.2945;
  D25C   : DRIFT , L =   0.2945;
- D26A   : DRIFT , L =   3.696-1.18-0.37-0.256+0.05;//+ half corrector size 
- D26B   : DRIFT , L =   0.256+0.05;//+ half corrector size
- D26C   : DRIFT , L =   1.18+0.37;
+ D26A   : DRIFT , L =   3.696-1.18-0.37-0.5;
+ D26B   : DRIFT , L =   0.5-0.1;! - half a magnet
+ D26C   : DRIFT , L =   1.18+0.37-0.1;! -half a magnet
 
 ! TP
  D27:DRIFT ,L=1.863-0.45;
