@@ -35,6 +35,10 @@ use, sequence= e_ae, range=#s/#e;
 ! For a quick comparison, open 
 !   $ gnuplot 
 !   gnuplot> load 'outputs/plotsurvey.gp'
+select,flag=survey,class=sbend;
+select,flag=survey,class=quadrupole;
+select,flag=survey,class=kicker;
+select,flag=survey,class=sextupole;
 survey,file="outputs/TLe_survey.dat",
   x0 =     18.81195659,
   z0 =     49.32205924,
@@ -64,7 +68,7 @@ system, "mv madxInrays.madx debug.txt trackTABLE outputs/";
 !stop;
 
 ! beggining track
-tkon := 1;! this switch activate the kickers modelling the dipoles
+tkon := 0;! this switch activate the kickers modelling the dipoles
 ! NO purpuse tracking in PTC
 !set parameters
 !system, "rm -f track*";

@@ -86,7 +86,7 @@ ib45d  := 570.81;
 ib45dm := 650;
 e1b45d := 0;
 e2b45d := 0;
-k1b45d := -0.00005;
+k1b45d := 0;
 ! linear
 c0b45d := lb45d*clight/(1e9*eEnergy)*1.2129e-4;
 c1b45d := lb45d*clight/(1e9*eEnergy)*2.419e-3;
