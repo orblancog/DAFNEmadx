@@ -63,7 +63,7 @@ e_AI: line=(TMLINE,AI_TTLINE,(DHYTT001,DHYTT001YR),
 !***********************************************;
 ! acc. extr e-  FROM ACCUM.  TO TR;
 ! right tranfer line ; 
-ASPTeout: line=(mSPTA2001,D1,mSPTA2002);
+ASPTeout: line=(FL2A2001,mSPTA2001,D1,mSPTA2002);
 TR1:      line=(D2A,FL2TR001,D2B,QUATR001,QUATR001,D3);
 TR2:      line=(D4A,CHVTR001,BPSTR001,D4B,
                 QUATR002,QUATR002,

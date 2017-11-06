@@ -1,5 +1,6 @@
 !ptc_observe, place=D9;
-ptc_observe, place=CHVTR003;
+!ptc_observe, place=CHVTR003;
+ptc_observe, place=FL2A2001;
 ptc_observe, place=FL2TR001;
 ptc_observe, place=FL2TR002;
 ptc_observe, place=FL2TT001;
