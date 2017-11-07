@@ -27,7 +27,7 @@ call, file="magnets/quadfamilies.d";
 
  QUATT007: quadrupole,l := ltbq/2, K1 :=  ktt07;
  QUATT008: quadrupole,l := ltbq/2, K1 :=  ktt08;
- QUATT009: quadrupole,l := ltbq/2, K1 := -ktt09;
+ QUATT009: quadrupole,l := ltbq/2, K1 :=  ktt09;
  QUATT010: quadrupole,l := ltbq/2, K1 :=  ktt10;
  QUATT011: quadrupole,l := ltbq/2, K1 :=  ktt11;
 
@@ -87,6 +87,7 @@ call, file="magnets/quadfamilies.d";
  ktt03 :=((ctt003+dtt003)/(ABS(ctt003+dtt003)))*(c1ta*(abs(ctt003)+dtt003)+c2ta)/eEnergy*pertt12;
  ktt04 :=((ctt004+dtt004)/(ABS(ctt004+dtt004)))*(c1ta*(abs(ctt004)+dtt004)+c2ta)/eEnergy*pertt12;
  ktt05 :=((ctt005+dtt005)/(ABS(ctt005+dtt005)))*(c1ta*(abs(ctt005)+dtt005)+c2ta)/eEnergy*pertt12;
+
  ktt06 :=((ctt006+dtt006)/(ABS(ctt006+dtt006)))*(c1tb*(abs(ctt006)+dtt006)+c2tb)/eEnergy*pertt12;
 
  ktt07 := ((ctt007+dtt007)/(ABS(ctt007+dtt007)))*(c1tb*(abs(ctt007)+dtt007)+c2tb)/eEnergy*pertt3;

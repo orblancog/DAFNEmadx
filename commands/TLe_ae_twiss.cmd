@@ -30,7 +30,7 @@ select, flag=twiss, column=NAME, KEYWORD, S, L, BETX, BETY, ALFX, ALFY,
 twiss,deltap=0,sequence=e_ae,BETX=betxacc,BETY=betyacc,
   ALFX=alfxacc,ALFY=alfyacc,dx=dxacc,dy=dyacc,dpx=dpxacc,dpy=dpyacc,
   file="outputs/tle_ae.tls",tolerance=1e-10;
-call, file="commands/plotTLetwiss.madx";			  
+!call, file="commands/plotTLetwiss.madx";			  
 !stop;
 return;
 
