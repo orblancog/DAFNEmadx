@@ -48,10 +48,9 @@ survey,file="outputs/TLe_survey.dat",
   theta0 =  4.063777781;
 !stop;
 
-
-!quatt008->k1       =     -0.02155288005 ;
-!quatt009->k1       =        -2.18807502 ;
-!quatt010->k1       =      0.02496440682 ;
+quatt008->k1       =       -1.575735135 ;
+!quatt009->k1       =       0.4274167652 ;
+!quatt010->k1       =       -6.588879277 ;
 !! FROM HERE ON the model is under experiment
 !! Twiss with initial betas
 call, file="commands/TLe_savebeta.madx";! savebeta in flags...
@@ -60,75 +59,63 @@ call, file="commands/plotTLetwiss.madx";
 !stop;
 ! store twiss params in files
 call, file="commands/TLe_showbeta.madx";
-stop;
-
-!!! matching flag FL1TT003
-value,table(twiss,FL1TT003,envx);
-value,table(twiss,FL1TT003,envy);
-moveandtwiss: macro={
-!  call, file='match.txt';
-  use, sequence=ACCM,range=input/hb1;
-  select, flag=twiss, column=name,keyword,s,l,betx,bety,dx;
-  twiss, betx=1, bety=1, dpx=-0.5,file="hcell.twiss";
-!  clen=
-!  clen=table(twiss,octave,s);
-!  assign, echo="match.txt";
-!  value, hb1->L;
-!  value, d1->L;
-!  value, d2->L;
-!  assign, echo=terminal;
-};
-
-guessenv: macro={
-!  call, file='match.txt';
-!  use, sequence=ACCM,range=input/hb1;
-!  select, flag=twiss, column=name,keyword,s,l,betx,bety,dx;
-!  twiss, betx=1, bety=1, dpx=-0.5,file="hcell.twiss";
-call, file="commands/TLe_ae_twiss.cmd";
-value,table(twiss,FL1TT003,envx);
-value,table(twiss,FL1TT003,envy);
-!  clen=
-!  clen=table(twiss,octave,s);
-!  assign, echo="match.txt";
-!  value, hb1->L;
-!  value, d1->L;
-!  value, d2->L;
-!  assign, echo=terminal;
-};
-
-flbetx=(15e-3/6)^2/emitx;
-flbety=(9e-3/6)^2/emity;
 !stop;
 
-match, use_macro;
-vary, name=QUATT008->k1,    step=1.0e-6;
-vary, name=QUATT009->k1,    step=1.0e-6;
-vary, name=QUATT010->k1,    step=1.0e-6;
-!vary, name=d1->L,  step=1e-3, lower=0.1, upper=4;
-!vary, name=d2->L,  step=1e-3, lower=0.1, upper=4;
-!vary, name=hb1->L, step=1e-3, lower=1,   upper=4;
-use_macro,  name=guessenv;
-constraint, expr=abs(table(twiss,FL1TT003,betx)-flbetx)*1e3   = 1;
-constraint, expr=abs(table(twiss,FL1TT003,bety)-flbety)*1e3   = 1;
-constraint, expr=abs(table(twiss,FL1TT003,envx)-15e-3)*1e3   = 1;
-constraint, expr=abs(table(twiss,FL1TT003,envy)- 9e-3)*1e3   = 1;
-!constraint, expr=abs(table(twiss,FL1TT003,bety))*1e-2   < 1;
-!constraint, expr=abs(table(twiss,octave,alfy))  *1e4   = 1;
-!constraint, expr=abs(table(twiss,octave,s)-7.5) *1e4   = 1;
-simplex, calls=1e3, tolerance=1e-9;
-!jacobian, calls=1e3, tolerance=1e-9;
-endmatch;
+! !!! matching flag FL1TT003
+! !Variable                 Final Value  Initial Value Lower Limit  Upper Limit 
+! !--------------------------------------------------------------------------------
+! !quatt008->k1             -1.57574e+00 -5.61782e-01 -1.00000e+20  1.00000e+20
+! !quatt009->k1              4.27417e-01  7.59723e-01 -1.00000e+20  1.00000e+20
+! !quatt010->k1             -6.58888e+00 -1.23478e+00 -1.00000e+20  1.00000e+20
+! value,table(twiss,FL1TT003,envx);
+! value,table(twiss,FL1TT003,envy);
+! guessenv: macro={
+! !  call, file='match.txt';
+! !  use, sequence=ACCM,range=input/hb1;
+! !  select, flag=twiss, column=name,keyword,s,l,betx,bety,dx;
+! !  twiss, betx=1, bety=1, dpx=-0.5,file="hcell.twiss";
+! call, file="commands/TLe_ae_twiss.cmd";
+! value,table(twiss,FL1TT003,envx);
+! value,table(twiss,FL1TT003,envy);
+! !  clen=
+! !  clen=table(twiss,octave,s);
+! !  assign, echo="match.txt";
+! !  value, hb1->L;
+! !  value, d1->L;
+! !  value, d2->L;
+! !  assign, echo=terminal;
+! };
+! flbetx=(15e-3/6)^2/emitx;
+! flbety=(9e-3/6)^2/emity;
+! !stop;
+! match, use_macro;
+! vary, name=QUATT008->k1,    step=1.0e-6;
+! vary, name=QUATT009->k1,    step=1.0e-6;
+! vary, name=QUATT010->k1,    step=1.0e-6;
+! !vary, name=d1->L,  step=1e-3, lower=0.1, upper=4;
+! !vary, name=d2->L,  step=1e-3, lower=0.1, upper=4;
+! !vary, name=hb1->L, step=1e-3, lower=1,   upper=4;
+! use_macro,  name=guessenv;
+! constraint, expr=abs(table(twiss,FL1TT003,betx)-flbetx)*1e3   = 1;
+! constraint, expr=abs(table(twiss,FL1TT003,bety)-flbety)*1e3   = 1;
+! constraint, expr=abs(table(twiss,FL1TT003,envx)-15e-3)*1e3   = 1;
+! constraint, expr=abs(table(twiss,FL1TT003,envy)- 9e-3)*1e3   = 1;
+! !constraint, expr=abs(table(twiss,FL1TT003,bety))*1e-2   < 1;
+! !constraint, expr=abs(table(twiss,octave,alfy))  *1e4   = 1;
+! !constraint, expr=abs(table(twiss,octave,s)-7.5) *1e4   = 1;
+! simplex, calls=1e3, tolerance=1e-9;
+! !jacobian, calls=1e3, tolerance=1e-9;
+! endmatch;
+! value, QUATT008->k1;
+! value, QUATT009->k1;
+! value, QUATT010->k1;
+! !call, file="commands/TLe_ae_twiss.cmd";
+! call, file="commands/plotTLetwiss.madx";
 
 
 
-value, QUATT008->k1;
-value, QUATT009->k1;
-value, QUATT010->k1;
 
-call, file="commands/TLe_ae_twiss.cmd";
-call, file="commands/plotTLetwiss.madx";			  
-
-!stop;
+! !stop;
 
 ! Generating particles 
 system, "ln -s outputs/TLe_betaSTART.txt betaSTART.txt";
