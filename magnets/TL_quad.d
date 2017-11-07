@@ -22,13 +22,14 @@ call, file="magnets/quadfamilies.d";
  QUATT003: quadrupole,l := ltaq/2, K1 := ktt03;
  QUATT004: quadrupole,l := ltaq/2, K1 := ktt04;
  QUATT005: quadrupole,l := ltaq/2, K1 := ktt05;
+
  QUATT006: quadrupole,l := ltbq/2, K1 := ktt06;
 
- QUATT007: quadrupole,l := ltbq/2, K1 := -ktt07;
- QUATT008: quadrupole,l := ltbq/2, K1 := ktt08;
+ QUATT007: quadrupole,l := ltbq/2, K1 :=  ktt07;
+ QUATT008: quadrupole,l := ltbq/2, K1 :=  ktt08;
  QUATT009: quadrupole,l := ltbq/2, K1 := -ktt09;
- QUATT010: quadrupole,l := ltbq/2, K1 := ktt10;
- QUATT011: quadrupole,l := ltbq/2, K1 := ktt11;
+ QUATT010: quadrupole,l := ltbq/2, K1 :=  ktt10;
+ QUATT011: quadrupole,l := ltbq/2, K1 :=  ktt11;
 
 ! in  TR
  QUATR001: quadrupole,l := ltbq/2, K1 := ktr01;
