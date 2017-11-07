@@ -48,9 +48,16 @@ survey,file="outputs/TLe_survey.dat",
   theta0 =  4.063777781;
 !stop;
 
+! fitting only betas to fl1tt003
 quatt008->k1       =       -1.575735135 ;
 !quatt009->k1       =       0.4274167652 ;
 !quatt010->k1       =       -6.588879277 ;
+
+! with alfx negative at flag fl1tt003 and inverting ktt11
+!quatt008->k1       =       -1.678365628 ;
+!quatt009->k1       =       0.5722838729 ;
+!quatt010->k1       =        3.854291508 ;
+
 !! FROM HERE ON the model is under experiment
 !! Twiss with initial betas
 call, file="commands/TLe_savebeta.madx";! savebeta in flags...
@@ -98,8 +105,10 @@ call, file="commands/TLe_showbeta.madx";
 ! use_macro,  name=guessenv;
 ! constraint, expr=abs(table(twiss,FL1TT003,betx)-flbetx)*1e3   = 1;
 ! constraint, expr=abs(table(twiss,FL1TT003,bety)-flbety)*1e3   = 1;
-! constraint, expr=abs(table(twiss,FL1TT003,envx)-15e-3)*1e3   = 1;
-! constraint, expr=abs(table(twiss,FL1TT003,envy)- 9e-3)*1e3   = 1;
+! !constraint, expr=abs(table(twiss,FL1TT003,envx)-15e-3)*1e3   = 1;
+! !constraint, expr=abs(table(twiss,FL1TT003,envy)- 9e-3)*1e3   = 1;
+! constraint, expr=abs(table(twiss,FL1TT003,alfx))   >0;
+! constraint, expr=abs(table(twiss,FL1TT003,alfy))   <0;
 ! !constraint, expr=abs(table(twiss,FL1TT003,bety))*1e-2   < 1;
 ! !constraint, expr=abs(table(twiss,octave,alfy))  *1e4   = 1;
 ! !constraint, expr=abs(table(twiss,octave,s)-7.5) *1e4   = 1;
