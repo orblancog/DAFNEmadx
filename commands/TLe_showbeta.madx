@@ -7,7 +7,7 @@ assign, echo="outputs/TLe_betaSTART.txt";
 show, betaSTART;
 system, "rm -f outputs/TLe_betaFL2A2001.txt";
 assign, echo="outputs/TLe_betaFL2A2001.txt";
-show, betaFL2T2001;
+show, betaFL2A2001;
 system, "rm -f outputs/betaCHVTR003.txt";
 assign, echo="outputs/TLe_betaCHVTR003.txt";
 show, betaCHVTR003;

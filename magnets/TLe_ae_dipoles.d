@@ -205,9 +205,9 @@ k1b36d := 0;
 
 ! new bending def
 !   horizontal ( + is towards negative x ), vertical ( + is downwards )
-SPTA2001 : SBEND,L:=lb2d,     	       	    	ANGLE:=   hdon*ab2d,       
+SPTA2001 : SBEND,L:=lb2d/2.0,     	       	ANGLE:=   hdon*ab2d/2.0,       
 	 K1:=k1b2d*abs(SPTA2001);
-SPTA2002 : SBEND,L:=lb34d,			ANGLE:=   hdon*ab34d,      
+SPTA2002 : SBEND,L:=lb34d/2.0,			ANGLE:=   hdon*ab34d/2.0,      
 	 K1:=k1b34d*abs(SPTA2002);
 DVRTR001a: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d/2.0,
 	 E1=e1b11d,E2=0;
@@ -233,7 +233,7 @@ DHRTT001a: SBEND,L:=lb30d/2,			ANGLE:=-1*hdon*ab30d/2.0,
 DHRTT001b: SBEND,L:=lb30d/2,			ANGLE:=-1*hdon*ab30d/2.0,
 	 K1:=k1b30d*abs(DHRTT001),
 	 E1=0,E2=e2b30d;
-DHSTT001 : SBEND,L:=lb45d,			ANGLE:=-1*hdon*ab45d,
+DHSTT001 : SBEND,L:=lb45d/2.0,			ANGLE:=-1*hdon*ab45d/2.0,
 	 K1:=k1b45d*abs(DHSTT001);
 DVRTT001a: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d/2.0,
 	 E1=lb11d,E2=0;
@@ -313,15 +313,15 @@ DVRTE004K: KICKER,L=0,VKICK:=tkon*( b11d    - mangDVRTE004);
 SPTEL102K: KICKER,L=0,HKICK:=tkon*(-ab34    - mangSPTEL102);
 SPTEL101K: KICKER,L=0,HKICK:=tkon*(-ab2d    - mangSPTEL101);
 !! finally the model
-mSPTA2001: line=(SPTA2001, SPTA2001k);
-mSPTA2002: line=(SPTA2002, SPTA2002k);
-mDVRTR001: line=(DVRTR001a,DVRTR001b);
-mDVRTR002: line=(DVRTR002a,DVRTR002b);
-mDHYTT001: line=(DHYTT001a,DHYTT001b);
+mSPTA2001: line=(SPTA2001, SPTA2001k, SPTA2001);
+mSPTA2002: line=(SPTA2002, SPTA2002k, SPTA2002);
+mDVRTR001: line=(DVRTR001a,DVRTR001k, DVRTR001b);
+mDVRTR002: line=(DVRTR002a,DVRTR002k, DVRTR002b);
+mDHYTT001: line=(DHYTT001a,DHYTT001k, DHYTT001b);
 mDHPTT001: line=(DHPTT001 ,DHPTT001k, DHPTT001);!
 mDHPTT002: line=(DHPTT002 ,DHPTT002k, DHPTT002);
-mDHRTT001: line=(DHRTT001a,DHRTT001b);
-mDHSTT001: line=(DHSTT001,DHSTT001K);
+mDHRTT001: line=(DHRTT001a,DHRTT001k, DHRTT001b);
+mDHSTT001: line=(DHSTT001, DHSTT001k, DHSTT001);
 mDVRTT001: line=(DVRTT001a,DVRTT001k,DVRTT001b);
 mDVRTT002: line=(DVRTT002a,DVRTT002k,DVRTT002b);
 mDVRTE001: line=(DVRTE001,DVRTE001K);
