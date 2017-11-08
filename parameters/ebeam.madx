@@ -27,4 +27,4 @@ delp_ae  := delp;![1]
 beam, particle=electron,energy=eEnergy,radiate=false,
       ex=emitx,ey=emity,
       sigt=bunchl,sige=esprd,et=bunchl*esprd,
-      bunched=true,kbunch=100,bcurrent=0.01,bv=-1;
+      bunched=true,kbunch=100,bcurrent=0.01,bv=1;

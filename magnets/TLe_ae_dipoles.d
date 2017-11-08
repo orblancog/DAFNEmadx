@@ -205,35 +205,35 @@ k1b36d := 0;
 
 ! new bending def
 !   horizontal ( + is towards negative x ), vertical ( + is downwards )
-SPTA2001 : SBEND,L:=lb2d/2.0,     	       	ANGLE:=   hdon*ab2d/2.0,       
+SPTA2001 : SBEND,L:=lb2d/2.0,TILT:=-TWOPI/2 ,    	       	ANGLE:=-1*   hdon*ab2d/2.0,       
 	 K1:=k1b2d*abs(SPTA2001);
-SPTA2002 : SBEND,L:=lb34d/2.0,			ANGLE:=   hdon*ab34d/2.0,      
+SPTA2002 : SBEND,L:=lb34d/2.0,TILT:=-TWOPI/2,			ANGLE:=-1*   hdon*ab34d/2.0,      
 	 K1:=k1b34d*abs(SPTA2002);
-DVRTR001a: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d/2.0,
+DVRTR001a: SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:=-1*   vdon*ab11d/2.0,
 	 E1=e1b11d,E2=0;
-DVRTR001b: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d/2.0,
+DVRTR001b: SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:=-1*   vdon*ab11d/2.0,
 	 E1=0,E2=e2b11d;
-DVRTR002a: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=-1*vdon*ab11d/2.0,
+DVRTR002a: SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:= vdon*ab11d/2.0,
 	 E1=e1b11d,E2=0;
-DVRTR002b: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=-1*vdon*ab11d/2.0,
+DVRTR002b: SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:= vdon*ab11d/2.0,
 	 E1=0,E2=e2b11d;
-DHYTT001a: SBEND,L:=lb36d/2.0,			ANGLE:=-1*hdon*ab36d/2.0,
+DHYTT001a: SBEND,L:=lb36d/2.0,TILT:=-TWOPI/2,			ANGLE:= hdon*ab36d/2.0,
 	 K1:=k1b36d*abs(DHYTT001),
 	 E1=e1b36d,E2=0;
-DHYTT001b: SBEND,L:=lb36d/2.0,			ANGLE:=-1*hdon*ab36d/2.0,
+DHYTT001b: SBEND,L:=lb36d/2.0,TILT:=-TWOPI/2,			ANGLE:= hdon*ab36d/2.0,
 	 K1:=k1b36d*abs(DHYTT001),
 	 E1=0,E2=e2b36d;
-DHPTT001 : SBEND,L:=lb45d/2.0,			ANGLE:=   hdon*ab45d/2.0,
+DHPTT001 : SBEND,L:=lb45d/2.0,TILT:=-TWOPI/2,			ANGLE:= -1*  hdon*ab45d/2.0,
 	 K1:=k1b45d*abs(DHPTT001);
-DHPTT002 : SBEND,L:=lb45d/2.0,			ANGLE:=-1*hdon*ab45d/2.0,
+DHPTT002 : SBEND,L:=lb45d/2.0,TILT:=-TWOPI/2,			ANGLE:= hdon*ab45d/2.0,
 	 K1:=k1b45d*abs(DHPTT002);
-DHRTT001a: SBEND,L:=lb30d/2,			ANGLE:=-1*hdon*ab30d/2.0,
+DHRTT001a: SBEND,L:=lb30d/2,TILT:=-TWOPI/2,			ANGLE:= hdon*ab30d/2.0,
 	 K1:=k1b30d*abs(DHRTT001),
 	 E1=e1b30d,E2=0;
-DHRTT001b: SBEND,L:=lb30d/2,			ANGLE:=-1*hdon*ab30d/2.0,
+DHRTT001b: SBEND,L:=lb30d/2,TILT:=-TWOPI/2,			ANGLE:= hdon*ab30d/2.0,
 	 K1:=k1b30d*abs(DHRTT001),
 	 E1=0,E2=e2b30d;
-DHSTT001 : SBEND,L:=lb45d/2.0,			ANGLE:=-1*hdon*ab45d/2.0,
+DHSTT001 : SBEND,L:=lb45d/2.0,TILT:=-TWOPI/2,			ANGLE:= hdon*ab45d/2.0,
 	 K1:=k1b45d*abs(DHSTT001);
 DVRTT001a: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d/2.0,
 	 E1=lb11d,E2=0;

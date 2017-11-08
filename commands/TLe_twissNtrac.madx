@@ -21,6 +21,7 @@ CALL, FILE="lines/TL_lattice.d";
 !use, sequence= e_ae, range=#s/#e;
 use, sequence= e_ae, range=#s/#e;
 !value, quatt008->k1;
+!value, beam->charge;
 !stop;
 !stop;
 
@@ -43,9 +44,9 @@ select,flag=survey,class=quadrupole;
 select,flag=survey,class=kicker;
 select,flag=survey,class=sextupole;
 survey,file="outputs/TLe_survey.dat",
-  x0 =     18.81195659,
-  z0 =     49.32205924,
-  theta0 =  4.063777781;
+  z0 =     18.81195659,
+  x0 =     49.32205924,
+  theta0 =  -2.492981454205103;
 !stop;
 
 !! FROM HERE ON the model is under experiment
@@ -65,7 +66,7 @@ survey,file="outputs/TLe_survey.dat",
 call, file="commands/TLe_savebeta.madx";! savebeta in flags...
 call, file="commands/TLe_ae_twiss.cmd";
 call, file="commands/plotTLetwiss.madx";			  
-!stop;
+!s1top;
 ! store twiss params in files
 call, file="commands/TLe_showbeta.madx";
 !value,(15e-3/6)^2/emitx;
