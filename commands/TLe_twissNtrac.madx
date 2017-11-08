@@ -48,6 +48,10 @@ survey,file="outputs/TLe_survey.dat",
   theta0 =  4.063777781;
 !stop;
 
+!! FROM HERE ON the model is under experiment
+!! Twiss with initial betas
+
+
 ! fitting only betas to fl1tt003
 quatt008->k1       =       -1.575735135 ;
 !quatt009->k1       =       0.4274167652 ;
@@ -58,8 +62,6 @@ quatt008->k1       =       -1.575735135 ;
 !quatt009->k1       =       0.5722838729 ;
 !quatt010->k1       =        3.854291508 ;
 
-!! FROM HERE ON the model is under experiment
-!! Twiss with initial betas
 call, file="commands/TLe_savebeta.madx";! savebeta in flags...
 call, file="commands/TLe_ae_twiss.cmd";
 call, file="commands/plotTLetwiss.madx";			  
