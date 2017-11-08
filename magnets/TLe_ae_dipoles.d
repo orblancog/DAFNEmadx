@@ -256,13 +256,13 @@ DHRTE002 : SBEND,L:=lb31d,			ANGLE:=-1*hdon*ab31d,
 DHRTE003 : SBEND,L:=lb31d,			ANGLE:=-1*hdon*ab31d,
 	 K1:=k1b31d*abs(DHRTE003),
 	 E1=e1b31d,E2=e2b31d;
-DVRTE003 : SBEND,L:=lb11d,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d,
+DVRTE003 : SBEND,L:=lb11d,TILT:=TWOPI/4,	ANGLE:=-1*vdon*ab11d,
 	 E1=e1b11d,E2=e2b11d;
-DVRTE004 : SBEND,L:=lb11d,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d,
+DVRTE004 : SBEND,L:=lb11d,TILT:=TWOPI/4,	ANGLE:=-1*vdon*ab11d,
 	 E1=e1b11d,E2=e2b11d;
-SPTEL101 : SBEND,L:=lb34d,			ANGLE:=-1*hdon*ab34d,       
+SPTEL101 : SBEND,L:=lb34d,			ANGLE:=   hdon*ab34d,       
 	 K1:=k1b34d*abs(SPTEL101);
-SPTEL102 : SBEND,L:=lb2d,			ANGLE:=-1*hdon*ab2d,       
+SPTEL102 : SBEND,L:=lb2d,			ANGLE:=   hdon*ab2d,       
 	 K1:=k1b2d*abs(SPTEL102);
 ! end of new bending def
 ! start of magnetic angle from currents+sign def (vertical + is downwards )

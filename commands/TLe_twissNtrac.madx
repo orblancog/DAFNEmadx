@@ -19,7 +19,7 @@ CALL, FILE="magnets/TL_sextupoles.d";
 CALL, FILE="magnets/TLe_ae_dipoles.d";
 CALL, FILE="lines/TL_lattice.d";
 !use, sequence= e_ae, range=#s/#e;
-use, sequence= e_ae, range=#s/QUATE006;
+use, sequence= e_ae, range=#s/#e;
 !value, quatt008->k1;
 !stop;
 !stop;
@@ -53,7 +53,7 @@ survey,file="outputs/TLe_survey.dat",
 
 
 ! fitting only betas to fl1tt003
-quatt008->k1       =       -1.575735135 ;
+!quatt008->k1       =       -1.575735135 ;
 !quatt009->k1       =       0.4274167652 ;
 !quatt010->k1       =       -6.588879277 ;
 
@@ -68,6 +68,10 @@ call, file="commands/plotTLetwiss.madx";
 !stop;
 ! store twiss params in files
 call, file="commands/TLe_showbeta.madx";
+!value,(15e-3/6)^2/emitx;
+!value,(9e-3/6)^2/emity;
+
+
 !stop;
 
 ! !!! matching flag FL1TT003
