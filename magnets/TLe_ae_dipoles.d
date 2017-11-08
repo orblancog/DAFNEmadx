@@ -235,34 +235,34 @@ DHRTT001b: SBEND,L:=lb30d/2,TILT:=-TWOPI/2,			ANGLE:= hdon*ab30d/2.0,
 	 E1=0,E2=e2b30d;
 DHSTT001 : SBEND,L:=lb45d/2.0,TILT:=-TWOPI/2,			ANGLE:= hdon*ab45d/2.0,
 	 K1:=k1b45d*abs(DHSTT001);
-DVRTT001a: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d/2.0,
+DVRTT001a: SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:=-1*   vdon*ab11d/2.0,
 	 E1=lb11d,E2=0;
-DVRTT001b: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d/2.0,
+DVRTT001b: SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:=-1*   vdon*ab11d/2.0,
 	 E1=0,E2=lb11d;
-DVRTT002a: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=-1*vdon*ab11d/2.0,
+DVRTT002a: SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:=vdon*ab11d/2.0,
 	 E1=e1b11d,E2=0;
-DVRTT002b: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=-1*vdon*ab11d/2.0,
+DVRTT002b: SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:=vdon*ab11d/2.0,
          E1=0,E2=e2b11d;
-DVRTE001 : SBEND,L:=lb11d,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d,
+DVRTE001 : SBEND,L:=lb11d,TILT:=-TWOPI/4,	ANGLE:=-1*   vdon*ab11d,
 	 E1=e1b11d,E2=e2b11d;
-DVRTE002 : SBEND,L:=lb11d,TILT:=TWOPI/4,	ANGLE:=-1*vdon*ab11d,
+DVRTE002 : SBEND,L:=lb11d,TILT:=-TWOPI/4,	ANGLE:= vdon*ab11d,
 	 E1=e1b11d,E2=e2b11d;
-DHRTE001 : SBEND,L:=lb30p3d,			ANGLE:=   hdon*ab30p3d,       
+DHRTE001 : SBEND,L:=lb30p3d,TILT:=-TWOPI/2,			ANGLE:=-1*   hdon*ab30p3d,       
 	 K1:=k1b30p3d*abs(DHRTE001),
 	 E1=e1b30p3d,E2=e2b30p3d;
-DHRTE002 : SBEND,L:=lb31d,			ANGLE:=-1*hdon*ab31d,       
+DHRTE002 : SBEND,L:=lb31d,TILT:=-TWOPI/2,			ANGLE:= hdon*ab31d,       
 	 K1:=k1b31d*abs(DHRTE002),
 	 E1=e1b31d,E2=e2b31d;
-DHRTE003 : SBEND,L:=lb31d,			ANGLE:=-1*hdon*ab31d,
+DHRTE003 : SBEND,L:=lb31d,TILT:=-TWOPI/2,			ANGLE:= hdon*ab31d,
 	 K1:=k1b31d*abs(DHRTE003),
 	 E1=e1b31d,E2=e2b31d;
-DVRTE003 : SBEND,L:=lb11d,TILT:=TWOPI/4,	ANGLE:=-1*vdon*ab11d,
+DVRTE003 : SBEND,L:=lb11d,TILT:=-TWOPI/4,	ANGLE:= vdon*ab11d,
 	 E1=e1b11d,E2=e2b11d;
-DVRTE004 : SBEND,L:=lb11d,TILT:=TWOPI/4,	ANGLE:=-1*vdon*ab11d,
+DVRTE004 : SBEND,L:=lb11d,TILT:=-TWOPI/4,	ANGLE:= vdon*ab11d,
 	 E1=e1b11d,E2=e2b11d;
-SPTEL101 : SBEND,L:=lb34d,			ANGLE:=   hdon*ab34d,       
+SPTEL101 : SBEND,L:=lb34d,TILT:=-TWOPI/2,			ANGLE:= hdon*ab34d,       
 	 K1:=k1b34d*abs(SPTEL101);
-SPTEL102 : SBEND,L:=lb2d,			ANGLE:=   hdon*ab2d,       
+SPTEL102 : SBEND,L:=lb2d,TILT:=-TWOPI/2,			ANGLE:= hdon*ab2d,       
 	 K1:=k1b2d*abs(SPTEL102);
 ! end of new bending def
 ! start of magnetic angle from currents+sign def (vertical + is downwards )
