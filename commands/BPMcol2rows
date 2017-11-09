@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+
+echo "Editing file "$1".dat ,s[m] x[m] y[m]"
+awk 'NR>=9 && NR<=11' $1 | rs -c'	' -C' ' -T > $1".dat"

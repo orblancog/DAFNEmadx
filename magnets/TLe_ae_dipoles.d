@@ -112,8 +112,8 @@ lb31d  := 0.757;
 ab31d  := 0.542099266;
 ib31d  := 155;
 c1b31d := lb31d*clight/(1e9*eEnergy)*1.22/ib31d;
-e1b31d := 0.2705;
-e2b31d := 0.2705;
+e1b31d := ab31d/2.0;
+e2b31d := ab31d/2.0;
 k1b31d := 0;
 
 ! DAFNE Tech. Note : DI-10 pag.~25, I-10 pag.~10., I-16 pag.~15
@@ -126,8 +126,8 @@ ab30d  := 0.5236;
 ib30d  := 233;
 c1b30d := lb30d*clight/(1e9*eEnergy)*1.18/ib30d;
 k1b30d := 0;
-e1b30d := 0.2618;
-e2b30d := 0.2618;
+e1b30d := ab30d/2.0;
+e2b30d := ab30d/2.0;
 ! A very similar magnet with a small difference in angle important during survey
 ! DHRTE001 1.18[T] 30° (0.5236 [rad])
 lb30p3d  := 0.757;
@@ -135,8 +135,8 @@ ab30p3d  := 0.528679953;
 ib30p3d  := 233;
 c1b30p3d := lb30d*clight/(1e9*eEnergy)*1.18/ib30d;
 k1b3p30d := 0;
-e1b30p3d := 0.2618;
-e2b30p3d := 0.2618;
+e1b30p3d := ab30p3d/2.0;
+e2b30p3d := ab30p3d/2.0;
 
 !Y  magnet for e- extraction  beam out  FROM ACCUMULATOR
 ! DAFNE Technical Note : C-17 pag.~4
