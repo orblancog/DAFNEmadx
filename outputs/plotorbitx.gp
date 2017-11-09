@@ -1,8 +1,14 @@
+# this script plots an absolute orbit, a relative orbit
+# and the dispersion from the model multiplied by eoffset.
+# noffset is a scale factor, now fix to 1 :)
+
 set xlabel "s [m]" offset 0,-1 font ',20'
 set ylabel "x [mm]" font ',20' offset -3
 set key left bottom font ',20'
-set xtics font ',20'
-set ytics font ',20' offset 0
+set xtics 5 font ',20'
+set mxtics 5
+set ytics 2 font ',20' offset 0
+set mytics 4
 set lmargin 15
 set rmargin 5
 set bmargin 6
@@ -12,6 +18,7 @@ set grid
 
 set object rect from 86.6,-5 to 88.2,5
 
+#approximated error bars from Tech.Notes...
 f(x) = 5.0/2
 g(x) = 50/2*x**-1.8
 h(x) = (-0.018*x+1.17)/2
