@@ -205,9 +205,9 @@ k1b36d := 0;
 
 ! new bending def
 !   horizontal ( + is towards negative x ), vertical ( + is downwards )
-SPTA2001 : SBEND,L:=lb2d/2.0,TILT:=-TWOPI/2 ,    	       	ANGLE:=-1*   hdon*ab2d/2.0,       
+SPTA2001 : SBEND,L:=lb2d/2.0,TILT:=TWOPI/2 ,    	       	ANGLE:=-1*   hdon*ab2d/2.0,       
 	 K1:=k1b2d*abs(SPTA2001);
-SPTA2002 : SBEND,L:=lb34d/2.0,TILT:=-TWOPI/2,			ANGLE:=-1*   hdon*ab34d/2.0,      
+SPTA2002 : SBEND,L:=lb34d/2.0,TILT:=TWOPI/2,			ANGLE:=-1*   hdon*ab34d/2.0,      
 	 K1:=k1b34d*abs(SPTA2002);
 DVRTR001a: SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:=-1*   vdon*ab11d/2.0,
 	 E1=e1b11d,E2=0;
