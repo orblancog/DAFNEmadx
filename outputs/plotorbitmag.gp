@@ -6,7 +6,7 @@ unset xrange
 unset yrange
 
 set yrange [-10:12]
-set xrange [0:70]
+set xrange [0:80]
 
 set object rect from 86.6,-5 to 88.2,5 # the sextupole location
 
