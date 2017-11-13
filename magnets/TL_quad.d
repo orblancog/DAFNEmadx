@@ -56,8 +56,8 @@ call, file="magnets/quadfamilies.d";
  QUATE008: quadrupole,l := ltbq/2, K1 := kte08;
  QUATE009: quadrupole,l := ltbq/2, K1 := kte09;
 
- QUATE104: quadrupole,l := lsq/2, K1 :=  -kte104;
- QUATE105: quadrupole,l := lsq/2, K1 :=  -kte105;
+ QUATE104: quadrupole,l := lsq/2, K1 :=  kte104;
+ QUATE105: quadrupole,l := lsq/2, K1 :=  kte105;
 //  QUATE105: drift, l := ltaq/2;
 
 
