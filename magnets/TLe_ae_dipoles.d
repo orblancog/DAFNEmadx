@@ -133,8 +133,8 @@ e2b30d := ab30d/2.0;
 lb30p3d  := 0.757;
 ab30p3d  := 0.528679953;
 ib30p3d  := 233;
-c1b30p3d := lb30d*clight/(1e9*eEnergy)*1.18/ib30d;
-k1b3p30d := 0;
+c1b30p3d := lb30p3d*clight/(1e9*eEnergy)*1.18/ib30p3d;
+k1b30p3d := 0;
 e1b30p3d := ab30p3d/2.0;
 e2b30p3d := ab30p3d/2.0;
 
