@@ -243,13 +243,13 @@ DVRTT002a: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=-1*vdon*ab11d/2.0,
 	 E1=e1b11d,E2=0;
 DVRTT002b: SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=-1*vdon*ab11d/2.0,
          E1=0,E2=e2b11d;
-DVRTE001a : SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=    vdon*ab11d/2.0,
+DVRTE001a : SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=   vdon*ab11d/2.0,
 	 E1=e1b11d,E2=0;
-DVRTE001b : SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:=    vdon*ab11d/2.0,
+DVRTE001b : SBEND,L:=lb11d/2.0,TILT:=TWOPI/4,	ANGLE:= vdon*ab11d/2.0,
 	 E1=0,E2=e2b11d;
-DVRTE002a : SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:=vdon*ab11d/2.0,
+DVRTE002a : SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:= vdon*ab11d/2.0,
 	 E1=e1b11d,E2=0;
-DVRTE002b : SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:=vdon*ab11d/2.0,
+DVRTE002b : SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:= vdon*ab11d/2.0,
 	 E1=0,E2=e2b11d;
 DHRTE001 : SBEND,L:=lb30p3d,TILT:=0*TWOPI/2,			ANGLE:=   hdon*ab30p3d,       
 	 K1:=k1b30p3d*abs(DHRTE001),
