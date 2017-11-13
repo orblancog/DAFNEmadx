@@ -25,11 +25,11 @@ call, file="magnets/quadfamilies.d";
 
  QUATT006: quadrupole,l := ltbq/2, K1 :=  ktt06;
 
- QUATT007: quadrupole,l := ltbq/2, K1 := ktt07;
- QUATT008: quadrupole,l := ltbq/2, K1 :=  ktt08;
- QUATT009: quadrupole,l := ltbq/2, K1 :=  ktt09;
- QUATT010: quadrupole,l := ltbq/2, K1 :=  -ktt10;
- QUATT011: quadrupole,l := ltbq/2, K1 :=  -ktt11;
+ QUATT007: quadrupole,l := ltbq/2, K1 :=  ktt07;
+ QUATT008: quadrupole,l := ltbq/2, K1 :=  -ktt08;
+ QUATT009: quadrupole,l := ltbq/2, K1 :=  -ktt09;
+ QUATT010: quadrupole,l := ltbq/2, K1 :=  ktt10;
+ QUATT011: quadrupole,l := ltbq/2, K1 :=  ktt11;
 
 ! in  TR
  QUATR001: quadrupole,l := ltbq/2, K1 := ktr01;
@@ -46,10 +46,10 @@ call, file="magnets/quadfamilies.d";
  QUATL005: quadrupole,l := ltbq/2, K1 := ktl05;
 
 ! in TE
- QUATE001: quadrupole,l := ltbq/2, K1 := kte01;
- QUATE002: quadrupole,l := ltbq/2, K1 := kte02;
- QUATE003: quadrupole,l := ltbq/2, K1 := kte03;
- QUATE004: quadrupole,l := ltbq/2, K1 := kte04;
+ QUATE001: quadrupole,l := ltbq/2, K1 := -kte01;
+ QUATE002: quadrupole,l := ltbq/2, K1 := -kte02;
+ QUATE003: quadrupole,l := ltbq/2, K1 := -kte03;
+ QUATE004: quadrupole,l := ltbq/2, K1 := -kte04;
  QUATE005: quadrupole,l := ltbq/2, K1 := kte05;
  QUATE006: quadrupole,l := ltbq/2, K1 := kte06;
  QUATE007: quadrupole,l := ltbq/2, K1 := kte07;
