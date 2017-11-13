@@ -6,7 +6,7 @@ unset xrange
 unset yrange
 
 set yrange [-10:12]
-set xrange [0:80]
+set xrange [0:100]
 
 set object rect from 86.6,-5 to 88.2,5 # the sextupole location
 
@@ -65,6 +65,7 @@ set mytics 10
 set grid
 # x rel
 unset yrange
+set yrange [-1.5:1.5]
 set ytics 1
 set mytics 5
 # x rel
