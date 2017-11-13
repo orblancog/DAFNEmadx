@@ -10,7 +10,7 @@ set xrange [0:70]
 
 set object rect from 86.6,-5 to 88.2,5 # the sextupole location
 
-neoffset = 1.0
+neoffset = 0.3
 eoffset  = 3.164e-4
 
 col_s=3
