@@ -8,10 +8,9 @@ plot, colour=100,haxis=s,hmin= 30,hmax= 55,vaxis1=betx,bety,vaxis2=dx,dy,
   file="plots/TLe_twiss_today";
 plot, colour=100,haxis=s,hmin= 55,hmax= 90,vaxis1=betx,bety,vaxis2=dx,dy,
   file="plots/TLe_twiss_today";
-plot, colour=100,haxis=s,hmin= 90,hmax=101,vmin=0,-50,
-  vmax=5000,50, vaxis1=betx,bety,vaxis2=dx,dy,
+plot, colour=100,haxis=s,hmin= 90,hmax=101, vaxis1=betx,bety,vaxis2=dx,dy,
   file="plots/TLe_twiss_today";
-plot, colour=100,haxis=s,hmin= 90,hmax=101,vaxis1=betx,bety,vaxis2=dx,dy,
-  file="plots/TLe_twiss_today";
+!plot, colour=100,haxis=s,hmin= 90,hmax=101,vaxis1=betx,bety,vaxis2=dx,dy,
+!  file="plots/TLe_twiss_today";
 system, "ps2pdf plots/TLe_twiss_today.ps plots/TLe_twiss_today.pdf";
 system, "rm -rf plots/TLe_twiss_today.ps";

@@ -238,7 +238,7 @@ int GenerateInrays (const char * k, int N) {
       i++;
       ux  = xbeta  + etax *upd   + 0e-3;
       upx = pxbeta + etapx*upd   - 0e-3;
-      uy  = ybeta  + etay *upd   + 0e-3;
+      uy  = ybeta  + etay *upd   - 0e-3;
       upy = pybeta + etapy*upd   + 0e-3;
       upd = upd - 0e-3;
       if (debug) mydebug <<ux<<'\t'<<upx<<'\t'<<uy<<'\t'<<upy<<"\t"<<ups<<"\t"<<upd<<endl ;

@@ -135,8 +135,8 @@ ab30p3d  := 0.528679953;
 ib30p3d  := 233;
 c1b30p3d := lb30p3d*clight/(1e9*eEnergy)*1.18/ib30p3d;
 k1b30p3d := 0;
-e1b30p3d := ab30p3d/2.0;
-e2b30p3d := ab30p3d/2.0;
+e1b30p3d := 0.1*ab30p3d/2.0;
+e2b30p3d := 0.1*ab30p3d/2.0;
 
 !Y  magnet for e- extraction  beam out  FROM ACCUMULATOR
 ! DAFNE Technical Note : C-17 pag.~4
@@ -251,9 +251,12 @@ DVRTE002a : SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:= vdon*ab11d/2.0,
 	 E1=e1b11d,E2=0;
 DVRTE002b : SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:= vdon*ab11d/2.0,
 	 E1=0,E2=e2b11d;
-DHRTE001 : SBEND,L:=lb30p3d,TILT:=TWOPI/2,			ANGLE:=-1*hdon*ab30p3d,       
+DHRTE001a : SBEND,L:=lb30p3d/2.0,TILT:=TWOPI/2,			ANGLE:=-1*hdon*ab30p3d/2.0,
 	 K1:=k1b30p3d*abs(DHRTE001),
-	 E1=e1b30p3d,E2=e2b30p3d;
+	 E1=-1*e1b30p3d,E2=0;
+DHRTE001b : SBEND,L:=lb30p3d/2.0,TILT:=TWOPI/2,			ANGLE:=-1*hdon*ab30p3d/2.0,
+	 K1:=k1b30p3d*abs(DHRTE001),
+	 E1=0,E2=-1*e2b30p3d;
 DHRTE002 : SBEND,L:=lb31d,TILT:=-TWOPI/2,			ANGLE:= hdon*ab31d,       
 	 K1:=k1b31d*abs(DHRTE002),
 	 E1=e1b31d,E2=e2b31d;
@@ -330,7 +333,7 @@ mDVRTT001: line=(DVRTT001a,DVRTT001k, DVRTT001b);
 mDVRTT002: line=(DVRTT002a,DVRTT002k, DVRTT002b);
 mDVRTE001: line=(DVRTE001a,DVRTE001k, DVRTE001b);
 mDVRTE002: line=(DVRTE002a,DVRTE002k, DVRTE002b);
-mDHRTE001: line=(DHRTE001,DHRTE001K);
+mDHRTE001: line=(DHRTE001a,DHRTE001k, DHRTE001b);
 mDHRTE002: line=(DHRTE002,DHRTE002K);
 mDHRTE003: line=(DHRTE003,DHRTE003K);
 mDVRTE003: line=(DVRTE003,DVRTE003K);
