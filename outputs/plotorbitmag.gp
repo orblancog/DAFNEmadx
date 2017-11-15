@@ -85,7 +85,7 @@ set origin 0,0.3
 unset yrange
 set ytics 1
 set mytics 5
-set ylabel "x [mm]" font ',20' offset -3
+set ylabel "y [mm]" font ',20' offset -3
 set yrange [-1.2:1.2]
 # y rel
 p \
@@ -98,6 +98,7 @@ p \
 set size 1,0.25
 set origin 0,0
 set yrange [0:2]
+set ylabel "sqrt(x^2+y^2)" font ',20' offset -3
 p \
   filrel u 1:(sqrt($2*$2+$3*$3)) w lp lt 7 lw 6 ti 'dispersive orbit 20170221 662M667', \
   '< grep -i BPS* tle_ae.tls' u (column(col_s)):\
