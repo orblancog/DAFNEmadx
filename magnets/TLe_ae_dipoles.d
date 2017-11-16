@@ -253,10 +253,10 @@ DVRTE002b : SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:= vdon*ab11d/2.0,
 	 E1=0,E2=e2b11d;
 DHRTE001a : SBEND,L:=lb30p3d/2.0,TILT:=TWOPI/2,			ANGLE:=-1*hdon*ab30p3d/2.0,
 	 K1:=k1b30p3d*abs(DHRTE001),
-	 E1=-1*e1b30p3d,E2=0;
+	 E1=e1b30p3d,E2=0;
 DHRTE001b : SBEND,L:=lb30p3d/2.0,TILT:=TWOPI/2,			ANGLE:=-1*hdon*ab30p3d/2.0,
 	 K1:=k1b30p3d*abs(DHRTE001),
-	 E1=0,E2=-1*e2b30p3d;
+	 E1=0,E2=e2b30p3d;
 DHRTE002 : SBEND,L:=lb31d,TILT:=-TWOPI/2,			ANGLE:= hdon*ab31d,       
 	 K1:=k1b31d*abs(DHRTE002),
 	 E1=e1b31d,E2=e2b31d;

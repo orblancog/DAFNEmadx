@@ -240,7 +240,7 @@ int GenerateInrays (const char * k, int N) {
       upx = pxbeta + etapx*upd   - 0e-3;
       uy  = ybeta  + etay *upd   - 0e-3;
       upy = pybeta + etapy*upd   + 0e-3;
-      upd = upd - 0e-3;
+      upd = upd - 0.0e-3;
       if (debug) mydebug <<ux<<'\t'<<upx<<'\t'<<uy<<'\t'<<upy<<"\t"<<ups<<"\t"<<upd<<endl ;
       if (madxtrac==1) mymadxtrac << "start, x="<<ux<<",px="<<upx<<",y="<<uy<<",py="<<upy<<",t="<<ups<<",pt="<<upd<<";\n";
       if (madxtrac==2) mymadxtrac << "ptc_start, x="<<ux<<",px="<<upx<<",y="<<uy<<",py="<<upy<<",t="<<ups<<",pt="<<upd<<";\n";
