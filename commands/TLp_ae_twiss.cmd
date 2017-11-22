@@ -1,4 +1,5 @@
 ! TLp twiss
+! Tech. Note. I-16 pag.~2
  betxacc := 3.07;
  betyacc := 4.041;
  alfxacc := 1.017;
