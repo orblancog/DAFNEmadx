@@ -128,7 +128,7 @@ SIPTE002      :marker;
 SIPTE003      :marker;
 VALTE001      :marker;
 SIPTE001      :marker;   
-SIPTR001      :marker;   
+SIPTR001      :marker;   SIPTL001      :marker;   
 VALTT001      :marker;
 SIPTT001      :marker;
 SIPTT002      :marker;

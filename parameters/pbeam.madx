@@ -1,11 +1,11 @@
 ! Beam params, data from accumulator
 pEnergy := 1.019/2;![GeV]
-emitx   := 2.8e-7;![m]
-emity   := 1.4e-7;![m]
-esprd   := 0.1e-2;![1]
-bunchl  := 1.357e-2;![m] = clight/(120*368.667MHz)
+pemitx   := 2.8e-7;![m]
+pemity   := 1.4e-7;![m]
+pesprd   := 0.1e-2;![1]
+pbunchl  := 1.357e-2;![m] = clight/(120*368.667MHz)
 ! backward compatibility with Antonio's lattice
-en := eEnergy*1e3; ! [MeV]
+en := pEnergy*1e3; ! [MeV]
 
 ! EAE SETUP
 emitx_ae := emitx;!2.8e-7;![m]
@@ -21,7 +21,7 @@ delp_ae  := delp;![1]
 
 ! Radiate=false because Urad is negligible (some eV)
 !   and beam passes only once/twice max 
-beam, particle=positron,energy=eEnergy,radiate=true,
+beam, particle=positron,energy=pEnergy,radiate=true,
       ex=emitx,ey=emity,
       sigt=bunchl,sige=esprd,et=bunchl*esprd,
       bunched=true,kbunch=100,bcurrent=0.01;

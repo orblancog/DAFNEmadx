@@ -1,0 +1,210 @@
+TITLE, "TLp";
+option, info,echo,warn;
+
+! the beam
+call, file="parameters/pbeam.madx";
+
+! Machine files
+! Elements strength is a function of the currents
+call, file="currents/eTLe_currents.madx";//loading current dataset
+//call, file="currents/eMRe_20160628_1517_2e01_fondi_bassi.madx";//using only SXPEL100 from the MRe
+call, file="currents/checkcur.madx";!stop;
+! the tl
+CALL, FILE="parameters/TLe_ae.par";
+CALL, FILE="elements/TL_markers.d";
+CALL, FILE="elements/TL_drift.d";
+CALL, FILE="elements/TL_correct.d";
+CALL, FILE="magnets/TL_quad.d";
+CALL, FILE="magnets/TL_sextupoles.d";
+CALL, FILE="magnets/TL_dipoles.d";
+CALL, FILE="lines/TL_lattice.d";
+use, sequence= p_ae, range=#s/#e;
+!use, sequence= e_ae, range=#s/QUATE006;
+!value, quatt008->k1;
+!value, beam->charge;
+!stop;
+!stop;
+
+! Survey checked vs the mechanical design 2017/SEP/20 and other measurements
+!   longitudinal location should be precise around some cm.
+!   the coordinate (0,0) was set by the mechanical design
+!   Known issues :
+!   DVRTE003 and 004 location was not in the mechanical design
+!   QUATT011 location was not provided
+!   CHVTT10  location differs between madx model and mechanical design
+!   CHVTE003 is not longer in the model.. is it in the line ???
+!   QUATE104 and 105 were not in the mechanical design
+!   the last pair of vertical magnets seem to differ by 30cm in
+!     longitudinal position
+! For a quick comparison, open 
+!   $ gnuplot 
+!   gnuplot> load 'outputs/plotsurvey.gp'
+system, 'rm -f outputs/survey.dat';
+select,flag=survey,class=sbend;
+select,flag=survey,class=quadrupole;
+select,flag=survey,class=kicker;
+select,flag=survey,class=sextupole;
+survey,file="outputs/survey.dat",
+  z0 =     18.81195659,
+  x0 =     49.32205924,
+  theta0 = -2.492981454205103;
+system, 'cp outputs/survey.dat outputs/TLp_survey.dat';
+stop;
+
+!! FROM HERE ON the model is under experiment
+!! Twiss with initial betas
+
+! trying some errors
+select, flag=error,pattern="QUATT010*";
+efcomp, dkn:={0.0,-0.05};
+!select, flag=error,pattern="QUATT011*";
+!efcomp, dkn:={0.0,-0.05};
+select, flag=error, clear;
+select, flag=error,pattern="DHRTP001*";
+efcomp, dkn:={0.0,0.15};
+
+!DVRTT002k->vkick:=10e-3;
+!	value,QUATT010->k1*QUATT010->l;
+!	value,QUATE001->k1*QUATE001->l;
+!stop;
+
+! fitting only betas to fl1tt003
+!quatt008->k1       =       -1.575735135 ;
+!quatt009->k1       =       0.4274167652 ;
+!quatt010->k1       =       -6.588879277 ;
+
+! with alfx negative at flag fl1tt003 and inverting ktt11
+!quatt008->k1       =       -1.678365628 ;
+!quatt009->k1       =       0.5722838729 ;
+!quatt010->k1       =        3.854291508 ;
+
+call, file="commands/TLe_savebeta.madx";! savebeta in flags...
+call, file="commands/TLe_ae_twiss.cmd";
+call, file="commands/plotTLetwiss.madx";			  
+!s1top;
+! store twiss params in files
+call, file="commands/TLe_showbeta.madx";
+!value,(15e-3/6)^2/emitx;
+!value,(9e-3/6)^2/emity;
+
+
+!stop;
+
+! !!! matching flag FL1TT003
+! !Variable                 Final Value  Initial Value Lower Limit  Upper Limit 
+! !--------------------------------------------------------------------------------
+! !quatt008->k1             -1.57574e+00 -5.61782e-01 -1.00000e+20  1.00000e+20
+! !quatt009->k1              4.27417e-01  7.59723e-01 -1.00000e+20  1.00000e+20
+! !quatt010->k1             -6.58888e+00 -1.23478e+00 -1.00000e+20  1.00000e+20
+! value,table(twiss,FL1TT003,envx);
+! value,table(twiss,FL1TT003,envy);
+! guessenv: macro={
+! !  call, file='match.txt';
+! !  use, sequence=ACCM,range=input/hb1;
+! !  select, flag=twiss, column=name,keyword,s,l,betx,bety,dx;
+! !  twiss, betx=1, bety=1, dpx=-0.5,file="hcell.twiss";
+! call, file="commands/TLe_ae_twiss.cmd";
+! value,table(twiss,FL1TT003,envx);
+! value,table(twiss,FL1TT003,envy);
+! !  clen=
+! !  clen=table(twiss,octave,s);
+! !  assign, echo="match.txt";
+! !  value, hb1->L;
+! !  value, d1->L;
+! !  value, d2->L;
+! !  assign, echo=terminal;
+! };
+! flbetx=(15e-3/6)^2/emitx;
+! flbety=(9e-3/6)^2/emity;
+! !stop;
+! match, use_macro;
+! vary, name=QUATT008->k1,    step=1.0e-6;
+! vary, name=QUATT009->k1,    step=1.0e-6;
+! vary, name=QUATT010->k1,    step=1.0e-6;
+! !vary, name=d1->L,  step=1e-3, lower=0.1, upper=4;
+! !vary, name=d2->L,  step=1e-3, lower=0.1, upper=4;
+! !vary, name=hb1->L, step=1e-3, lower=1,   upper=4;
+! use_macro,  name=guessenv;
+! constraint, expr=abs(table(twiss,FL1TT003,betx)-flbetx)*1e3   = 1;
+! constraint, expr=abs(table(twiss,FL1TT003,bety)-flbety)*1e3   = 1;
+! !constraint, expr=abs(table(twiss,FL1TT003,envx)-15e-3)*1e3   = 1;
+! !constraint, expr=abs(table(twiss,FL1TT003,envy)- 9e-3)*1e3   = 1;
+! constraint, expr=abs(table(twiss,FL1TT003,alfx))   >0;
+! constraint, expr=abs(table(twiss,FL1TT003,alfy))   <0;
+! !constraint, expr=abs(table(twiss,FL1TT003,bety))*1e-2   < 1;
+! !constraint, expr=abs(table(twiss,octave,alfy))  *1e4   = 1;
+! !constraint, expr=abs(table(twiss,octave,s)-7.5) *1e4   = 1;
+! simplex, calls=1e3, tolerance=1e-9;
+! !jacobian, calls=1e3, tolerance=1e-9;
+! endmatch;
+! value, QUATT008->k1;
+! value, QUATT009->k1;
+! value, QUATT010->k1;
+! !call, file="commands/TLe_ae_twiss.cmd";
+! call, file="commands/plotTLetwiss.madx";
+
+
+
+
+! !stop;
+
+! Generating particles 
+system, "ln -s outputs/TLe_betaSTART.txt betaSTART.txt";
+system, "ln -s outputs/TLe_beam0.txt beam0.txt";
+! edit commands/GenerateInrays.C when offsets in the phase space are needed
+! GenerateInrays.C needs two parameters : (file_from_showbeta,Nparticles)
+!   beam is loaded from beam0.txt 
+system, 'root -l -x -q "commands/GenerateInrays.C(\"START\",1e3)"';
+system, "rm -f betaSTART.txt beam0.txt";
+system, "mv madxInrays.madx debug.txt trackTABLE outputs/";
+!stop;
+
+! beggining track
+tkon := 0;! this switch activate the kickers modelling the dipoles
+! NO purpuse tracking in PTC
+!set parameters
+!system, "rm -f track*";
+ptc_create_universe;
+  ptc_create_layout,model=2,method=6,nst=10,
+!exact;!,
+resplit,even;
+!!!! PTC MAP
+!   ptc_normal,icase=5,no=8,deltap=0.00;
+!!!! PTC TWISS
+!   select, flag=ptc_twiss,clear;
+!   select, flag=ptc_twiss,column=name,keyword,s,beta11, beta22, alfa11, alfa22;
+!   ptc_twiss,icase=5,closed_orbit,file="myDAFNE.ptctwiss",summary_file,table;
+!ptc_observe, place="IP.1";
+call, file="commands/TLe_observe.ptc.madx";
+!set particles
+!ptc_start, X=0, PX=0, Y=0, PY=0, T=0, PT=0;
+!ptc_start, X=1e-3, PX=1e-3, Y=1e-3, PY=1e-3, T=1e-9, PT=1e-9;
+call, file="outputs/madxInrays.madx";
+!run
+!!norm_no is order of the normal form : 1=linear, 2 ...!
+Rpipe := 44e-3;
+AngMax := 1;
+ptc_track, icase=6,turns=1,dump,onetable,element_by_element,
+maxaper={Rpipe,AngMax,Rpipe,AngMax,1,1},
+! the t and pt vars do not change anything
+! norm_no=4,
+file,
+radiation;
+
+!ptc_observe,place=#e;
+!ptc_trackline, turns=1,onetable,file;
+ptc_track_end;
+ptc_end;
+!end of NO purpose tracking in PTC
+
+! split tracking results inf plot friendly files
+system, "./commands/getobservedata trackone";
+system, "mv track* outputs/";
+!system, "mv trackLOW_EMIT_RING\$END trackEND";
+! ! $ cd to outputs and plot the phase  space with
+!system, 'root -x -l -q "../commands/DrawPhaseSpace.C(\"START\")" ';
+!system, 'root -x -l -q "../commands/DrawPhaseSpace.C(\"END\")" ';
+! !  or the beam profile 
+!system, 'root -x -l -q "../commands/DrawProfile.C(\"END\")" ';
+
+stop;
