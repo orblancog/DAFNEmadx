@@ -112,6 +112,9 @@ ccvtall2 = cvhon*1.011e-6;
  CHVTP002: kicker,
   	   hkick:= 1/eEnergy * ccvtall1*CHHTP002 + ccvtall2,
 	   vkick:= 1/eEnergy * ccvtall1*CVVTP002 + ccvtall2;
+ CHVTP003: kicker,
+  	   hkick:= 1/eEnergy * ccvtall1*CHHTP003 + ccvtall2,
+	   vkick:= 1/eEnergy * ccvtall1*CVVTP003 + ccvtall2;
 
 !in ED1
  ker5:     kicker,hkick= 0.00;

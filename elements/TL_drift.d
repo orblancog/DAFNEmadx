@@ -92,15 +92,20 @@
  D25C   : DRIFT , L =   0.2945;
  D26A   : DRIFT , L =   2.146-0.5;! -distance to corrector
  D26B   : DRIFT , L =   0.5-0.1;! -half a magnet
- D26C   : DRIFT , L =   1.18+0.37;
+ D26C   : DRIFT , L =   1.18+0.37-0.10;! -0.10 to match survey
 
 ! TP
- D27:DRIFT ,L=1.863-0.45;
- D28:DRIFT ,L=1.884+0.45;
- D29:DRIFT ,L=1.884;
- D30:DRIFT ,L=1.708389;
- D31:DRIFT ,L=1.227;
- D32:DRIFT ,L=1.212023;
+ D27A   : DRIFT , L =   1.863/2;
+ D27B   : DRIFT , L =   1.863/2;
+ D28A   : DRIFT , L =   1.884-0.256;
+ D28B   : DRIFT , L =   0.256;
+ D29A   : DRIFT , L =   1.884-0.256;
+ D29B   : DRIFT , L =   0.256;
+ D30    : DRIFT , L =   1.708389;
+ D31A   : DRIFT , L =   1.227-0.256;
+ D31B   : DRIFT , L =   0.256;
+ D32A   : DRIFT , L =   1.212023/2;
+ D32B   : DRIFT , L =   1.212023/2;
  D33:DRIFT ,L=0.390536;
  D34:DRIFT ,L=0.0;
 ! END TP;

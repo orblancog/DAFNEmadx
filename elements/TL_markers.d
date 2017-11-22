@@ -28,8 +28,8 @@ BPSTE004: marker;
 BPSTE005: marker;
 BPSTE006: marker;
 
-BPSTP01: marker;
-BPSTP02: marker;
+BPSTP001: marker;
+BPSTP002: marker;
 
 WCMTM001: marker;
 WCMTT001: marker;
@@ -37,6 +37,7 @@ WCMTR001: marker;
 WCMTL001: marker;
 WCMTE000: marker;
 WCMTE001: marker;
+WCMTP001: marker;
 BPFTM001: marker;
 
 ! FLAGS 
