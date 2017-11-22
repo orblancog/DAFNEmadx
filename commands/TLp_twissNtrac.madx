@@ -78,17 +78,16 @@ system, 'cp outputs/survey.dat outputs/TLp_survey.dat';
 !quatt009->k1       =       0.5722838729 ;
 !quatt010->k1       =        3.854291508 ;
 
-call, file="commands/TLe_savebeta.madx";! savebeta in flags...
-call, file="commands/TLe_ae_twiss.cmd";
-call, file="commands/plotTLetwiss.madx";			  
-!s1top;
+call, file="commands/TLp_savebeta.madx";! savebeta in flags...
+call, file="commands/TLp_ae_twiss.cmd";
+call, file="commands/plotTLptwiss.madx";			  
 ! store twiss params in files
-call, file="commands/TLe_showbeta.madx";
+call, file="commands/TLp_showbeta.madx";
 !value,(15e-3/6)^2/emitx;
 !value,(9e-3/6)^2/emity;
 
 
-!stop;
+stop;
 
 ! !!! matching flag FL1TT003
 ! !Variable                 Final Value  Initial Value Lower Limit  Upper Limit 

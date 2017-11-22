@@ -1,0 +1,13 @@
+savebeta,label=betaSTART,place=#s;
+savebeta,label=betaFL2A1001,place=FL2A1001;
+savebeta,label=betaFL2TL001,place=FL2TL001;
+savebeta,label=betaFL2TL002,place=FL2TL002;
+savebeta,label=betaFL2TT001,place=FL2TT001;
+savebeta,label=betaFL2TT002,place=FL2TT002;
+savebeta,label=betaFL1TT001,place=FL1TT001;
+savebeta,label=betaFL1TT002,place=FL1TT002;
+savebeta,label=betaFL1TT003,place=FL1TT003;
+savebeta,label=betaFL1TP001,place=FL1TP001;
+savebeta,label=betaFL1TP002,place=FL1TP002;
+savebeta,label=betaFL1TP003,place=FL1TP003;
+savebeta,label=betaFL1PL101,place=FL1PL101;
