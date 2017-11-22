@@ -1,12 +1,12 @@
 TITLE, "TLp";
-option, info,echo,warn;
+option, info,-echo,warn;
 
 ! the beam
 call, file="parameters/pbeam.madx";
 
 ! Machine files
 ! Elements strength is a function of the currents
-call, file="currents/eTLe_currents.madx";//loading current dataset
+call, file="currents/pTLp_currents.madx";//loading current dataset
 //call, file="currents/eMRe_20160628_1517_2e01_fondi_bassi.madx";//using only SXPEL100 from the MRe
 call, file="currents/checkcur.madx";!stop;
 ! the tl
@@ -80,6 +80,7 @@ system, 'cp outputs/survey.dat outputs/TLp_survey.dat';
 
 call, file="commands/TLp_savebeta.madx";! savebeta in flags...
 call, file="commands/TLp_ae_twiss.cmd";
+!stop;
 call, file="commands/plotTLptwiss.madx";			  
 ! store twiss params in files
 call, file="commands/TLp_showbeta.madx";

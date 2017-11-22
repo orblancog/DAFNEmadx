@@ -1,0 +1,14 @@
+! Beam params, data from accumulator
+theEnergy := 1.019/2;![GeV]
+eenergy  := theenergy;
+penergy  := theenergy;
+emitx   := 2.8e-7;![m]
+emity   := 1.4e-7;![m]
+esprd   := 0.1e-2;![1]
+bunchl  := 1.357e-2;![m] = clight/(120*368.667MHz)
+! backward compatibility with Antonio's lattice
+en := pEnergy*1e3; ! [MeV]
+! EAE SETUP
+emitx_ae := emitx;!2.8e-7;![m]
+emity_ae := emity;![m]
+delp_ae  := delp;![1]

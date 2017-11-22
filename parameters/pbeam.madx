@@ -1,16 +1,5 @@
-! Beam params, data from accumulator
-pEnergy := 1.019/2;![GeV]
-pemitx   := 2.8e-7;![m]
-pemity   := 1.4e-7;![m]
-pesprd   := 0.1e-2;![1]
-pbunchl  := 1.357e-2;![m] = clight/(120*368.667MHz)
-! backward compatibility with Antonio's lattice
-en := pEnergy*1e3; ! [MeV]
+call, file='parameters/thebeam.madx';
 
-! EAE SETUP
-emitx_ae := emitx;!2.8e-7;![m]
-emity_ae := emity;![m]
-delp_ae  := delp;![1]
 
 // =====
 // Optic function at A septa from Oct 2013 measurements
@@ -21,7 +10,7 @@ delp_ae  := delp;![1]
 
 ! Radiate=false because Urad is negligible (some eV)
 !   and beam passes only once/twice max 
-beam, particle=positron,energy=pEnergy,radiate=true,
+beam, particle=positron,energy=pEnergy,radiate=false,
       ex=emitx,ey=emity,
       sigt=bunchl,sige=esprd,et=bunchl*esprd,
       bunched=true,kbunch=100,bcurrent=0.01;
