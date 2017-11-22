@@ -1,12 +1,11 @@
-# DAPHNE madx   
+DAPHNEmadx   
+===========
+These folders contain the transfer lines madx model for DAFNE. The rings are in [1].
 
-This is the README file.  
-These folders contain a copy of the daphne madx model 
-
-_Update : First release_
+_Update : Checking TLp_
  
 ## Folder structure
-... pending
+Trying to follow the same structure of Antonio De Santis in [1]
 
 ## Software Requirements
 * [Bash](https://it.wikipedia.org/wiki/Bash)
@@ -16,11 +15,10 @@ _Update : First release_
 
 
 ## Authors
-blanco, oscar.blancogarcia@lnf.infn.it  
+blanco, oblancog@lnf.infn.it  
 
 ## Licence
-... pending...  
+Who knows, probably GLPv3
 
 ## References   
 [1] Main repo : [DAPHNE ring model](https://wiki.infn.it/strutture/lnf/da/dafne/mad-x_modeling)
-
