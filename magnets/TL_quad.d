@@ -2,14 +2,18 @@
 ! all quads are split in two
 call, file="magnets/quadfamilies.d";
 
-!! quad polarities
+!!!! quad polarities
 pertl   = -1;
 pertr   = -1;
+
 pertt12 =  1;
 pertt3  =  1;
-perte   = -1;
 
-! half last Linac quadrupole
+perte   = -1;
+pertp   = -1;
+
+
+!! half last Linac quadrupole
  QLE0    : quadrupole,L = 0.14,K1 := KLE0;
 
 ! in TM 
