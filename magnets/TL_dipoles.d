@@ -1,7 +1,18 @@
 !! Dipoles in the TLe
 ! ! units : \alpha [rad (°)], L [m], Energy [GeV]
-! about the var names : b2d means 2deg bending magnet, and so on
+! about the var names : b2d means 2deg bending magnet, and so on and so on
 
+! bending magnet polarity
+if (beam->charge == -1) {
+  system, 'echo "  TLset : electron mode"';
+  bpol :=-1;! tilt twopi/2
+  apol :=-1;! swap angle
+};
+if (beam->charge ==  1) {
+  system, 'echo "  TLset : positron mode"';
+  bpol := 0;! keep tilt
+  apol := 1;! keep angle
+};
 
 ! ! Flags for test
 tkon := 0; !! track with kicker on
@@ -155,72 +166,36 @@ e2b36d := 0;
 k1b36d := 0;
 !! end of magnet parameters
 
-
-!!!!!!!!!!!!! ... now the magnets definitions ... 
-! ! old bending definition
-! SPTA2001: SBEND,L= .623,              ANGLE= 0.0349066;
-! SPTA2002: SBEND,L=1.233,              ANGLE= 0.593411946; 
-! DVRTR001: SBEND,L= .35 ,TILT:=twopi/4,ANGLE= 0.191986,    E1=0.095993,   E2=0.095993;
-! DVRTR002: SBEND,L= .35 ,TILT:=twopi/4,ANGLE=-0.191986,    E1=0.095993,   E2=0.095993;  
-! DHYTT001: SBEND,L=1.   ,              ANGLE=-0.6283185308,E1=0.6283185308;
-! DHPTT001: SBEND,L=1.113,              ANGLE= 0.785398163;
-! DHPTT002: SBEND,L=1.113,              ANGLE=-0.785398163;
-! DHRTT001: SBEND,L=0.757,              ANGLE=-0.52359878,  E1=0.261799388,E2=0.261799388;
-! DHSTT001: SBEND,L=1.113,              ANGLE=-0.785398163;
-! DVRTT001: SBEND,L=.35,  TILT:=twopi/4,ANGLE= 0.191986,    E1=0.095993,   E2=0.095993;
-! DVRTT002: SBEND,L=.35,  TILT:=twopi/4,ANGLE=-0.191986,    E1=0.095993,   E2=0.095993;
-! DVRTE001: SBEND,L=.35,  TILT:=twopi/4,ANGLE= 0.191986,    E1=0.095993,   E2=0.095993;
-! DVRTE002: SBEND,L=.35,  TILT:=twopi/4,ANGLE=-0.191986,    E1=0.095993,   E2=0.095993;
-! DHRTE001: SBEND,L=0.757,              ANGLE=.528679953,   E1=.26433976,  E2=.26433976;
-! DHRTE002: SBEND,L=0.757,              ANGLE=-.542099266,  E1=-.271049633,E2=-.271049633;
-! DHRTE003: SBEND,L=0.757,              ANGLE=-.542099266,  E1=-.271049633,E2=-.271049633;
-! DVRTE003: SBEND,L=.35,  TILT:=twopi/4,ANGLE=-.191986,     E1=0.095993,   E2=0.095993;
-! DVRTE004: SBEND,L=.35,  TILT:=twopi/4,ANGLE= .191986,     E1=0.095993,   E2=0.095993;
-! SPTEL101: SBEND, L = 1.233,           ANGLE = -0.593411946;
-! SPTEL102: SBEND, L = 0.623,           ANGLE = -0.034906585;
-! ! old model
-! mSPTA2001: line=(SPTA2001);
-! mSPTA2002: line=(SPTA2002);
-! mDHYTT001: line=(DHYTT001);
-! mDHPTT001: line=(DHPTT001);!
-! mDHPTT002: line=(DHPTT002);
-! mDHRTT001: line=(DHRTT001);
-! mDHSTT001: line=(DHSTT001);
-! mDHRTE001: line=(DHRTE001);
-! mDHRTE002: line=(DHRTE002);
-! mDHRTE003: line=(DHRTE003);
-! mSPTEL101: line=(SPTEL101);
-! mSPTEL102: line=(SPTEL102);
-! ! vertical
-! mDVRTR001: line=(DVRTR001);
-! mDVRTR002: line=(DVRTR002);
-! mDVRTT001: line=(DVRTT001);
-! mDVRTT002: line=(DVRTT002);
-! mDVRTE001: line=(DVRTE001);
-! mDVRTE002: line=(DVRTE002);
-! mDVRTE003: line=(DVRTE003);
-! mDVRTE004: line=(DVRTE004);
-! ! end of old def
-
-
 ! new bending def
+! e+  horizontal ( + is towards negative x ), vertical ( + is downwards )
+! e-  rotated by -tau/2 and angle swapped
+! bends with E1 and E2 != 0 are split in BENDa and BENDb 
+SPTA1001 : SBEND, L :=  lb2d/2.0,
+	   TILT     :=  0 + bpol*twopi/2,
+	   ANGLE    := -apol*hdon* ab2d/2.0,       
+	   K1       :=  k1b2d*abs(SPTA2001);
+SPTA1002 : SBEND, L :=  lb34d/2.0,
+	   TILT     :=  0 + bpol*twopi/2,
+	   ANGLE    := -apol*hdon*ab34d/2.0,      
+	   K1       :=  k1b34d*abs(SPTA2002);
+DVRTL001a: SBEND, L :=  lb11d/2.0,
+	   TILT     :=  twopi/4+bpol*twopi/2,
+	   ANGLE    :=  apol*vdon*ab11d/2.0,
+	   E1=e1b11d,E2=0;
+DVRTL001b: SBEND, L :=  lb11d/2.0,
+	   TILT     :=  twopi/4+bpol*twopi/2,  
+	   ANGLE    :=  apol*vdon*ab11d/2.0,
+	   E1=0,E2=e2b11d;
+DVRTL002a: SBEND, L :=  lb11d/2.0,TILT:=twopi/4+bpol*twopi/2,
+	   ANGLE    := -apol*vdon*ab11d/2.0,
+	   E1=e1b11d,E2=0;
+DVRTL002b: SBEND ,L :=  lb11d/2.0,
+	   TILT     :=  twopi/4+bpol*twopi/2,
+	   ANGLE    := -apol*vdon*ab11d/2.0,
+	   E1=0,E2=e2b11d;
 
-
-!   horizontal ( + is towards negative x ), vertical ( + is downwards )
-SPTA1001 : SBEND,L:=lb2d/2.0,TILT:=TWOPI/2 ,    	       	ANGLE:=-1*   hdon*ab2d/2.0,       
-	 K1:=k1b2d*abs(SPTA2001);
-SPTA1002 : SBEND,L:=lb34d/2.0,TILT:=TWOPI/2,			ANGLE:=-1*   hdon*ab34d/2.0,      
-	 K1:=k1b34d*abs(SPTA2002);
-DVRTL001a: SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:=-1*   vdon*ab11d/2.0,
-	 E1=e1b11d,E2=0;
-DVRTL001b: SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:=-1*   vdon*ab11d/2.0,
-	 E1=0,E2=e2b11d;
-DVRTL002a: SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:= vdon*ab11d/2.0,
-	 E1=e1b11d,E2=0;
-DVRTL002b: SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:= vdon*ab11d/2.0,
-	 E1=0,E2=e2b11d;
-
-SPTA2001 : SBEND,L:=lb2d/2.0,TILT:=TWOPI/2 ,    	       	ANGLE:=-1*   hdon*ab2d/2.0,       
+SPTA2001 : SBEND,L:=lb2d/2.0,TILT:=0+bpol*twopi/2,
+	 ANGLE:=apol*hdon*ab2d/2.0,       
 	 K1:=k1b2d*abs(SPTA2001);
 SPTA2002 : SBEND,L:=lb34d/2.0,TILT:=TWOPI/2,			ANGLE:=-1*   hdon*ab34d/2.0,      
 	 K1:=k1b34d*abs(SPTA2002);
@@ -233,10 +208,10 @@ DVRTR002a: SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:= vdon*ab11d/2.0,
 DVRTR002b: SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:= vdon*ab11d/2.0,
 	 E1=0,E2=e2b11d;
 
-DHYTT001a: SBEND,L:=lb36d/2.0,TILT:=-TWOPI/2,			ANGLE:= hdon*ab36d/2.0,
+DHYTT001a: SBEND,L:=lb36d/2.0,TILT:=0*TWOPI/2,			ANGLE:= hdon*ab36d/2.0,
 	 K1:=k1b36d*abs(DHYTT001),
 	 E1=e1b36d,E2=0;
-DHYTT001b: SBEND,L:=lb36d/2.0,TILT:=-TWOPI/2,			ANGLE:= hdon*ab36d/2.0,
+DHYTT001b: SBEND,L:=lb36d/2.0,TILT:=0*TWOPI/2,			ANGLE:= hdon*ab36d/2.0,
 	 K1:=k1b36d*abs(DHYTT001),
 	 E1=0,E2=e2b36d;
 DHPTT001 : SBEND,L:=lb45d/2.0,TILT:= TWOPI/2,			ANGLE:= -1*  hdon*ab45d/2.0,
