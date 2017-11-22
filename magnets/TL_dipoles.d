@@ -5,13 +5,15 @@
 ! bending magnet polarity
 if (beam->charge == -1) {
   system, 'echo "  TLset : electron mode"';
-  bpol :=-1;! tilt twopi/2
-  apol :=-1;! swap angle
+  bpol  := -1;! tilt twopi/2
+  apol  := -1;! swap angle
+  pbon  :=  0;! pulsed bending on
 };
 if (beam->charge ==  1) {
   system, 'echo "  TLset : positron mode"';
-  bpol := 0;! keep tilt
-  apol := 1;! keep angle
+  bpol  :=  0;! keep tilt
+  apol  :=  1;! keep angle
+  pbon  :=  1;! pulsed bending on
 };
 
 ! ! Flags for test
@@ -245,12 +247,12 @@ DVRTR002b: SBEND, L :=lb11d/2.0,
 
 DHYTT001a: SBEND, L :=  lb36d/2.0,
            TILT     :=  0 + bpol*twopi/2,
-           ANGLE    :=  apol*hdon*ab36d/2.0,
+           ANGLE    :=       hdon*ab36d/2.0,
 	   K1       :=  k1b36d*abs(DHYTT001),
 	   E1=e1b36d,E2=0;
 DHYTT001b: SBEND, L :=  lb36d/2.0,
 	   TILT     :=  0 + bpol*twopi/2,
-           ANGLE    :=  apol*hdon*ab36d/2.0,
+           ANGLE    :=       hdon*ab36d/2.0,
 	   K1       :=  k1b36d*abs(DHYTT001),
 	   E1=0,E2=e2b36d;
 DHPTT001 : SBEND, L :=  lb45d/2.0,
@@ -297,19 +299,19 @@ DVRTT002b: SBEND, L :=  lb11d/2.0,
 ! in DAFNE
 DHRTP001a: SBEND, L :=  lb18d/2,! pulsed dipole not used during e- injection
 	   TILT     :=  0 + bpol*twopi/2,
-	   ANGLE    := -apol*hdon*ab18d/2,
+	   ANGLE    := -pbon*apol*hdon*ab18d/2,
 	   E1=e1b18d,E2=0;
 DHRTP001b: SBEND, L :=  lb18d/2,! pulsed dipole not used during e- injection
 	   TILT     :=  0 + bpol*twopi/2,
-	   ANGLE    := -apol*hdon*ab18d/2,
+	   ANGLE    := -pbon*apol*hdon*ab18d/2,
 	   E1=0,E2=e2b18d;
 DHRTP002a: SBEND, L :=  lb13p6d/2,! pulsed dipole not used during e- injection
 	   TILT     :=  0 + bpol*twopi/2,
-	   ANGLE    := -apol*ab13p6d/2,
+	   ANGLE    := -pbon*apol*ab13p6d/2,
 	   E1=e1b13p6d,E2=0;
 DHRTP002b: SBEND, L :=  lb13p6d/2,! pulsed dipole not used during e- injection
 	   TILT     :=  0 + bpol*twopi/2,
-	   ANGLE    := -apol*ab13p6d/2,
+	   ANGLE    := -pbon*apol*ab13p6d/2,
 	   E1=0,E2=e2b13p6d;
 
 

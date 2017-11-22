@@ -16,7 +16,7 @@ CALL, FILE="elements/TL_drift.d";
 CALL, FILE="elements/TL_correct.d";
 CALL, FILE="magnets/TL_quad.d";
 CALL, FILE="magnets/TL_sextupoles.d";
-CALL, FILE="magnets/TLe_ae_dipoles.d";
+CALL, FILE="magnets/TL_dipoles.d";
 CALL, FILE="lines/TL_lattice.d";
 !use, sequence= e_ae, range=#s/#e;
 use, sequence= e_ae, range=#s/#e;
@@ -43,11 +43,12 @@ select,flag=survey,class=sbend;
 select,flag=survey,class=quadrupole;
 select,flag=survey,class=kicker;
 select,flag=survey,class=sextupole;
-survey,file="outputs/TLe_survey.dat",
+survey,file="outputs/survey.dat",
   z0 =     18.81195659,
   x0 =     49.32205924,
   theta0 = -2.492981454205103;
-!stop;
+system, 'cp outputs/survey.dat outputs/TLe_survey.dat';
+stop;
 
 !! FROM HERE ON the model is under experiment
 !! Twiss with initial betas
