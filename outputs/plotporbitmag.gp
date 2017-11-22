@@ -6,19 +6,19 @@ unset xrange
 unset yrange
 
 set yrange [-10:12]
-set xrange [0:100]
+set xrange [0:70]
 
 set object rect from 86.6,-5 to 88.2,5 # the sextupole location
 
 neoffset = 1.0
-eoffset  = 3.164e-4
+eoffset  = 0.02e-2
 
 col_s=3
 col_dy=13
 col_dx=11
 
-filabs = 'TLe_20170221122201_REFORB_15mA_inACC_dispersione.dat'
-filrel = 'TLe_20170221122344_662M667_dispersione.dat'
+filabs = 'TLp_20171116164126_ref_UFS.dat'
+filrel = 'TLp_20171116164404_DIPACC_612m611.dat
 #filtwiss = '
 
 set multiplot
@@ -40,11 +40,12 @@ unset yrange
 unset ylabel
 unset ytics
 set style fill solid
-p '< grep -i SBEND tle_ae.tls'      u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ? -0.5:1/0):(column(col_l)) w boxes axis x1y1 lt 3 lw 1 ti '',\
-  '< grep -i SBEND tle_ae.tls'      u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ?  0.5:1/0):(column(col_l)) w boxes axis x1y1 lt 3 lw 1 ti '',\
-  '< grep -i QUADRUPOLE tle_ae.tls' u (column(col_s)-s0-column(col_l)/2):(column(col_k1l)/abs(column(col_k1l))):(column(col_l)) w boxes axis x1y1 lt 1 lw 1 ti '', \
-  '< grep -i SEXTUPOLE tle_ae.tls'  u (column(col_s)-s0-column(col_l)/2):(column(col_k2l)/abs(column(col_k2l))):(column(col_l)) w boxes axis x1y1 lt 2 lw 1 ti '',\
+p '< grep -i SBEND tlp_ae.tls'      u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ? -0.5:1/0):(column(col_l)) w boxes axis x1y1 lt 3 lw 1 ti '',\
+  '< grep -i SBEND tlp_ae.tls'      u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ?  0.5:1/0):(column(col_l)) w boxes axis x1y1 lt 3 lw 1 ti '',\
+  '< grep -i QUADRUPOLE tlp_ae.tls' u (column(col_s)-s0-column(col_l)/2):(column(col_k1l)/abs(column(col_k1l))):(column(col_l)) w boxes axis x1y1 lt 1 lw 1 ti '', \
   0 lw 3 lt -1 dashtype 2 ti ''
+
+#  '< grep -i SEXTUPOLE tlp_ae.tls'  u (column(col_s)-s0-column(col_l)/2):(column(col_k2l)/abs(column(col_k2l))):(column(col_l)) w boxes axis x1y1 lt 2 lw 1 ti '',\
 
 
 set size 1,0.25
@@ -64,18 +65,18 @@ set mxtics 10
 set mytics 10
 set grid
 # x rel
-unset yrange
-set yrange [-1.5:1.5]
+#unset yrange
+set yrange [-7:7]
 set ytics 1
 set mytics 5
 # x rel
 p \
   filrel u 1:2 w lp lt 7 lw 6 ti 'dispersive orbit 20170221 662M667', \
   0 lw 3 lt -1 dashtype 2 ti '', \
-  '< grep -i BPS* tle_ae.tls' u (column(col_s)):(column(col_s)<30 ? \
+  '< grep -i BPS* tlp_ae.tls' u (column(col_s)):(column(col_s)<30 ? \
   (column(col_dx)*(neoffset*eoffset*1e3)) : 1/0) \
   w lp lt 7 lw 3 dashtype '.' ti '{/Symbol h}_x.{/Symbol d} today ',\
-  '< grep -i BPS* tle_ae.tls' u (column(col_s)):(column(col_s)<30 ? \
+  '< grep -i BPS* tlp_ae.tls' u (column(col_s)):(column(col_s)<30 ? \
   1/0:-1*(column(col_dx)*(neoffset*eoffset*1e3))) \
   w lp lt 7 lw 3 dashtype '.-____' ti '-{/Symbol h}_x.{/Symbol d} today '
 
@@ -87,21 +88,23 @@ set ytics 1
 set mytics 5
 set ylabel "y [mm]" font ',20' offset -3
 set yrange [-1.2:1.2]
+unset yrange
 # y rel
 p \
   filrel u 1:3 w lp lt 7 lw 6 ti 'dispersive orbit 20170221 662M667', \
   0 lw 3 lt -1 dashtype 2 ti '', \
-  '< grep -i BPS* tle_ae.tls' u (column(col_s)):(column(col_dy)*(neoffset*eoffset*1e3)) \
+  '< grep -i BPS* tlp_ae.tls' u (column(col_s)):(column(col_dy)*(neoffset*eoffset*1e3)) \
   w lp lt 7 lw 3 dashtype '.' ti '{/Symbol h}_y.{/Symbol d} today'
 
 
 set size 1,0.25
 set origin 0,0
 set yrange [0:2]
+unset yrange
 set ylabel "sqrt(x^2+y^2)" font ',20' offset -3
 p \
   filrel u 1:(sqrt($2*$2+$3*$3)) w lp lt 7 lw 6 ti 'dispersive orbit 20170221 662M667', \
-  '< grep -i BPS* tle_ae.tls' u (column(col_s)):\
+  '< grep -i BPS* tlp_ae.tls' u (column(col_s)):\
   (sqrt((column(col_dx)*column(col_dx)+column(col_dy)*column(col_dy)))*(neoffset*eoffset*1e3)) \
   w lp lt 7 lw 3 dashtype '.' ti '{/Symbol h}_t.{/Symbol d} today '
 
