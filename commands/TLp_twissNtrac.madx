@@ -54,14 +54,14 @@ stop;
 !! FROM HERE ON the model is under experiment
 !! Twiss with initial betas
 
-! trying some errors
-select, flag=error,pattern="QUATT010*";
-efcomp, dkn:={0.0,-0.05};
-!select, flag=error,pattern="QUATT011*";
-!efcomp, dkn:={0.0,-0.05};
-select, flag=error, clear;
-select, flag=error,pattern="DHRTP001*";
-efcomp, dkn:={0.0,0.15};
+! ! trying some errors
+! select, flag=error,pattern="QUATT010*";
+! efcomp, dkn:={0.0,-0.05};
+! !select, flag=error,pattern="QUATT011*";
+! !efcomp, dkn:={0.0,-0.05};
+! select, flag=error, clear;
+! select, flag=error,pattern="DHRTP001*";
+! efcomp, dkn:={0.0,0.15};
 
 !DVRTT002k->vkick:=10e-3;
 !	value,QUATT010->k1*QUATT010->l;
