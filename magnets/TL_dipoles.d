@@ -7,7 +7,7 @@ if (beam->charge == -1) {
   system, 'echo "  TLset : electron mode"';
   bpol  := -1;! tilt twopi/2
   apol  := -1;! swap angle
-  pbon  :=  0;! pulsed bending on
+  pbon  :=  0;! pulsed bending off
 };
 if (beam->charge ==  1) {
   system, 'echo "  TLset : positron mode"';
