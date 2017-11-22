@@ -1,5 +1,5 @@
 !list of quadrupoles in DAFNE TRANSFER LINE
-! L is the half Length of the quadrupoles
+! all quads are split in two
 call, file="magnets/quadfamilies.d";
 
 ! half last Linac quadrupole
