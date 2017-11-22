@@ -172,8 +172,8 @@ ib18d   := 0;
 ib18dm  := 0;
 c0b18d  := 0;
 c1b18d  := 0;
-e1b18d  := ab18/2;
-e2b18d  := ab18/2;
+e1b18d  := ab18d/2;
+e2b18d  := ab18d/2;
 
 ! DHRTP002
 lb13p6d   := 0.4472;
@@ -182,8 +182,8 @@ ib13p6d   := 0;
 ib13p6dm  := 0;
 c0b13p6d  := 0;
 c1b13p6d  := 0;
-e1b13p6d  := ab13p6/2;
-e2b13p6d  := ab13p6/2;
+e1b13p6d  := ab13p6d/2;
+e2b13p6d  := ab13p6d/2;
 
 !!! end of magnet parameters
 
@@ -295,8 +295,22 @@ DVRTT002b: SBEND, L :=  lb11d/2.0,
            E1=0,E2=e2b11d;
 
 ! in DAFNE
-DHRTP001a : SBEND,L=0.40,ANGLE=0,E1=0,E2=0;! pulsed dipole not used during e- injection
-DHRTP002a  :SBEND,L=0.40,ANGLE=0,E1=0,E2=0;! pulsed dipole not used during e- injection
+DHRTP001a: SBEND, L :=  lb18d/2,! pulsed dipole not used during e- injection
+	   TILT     :=  0 + bpol*twopi/2,
+	   ANGLE    := -apol*hdon*ab18d/2,
+	   E1=e1b18d,E2=0;
+DHRTP001b: SBEND, L :=  lb18d/2,! pulsed dipole not used during e- injection
+	   TILT     :=  0 + bpol*twopi/2,
+	   ANGLE    := -apol*hdon*ab18d/2,
+	   E1=0,E2=e2b18d;
+DHRTP002a: SBEND, L :=  lb13p6d/2,! pulsed dipole not used during e- injection
+	   TILT     :=  0 + bpol*twopi/2,
+	   ANGLE    := -apol*ab13p6d/2,
+	   E1=e1b13p6d,E2=0;
+DHRTP002b: SBEND, L :=  lb13p6d/2,! pulsed dipole not used during e- injection
+	   TILT     :=  0 + bpol*twopi/2,
+	   ANGLE    := -apol*ab13p6d/2,
+	   E1=0,E2=e2b13p6d;
 
 
 DVRTE001a : SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:=-1*   vdon*ab11d/2.0,
@@ -380,8 +394,8 @@ DHSTT001K: KICKER,L=0,HKICK:=tkon*(-ab45d   - mangDHSTT001);
 DVRTT001K: KICKER,L=0,VKICK:=tkon*( b11d    - mangDVRTT001);
 DVRTT002K: KICKER,L=0,VKICK:=tkon*(-b11d    - mangDVRTT002);
 
-DHRTT001K: KICKER,L=0,HKICK:=tkon*(-ab30d   - mangDHRTT001);
-DHRTT002K: KICKER,L=0,HKICK:=tkon*(-ab30d   - mangDHRTT001);
+DHRTP001K: KICKER,L=0,HKICK:=tkon*(-ab30d   - mangDHRTT001);
+DHRTP002K: KICKER,L=0,HKICK:=tkon*(-ab30d   - mangDHRTT001);
 
 DVRTE001K: KICKER,L=0,VKICK:=tkon*( b11d    - mangDVRTE001);
 DVRTE002K: KICKER,L=0,VKICK:=tkon*(-b11d    - mangDVRTE002);
