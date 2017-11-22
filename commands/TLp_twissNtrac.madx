@@ -49,7 +49,7 @@ survey,file="outputs/survey.dat",
   x0 =     54.9198+2.184453779,
   theta0 = -2.492981454205103;
 system, 'cp outputs/survey.dat outputs/TLp_survey.dat';
-stop;
+!stop;
 
 !! FROM HERE ON the model is under experiment
 !! Twiss with initial betas

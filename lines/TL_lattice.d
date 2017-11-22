@@ -54,7 +54,7 @@ TLLINE: line=(TL3,mDVRTL002,TL2,mDVRTL001,TL1);
 !EINJSPL: line= (SPTA1001,D1,SPTA1002);
 
 ! accu.electron  injection septa
-ASPTein: LINE= (mSPTA1002,D1,mSPTA1001);
+ASPTein: LINE= (mSPTA1002,D1,mSPTA1001,FL2A1001);
 
 ! endlinac -> accum. inject. (with splitters);
 e_AI: line=(TMLINE,AI_TTLINE,mDHYTT001,
