@@ -37,8 +37,8 @@ pertp   = -1;
  QUATT006: quadrupole,l := ltbq/2, K1 :=  ktt06;
 
  QUATT007: quadrupole,l := ltbq/2, K1 :=  ktt07;
- QUATT008: quadrupole,l := ltbq/2, K1 :=  -ktt08;
- QUATT009: quadrupole,l := ltbq/2, K1 :=  -ktt09;
+ QUATT008: quadrupole,l := ltbq/2, K1 :=  ktt08;
+ QUATT009: quadrupole,l := ltbq/2, K1 :=  ktt09;
  QUATT010: quadrupole,l := ltbq/2, K1 :=  -ktt10;
  QUATT011: quadrupole,l := ltbq/2, K1 :=  -ktt11;
 
