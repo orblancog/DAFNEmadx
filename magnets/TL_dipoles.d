@@ -8,13 +8,15 @@ if (beam->charge == -1) {
   bpol  := -1;! tilt twopi/2
   apol  := -1;! swap angle
   cpol  :=  1;! dhpty001 pol
+  dpol  :=  1;
   pbon  :=  0;! pulsed bending off
 };
 if (beam->charge ==  1) {
   system, 'echo "  TLset : positron mode"';
-  bpol  :=  0;! keep tilt
-  apol  :=  1;! keep angle
-  cpol  := -1;
+  bpol  := -1;! keep tilt
+  apol  := -1;! keep angle
+  cpol  :=  0;
+  dpol  :=  1;
   pbon  :=  1;! pulsed bending on
 };
 
@@ -248,13 +250,13 @@ DVRTR002b: SBEND, L :=lb11d/2.0,
 	   E1=0,E2=e2b11d;
 
 DHYTT001a: SBEND, L :=  lb36d/2.0,
-           TILT     :=  0 + bpol*twopi/2,
-           ANGLE    := -cpol*apol*hdon*ab36d/2.0,
+           TILT     :=  0 + cpol*bpol*twopi/2,
+           ANGLE    := -dpol*apol*hdon*ab36d/2.0,
 	   K1       :=  k1b36d*abs(DHYTT001),
 	   E1=e1b36d,E2=0;
 DHYTT001b: SBEND, L :=  lb36d/2.0,
-	   TILT     :=  0 + bpol*twopi/2,
-           ANGLE    := -cpol*apol*hdon*ab36d/2.0,
+	   TILT     :=  0 + cpol*bpol*twopi/2,
+           ANGLE    := -dpol*apol*hdon*ab36d/2.0,
 	   K1       :=  k1b36d*abs(DHYTT001),
 	   E1=0,E2=e2b36d;
 DHPTT001 : SBEND, L :=  lb45d/2.0,

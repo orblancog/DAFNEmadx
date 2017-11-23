@@ -101,7 +101,7 @@ set key left top
 p \
   filrel u 1:3 w lp lt 7 lw 6 ti frelti, \
   0 lw 3 lt -1 dashtype 2 ti '', \
-  '< grep -i BPS* tlp_ae.tls' u (column(col_s)):(column(col_dy)*(neoffset*eoffset*1e3)) \
+  ftwbps u (column(col_s)):(column(col_dy)*(neoffset*eoffset*1e3)) \
   w lp lt 7 lw 3 dashtype '.' ti ftwissti
 
 
