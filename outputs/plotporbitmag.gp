@@ -8,18 +8,23 @@ unset yrange
 set yrange [-10:12]
 set xrange [0:70]
 
-set object rect from 86.6,-5 to 88.2,5 # the sextupole location
-
-neoffset = 1.0
-eoffset  = 0.02e-2
-
 col_s=3
 col_dy=13
 col_dx=11
 
 filabs = 'TLp_20171116164126_ref_UFS.dat'
 filrel = 'TLp_20171116164404_DIPACC_612m611.dat
-#filtwiss = '
+frelti = 'TLp 2017/11/16 DIP ACC 612-611 A'
+
+neoffset = 1.0
+eoffset  = 0.7e-3#0.3164e-4
+ftwiss = 'tlp_ae.tls'
+ftwissti = '0.7x10^{-3} . {/Symbol h}_y model today'
+
+ftwbend = '< grep -i bend '.ftwiss
+ftwquad = '< grep -i quad '.ftwiss
+ftwsext = '< grep -i sext '.ftwiss
+
 
 set multiplot
 
