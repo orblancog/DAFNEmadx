@@ -3,15 +3,20 @@
 call, file="magnets/quadfamilies.d";
 
 !!!! quad polarities
-pertl   =  1;
+pertl   = -1;
 pertr   = -1;
 
-pertt12 =  1;
-pertt3  =  1;
-
+! quad magnet polarity
+!if (beam->charge == -1) {! default values for e-
+  pertt12 =  1;
+  pertt3  =  1;
+!};
+if (beam->charge ==  1) {
+  pertt12 = -1;
+  pertt3  = -1;
+};
 perte   = -1;
-pertp   = -1;
-
+pertp   =  1;
 
 !! half last Linac quadrupole
  QLE0    : quadrupole,L = 0.14,K1 := KLE0;
