@@ -3,7 +3,7 @@
 call, file="magnets/quadfamilies.d";
 
 !!!! quad polarities
-pertl   = -1;
+pertl   =  1;
 pertr   = -1;
 
 pertt12 =  1;
