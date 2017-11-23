@@ -99,8 +99,8 @@ p \
 
 set size 1,0.25
 set origin 0,0
-set yrange [0:2]
-unset yrange
+set yrange [0:5]
+#unset yrange
 set ylabel "sqrt(x^2+y^2)" font ',20' offset -3
 p \
   filrel u 1:(sqrt($2*$2+$3*$3)) w lp lt 7 lw 6 ti 'dispersive orbit 20170221 662M667', \

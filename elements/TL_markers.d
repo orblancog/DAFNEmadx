@@ -42,17 +42,19 @@ BPFTM001: marker;
 
 ! FLAGS 
 FL2A1001: marker;
-FL2A1001: marker;
-
 FL2TL001: marker;
 FL2TL002: marker;
+
+FL2A2001: marker;
 FL2TR001: marker;
 FL2TR002: marker;
+
 FL2TT001: marker;
 FL2TT002: marker;
 FL1TT001: marker;
 FL1TT002: marker;
 FL1TT003: marker;
+
 FL1TE001: marker;
 FL1TE002: marker;
 FL1TE003: marker;

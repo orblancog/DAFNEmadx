@@ -282,11 +282,11 @@ DHSTT001 : SBEND, L :=  lb45d/2.0,
 DVRTT001a: SBEND, L :=lb11d/2.0,
 	   TILT     :=  twopi/4 + bpol*twopi/2,
 	   ANGLE    :=  apol*vdon*ab11d/2.0,
-	   E1=eb11d,E2=0;
+	   E1=e1b11d,E2=0;
 DVRTT001b: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4 + bpol*twopi/2,
 	   ANGLE    :=  apol*vdon*ab11d/2.0,
-	   E1=0,E2=eb11d;
+	   E1=0,E2=e2b11d;
 DVRTT002a: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4 + bpol*twopi/2,
 	   ANGLE    := -apol*vdon*ab11d/2.0,

@@ -10,7 +10,7 @@ call, file="currents/eTLe_currents.madx";//loading current dataset
 call, file="currents/eMRe_20160628_1517_2e01_fondi_bassi.madx";//using only SXPEL100 from the MRe
 call, file="currents/checkcur.madx";!stop;
 ! the tle
-CALL, FILE="parameters/TL_ae.par";
+//CALL, FILE="parameters/TL_ae.par";
 CALL, FILE="elements/TL_markers.d";
 CALL, FILE="elements/TL_drift.d";
 CALL, FILE="elements/TL_correct.d";
@@ -48,7 +48,7 @@ survey,file="outputs/survey.dat",
   x0 =     49.32205924,
   theta0 = -2.492981454205103;
 system, 'cp outputs/survey.dat outputs/TLe_survey.dat';
-stop;
+!stop;
 
 !! FROM HERE ON the model is under experiment
 !! Twiss with initial betas
