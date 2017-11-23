@@ -12,12 +12,14 @@ col_s=3
 col_dy=13
 col_dx=11
 
-filabs = 'TLe_20170221122201_REFORB_15mA_inACC_dispersione.dat'
+#filabs = 'TLe_20170221122201_REFORB_15mA_inACC_dispersione.dat'
+filabs = 'TLe_20171116170514_REF2_UFSe.dat'
+frefti = 'TLe 2017/02/21 REF UFS'
 
 #filrel = 'TLe_20170221122344_662M667_dispersione.dat'
 #frelti = 'dispersive orbit 20170221 MR RF 662M667'
 filrel = 'TLe_20171116170432_DIPACC_615m614e.dat'
-frelti = 'dispersive orbit 20170221 DIP ACC 615-614 A'
+frelti = 'TLe 2017/02/21 DIP ACC 615-614 A'
 #filrel  = 'TLe_20171116170550_DIPACC_613m614e.dat'
 #frelti  = 'dispersive orbit 20170221 DIP ACC 613-614 A'
 
@@ -57,11 +59,11 @@ p '< grep -i SBEND tle_ae.tls'      u (column(col_s)-s0-column(col_l)/2):(column
 set size 1,0.3
 set origin 0,0.5
 set ylabel "x [mm]" font ',20' offset -3
-set key bottom left font ',20'
+set key top left font ',20'
 set xtics 5 font ',20'
 set mxtics 5
-set ytics 3 font ',20' offset 0
-set mytics 4
+set ytics 1 font ',20' offset 0
+set mytics 5
 set lmargin 15
 set rmargin 5
 set bmargin 6
@@ -70,20 +72,25 @@ set mytics 10
 set grid
 # x rel
 unset yrange
-set yrange [-7:3]
+set yrange [-2:2]
 set ytics 1
 set mytics 5
 # x rel
 unset xlabel
+
+ftoplot = '< paste '.filrel.' '.filabs
+
 p \
-  filrel u 1:2 w lp lt 7 lw 6 ti frelti, \
-  0 lw 3 lt -1 dashtype 2 ti '', \
-  '< grep -i BPS* tle_ae.tls' u (column(col_s)):(column(col_s)<30 ? \
-  (column(col_dx)*(neoffset*eoffset*1e3)) : 1/0) \
-  w lp lt 7 lw 3 dashtype '.' ti ftwissti,\
-  '< grep -i BPS* tle_ae.tls' u (column(col_s)):(column(col_s)<30 ? \
-  1/0:-1*(column(col_dx)*(neoffset*eoffset*1e3))) \
-  w lp lt 7 lw 3 dashtype '.-____' ti '-'.ftwissti
+  ftoplot u 1:($2+$5) w lp lt 7 lw 6 ti frelti, \
+  ftoplot u 1:($5) w lp lt 8 lw 3 dashtype '.' ti frefti, \
+  0 lw 3 lt -1 dashtype 2 ti ''
+
+  # '< grep -i BPS* tle_ae.tls' u (column(col_s)):(column(col_s)<30 ? \
+  # (column(col_dx)*(neoffset*eoffset*1e3)) : 1/0) \
+  # w lp lt 7 lw 3 dashtype '.' ti ftwissti,\
+  # '< grep -i BPS* tle_ae.tls' u (column(col_s)):(column(col_s)<30 ? \
+  # 1/0:-1*(column(col_dx)*(neoffset*eoffset*1e3))) \
+  # w lp lt 7 lw 3 dashtype '.-____' ti '-'.ftwissti
 
 
 set size 1,0.3
@@ -92,26 +99,35 @@ unset yrange
 set ytics 1
 set mytics 5
 set ylabel "y [mm]" font ',20' offset -3
-set yrange [-2:3]
+set yrange [-2:2]
 # y rel
 unset xlabel
 set key top left font ',20'
 p \
-  filrel u 1:3 w lp lt 7 lw 6 ti frelti, \
-  0 lw 3 lt -1 dashtype 2 ti '', \
-  '< grep -i BPS* tle_ae.tls' u (column(col_s)):(column(col_dy)*(neoffset*eoffset*1e3)) \
-  w lp lt 7 lw 3 dashtype '.' ti ftwissti
+  ftoplot u 1:($3+$6) w lp lt 7 lw 6 ti frelti, \
+  ftoplot u 1:($6) w lp lt 8 lw 3 dashtype '.' ti frefti, \
+  0 lw 3 lt -1 dashtype 2 ti ''
+
+#  '< grep -i BPS* tle_ae.tls' u (column(col_s)):(column(col_dy)*(neoffset*eoffset*1e3)) \
+#  w lp lt 7 lw 3 dashtype '.' ti ftwissti
 
 
 set size 1,0.3
 set origin 0,0
-set yrange [0:7]
+unset yrange
+set ytics 1
+set mytics 5
+set yrange [0:4]
 set ylabel "sqrt(x^2+y^2)" font ',20' offset -3
 set xlabel "s [m]" offset 0,-1 font ',20'
+unset key
+set key top left font ',20'
 p \
-  filrel u 1:(sqrt($2*$2+$3*$3)) w lp lt 7 lw 6 ti frelti, \
-  '< grep -i BPS* tle_ae.tls' u (column(col_s)):\
-  (sqrt((column(col_dx)*column(col_dx)+column(col_dy)*column(col_dy)))*(neoffset*eoffset*1e3)) \
+  ftoplot u 1:(sqrt(($2+$5)**2+($3+$6)**2)) w lp lt 7 lw 6 ti frelti, \
+  ftoplot u 1:(sqrt(($5)**2+($6)**2)) w lp lt 8 lw 3 dashtype '.' ti frefti
+
+#  '< grep -i BPS* tle_ae.tls' u (column(col_s)):\
+#  (sqrt((column(col_dx)*column(col_dx)+column(col_dy)*column(col_dy)))*(neoffset*eoffset*1e3)) \
   w lp lt 7 lw 3 dashtype '.' ti ftwissti
 
 unset multiplot
