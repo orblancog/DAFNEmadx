@@ -37,10 +37,10 @@ pertp   = -1;
  QUATT006: quadrupole,l := ltbq/2, K1 :=  ktt06;
 
  QUATT007: quadrupole,l := ltbq/2, K1 :=  ktt07;
- QUATT008: quadrupole,l := ltbq/2, K1 :=  ktt08;
- QUATT009: quadrupole,l := ltbq/2, K1 :=  ktt09;
- QUATT010: quadrupole,l := ltbq/2, K1 :=  ktt10;
- QUATT011: quadrupole,l := ltbq/2, K1 :=  ktt11;
+ QUATT008: quadrupole,l := ltbq/2, K1 :=  -ktt08;
+ QUATT009: quadrupole,l := ltbq/2, K1 :=  -ktt09;
+ QUATT010: quadrupole,l := ltbq/2, K1 :=  -ktt10;
+ QUATT011: quadrupole,l := ltbq/2, K1 :=  -ktt11;
 
 ! in  TR
  QUATR001: quadrupole,l := ltbq/2, K1 := ktr01;
@@ -60,14 +60,14 @@ pertp   = -1;
  QUATE001: quadrupole,l := ltbq/2, K1 := kte01;
  QUATE002: quadrupole,l := ltbq/2, K1 := kte02;
  QUATE003: quadrupole,l := ltbq/2, K1 := -kte03;
- QUATE004: quadrupole,l := ltbq/2, K1 := kte04;
+ QUATE004: quadrupole,l := ltbq/2, K1 := -kte04;
  QUATE005: quadrupole,l := ltbq/2, K1 := -kte05;
  QUATE006: quadrupole,l := ltbq/2, K1 := -kte06;
- QUATE007: quadrupole,l := ltbq/2, K1 := kte07;
- QUATE008: quadrupole,l := ltbq/2, K1 := kte08;
+ QUATE007: quadrupole,l := ltbq/2, K1 := -kte07;
+ QUATE008: quadrupole,l := ltbq/2, K1 := -kte08;
  QUATE009: quadrupole,l := ltbq/2, K1 := kte09;
 
- QUATE104: quadrupole,l := lsq/2, K1 :=  kte104;
+ QUATE104: quadrupole,l := lsq/2, K1 :=  -kte104;
  QUATE105: quadrupole,l := lsq/2, K1 :=  -kte105;
 //  QUATE105: drift, l := ltaq/2;
 
