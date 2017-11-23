@@ -13,7 +13,7 @@ col_dy=13
 col_dx=11
 
 #filabs = 'TLe_20170221122201_REFORB_15mA_inACC_dispersione.dat'
-filabs = 'TLe_20171116170514_REF2_UFSe.dat'
+filabs = 'TLe_20171116170332_REF_UFSe.dat'
 frefti = 'TLe 2017/02/21 REF UFS'
 
 #filrel = 'TLe_20170221122344_662M667_dispersione.dat'
