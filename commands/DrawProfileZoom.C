@@ -15,7 +15,7 @@
 
 using namespace std;
 
-int DrawProfile (const char * k, const char * invaxis = NULL) {//k is the flag name 
+int DrawProfileZoom (const char * k, const char * invaxis = NULL) {//k is the flag name 
   cout << "  Using flag : "<< k << endl;
   TString * myflname = new TString(k);
   int xsgn = 1;
@@ -175,14 +175,15 @@ int DrawProfile (const char * k, const char * invaxis = NULL) {//k is the flag n
   Double_t w =  600;
   Double_t h =  600;
   TCanvas * c1 = new TCanvas(betafl->Data(),betafl->Data(), w, h);
-  //c1->SetGrid();
+  c1->SetGrid();
   //  c1->Divide(2,1,0.01,0.01);
   c1->SetWindowSize(w + (w - c1->GetWw()), h + (h - c1->GetWh()));
   //  TCanvas *c1 = new TCanvas("c1");
   //  c1->cd(1);
 
   c1->Range(-40e-3*scalehv,-40e-3*scalehv,40e-3*scalehv,40e-3*scalehv);
-  c1->SetTicks(3,3);
+  //  c1->SetTicks(3,3);
+  c1->SetGrid();
   //  c1->SetFillColor(42);
   //  c1->SetGrid(5,5);
   //    c1->SetGridx(3);
@@ -244,7 +245,7 @@ int DrawProfile (const char * k, const char * invaxis = NULL) {//k is the flag n
 
   TString * trackfl = new TString("track");
   trackfl->Append(k);
-  TH2 * trackh = new TH2F(trackfl->Data(),trackfl->Data(),51,-9,9,51,-9,9);
+  TH2 * trackh = new TH2F(trackfl->Data(),trackfl->Data(),30,-18,18,30,-18,18);
   //  betafl->Append(".txt");
   track0in.open(trackfl->Data());
   //  track0in.open("trackSTART");
@@ -267,8 +268,37 @@ int DrawProfile (const char * k, const char * invaxis = NULL) {//k is the flag n
   cout << "  "<<trackfl->Data()<<" read."<<endl;
   track0in.close();
   //  c1->cd(2);
-  trackh->SetNdivisions(118,"X");
+  //  trackh->SetNdivisions(306,"XY");
+  //xaxis = trackh->GetXAxis();
+  //yaxis = trackh->GetYAxis();
+  //  trackh->GetXAxis()->SetMaxDigits(8);
+  
+  TPad *center_pad = new TPad("center_pad", "center_pad",0.0,0.0,0.6,0.6);
+  center_pad->Draw();
+
+  right_pad = new TPad("right_pad", "right_pad",0.55,0.0,1.0,0.6);
+  right_pad->Draw();
+
+  top_pad = new TPad("top_pad", "top_pad",0.0,0.55,0.6,1.0);
+  top_pad->Draw();
+
+  diag_pad = new TPad("diag_pad", "diag_pad",0.55,0.55,1.0,1.0);
+  diag_pad->Draw();
+
+
+  TH1D * projh2X = trackh->ProjectionX();
+  TAxis * xaxis  = projh2X->GetXaxis();
+  xaxis->SetNdivisions(312,kFALSE);
+  TH1D * projh2Y = trackh->ProjectionY();
+  TAxis * yaxis  = projh2Y->GetXaxis();
+  yaxis->SetNdivisions(312,kFALSE);
+
+  center_pad->cd();
+  center_pad->SetGrid();
+  trackh->SetNdivisions(-312,"xy");
   trackh->Draw("colz");
+
+  
   trackh->SetTitle(trackfl->Data());
   if (xsgn == -1)  trackh->GetXaxis()->SetTitle("x [mm] (mirror)");
   else trackh->GetXaxis()->SetTitle("x [mm]");
@@ -277,12 +307,26 @@ int DrawProfile (const char * k, const char * invaxis = NULL) {//k is the flag n
   trackh->GetXaxis()->CenterTitle();
   trackh->GetYaxis()->CenterTitle();
   cout << "  Correlation : "<< trackh->GetCorrelationFactor()<< endl;
+  
+  top_pad->cd();
+  //  top_pad->SetGrid();
+  projh2X->SetFillColor(kBlue+1);
+  projh2X->Draw("bar");
+
+  right_pad->cd();
+  //  right_pad->SetGrid();
+  projh2Y->SetFillColor(kBlue-2);
+  projh2Y->Draw("hbar");
+
+  c1->cd();
 
   //bpipe->Draw();
   //  el2->Draw();
   cout << "Setting grid..."<<c1->GetGridx()<<endl;
   c1->RedrawAxis();
-  c1->SaveAs(myflname->Append("prof.pdf"));
+
+  
+  //  c1->SaveAs(myflname->Append("prof.pdf"));
 
   return 0;
 }
