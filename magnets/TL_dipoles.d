@@ -1,4 +1,4 @@
-!! Dipoles in the TLe
+!! Dipoles in the TL
 ! ! units : \alpha [rad (°)], L [m], Energy [GeV]
 ! about the var names : b2d means 2deg bending magnet, and so on and so on
 
@@ -225,43 +225,43 @@ DVRTL002b: SBEND, L :=  lb11d/2.0,
 	   E1=0,E2=e2b11d;
 
 SPTA2001 : SBEND, L :=  lb2d/2.0,
-	   TILT     :=  0 + bpol*twopi/2,
-	   ANGLE    :=  apol*hdon*ab2d/2.0,       
+	   TILT     :=  0,! + bpol*twopi/2,
+	   ANGLE    :=  hdon*ab2d/2.0,       
 	   K1       :=  k1b2d*abs(SPTA2001);
 SPTA2002 : SBEND, L :=  lb34d/2.0,
-	   TILT     :=  0 + bpol*twopi/2,
-	   ANGLE    :=  apol*hdon*ab34d/2.0,      
+	   TILT     :=  0,! + bpol*twopi/2,
+	   ANGLE    :=  hdon*ab34d/2.0,      
 	   K1:=k1b34d*abs(SPTA2002);
 DVRTR001a: SBEND, L :=  lb11d/2.0,
-	   TILT     :=  twopi/4 + bpol*twopi/2,
-           ANGLE    :=  apol*vdon*ab11d/2.0,
+	   TILT     :=  twopi/4,! + bpol*twopi/2,
+           ANGLE    :=  vdon*ab11d/2.0,
 	   E1=e1b11d,E2=0;
 DVRTR001b: SBEND, L :=  lb11d/2.0,
-           TILT     :=  twopi/4 + bpol*twopi/2,
-           ANGLE    :=  apol*vdon*ab11d/2.0,
+           TILT     :=  twopi/4,! + bpol*twopi/2,
+           ANGLE    :=  vdon*ab11d/2.0,
 	   E1=0,E2=e2b11d;
 DVRTR002a: SBEND, L :=  lb11d/2.0,
-	   TILT     :=  twopi/4 + bpol*twopi/2,
-	   ANGLE    :=  -apol*vdon*ab11d/2.0,
-	   E1=e1b11d,E2=0;
+	   TILT     :=  twopi/4,! + bpol*twopi/2,
+	   ANGLE    := -vdon*ab11d/2.0,
+	   E1=-e1b11d,E2=0;
 DVRTR002b: SBEND, L :=lb11d/2.0,
-	   TILT     := twopi/4 + bpol*twopi/2,
-           ANGLE    := -apol*vdon*ab11d/2.0,
-	   E1=0,E2=e2b11d;
+	   TILT     := twopi/4,! + bpol*twopi/2,
+           ANGLE    := -vdon*ab11d/2.0,
+	   E1=0,E2=-e2b11d;
 
 DHYTT001a: SBEND, L :=  lb36d/2.0,
-           TILT     :=  0 + cpol*bpol*twopi/2,
-           ANGLE    := -dpol*apol*hdon*ab36d/2.0,
+           TILT     :=  0,! + cpol*bpol*twopi/2,
+           ANGLE    := -hdon*ab36d/2.0,
 	   K1       :=  k1b36d*abs(DHYTT001),
-	   E1=e1b36d,E2=0;
+	   E1=-e1b36d,E2=0;
 DHYTT001b: SBEND, L :=  lb36d/2.0,
-	   TILT     :=  0 + cpol*bpol*twopi/2,
-           ANGLE    := -dpol*apol*hdon*ab36d/2.0,
+	   TILT     :=  0,! + cpol*bpol*twopi/2,
+           ANGLE    := -hdon*ab36d/2.0,
 	   K1       :=  k1b36d*abs(DHYTT001),
-	   E1=0,E2=e2b36d;
+	   E1=0,E2=-e2b36d;
 DHPTT001 : SBEND, L :=  lb45d/2.0,
-	   TILT     :=  0 + bpol*twopi/2,
-	   ANGLE    :=  apol*hdon*ab45d/2.0,
+	   TILT     :=  0,! + bpol*twopi/2,
+	   ANGLE    :=  hdon*ab45d/2.0,
 	   K1       :=  k1b45d*abs(DHPTT001);
 
 ! in LINAC
