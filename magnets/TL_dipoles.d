@@ -6,7 +6,7 @@
 if (beam->charge == -1) {
   system, 'echo "  TLset : electron mode"';
   bpol  := -1;! tilt twopi/2
-  apol  := -1;! swap angle
+  apol  :=  1;! swap angle
   cpol  :=  1;! dhpty001 pol
   dpol  :=  1;
   pbon  :=  0;! pulsed bending off
@@ -74,8 +74,8 @@ lb11d  := 0.35;
 ab11d  := 0.192;
 ib11d  := 100.19;
 ib11dm := 120;
-e1b11d := 0.095993;
-e2b11d := 0.095993;  
+e1b11d := ab11d/2;
+e2b11d := ab11d/2;  
 ! linear
 c1b11d := lb11d*clight/(1e9*eEnergy)*1.1010e-2;
 c0b11d := lb11d*clight/(1e9*eEnergy)*1.0514e-3;
@@ -195,8 +195,7 @@ e2b13p6d  := ab13p6d/2;
 
 !!!!
 ! new bending def
-! e+  horizontal ( + is towards negative x ), vertical ( + is downwards )
-! e-  rotated by -tau/2 and angle swapped
+! horizontal ( + is towards negative x ), vertical ( + is downwards )
 ! bends with E1 and E2 != 0 are split in BENDa and BENDb 
 
 !in the ACC 
@@ -225,134 +224,162 @@ DVRTL002b: SBEND, L :=  lb11d/2.0,
 	   E1=0,E2=e2b11d;
 
 SPTA2001 : SBEND, L :=  lb2d/2.0,
-	   TILT     :=  0,! + bpol*twopi/2,
+	   TILT     :=  0,
 	   ANGLE    :=  hdon*ab2d/2.0,       
 	   K1       :=  k1b2d*abs(SPTA2001);
 SPTA2002 : SBEND, L :=  lb34d/2.0,
-	   TILT     :=  0,! + bpol*twopi/2,
+	   TILT     :=  0,
 	   ANGLE    :=  hdon*ab34d/2.0,      
 	   K1:=k1b34d*abs(SPTA2002);
 DVRTR001a: SBEND, L :=  lb11d/2.0,
-	   TILT     :=  twopi/4,! + bpol*twopi/2,
+	   TILT     :=  twopi/4,
            ANGLE    :=  vdon*ab11d/2.0,
 	   E1=e1b11d,E2=0;
 DVRTR001b: SBEND, L :=  lb11d/2.0,
-           TILT     :=  twopi/4,! + bpol*twopi/2,
+           TILT     :=  twopi/4,
            ANGLE    :=  vdon*ab11d/2.0,
 	   E1=0,E2=e2b11d;
 DVRTR002a: SBEND, L :=  lb11d/2.0,
-	   TILT     :=  twopi/4,! + bpol*twopi/2,
+	   TILT     :=  twopi/4,
 	   ANGLE    := -vdon*ab11d/2.0,
 	   E1=-e1b11d,E2=0;
 DVRTR002b: SBEND, L :=lb11d/2.0,
-	   TILT     := twopi/4,! + bpol*twopi/2,
+	   TILT     := twopi/4,
            ANGLE    := -vdon*ab11d/2.0,
 	   E1=0,E2=-e2b11d;
 
 DHYTT001a: SBEND, L :=  lb36d/2.0,
-           TILT     :=  0,! + cpol*bpol*twopi/2,
-           ANGLE    := -hdon*ab36d/2.0,
+           TILT     :=  0,
+           ANGLE    := -apol*hdon*ab36d/2.0,
 	   K1       :=  k1b36d*abs(DHYTT001),
 	   E1=-e1b36d,E2=0;
 DHYTT001b: SBEND, L :=  lb36d/2.0,
-	   TILT     :=  0,! + cpol*bpol*twopi/2,
-           ANGLE    := -hdon*ab36d/2.0,
+	   TILT     :=  0,
+           ANGLE    := -apol*hdon*ab36d/2.0,
 	   K1       :=  k1b36d*abs(DHYTT001),
 	   E1=0,E2=-e2b36d;
 DHPTT001 : SBEND, L :=  lb45d/2.0,
-	   TILT     :=  0,! + bpol*twopi/2,
+	   TILT     :=  0,
 	   ANGLE    :=  hdon*ab45d/2.0,
 	   K1       :=  k1b45d*abs(DHPTT001);
 
 ! in LINAC
 DHPTT002 : SBEND, L :=  lb45d/2.0,
-	   TILT     :=  0 + bpol*twopi/2,
-	   ANGLE    := -apol*hdon*ab45d/2.0,
+	   TILT     :=  0,
+	   ANGLE    := -hdon*ab45d/2.0,
 	   K1       :=  k1b45d*abs(DHPTT002);
 DHRTT001a: SBEND, L :=  lb30d/2.0,
-	   TILT     :=  0 + bpol*twopi/2,
-           ANGLE    := -apol*hdon*ab30d/2.0,
+	   TILT     :=  0,
+           ANGLE    := -hdon*ab30d/2.0,
 	   K1       :=  k1b30d*abs(DHRTT001),
-	   E1=e1b30d,E2=0;
+	   E1=-e1b30d,E2=0;
 DHRTT001b: SBEND, L :=  lb30d/2.0,
-	   TILT     :=  0 + bpol*twopi/2,
-           ANGLE    := -apol*hdon*ab30d/2.0,
+	   TILT     :=  0,
+           ANGLE    := -hdon*ab30d/2.0,
 	   K1       :=  k1b30d*abs(DHRTT001),
-	   E1=0,E2=e2b30d;
+	   E1=0,E2=-e2b30d;
 DHSTT001 : SBEND, L :=  lb45d/2.0,
-           TILT     :=  0 + bpol*twopi/2,
-	   ANGLE    := -apol*hdon*ab45d/2.0,
+           TILT     :=  0,
+	   ANGLE    := -hdon*ab45d/2.0,
 	   K1       :=  k1b45d*abs(DHSTT001);
 DVRTT001a: SBEND, L :=lb11d/2.0,
-	   TILT     :=  twopi/4 + bpol*twopi/2,
-	   ANGLE    :=  apol*vdon*ab11d/2.0,
+	   TILT     :=  twopi/4,
+	   ANGLE    :=  vdon*ab11d/2.0,
 	   E1=e1b11d,E2=0;
 DVRTT001b: SBEND, L :=  lb11d/2.0,
-	   TILT     :=  twopi/4 + bpol*twopi/2,
-	   ANGLE    :=  apol*vdon*ab11d/2.0,
+	   TILT     :=  twopi/4,
+	   ANGLE    :=  vdon*ab11d/2.0,
 	   E1=0,E2=e2b11d;
 DVRTT002a: SBEND, L :=  lb11d/2.0,
-	   TILT     :=  twopi/4 + bpol*twopi/2,
-	   ANGLE    := -apol*vdon*ab11d/2.0,
-	   E1=e1b11d,E2=0;
+	   TILT     :=  twopi/4,
+	   ANGLE    := -vdon*ab11d/2.0,
+	   E1=-e1b11d,E2=0;
 DVRTT002b: SBEND, L :=  lb11d/2.0,
-	   TILT     :=  twopi/4 + bpol*twopi/2,
-           ANGLE    := -apol*vdon*ab11d/2.0,
-           E1=0,E2=e2b11d;
+	   TILT     :=  twopi/4,
+           ANGLE    := -vdon*ab11d/2.0,
+           E1=0,E2=-e2b11d;
 
 ! in DAFNE
+! e+
 DHRTP001a: SBEND, L :=  lb18d/2,! pulsed dipole not used during e- injection
-	   TILT     :=  0 + bpol*twopi/2,
-	   ANGLE    := -pbon*apol*hdon*ab18d/2,
-	   E1=e1b18d,E2=0;
+	   TILT     :=  0,
+	   ANGLE    := -pbon*hdon*ab18d/2,
+	   E1=-e1b18d,E2=0;
 DHRTP001b: SBEND, L :=  lb18d/2,! pulsed dipole not used during e- injection
-	   TILT     :=  0 + bpol*twopi/2,
-	   ANGLE    := -pbon*apol*hdon*ab18d/2,
-	   E1=0,E2=e2b18d;
+	   TILT     :=  0,
+	   ANGLE    := -pbon*hdon*ab18d/2,
+	   E1=0,E2=-e2b18d;
 DHRTP002a: SBEND, L :=  lb13p6d/2,! pulsed dipole not used during e- injection
-	   TILT     :=  0 + bpol*twopi/2,
-	   ANGLE    := -pbon*apol*ab13p6d/2,
-	   E1=e1b13p6d,E2=0;
+	   TILT     :=  0,
+	   ANGLE    := -pbon*ab13p6d/2,
+	   E1=-e1b13p6d,E2=0;
 DHRTP002b: SBEND, L :=  lb13p6d/2,! pulsed dipole not used during e- injection
-	   TILT     :=  0 + bpol*twopi/2,
-	   ANGLE    := -pbon*apol*ab13p6d/2,
-	   E1=0,E2=e2b13p6d;
+	   TILT     :=  0,
+	   ANGLE    := -pbon*ab13p6d/2,
+	   E1=0,E2=-e2b13p6d;
+SPTPL101:  SBEND, L :=  lb34d,
+	   TILT     :=  0,
+	   ANGLE    := -hdon*ab34d,       
+	   K1       :=  k1b34d*abs(SPTEL101);
+SPTPL102:  SBEND, L :=  lb2d,
+           TILT     :=  0,
+           ANGLE    := -hdon*ab2d,       
+	   K1       :=  k1b2d*abs(SPTEL102);
 
-
-DVRTE001a : SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:=-1*   vdon*ab11d/2.0,
-	 E1=e1b11d,E2=0;
-DVRTE001b : SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:=-1* vdon*ab11d/2.0,
-	 E1=0,E2=e2b11d;
-DVRTE002a : SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:= vdon*ab11d/2.0,
-	 E1=e1b11d,E2=0;
-DVRTE002b : SBEND,L:=lb11d/2.0,TILT:=-TWOPI/4,	ANGLE:= vdon*ab11d/2.0,
-	 E1=0,E2=e2b11d;
-DHRTE001a : SBEND,L:=lb30p3d/2.0,TILT:=TWOPI/2,			ANGLE:=-1*hdon*ab30p3d/2.0,
-	 K1:=k1b30p3d*abs(DHRTE001),
-	 E1=e1b30p3d,E2=0;
-DHRTE001b : SBEND,L:=lb30p3d/2.0,TILT:=TWOPI/2,			ANGLE:=-1*hdon*ab30p3d/2.0,
-	 K1:=k1b30p3d*abs(DHRTE001),
-	 E1=0,E2=e2b30p3d;
-DHRTE002 : SBEND,L:=lb31d,TILT:=-TWOPI/2,			ANGLE:= hdon*ab31d,       
-	 K1:=k1b31d*abs(DHRTE002),
-	 E1=e1b31d,E2=e2b31d;
-DHRTE003 : SBEND,L:=lb31d,TILT:=-TWOPI/2,			ANGLE:= hdon*ab31d,
-	 K1:=k1b31d*abs(DHRTE003),
-	 E1=e1b31d,E2=e2b31d;
-DVRTE003 : SBEND,L:=lb11d,TILT:=-TWOPI/4,	ANGLE:=vdon*ab11d,
-	 E1=e1b11d,E2=e2b11d;
-DVRTE004 : SBEND,L:=lb11d,TILT:=-TWOPI/4,	ANGLE:=-1* vdon*ab11d,
-	 E1=e1b11d,E2=e2b11d;
-
-SPTEL101 : SBEND,L:=lb34d,TILT:=-TWOPI/2,			ANGLE:= hdon*ab34d,       
-	 K1:=k1b34d*abs(SPTEL101);
-SPTEL102 : SBEND,L:=lb2d,TILT:=-TWOPI/2,			ANGLE:= hdon*ab2d,       
-	 K1:=k1b2d*abs(SPTEL102);
-
-SPTPL101 : SBEND,L:=lb34d,TILT:=-TWOPI/2,			ANGLE:= hdon*ab34d,       
-	 K1:=k1b34d*abs(SPTEL101);
-SPTPL102 : SBEND,L:=lb2d,TILT:=-TWOPI/2,			ANGLE:= hdon*ab2d,       
-	 K1:=k1b2d*abs(SPTEL102);
+!in DAFNE
+! e-
+DVRTE001a: SBEND, L :=  lb11d/2.0,
+	   TILT     :=  twopi/4,
+	   ANGLE    :=  vdon*ab11d/2.0,
+	   E1=e1b11d,E2=0;
+DVRTE001b: SBEND, L :=  lb11d/2.0,
+	   TILT     :=  twopi/4,
+           ANGLE    :=  vdon*ab11d/2.0,
+	   E1=0,E2=e2b11d;
+DVRTE002a: SBEND, L :=  lb11d/2.0,
+           TILT     :=  twopi/4,
+           ANGLE    := -vdon*ab11d/2.0,
+	   E1=-e1b11d,E2=0;
+DVRTE002b: SBEND, L :=  lb11d/2.0,
+	   TILT     :=  twopi/4,
+           ANGLE    := -vdon*ab11d/2.0,
+	   E1=0,E2=-e2b11d;
+DHRTE001a: SBEND, L :=  lb30p3d/2.0,
+	   TILT     :=  0,
+           ANGLE    :=  hdon*ab30p3d/2.0,
+	   K1       :=  k1b30p3d*abs(DHRTE001),
+	   E1=e1b30p3d,E2=0;
+DHRTE001b: SBEND, L :=  lb30p3d/2.0,
+           TILT     :=  0,
+           ANGLE    :=  hdon*ab30p3d/2.0,
+	   K1       :=  k1b30p3d*abs(DHRTE001),
+	   E1=0,E2=e2b30p3d;
+DHRTE002:  SBEND, L :=  lb31d,
+           TILT     :=  0,
+           ANGLE    := -hdon*ab31d,       
+	   K1       :=  k1b31d*abs(DHRTE002),
+	   E1=-e1b31d,E2=-e2b31d;
+DHRTE003:  SBEND, L :=  lb31d,
+	   TILT     :=  0,
+           ANGLE    := -hdon*ab31d,
+	   K1       :=  k1b31d*abs(DHRTE003),
+	   E1=-e1b31d,E2=-e2b31d;
+DVRTE003:  SBEND, L :=  lb11d,
+	   TILT     :=  twopi/4,
+           ANGLE    := -vdon*ab11d,
+	   E1=-e1b11d,E2=-e2b11d;
+DVRTE004:  SBEND, L :=  lb11d,
+	   TILT     :=  twopi/4,
+           ANGLE    :=  vdon*ab11d,
+	   E1=e1b11d,E2=e2b11d;
+SPTEL101:  SBEND, L :=  lb34d,
+           TILT     :=  0,
+           ANGLE    := -hdon*ab34d,       
+	   K1       :=  k1b34d*abs(SPTEL101);
+SPTEL102:  SBEND, L :=  lb2d,
+           TILT     :=  0,
+	   ANGLE    := -hdon*ab2d,       
+           K1       :=  k1b2d*abs(SPTEL102);
 
 ! end of new bending def
 ! start of magnetic angle from currents+sign def (vertical + is downwards )
