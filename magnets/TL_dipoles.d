@@ -167,7 +167,7 @@ ib36d   := 95.34;
 ib36dm  := 120;
 c0b36d  := lb36d*clight/(1e9*eEnergy)*3.8349e-3;
 c1b36d  := lb36d*clight/(1e9*eEnergy)*1.1171e-2;
-e1b36d  := 0.6283185308;
+e1b36d  := 0.6283185308*0.6;
 e2b36d  := 0;
 k1b36d  := 0;
 
@@ -199,6 +199,7 @@ e2b13p6d  := ab13p6d/2;
 ! bends with E1 and E2 != 0 are split in BENDa and BENDb 
 
 !in the ACC 
+! tl
 SPTA1001 : SBEND, L :=  lb2d/2.0,
 	   TILT     :=  0,
 	   ANGLE    := -hdon*ab2d/2.0,       
@@ -223,7 +224,7 @@ DVRTL002b: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    := -vdon*ab11d/2.0,
 	   E1=0,E2=-e2b11d;
-
+! tr
 SPTA2001 : SBEND, L :=  lb2d/2.0,
 	   TILT     :=  0,
 	   ANGLE    :=  hdon*ab2d/2.0,       
@@ -248,7 +249,7 @@ DVRTR002b: SBEND, L :=lb11d/2.0,
 	   TILT     := twopi/4,
            ANGLE    := -vdon*ab11d/2.0,
 	   E1=0,E2=-e2b11d;
-
+!tt
 DHYTT001a: SBEND, L :=  lb36d/2.0,
            TILT     :=  0,
            ANGLE    := -apol*hdon*ab36d/2.0,
@@ -265,6 +266,7 @@ DHPTT001 : SBEND, L :=  lb45d/2.0,
 	   K1       :=  k1b45d*abs(DHPTT001);
 
 ! in LINAC
+!tt
 DHPTT002 : SBEND, L :=  lb45d/2.0,
 	   TILT     :=  0,
 	   ANGLE    := -hdon*ab45d/2.0,
@@ -301,7 +303,7 @@ DVRTT002b: SBEND, L :=  lb11d/2.0,
            E1=0,E2=-e2b11d;
 
 ! in DAFNE
-! e+
+! e+ tp
 DHRTP001a: SBEND, L :=  lb18d/2,! pulsed dipole not used during e- injection
 	   TILT     :=  0,
 	   ANGLE    := -pbon*hdon*ab18d/2,
@@ -328,7 +330,7 @@ SPTPL102:  SBEND, L :=  lb2d,
 	   K1       :=  k1b2d*abs(SPTEL102);
 
 !in DAFNE
-! e-
+! e- te
 DVRTE001a: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    :=  vdon*ab11d/2.0,
