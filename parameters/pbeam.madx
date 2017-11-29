@@ -13,4 +13,4 @@ call, file='parameters/thebeam.madx';
 beam, particle=positron,energy=pEnergy,radiate=false,
       ex=emitx,ey=emity,
       sigt=bunchl,sige=esprd,et=bunchl*esprd,
-      bunched=true,kbunch=100,bcurrent=0.01;
+      bunched=true,kbunch=100,bcurrent=0.01,bv=1;
