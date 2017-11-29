@@ -87,7 +87,7 @@ call, file="commands/TLp_showbeta.madx";
 !value,(9e-3/6)^2/emity;
 
 
-stop;
+!stop;
 
 ! !!! matching flag FL1TT003
 ! !Variable                 Final Value  Initial Value Lower Limit  Upper Limit 

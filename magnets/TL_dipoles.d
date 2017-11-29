@@ -167,7 +167,7 @@ ib36d   := 95.34;
 ib36dm  := 120;
 c0b36d  := lb36d*clight/(1e9*eEnergy)*3.8349e-3;
 c1b36d  := lb36d*clight/(1e9*eEnergy)*1.1171e-2;
-e1b36d  := 0.6283185308*0.6;
+e1b36d  := 0.6283185308;
 e2b36d  := 0;
 k1b36d  := 0;
 
@@ -236,11 +236,11 @@ SPTA2002 : SBEND, L :=  lb34d/2.0,
 DVRTR001a: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
            ANGLE    :=  vdon*ab11d/2.0,
-	   E1=-e1b11d,E2=0;
+	   E1=e1b11d,E2=0;
 DVRTR001b: SBEND, L :=  lb11d/2.0,
            TILT     :=  twopi/4,
            ANGLE    :=  vdon*ab11d/2.0,
-	   E1=0,E2=-e2b11d;
+	   E1=0,E2=e2b11d;
 DVRTR002a: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    := -vdon*ab11d/2.0,

@@ -114,6 +114,7 @@ set yrange [0:5]
 #unset yrange
 set key left top 
 set ylabel "sqrt(x^2+y^2)" font ',20' offset -3
+set xlabel "s [m]" offset 0,-1 font ',20'
 p \
   filrel u 1:(sqrt($2*$2+$3*$3)) w lp lt 7 lw 6 ti frelti, \
   ftwbps u (column(col_s)):\
