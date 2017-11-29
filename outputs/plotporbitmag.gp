@@ -80,7 +80,10 @@ set key left bottom
 p \
   filrel u 1:2 w lp lt 7 lw 6 ti frelti, \
   0 lw 3 lt -1 dashtype 2 ti '', \
-  ftwbps u (column(col_s)):(column(col_s)<30 ? \
+  ftwbps u (column(col_s)):(column(col_s)<10 ? \
+  (-1*column(col_dx)*(neoffset*eoffset*1e3)) : 1/0) \
+  w lp lt 7 lw 3 dashtype '.-____' ti '',\
+  ftwbps u (column(col_s)):(column(col_s)<30  && column(col_s)>10? \
   (column(col_dx)*(neoffset*eoffset*1e3)) : 1/0) \
   w lp lt 7 lw 3 dashtype '.' ti ftwissti,\
   ftwbps u (column(col_s)):(column(col_s)<30 ? \
