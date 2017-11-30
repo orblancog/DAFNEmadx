@@ -148,8 +148,8 @@ call, file="commands/TLp_showbeta.madx";
 ! !stop;
 
 ! Generating particles 
-system, "ln -s outputs/TLe_betaSTART.txt betaSTART.txt";
-system, "ln -s outputs/TLe_beam0.txt beam0.txt";
+system, "ln -s outputs/TLp_betaSTART.txt betaSTART.txt";
+system, "ln -s outputs/TLp_beam0.txt beam0.txt";
 ! edit commands/GenerateInrays.C when offsets in the phase space are needed
 ! GenerateInrays.C needs two parameters : (file_from_showbeta,Nparticles)
 !   beam is loaded from beam0.txt 
@@ -174,7 +174,7 @@ resplit,even;
 !   select, flag=ptc_twiss,column=name,keyword,s,beta11, beta22, alfa11, alfa22;
 !   ptc_twiss,icase=5,closed_orbit,file="myDAFNE.ptctwiss",summary_file,table;
 !ptc_observe, place="IP.1";
-call, file="commands/TLe_observe.ptc.madx";
+call, file="commands/TLp_observe.ptc.madx";
 !set particles
 !ptc_start, X=0, PX=0, Y=0, PY=0, T=0, PT=0;
 !ptc_start, X=1e-3, PX=1e-3, Y=1e-3, PY=1e-3, T=1e-9, PT=1e-9;

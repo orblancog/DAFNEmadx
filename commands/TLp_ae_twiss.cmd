@@ -1,10 +1,10 @@
 ! TLp twiss
 ! Tech. Note. I-16 pag.~2
- betxacc := 3.07;
- betyacc := 4.041;
+ betxacc := 4.5;!3.07;
+ betyacc := 3.5;!4.041;
  alfxacc := 1.017;
  alfyacc := 0.458;
- dxacc   := 0.2166557213;
+ dxacc   := 0.39;!0.2166557213;
  dyacc   := 0.05440481193;
  dpxacc  := 0;
  dpyacc  := 0;

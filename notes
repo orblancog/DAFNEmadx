@@ -1,0 +1,2 @@
+diff -y currents/eTLe_currents.madx currents/eTLe_20171112_0324_564.3.madx | awk '!/\!/ && /\|/'
+

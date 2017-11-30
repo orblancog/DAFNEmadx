@@ -1,0 +1,11 @@
+ptc_observe, place=FL2A1001;
+ptc_observe, place=FL2TL001;
+ptc_observe, place=FL2TL002;
+ptc_observe, place=FL2TT001;
+ptc_observe, place=FL2TT002;
+ptc_observe, place=FL1TT001;
+ptc_observe, place=FL1TT002;
+ptc_observe, place=FL1TT003;
+ptc_observe, place=FL1TP001;
+ptc_observe, place=FL1TP002;
+ptc_observe, place=FL1PL101;
