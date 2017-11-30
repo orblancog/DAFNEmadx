@@ -116,8 +116,8 @@ int DrawProfileZoom (const char * k, const char * invaxis = NULL) {//k is the fl
   cout << "  Calculating gamma[xy]..."<<endl;
   gammax = (1 + alfax*alfax )/betax;
   gammay = (1 + alfay*alfay )/betay;
-  cout <<"    gammax "<<gammax<<endl;
-  cout <<"    gammay "<<gammay<<endl;
+  cout <<"    optics gammax "<<gammax<<endl;
+  cout <<"    optics gammay "<<gammay<<endl;
   }
   // Reading beam info
   beam0in.open("beam0.txt");
@@ -245,7 +245,7 @@ int DrawProfileZoom (const char * k, const char * invaxis = NULL) {//k is the fl
 
   TString * trackfl = new TString("track");
   trackfl->Append(k);
-  TH2 * trackh = new TH2F(trackfl->Data(),trackfl->Data(),30,-18,18,30,-18,18);
+  TH2 * trackh = new TH2F(trackfl->Data(),trackfl->Data(),90,-18,18,90,-18,18);
   //  betafl->Append(".txt");
   track0in.open(trackfl->Data());
   //  track0in.open("trackSTART");
@@ -288,14 +288,26 @@ int DrawProfileZoom (const char * k, const char * invaxis = NULL) {//k is the fl
 
   TH1D * projh2X = trackh->ProjectionX();
   TAxis * xaxis  = projh2X->GetXaxis();
-  xaxis->SetNdivisions(312,kFALSE);
   TH1D * projh2Y = trackh->ProjectionY();
   TAxis * yaxis  = projh2Y->GetXaxis();
-  yaxis->SetNdivisions(312,kFALSE);
 
   center_pad->cd();
   center_pad->SetGrid();
-  trackh->SetNdivisions(-312,"xy");
+
+  if ( strcmp(k,"FL2A1001") == 0 || 
+       strcmp(k,"FL2PL101") == 0 || 
+       strcmp(k,"FL2A2001") == 0 || 
+       strcmp(k,"FL2EL101") == 0 )
+    {
+      yaxis->SetNdivisions(118,kFALSE);
+      xaxis->SetNdivisions(118,kFALSE);
+      trackh->SetNdivisions(-118,"xy");
+  }else{
+      yaxis->SetNdivisions(312,kFALSE);
+      xaxis->SetNdivisions(312,kFALSE);
+      trackh->SetNdivisions(-312,"xy");
+  }
+
   trackh->Draw("colz");
 
   
