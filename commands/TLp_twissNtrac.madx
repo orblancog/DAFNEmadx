@@ -59,7 +59,7 @@ value, quatt003->k1*quatt003->l;
 value, quatt004->k1*quatt004->l;
 value, quatt005->k1*quatt005->l;
 
-stop;
+!stop;
 
 
 ! ! trying some errors

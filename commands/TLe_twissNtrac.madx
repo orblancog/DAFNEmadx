@@ -1,5 +1,5 @@
 TITLE, "TLe";
-option, -info,-echo,-warn;
+option, -info,-echo,warn;
 
 ! the beam
 call, file="parameters/ebeam.madx";
@@ -59,7 +59,19 @@ value, quatt003->k1*quatt003->l;
 value, quatt004->k1*quatt004->l;
 value, quatt005->k1*quatt005->l;
 
-stop;
+save, sequence = e_ae, file='outputs/tleut.seq';
+call, file='outputs/tleut.seq';
+seqedit, sequence = e_ae;
+flatten;
+endedit;
+use, sequence=e_ae;
+!select, flag=error, full;
+select, flag=error, clear;
+select, flag=error, pattern="QUATT003*";
+ealign, dy = 00e-3;
+!esave, file=outputs/err.file;
+
+!stop;
 
 ! fitting only betas to fl1tt003
 !quatt008->k1       =       -1.575735135 ;
