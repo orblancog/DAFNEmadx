@@ -1,5 +1,6 @@
 ! TLp twiss
 ! Tech. Note. I-16 pag.~2
+! IPAC 2014, THPRI015, Dafne Transfer Line for KLOE-2 PHYSICS run figs.~2 and 4
  betxacc := 3.07;
  betyacc := 4.041;
  alfxacc := 1.017;

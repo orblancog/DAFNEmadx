@@ -70,12 +70,14 @@ k1b34d := 0;
 !   \alpha = 0.192 (11°), L nom = 0.35, I nom=100.19
 ! \alpha [rad], L [m]
 ! kickangle = Length*clight/(1e9*Energy[GeV]) * B[T](I[A])
+! 0.6 factor in the fringe focusing from 2G/3L 2G=40cm, L=35cm
+! Wiederman. Particle Acc. Physics 3rd Ed. Rectangunlar magnet
 lb11d  := 0.35;
 ab11d  := 0.192;
 ib11d  := 100.19;
 ib11dm := 120;
-e1b11d := ab11d/2*0.7;
-e2b11d := ab11d/2*0.7;  
+e1b11d := ab11d/2*0.6;
+e2b11d := ab11d/2*0.6;  
 ! linear
 c1b11d := lb11d*clight/(1e9*eEnergy)*1.1010e-2;
 c0b11d := lb11d*clight/(1e9*eEnergy)*1.0514e-3;
@@ -155,7 +157,7 @@ k1b30p3d := 0;
 e1b30p3d := 0.1*ab30p3d/2.0;
 e2b30p3d := 0.1*ab30p3d/2.0;
 
-!Y  magnet for e- extraction  beam out  FROM ACCUMULATOR
+!Y  magnet for e+e- injection/extraction in ACCUMULATOR
 ! DAFNE Technical Note : C-17 pag.~4
 !   Dipoles DHYTT001
 !   \alpha = 0.62832 (36°), L nom = 1, I nom=95.34
@@ -167,7 +169,7 @@ ib36d   := 95.34;
 ib36dm  := 120;
 c0b36d  := lb36d*clight/(1e9*eEnergy)*3.8349e-3;
 c1b36d  := lb36d*clight/(1e9*eEnergy)*1.1171e-2;
-e1b36d  := 0.6283185308;
+e1b36d  := 0.6283185308*1;
 e2b36d  := 0;
 k1b36d  := 0;
 
