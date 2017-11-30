@@ -23,9 +23,13 @@ frelti = 'dispersive orbit 20170221 DIP ACC 615-614 A'
 
 neoffset = 1.0
 eoffset  = 0.7e-3#0.3164e-4
-#ftwiss = 'tle_ae.tls'
+ftwiss = 'tle_ae.tls'
 ftwissti = '0.7x10^{-3} . {/Symbol h}_y model today'
 
+ftwbend = '< grep -i bend '.ftwiss
+ftwquad = '< grep -i quad '.ftwiss
+ftwsext = '< grep -i sext '.ftwiss
+ftwbps  = '< grep -i BPS* '.ftwiss
 
 set multiplot
 
@@ -47,10 +51,10 @@ unset ylabel
 unset ytics
 unset xlabel
 set style fill solid
-p '< grep -i SBEND tle_ae.tls'      u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ? -0.5:1/0):(column(col_l)) w boxes axis x1y1 lt 3 lw 1 ti '',\
-  '< grep -i SBEND tle_ae.tls'      u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ?  0.5:1/0):(column(col_l)) w boxes axis x1y1 lt 3 lw 1 ti '',\
-  '< grep -i QUADRUPOLE tle_ae.tls' u (column(col_s)-s0-column(col_l)/2):(column(col_k1l)/abs(column(col_k1l))):(column(col_l)) w boxes axis x1y1 lt 1 lw 1 ti '', \
-  '< grep -i SEXTUPOLE tle_ae.tls'  u (column(col_s)-s0-column(col_l)/2):(column(col_k2l)/abs(column(col_k2l))):(column(col_l)) w boxes axis x1y1 lt 2 lw 1 ti '',\
+p ftwbend      u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ? -0.5:1/0):(column(col_l)) w boxes axis x1y1 lt 3 lw 1 ti '',\
+  ftwbend      u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ?  0.5:1/0):(column(col_l)) w boxes axis x1y1 lt 3 lw 1 ti '',\
+  ftwquad u (column(col_s)-s0-column(col_l)/2):(column(col_k1l)/abs(column(col_k1l))):(column(col_l)) w boxes axis x1y1 lt 1 lw 1 ti '', \
+  ftwsext  u (column(col_s)-s0-column(col_l)/2):(column(col_k2l)/abs(column(col_k2l))):(column(col_l)) w boxes axis x1y1 lt 2 lw 1 ti '',\
   0 lw 3 lt -1 dashtype 2 ti ''
 
 
@@ -78,10 +82,13 @@ unset xlabel
 p \
   filrel u 1:2 w lp lt 7 lw 6 ti frelti, \
   0 lw 3 lt -1 dashtype 2 ti '', \
-  '< grep -i BPS* tle_ae.tls' u (column(col_s)):(column(col_s)<30 ? \
+  ftwbps u (column(col_s)):(column(col_s)<10 ? \
+  (-1*column(col_dx)*(neoffset*eoffset*1e3)) : 1/0) \
+  w lp lt 7 lw 3 dashtype '.-____' ti '',\
+  ftwbps u (column(col_s)):(column(col_s)<30  && column(col_s)>10? \
   (column(col_dx)*(neoffset*eoffset*1e3)) : 1/0) \
   w lp lt 7 lw 3 dashtype '.' ti ftwissti,\
-  '< grep -i BPS* tle_ae.tls' u (column(col_s)):(column(col_s)<30 ? \
+  ftwbps u (column(col_s)):(column(col_s)<30 ? \
   1/0:-1*(column(col_dx)*(neoffset*eoffset*1e3))) \
   w lp lt 7 lw 3 dashtype '.-____' ti '-'.ftwissti
 
@@ -99,7 +106,7 @@ set key top left font ',20'
 p \
   filrel u 1:3 w lp lt 7 lw 6 ti frelti, \
   0 lw 3 lt -1 dashtype 2 ti '', \
-  '< grep -i BPS* tle_ae.tls' u (column(col_s)):(column(col_dy)*(neoffset*eoffset*1e3)) \
+  ftwbps u (column(col_s)):(column(col_dy)*(neoffset*eoffset*1e3)) \
   w lp lt 7 lw 3 dashtype '.' ti ftwissti
 
 
@@ -110,7 +117,7 @@ set ylabel "sqrt(x^2+y^2)" font ',20' offset -3
 set xlabel "s [m]" offset 0,-1 font ',20'
 p \
   filrel u 1:(sqrt($2*$2+$3*$3)) w lp lt 7 lw 6 ti frelti, \
-  '< grep -i BPS* tle_ae.tls' u (column(col_s)):\
+  ftwbps u (column(col_s)):\
   (sqrt((column(col_dx)*column(col_dx)+column(col_dy)*column(col_dy)))*(neoffset*eoffset*1e3)) \
   w lp lt 7 lw 3 dashtype '.' ti ftwissti
 

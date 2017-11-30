@@ -53,6 +53,14 @@ system, 'cp outputs/survey.dat outputs/TLe_survey.dat';
 !! Twiss with initial betas
 
 
+value, quatt001->k1*quatt001->l;
+value, quatt002->k1*quatt002->l;
+value, quatt003->k1*quatt003->l;
+value, quatt004->k1*quatt004->l;
+value, quatt005->k1*quatt005->l;
+
+stop;
+
 ! fitting only betas to fl1tt003
 !quatt008->k1       =       -1.575735135 ;
 !quatt009->k1       =       0.4274167652 ;

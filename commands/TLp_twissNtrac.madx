@@ -53,6 +53,15 @@ system, 'cp outputs/survey.dat outputs/TLp_survey.dat';
 !! FROM HERE ON the model is under experiment
 !! Twiss with initial betas
 
+value, quatt001->k1*quatt001->l;
+value, quatt002->k1*quatt002->l;
+value, quatt003->k1*quatt003->l;
+value, quatt004->k1*quatt004->l;
+value, quatt005->k1*quatt005->l;
+
+stop;
+
+
 ! ! trying some errors
 ! select, flag=error,pattern="QUATT010*";
 ! efcomp, dkn:={0.0,-0.05};
