@@ -213,19 +213,19 @@ SPTA1002 : SBEND, L :=  lb34d/2.0,
 DVRTL001a: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    :=  vdon*ab11d/2.0,
-	   E1=e1b11d,E2=0;
+	   E1:=e1b11d,E2:=0;
 DVRTL001b: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    :=  vdon*ab11d/2.0,
-	   E1=0,E2=e2b11d;
+	   E1:=0,E2:=e2b11d;
 DVRTL002a: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    := -vdon*ab11d/2.0,
-	   E1=-e1b11d,E2=0;
+	   E1:=-e1b11d,E2:=0;
 DVRTL002b: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    := -vdon*ab11d/2.0,
-	   E1=0,E2=-e2b11d;
+	   E1:=0,E2:=-e2b11d;
 ! tr
 SPTA2001 : SBEND, L :=  lb2d/2.0,
 	   TILT     :=  0,
@@ -238,30 +238,30 @@ SPTA2002 : SBEND, L :=  lb34d/2.0,
 DVRTR001a: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
            ANGLE    :=  vdon*ab11d/2.0,
-	   E1:=e1b11d,E2=0;
+	   E1:=e1b11d,E2:=0;
 DVRTR001b: SBEND, L :=  lb11d/2.0,
            TILT     :=  twopi/4,
            ANGLE    :=  vdon*ab11d/2.0,
-	   E1=0,E2:=e2b11d;
+	   E1:=0,E2:=e2b11d;
 DVRTR002a: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    := -vdon*ab11d/2.0,
-	   E1=-e1b11d,E2=0;
+	   E1:=-e1b11d,E2:=0;
 DVRTR002b: SBEND, L :=lb11d/2.0,
 	   TILT     := twopi/4,
            ANGLE    := -vdon*ab11d/2.0,
-	   E1=0,E2=-e2b11d;
+	   E1:=0,E2:=-e2b11d;
 !tt
 DHYTT001a: SBEND, L :=  lb36d/2.0,
            TILT     :=  0,
            ANGLE    := -apol*hdon*ab36d/2.0,
 	   K1       :=  k1b36d*abs(DHYTT001),
-	   E1=-apol*e1b36d,E2=0;
+	   E1:=-apol*e1b36d,E2:=0;
 DHYTT001b: SBEND, L :=  lb36d/2.0,
 	   TILT     :=  0,
            ANGLE    := -apol*hdon*ab36d/2.0,
 	   K1       :=  k1b36d*abs(DHYTT001),
-	   E1=0,E2=-apol*e2b36d;
+	   E1:=0,E2:=-apol*e2b36d;
 DHPTT001 : SBEND, L :=  lb45d/2.0,
 	   TILT     :=  0,
 	   ANGLE    :=  hdon*ab45d/2.0,
@@ -277,12 +277,12 @@ DHRTT001a: SBEND, L :=  lb30d/2.0,
 	   TILT     :=  0,
            ANGLE    := -hdon*ab30d/2.0,
 	   K1       :=  k1b30d*abs(DHRTT001),
-	   E1=-e1b30d,E2=0;
+	   E1:=-e1b30d,E2:=0;
 DHRTT001b: SBEND, L :=  lb30d/2.0,
 	   TILT     :=  0,
            ANGLE    := -hdon*ab30d/2.0,
 	   K1       :=  k1b30d*abs(DHRTT001),
-	   E1=0,E2=-e2b30d;
+	   E1:=0,E2:=-e2b30d;
 DHSTT001 : SBEND, L :=  lb45d/2.0,
            TILT     :=  0,
 	   ANGLE    := -hdon*ab45d/2.0,
@@ -290,19 +290,19 @@ DHSTT001 : SBEND, L :=  lb45d/2.0,
 DVRTT001a: SBEND, L :=lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    :=  vdon*ab11d/2.0,
-	   E1=e1b11d,E2=0;
+	   E1:=e1b11d,E2:=0;
 DVRTT001b: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    :=  vdon*ab11d/2.0,
-	   E1=0,E2=e2b11d;
+	   E1:=0,E2:=e2b11d;
 DVRTT002a: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    := -vdon*ab11d/2.0,
-	   E1=-e1b11d,E2=0;
+	   E1:=-e1b11d,E2:=0;
 DVRTT002b: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
            ANGLE    := -vdon*ab11d/2.0,
-           E1=0,E2=-e2b11d;
+           E1:=0,E2:=-e2b11d;
 
 ! in DAFNE
 ! e+ tp

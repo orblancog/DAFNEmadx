@@ -1,5 +1,5 @@
 TITLE, "TLe";
-option, -info,-echo,warn;
+option, -info,echo,warn;
 
 ! the beam
 call, file="parameters/ebeam.madx";
