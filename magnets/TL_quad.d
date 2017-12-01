@@ -16,7 +16,7 @@ if (beam->charge ==  1) {
   pertt3  = -1;
 };
 perte   = -1;
-pertp   =  1;
+pertp   = 1;
 
 !! half last Linac quadrupole
  QLE0    : quadrupole,L = 0.14,K1 := KLE0;
@@ -41,11 +41,11 @@ pertp   =  1;
 
  QUATT006: quadrupole,l := ltbq/2, K1 := ktt06;
 
- QUATT007: quadrupole,l := ltbq/2, K1 :=  ktt07;
- QUATT008: quadrupole,l := ltbq/2, K1 :=  ktt08;
- QUATT009: quadrupole,l := ltbq/2, K1 :=  ktt09;
- QUATT010: quadrupole,l := ltbq/2, K1 :=  ktt10;
- QUATT011: quadrupole,l := ltbq/2, K1 :=  ktt11;
+ QUATT007: quadrupole,l := ltbq/2, K1 := -ktt07;
+ QUATT008: quadrupole,l := ltbq/2, K1 := -ktt08;
+ QUATT009: quadrupole,l := ltbq/2, K1 := -ktt09;
+ QUATT010: quadrupole,l := ltbq/2, K1 := -ktt10;
+ QUATT011: quadrupole,l := ltbq/2, K1 := -ktt11;
 
 ! in  TR
  QUATR001: quadrupole,l := ltbq/2, K1 := ktr01;

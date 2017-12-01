@@ -295,7 +295,7 @@ int DrawProfileZoom (const char * k, const char * invaxis = NULL) {//k is the fl
   center_pad->SetGrid();
 
   if ( strcmp(k,"FL2A1001") == 0 || 
-       strcmp(k,"FL2PL101") == 0 || 
+       strcmp(k,"FL1PL101") == 0 || 
        strcmp(k,"FL2A2001") == 0 || 
        strcmp(k,"FL2EL101") == 0 )
     {
