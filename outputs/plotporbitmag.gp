@@ -6,7 +6,7 @@ unset xrange
 unset yrange
 
 set yrange [-10:12]
-set xrange [0:70]
+set xrange [0:67]
 
 col_s=3
 col_dy=13
@@ -25,6 +25,9 @@ ftwbend = '< grep -i bend '.ftwiss
 ftwquad = '< grep -i quad '.ftwiss
 ftwsext = '< grep -i sext '.ftwiss
 ftwbps  = '< grep -i BPS* '.ftwiss
+ftwflag  = '< grep -i fl[12]*'.' '.ftwiss
+ftwcorr  = '< grep -i ch[hv]*'.' '.ftwiss
+ftwwcm   = '< grep -i wcm*'.' '.ftwiss
 
 set multiplot
 
@@ -45,15 +48,21 @@ unset yrange
 unset ylabel
 unset ytics
 set style fill solid
+unset xlabel
+set style line 1 lc rgb 'orange' pt 5   # square
 p ftwbend  u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ? -0.5:1/0):(column(col_l)) w boxes axis x1y1 lt 3 lw 1 ti '',\
   ftwbend  u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ?  0.5:1/0):(column(col_l)) w boxes axis x1y1 lt 3 lw 1 ti '',\
   ftwquad  u (column(col_s)-s0-column(col_l)/2):(column(col_k1l)/abs(column(col_k1l))):(column(col_l)) w boxes axis x1y1 lt 1 lw 1 ti '', \
+  ftwflag  u (column(col_s)-s0-column(col_l)/2):(column(col_l)) w p axis x1y1 ls 1 ps 6 ti '',\
+  ftwbps   u (column(col_s)-s0-column(col_l)/2):(column(col_l)) w p axis x1y1 lt 6 lw 30 ti '',\
+  ftwwcm   u (column(col_s)-s0-column(col_l)/2):(column(col_l)) w p axis x1y1 pt 6 ps 10 lc 7 lw 3 ti '',\
+  ftwcorr  u (column(col_s)-s0-column(col_l)/2):-1 w p axis x1y1 pt 24 ps 4 lc -1 ti '',\
   0 lw 3 lt -1 dashtype 2 ti ''
 
 #  ftwsext  u (column(col_s)-s0-column(col_l)/2):(column(col_k2l)/abs(column(col_k2l))):(column(col_l)) w boxes axis x1y1 lt 2 lw 1 ti '',\
 
 
-set size 1,0.3
+set size 1,0.32
 set origin 0,0.5
 
 set xlabel "s [m]" offset 0,-1 font ',20'
@@ -75,6 +84,7 @@ set yrange [-3:3]
 set ytics 1
 set mytics 5
 unset xlabel
+set xtics format ""
 set key left bottom
 # x rel
 p \
@@ -91,7 +101,7 @@ p \
   w lp lt 7 lw 3 dashtype '.-____' ti '-'.ftwissti
 
 
-set size 1,0.3
+set size 1,0.32
 set origin 0,0.25
 unset yrange
 set ytics 1
@@ -99,6 +109,7 @@ set mytics 5
 set ylabel "y [mm]" font ',20' offset -3
 set yrange [-3:3]
 set key left top
+set xtics format ""
 #unset yrange
 # y rel
 p \
@@ -108,11 +119,12 @@ p \
   w lp lt 7 lw 3 dashtype '.' ti ftwissti
 
 
-set size 1,0.25
+set size 1,0.32
 set origin 0,0
 set yrange [0:5]
 #unset yrange
 set key left top 
+set xtics format "%2.0f"
 set ylabel "sqrt(x^2+y^2)" font ',20' offset -3
 set xlabel "s [m]" offset 0,-1 font ',20'
 p \
