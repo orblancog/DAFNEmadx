@@ -6,7 +6,7 @@ unset xrange
 unset yrange
 
 set yrange [-10:12]
-set xrange [0:100]
+set xrange [-2:102]
 
 col_s=3
 col_dy=13
@@ -26,11 +26,11 @@ eoffset  = 0.7e-3#0.3164e-4
 ftwiss = 'tle_ae.tls'
 ftwissti = '0.7x10^{-3} . {/Symbol h}_y model today'
 
-ftwbend  = '< grep -i bend '.ftwiss
-ftwquad  = '< grep -i quad '.ftwiss
-ftwsext  = '< grep -i sext '.ftwiss
-ftwbps   = '< grep -i BPS* '.ftwiss
-ftwflag  = '< grep -i BPS* '.ftwiss
+ftwbend  = '< grep -i bend'.' '.ftwiss
+ftwquad  = '< grep -i quad'.' '.ftwiss
+ftwsext  = '< grep -i sext'.' '.ftwiss
+ftwbps   = '< grep -i BPS*'.' '.ftwiss
+ftwflag  = '< grep -i fl[12]*'.' '.ftwiss
 
 set multiplot
 
@@ -52,11 +52,13 @@ unset ylabel
 unset ytics
 unset xlabel
 set style fill solid
+set style line 1 lc rgb 'orange' pt 5   # square
 p ftwbend  u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ? -0.5:1/0):(column(col_l)) w boxes axis x1y1 lt 3 lw 1 ti '',\
   ftwbend  u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ?  0.5:1/0):(column(col_l)) w boxes axis x1y1 lt 3 lw 1 ti '',\
   ftwquad  u (column(col_s)-s0-column(col_l)/2):(column(col_k1l)/abs(column(col_k1l))):(column(col_l)) w boxes axis x1y1 lt 1 lw 1 ti '', \
   ftwsext  u (column(col_s)-s0-column(col_l)/2):(column(col_k2l)/abs(column(col_k2l))):(column(col_l)) w boxes axis x1y1 lt 2 lw 1 ti '',\
-  ftwbps  u (column(col_s)-s0-column(col_l)/2):(column(col_l)) w p axis x1y1 lt 6 lw 30 ti '',\
+  ftwbps   u (column(col_s)-s0-column(col_l)/2):(column(col_l)) w p axis x1y1 lt 6 lw 30 ti '',\
+  ftwflag  u (column(col_s)-s0-column(col_l)/2):(column(col_l)) w p axis x1y1 ls 1 ps 6 ti '',\
   0 lw 3 lt -1 dashtype 2 ti ''
 
 
