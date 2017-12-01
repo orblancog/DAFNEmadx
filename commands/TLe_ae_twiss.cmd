@@ -27,6 +27,7 @@ select, flag=twiss, column=NAME, KEYWORD, S, L, BETX, BETY, ALFX, ALFY,
 !name,s,betx,bety,dx,dy,envx,envy, alfx,alfy,mux,RE56,
 !angle,k1l,l;
 !coguess, tolerance=1e10;
+system, "rm -rf outputs/tle_ae.tls";
 twiss,deltap=0,sequence=e_ae,BETX=betxacc,BETY=betyacc,
   ALFX=alfxacc,ALFY=alfyacc,dx=dxacc,dy=dyacc,dpx=dpxacc,dpy=dpyacc,
   file="outputs/tle_ae.tls",tolerance=100;

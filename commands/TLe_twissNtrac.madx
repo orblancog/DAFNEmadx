@@ -1,5 +1,5 @@
 TITLE, "TLe";
-option, -info,echo,warn;
+option, -info,-echo,warn;
 
 ! the beam
 call, file="parameters/ebeam.madx";
@@ -61,14 +61,18 @@ value, quatt005->k1*quatt005->l;
 
 save, sequence = e_ae, file='outputs/tleut.seq';
 call, file='outputs/tleut.seq';
+!mybend : sbend, tilt=twopi/4,L=1e-3, angle=0.01;
 seqedit, sequence = e_ae;
 flatten;
+!install, element=mybend, at=17.5;
+!flatten;
 endedit;
 use, sequence=e_ae;
 !select, flag=error, full;
 select, flag=error, clear;
-select, flag=error, pattern="QUATT003*";
-ealign, dx := 0e-3;
+select, flag=error, pattern="QUATT004*";
+!ealign, dy := 10e-3;
+!efcomp, dkn={10e-3};
 !esave, file=outputs/err.file;
 
 !stop;
@@ -93,7 +97,7 @@ call, file="commands/TLe_showbeta.madx";
 !value,(9e-3/6)^2/emity;
 
 
-!stop;
+stop;
 
 ! !!! matching flag FL1TT003
 ! !Variable                 Final Value  Initial Value Lower Limit  Upper Limit 

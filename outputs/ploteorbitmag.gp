@@ -31,13 +31,16 @@ ftwquad  = '< grep -i quad'.' '.ftwiss
 ftwsext  = '< grep -i sext'.' '.ftwiss
 ftwbps   = '< grep -i BPS*'.' '.ftwiss
 ftwflag  = '< grep -i fl[12]*'.' '.ftwiss
+ftwcorr  = '< grep -i ch[hv]*'.' '.ftwiss
+
 
 set multiplot
 
 set size 1,0.2
-set origin 0,0.8
+set origin 0,0.81
 # Elements on the to plot #
 # 18 -> angle
+# 22 -> k0l
 # 19 -> k1l
 # 20 -> k2l
 # 4 -> l
@@ -45,12 +48,14 @@ s0=0
 col_s = 3
 col_l = 4
 col_angle = 15
+col_k0l = 22
 col_k1l = 16
 col_k2l = 17
 unset yrange
 unset ylabel
 unset ytics
 unset xlabel
+set xtics format ""
 set style fill solid
 set style line 1 lc rgb 'orange' pt 5   # square
 p ftwbend  u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ? -0.5:1/0):(column(col_l)) w boxes axis x1y1 lt 3 lw 1 ti '',\
@@ -61,13 +66,22 @@ p ftwbend  u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ? -0.5:1
   ftwflag  u (column(col_s)-s0-column(col_l)/2):(column(col_l)) w p axis x1y1 ls 1 ps 6 ti '',\
   0 lw 3 lt -1 dashtype 2 ti ''
 
+set size 1,0.2
+set origin 0,0.7
+set xtics format "%2.0f"
+p ftwbend  u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ? -0.5:1/0):(column(col_l)) w boxes axis x1y1 lt 3 lw 1 ti '',\
+  ftwbend  u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ?  0.5:1/0):(column(col_l)) w boxes axis x1y1 lt 3 lw 1 ti '',\
+  ftwquad  u (column(col_s)-s0-column(col_l)/2):(column(col_k1l)/abs(column(col_k1l))):(column(col_l)) w boxes axis x1y1 lt 1 lw 1 ti '', \
+  ftwsext  u (column(col_s)-s0-column(col_l)/2):(column(col_k2l)/abs(column(col_k2l))):(column(col_l)) w boxes axis x1y1 lt 2 lw 1 ti '',\
+  ftwcorr  u (column(col_s)-s0-column(col_l)/2):(column(col_l)) w p axis x1y1 pt 8 ps 6 lc -1 ti '',\
+  ftwcorr  u (column(col_s)-s0-column(col_l)/2):(column(col_l)) w p axis x1y1 pt 24 ps 6 lc -1 ti '',\
+  0 lw 3 lt -1 dashtype 2 ti ''
+
 
 set size 1,0.3
-set origin 0,0.5
+set origin 0,0.46
 set ylabel "x [mm]" font ',20' offset -3
 set key bottom left font ',20'
-set xtics 5 font ',20'
-set mxtics 5
 set ytics 3 font ',20' offset 0
 set mytics 4
 set lmargin 15
@@ -83,6 +97,9 @@ set ytics 1
 set mytics 5
 # x rel
 unset xlabel
+unset xtics 
+set xtics 5 format ""
+set mxtics 5
 p \
   filrel u 1:2 w lp lt 7 lw 6 ti frelti, \
   0 lw 3 lt -1 dashtype 2 ti '', \
@@ -98,13 +115,16 @@ p \
 
 
 set size 1,0.3
-set origin 0,0.25
+set origin 0,0.23
 unset yrange
 set ytics 1
 set mytics 5
 set ylabel "y [mm]" font ',20' offset -3
 set yrange [-2:3]
 # y rel
+unset xtics 
+set xtics 5 format ""
+set mxtics 5
 unset xlabel
 set key top left font ',20'
 p \
@@ -119,6 +139,10 @@ set origin 0,0
 set yrange [0:7]
 set ylabel "sqrt(x^2+y^2)" font ',20' offset -3
 set xlabel "s [m]" offset 0,-1 font ',20'
+unset xtics
+set xtics 5 font ',20' format "%2.0f"
+set mxtics 5
+
 p \
   filrel u 1:(sqrt($2*$2+$3*$3)) w lp lt 7 lw 6 ti frelti, \
   ftwbps u (column(col_s)):\

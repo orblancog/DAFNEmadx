@@ -147,15 +147,14 @@ c1b30d := lb30d*clight/(1e9*eEnergy)*1.18/ib30d;
 k1b30d := 0;
 e1b30d := ab30d/2.0;
 e2b30d := ab30d/2.0;
-! A very similar magnet with a small difference in angle important during survey
-! DHRTE001 1.18[T] 30° (0.5236 [rad])
+! DHRTE001 1.18[T] 30.3° (0.5287 [rad])
 lb30p3d  := 0.757;
 ab30p3d  := 0.528679953;
 ib30p3d  := 233;
 c1b30p3d := lb30p3d*clight/(1e9*eEnergy)*1.18/ib30p3d;
 k1b30p3d := 0;
-e1b30p3d := 0.1*ab30p3d/2.0;
-e2b30p3d := 0.1*ab30p3d/2.0;
+e1b30p3d := ab30p3d/2.0;
+e2b30p3d := ab30p3d/2.0;
 
 !Y  magnet for e+e- injection/extraction in ACCUMULATOR
 ! DAFNE Technical Note : C-17 pag.~4
