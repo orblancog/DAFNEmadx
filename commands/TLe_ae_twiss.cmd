@@ -29,7 +29,7 @@ select, flag=twiss, column=NAME, KEYWORD, S, L, BETX, BETY, ALFX, ALFY,
 !coguess, tolerance=1e10;
 twiss,deltap=0,sequence=e_ae,BETX=betxacc,BETY=betyacc,
   ALFX=alfxacc,ALFY=alfyacc,dx=dxacc,dy=dyacc,dpx=dpxacc,dpy=dpyacc,
-  file="outputs/tle_ae.tls",tolerance=1e-10;
+  file="outputs/tle_ae.tls",tolerance=100;
 !stop;
 return;
 

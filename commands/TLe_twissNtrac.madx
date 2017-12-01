@@ -68,7 +68,7 @@ use, sequence=e_ae;
 !select, flag=error, full;
 select, flag=error, clear;
 select, flag=error, pattern="QUATT003*";
-ealign, dy = 00e-3;
+ealign, dx := 0e-3;
 !esave, file=outputs/err.file;
 
 !stop;
