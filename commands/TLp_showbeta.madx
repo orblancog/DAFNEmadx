@@ -42,6 +42,6 @@ system, "rm -f outputs/betaFL1TP002.txt";
 assign, echo="outputs/TLp_betaFL1TP002.txt";
 show, betaFL1TP002;
 system, "rm -f outputs/betaFL1PL101.txt";
-assign, echo="outputs/TLp_betaFL1EL101.txt";
+assign, echo="outputs/TLp_betaFL1PL101.txt";
 show, betaFL1PL101;
 assign, echo=terminal;
