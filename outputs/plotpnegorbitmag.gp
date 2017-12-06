@@ -15,12 +15,12 @@ col_dx=11
 filabs = 'TLp_20171116164126_ref_UFS.dat'
 #filrel = 'TLp_20171116164404_DIPACC_612m611.dat'
 filrel = 'TLp_20171116164602_DIPACC_610m611.dat'
-frelti = 'TLp 2017/11/16 DIP ACC 612-611 A'
+frelti = 'TLp 2017/11/16 DIP ACC 610-611 A'
 
 neoffset = 1.0
 eoffset  = 0.5e-3#0.3164e-4
 ftwiss = 'tlp_ae.tls'
-ftwissti = '0.7x10^{-3} . {/Symbol h}_y model today'
+ftwissti = '0.5x10^{-3} . {/Symbol h}_y model today'
 
 ftwbend = '< grep -i bend '.ftwiss
 ftwquad = '< grep -i quad '.ftwiss
@@ -86,7 +86,7 @@ set ytics 1
 set mytics 5
 unset xlabel
 set xtics format ""
-set key left bottom
+set key left top
 # x rel
 p \
   filrel u 1:2 w lp lt 7 lw 6 ti frelti, \

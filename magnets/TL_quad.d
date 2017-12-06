@@ -62,18 +62,18 @@ pertp   =  1;
  QUATL005: quadrupole,l := ltbq/2, K1 := ktl05;
 
 ! in TE
- QUATE001: quadrupole,l := ltbq/2, K1 := kte01;
- QUATE002: quadrupole,l := ltbq/2, K1 := kte02;
+ QUATE001: quadrupole,l := ltbq/2, K1 := -kte01;
+ QUATE002: quadrupole,l := ltbq/2, K1 := -kte02;
  QUATE003: quadrupole,l := ltbq/2, K1 := kte03;
- QUATE004: quadrupole,l := ltbq/2, K1 := kte04;
- QUATE005: quadrupole,l := ltbq/2, K1 := kte05;
- QUATE006: quadrupole,l := ltbq/2, K1 := kte06;
+ QUATE004: quadrupole,l := ltbq/2, K1 := -kte04;
+ QUATE005: quadrupole,l := ltbq/2, K1 := -kte05;
+ QUATE006: quadrupole,l := ltbq/2, K1 := -kte06;
  QUATE007: quadrupole,l := ltbq/2, K1 := kte07;
  QUATE008: quadrupole,l := ltbq/2, K1 := kte08;
  QUATE009: quadrupole,l := ltbq/2, K1 := -kte09;
 
- QUATE104: quadrupole,l := lsq/2, K1 :=  kte104;
- QUATE105: quadrupole,l := lsq/2, K1 :=  kte105;
+ QUATE104: quadrupole,l := lsq/2, K1 :=  -kte104;
+ QUATE105: quadrupole,l := lsq/2, K1 :=  -kte105;
 //  QUATE105: drift, l := ltaq/2;
 
 
