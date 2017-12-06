@@ -13,12 +13,12 @@ col_dy=13
 col_dx=11
 
 filabs = 'TLp_20171116164126_ref_UFS.dat'
-filrel = 'TLp_20171116164404_DIPACC_612m611.dat'
-#filrel = 'TLp_20171116164602_DIPACC_610m611.dat'
+#filrel = 'TLp_20171116164404_DIPACC_612m611.dat'
+filrel = 'TLp_20171116164602_DIPACC_610m611.dat'
 frelti = 'TLp 2017/11/16 DIP ACC 612-611 A'
 
 neoffset = 1.0
-eoffset  = 0.7e-3#0.3164e-4
+eoffset  = 0.5e-3#0.3164e-4
 ftwiss = 'tlp_ae.tls'
 ftwissti = '0.7x10^{-3} . {/Symbol h}_y model today'
 
@@ -92,13 +92,13 @@ p \
   filrel u 1:2 w lp lt 7 lw 6 ti frelti, \
   0 lw 3 lt -1 dashtype 2 ti '', \
   ftwbps u (column(col_s)):(column(col_s)<10 ? \
-  (-1*column(col_dx)*(neoffset*eoffset*1e3)) : 1/0) \
+  (column(col_dx)*(neoffset*eoffset*1e3)) : 1/0) \
   w lp lt 7 lw 3 dashtype '.-____' ti '',\
   ftwbps u (column(col_s)):(column(col_s)<30  && column(col_s)>10? \
-  (column(col_dx)*(neoffset*eoffset*1e3)) : 1/0) \
+  (-1*column(col_dx)*(neoffset*eoffset*1e3)) : 1/0) \
   w lp lt 7 lw 3 dashtype '.' ti ftwissti,\
   ftwbps u (column(col_s)):(column(col_s)<30 ? \
-  1/0:-1*(column(col_dx)*(neoffset*eoffset*1e3))) \
+  1/0:(column(col_dx)*(neoffset*eoffset*1e3))) \
   w lp lt 7 lw 3 dashtype '.-____' ti '-'.ftwissti
 
 
@@ -116,7 +116,7 @@ set xtics format ""
 p \
   filrel u 1:3 w lp lt 7 lw 6 ti frelti, \
   0 lw 3 lt -1 dashtype 2 ti '', \
-  ftwbps u (column(col_s)):(column(col_dy)*(neoffset*eoffset*1e3)) \
+  ftwbps u (column(col_s)):(-1*column(col_dy)*(neoffset*eoffset*1e3)) \
   w lp lt 7 lw 3 dashtype '.' ti ftwissti
 
 
