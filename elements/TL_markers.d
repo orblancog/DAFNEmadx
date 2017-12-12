@@ -33,13 +33,19 @@ BPSTP002: marker;
 
 WCMTM001: marker;
 !WCMTM001: multipole, l=0,knl={0,0.1};
-!WCMTT001: marker;
-WCMTT001: multipole, l=0,knl={0,0.03};
+
+WCMTT001: marker;
+WCMTT001: multipole, l=0,knl={0,0.02};
+
+
 !WCMTT002: marker;
 WCMTT002: multipole, l=0,knl={0,-0.05};
+
 WCMTR001: marker;
-!WCMTL001: marker;
-WCMTL001: multipole, l=0,knl={0,0.07};
+
+WCMTL001: marker;
+!WCMTL001: multipole, l=0,knl={0,0.07};
+
 WCMTE000: marker;
 WCMTE001: marker;
 WCMTP001: marker;

@@ -16,8 +16,10 @@ filabs = 'TLe_20170221122201_REFORB_15mA_inACC_dispersione.dat'
 
 #filrel = 'TLe_20170221122344_662M667_dispersione.dat'
 #frelti = 'dispersive orbit 20170221 MR RF 662M667'
-filrel = 'TLe_20171116170432_DIPACC_615m614e.dat'
-frelti = 'dispersive orbit 20170221 DIP ACC 615-614 A'
+#filrel = 'TLe_20171116170432_DIPACC_615m614e.dat'
+#frelti = 'dispersive orbit 20170221 DIP ACC 615-614 A'
+filrel = 'TLe_20171211121512_tledippdisp614p3m613p3.dat'
+frelti = 'dispersive orbit 20171211 DIP ACC 614.3-613.3 A'
 #filrel  = 'TLe_20171116170550_DIPACC_613m614e.dat'
 #frelti  = 'dispersive orbit 20170221 DIP ACC 613-614 A'
 

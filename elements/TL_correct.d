@@ -12,8 +12,8 @@ cvhon = 0; !! turn on correctors
 ! For small angles \alpha, KICK = X / E
 ! Note : kickers  are of zero length
 cerr: kicker,hkick=.00,vkick=.000;
-ccvtall1 = cvhon*1.2475e-5;
-ccvtall2 = cvhon*1.011e-6;
+ccvtall1 := cvhon*1.2475e-5;
+ccvtall2 := cvhon*1.011e-6;
 
 !INJECTION LINAC -> ACCUMULATOR
  CHVTM001: kicker,

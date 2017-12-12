@@ -1,5 +1,5 @@
 ! showing betas
-system, "rm -f outputs/beta*.txt outputs/beam0.txt";! get initial values
+system, "rm -f outputs/TLe_beta*txt outputs/beta*.txt outputs/beam0.txt";! get initial values
 assign, echo="outputs/TLe_beam0.txt";
 show, beam;
 system, "rm -f outputs/TLe_betaSTART.txt";

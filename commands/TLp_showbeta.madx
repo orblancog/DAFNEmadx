@@ -1,5 +1,5 @@
 ! showing betas
-system, "rm -f outputs/beta*.txt outputs/beam0.txt";! get initial values
+system, "rm -f outputs/TLp_beta*.txt outputs/beta*txt outputs/beam0.txt";! get initial values
 assign, echo="outputs/TLp_beam0.txt";
 show, beam;
 system, "rm -f outputs/TLp_betaSTART.txt";
@@ -15,10 +15,10 @@ system, "rm -f outputs/betaD9.txt";
 assign, echo="outputs/TLp_betaD9.txt";
 show, betaD9;
 system, "rm -f outputs/betaFL2TL001.txt";
-assign, echo="outputs/TLp_betaFL2TR001.txt";
+assign, echo="outputs/TLp_betaFL2TL001.txt";
 show, betaFL2TL001;
 system, "rm -f outputs/betaFL2TL002.txt";
-assign, echo="outputs/TLp_betaFL2TR002.txt";
+assign, echo="outputs/TLp_betaFL2TL002.txt";
 show, betaFL2TL002;
 system, "rm -f outputs/betaFL2TT001.txt";
 assign, echo="outputs/TLp_betaFL2TT001.txt";

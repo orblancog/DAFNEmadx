@@ -123,7 +123,7 @@ b45dangle (theangle,cur,sign) : macro = {
 };
 
 ! DAFNE Tech. Note : DI-10 pag.~33 and 37, I-10 pag.~10., I-16 pag.~15
-! DHRTE003 1.22[T] 31° (0.5411 [rad])
+! DHRTE002 1.22[T] 31° (0.5411 [rad])
 ! I nom=155[A]
 ! \alpha [rad], L [m], I [A]
 ! kickangle = Length*clight/(1e9*Energy[GeV]) * B[T](I[A])
@@ -358,16 +358,26 @@ DHRTE001b: SBEND, L :=  lb30p3d/2.0,
            ANGLE    :=  hdon*ab30p3d/2.0,
 	   K1       :=  k1b30p3d*abs(DHRTE001),
 	   E1=0,E2=e2b30p3d;
-DHRTE002:  SBEND, L :=  lb31d,
+DHRTE002a: SBEND, L :=  lb31d,
            TILT     :=  0,
            ANGLE    := -hdon*ab31d,       
 	   K1       :=  k1b31d*abs(DHRTE002),
-	   E1=-e1b31d,E2=-e2b31d;
-DHRTE003:  SBEND, L :=  lb31d,
+	   E1=-e1b31d,E2=0;
+DHRTE002b: SBEND, L :=  lb31d,
+           TILT     :=  0,
+           ANGLE    := -hdon*ab31d,       
+	   K1       :=  k1b31d*abs(DHRTE002),
+	   E1=0,E2=-e2b31d;
+DHRTE003a: SBEND, L :=  lb31d,
 	   TILT     :=  0,
            ANGLE    := -hdon*ab31d,
 	   K1       :=  k1b31d*abs(DHRTE003),
-	   E1=-e1b31d,E2=-e2b31d;
+	   E1=-e1b31d,E2=0;
+DHRTE003b: SBEND, L :=  lb31d,
+	   TILT     :=  0,
+           ANGLE    := -hdon*ab31d,
+	   K1       :=  k1b31d*abs(DHRTE003),
+	   E1=0,E2=-e2b31d;
 DVRTE003:  SBEND, L :=  lb11d,
 	   TILT     :=  twopi/4,
            ANGLE    := -vdon*ab11d,
@@ -474,8 +484,8 @@ mDHRTP002: line=(DHRTP002a,DHRTP002k, DHRTP002b);
 mDVRTE001: line=(DVRTE001a,DVRTE001k, DVRTE001b);
 mDVRTE002: line=(DVRTE002a,DVRTE002k, DVRTE002b);
 mDHRTE001: line=(DHRTE001a,DHRTE001k, DHRTE001b);
-mDHRTE002: line=(DHRTE002,DHRTE002K);
-mDHRTE003: line=(DHRTE003,DHRTE003K);
+mDHRTE002: line=(DHRTE002a,DHRTE002k, DHRTE002b);
+mDHRTE003: line=(DHRTE003a,DHRTE003k, DHRTE003b);
 mDVRTE003: line=(DVRTE003,DVRTE003K);
 mDVRTE004: line=(DVRTE004,DVRTE004K);
 mSPTEL101: line=(SPTEL101,SPTEL101K);
