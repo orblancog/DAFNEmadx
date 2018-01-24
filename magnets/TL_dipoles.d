@@ -76,8 +76,8 @@ lb11d  := 0.35;
 ab11d  := 0.192;
 ib11d  := 100.19;
 ib11dm := 120;
-e1b11d := ab11d/2*0.6;
-e2b11d := ab11d/2*0.6;  
+e1b11d := ab11d/2*1;
+e2b11d := ab11d/2*1;  
 ! linear
 c1b11d := lb11d*clight/(1e9*eEnergy)*1.1010e-2;
 c0b11d := lb11d*clight/(1e9*eEnergy)*1.0514e-3;

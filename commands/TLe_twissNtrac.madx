@@ -67,10 +67,13 @@ flatten;
 !install, element=mybend, at=17.5;
 !flatten;
 endedit;
-!use, sequence=e_ae;
-chhte004 := -0.5;
-chvte004->hkick := 1/eEnergy * 1.2475e-5*CHHTE004 + 1.011e-6;
-use, sequence=e_ae, range=chvte004/#e;
+use, sequence=e_ae;
+
+!chvtt006
+chhtt006 := -1;
+chvtt006->hkick := 1/eEnergy * 1.2475e-5*CHHTT006 + 1.011e-6;
+!use, sequence=e_ae, range=chvtt006/#e;
+
 !select, flag=error, full;
 !select, flag=error, clear;
 !select, flag=error, pattern="QUATT004*";
@@ -84,8 +87,8 @@ use, sequence=e_ae, range=chvte004/#e;
 
 call, file="commands/TLe_savebeta.madx";! savebeta in flags...
 call, file="commands/TLe_ae_twiss.cmd";
-!call, file="commands/plotTLetwiss.madx";			  
-!s1top;
+call, file="commands/plotTLetwiss.madx";			  
+!stop;
 ! store twiss params in files
 !call, file="commands/TLe_showbeta.madx";
 !value,(15e-3/6)^2/emitx;
@@ -192,8 +195,8 @@ ptc_track, icase=6,turns=1,dump,onetable,element_by_element,
 maxaper={Rpipe,AngMax,Rpipe,AngMax,1,1},
 ! the t and pt vars do not change anything
 ! norm_no=4,
-file,
-radiation;
+file;!,
+!radiation;
 
 !ptc_observe,place=#e;
 !ptc_trackline, turns=1,onetable,file;
