@@ -2,7 +2,7 @@
 system, "rm -rf plots/TLp_twiss_today.p*";
 plot, colour=100,haxis=s,hmin=0,hmax=70,vaxis1=betx,bety,vaxis2=dx,dy,
   file="plots/TLp_twiss_today";
-plot, colour=100,haxis=s,hmin=  0,hmax= 30,vaxis1=betx,bety,vaxis2=dx,dy,
+plot, colour=100,haxis=s,hmin=  0,hmax= 42,vaxis1=betx,bety,vaxis2=dx,dy,
   file="plots/TLp_twiss_today";
 plot, colour=100,haxis=s,hmin= 30,hmax= 55,vaxis1=betx,bety,vaxis2=dx,dy,
   file="plots/TLp_twiss_today";

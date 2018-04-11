@@ -1,4 +1,16 @@
 savebeta,label=betaSTART,place=#s;
+savebeta,label=betaBPSTL001,place=BPSTL001;
+savebeta,label=betaBPSTL002,place=BPSTL002;
+savebeta,label=betaBPSTT001,place=BPSTL001;
+savebeta,label=betaBPSTT002,place=BPSTT002;
+savebeta,label=betaBPSTT003,place=BPSTT003;
+savebeta,label=betaBPSTT004,place=BPSTT004;
+savebeta,label=betaBPSTT005,place=BPSTT005;
+savebeta,label=betaBPSTT006,place=BPSTT006;
+savebeta,label=betaBPSTT007,place=BPSTT007;
+savebeta,label=betaBPSTP001,place=BPSTP001;
+savebeta,label=betaBPSTP002,place=BPSTP002;
+! flags
 savebeta,label=betaFL2A1001,place=FL2A1001;
 savebeta,label=betaFL2TL001,place=FL2TL001;
 savebeta,label=betaFL2TL002,place=FL2TL002;

@@ -268,10 +268,18 @@ DHPTT001 : SBEND, L :=  lb45d/2.0,
 
 ! in LINAC
 !tt
-DHPTT002 : SBEND, L :=  lb45d/2.0,
+DHPTT002a: SBEND, L :=  lb45d/2.0,
 	   TILT     :=  0,
-	   ANGLE    := -hdon*ab45d/2.0,
-	   K1       :=  k1b45d*abs(DHPTT002);
+	   ANGLE    := -hdon*ab45d/2.0-1/360*twopi,
+	   K1       :=  k1b45d*abs(DHPTT002),
+	   E1	    := -ab45d/2.0*0.0,
+	   E2	    :=  0;
+DHPTT002b: SBEND, L :=  lb45d/2.0,
+	   TILT     :=  0,
+	   ANGLE    := -hdon*ab45d/2.0-1/360*twopi,
+	   K1       :=  k1b45d*abs(DHPTT002),
+	   E1	    :=  0,
+	   E2	    := -ab45d/2.0*0.0;
 DHRTT001a: SBEND, L :=  lb30d/2.0,
 	   TILT     :=  0,
            ANGLE    := -hdon*ab30d/2.0,
@@ -289,19 +297,19 @@ DHSTT001 : SBEND, L :=  lb45d/2.0,
 DVRTT001a: SBEND, L :=lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    :=  vdon*ab11d/2.0,
-	   E1:=e1b11d,E2:=0;
+	   E1:=0*e1b11d,E2:=0;
 DVRTT001b: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    :=  vdon*ab11d/2.0,
-	   E1:=0,E2:=e2b11d;
+	   E1:=0,E2:=0*e2b11d;
 DVRTT002a: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    := -vdon*ab11d/2.0,
-	   E1:=-e1b11d,E2:=0;
+	   E1:=-0*e1b11d,E2:=0;
 DVRTT002b: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
            ANGLE    := -vdon*ab11d/2.0,
-           E1:=0,E2:=-e2b11d;
+           E1:=0,E2:=-0*e2b11d;
 
 ! in DAFNE
 ! e+ tp
@@ -468,14 +476,14 @@ mDVRTR001: line=(DVRTR001a,DVRTR001k, DVRTR001b);
 mDVRTR002: line=(DVRTR002a,DVRTR002k, DVRTR002b);
 
 mDHYTT001: line=(DHYTT001a,DHYTT001k, DHYTT001b);
+mDHPTT001: line=(DHPTT001 ,DHPTT001k, DHPTT001);!
 
 ! in LINAC
-mDHPTT001: line=(DHPTT001 ,DHPTT001k, DHPTT001);!
-mDHPTT002: line=(DHPTT002 ,DHPTT002k, DHPTT002);
-mDHRTT001: line=(DHRTT001a,DHRTT001k, DHRTT001b);
-mDHSTT001: line=(DHSTT001, DHSTT001k, DHSTT001);
-mDVRTT001: line=(DVRTT001a,DVRTT001k, DVRTT001b);
-mDVRTT002: line=(DVRTT002a,DVRTT002k, DVRTT002b);
+mDHPTT002: line=(DHPTT002a, DHPTT002k, DHPTT002b);
+mDHRTT001: line=(DHRTT001a, DHRTT001k, DHRTT001b);
+mDHSTT001: line=(DHSTT001,  DHSTT001k, DHSTT001);
+mDVRTT001: line=(DVRTT001a, DVRTT001k, DVRTT001b);
+mDVRTT002: line=(DVRTT002a, DVRTT002k, DVRTT002b);
 
 ! in DAFNE
 mDHRTP001: line=(DHRTP001a,DHRTP001k, DHRTP001b);

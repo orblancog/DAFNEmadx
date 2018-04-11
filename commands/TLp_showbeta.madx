@@ -2,6 +2,41 @@
 system, "rm -f outputs/TLp_beta*.txt outputs/beta*txt outputs/beam0.txt";! get initial values
 assign, echo="outputs/TLp_beam0.txt";
 show, beam;
+!bps
+system, "rm -f outputs/TLp_betaBPSTL001.txt";
+assign,  echo="outputs/TLp_betaBPSTL001.txt";
+show, betaBPSTL001;
+system, "rm -f outputs/TLp_betaBPSTL002.txt";
+assign,  echo="outputs/TLp_betaBPSTL002.txt";
+show, betaBPSTL002;
+system, "rm -f outputs/TLp_betaBPSTT001.txt";
+assign,  echo="outputs/TLp_betaBPSTT001.txt";
+show, betaBPSTT001;
+system, "rm -f outputs/TLp_betaBPSTT002.txt";
+assign,  echo="outputs/TLp_betaBPSTT002.txt";
+show, betaBPSTT002;
+system, "rm -f outputs/TLp_betaBPSTT003.txt";
+assign,  echo="outputs/TLp_betaBPSTT003.txt";
+show, betaBPSTT003;
+system, "rm -f outputs/TLp_betaBPSTT004.txt";
+assign,  echo="outputs/TLp_betaBPSTT004.txt";
+show, betaBPSTT004;
+system, "rm -f outputs/TLp_betaBPSTT005.txt";
+assign,  echo="outputs/TLp_betaBPSTT005.txt";
+show, betaBPSTT005;
+system, "rm -f outputs/TLp_betaBPSTT006.txt";
+assign,  echo="outputs/TLp_betaBPSTT006.txt";
+show, betaBPSTT006;
+system, "rm -f outputs/TLp_betaBPSTT007.txt";
+assign,  echo="outputs/TLp_betaBPSTT007.txt";
+show, betaBPSTT007;
+system, "rm -f outputs/TLp_betaBPSTP001.txt";
+assign,  echo="outputs/TLp_betaBPSTP001.txt";
+show, betaBPSTP001;
+system, "rm -f outputs/TLp_betaBPSTP002.txt";
+assign,  echo="outputs/TLp_betaBPSTP002.txt";
+show, betaBPSTP002;
+!flags
 system, "rm -f outputs/TLp_betaSTART.txt";
 assign, echo="outputs/TLp_betaSTART.txt";
 show, betaSTART;
