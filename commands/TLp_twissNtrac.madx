@@ -72,7 +72,6 @@ fftt02             =        1.021877138 ;
 fftt03             =        1.147548618 ;
 fftt04             =        1.048984403 ;
 fftt05             =       0.8012521138 ;
-
 ! match, use_macro;
 ! m1 : macro={
 ! call, file="commands/TLp_ae_twiss.cmd";
@@ -91,8 +90,31 @@ fftt05             =       0.8012521138 ;
 ! endmatch;
 
 ! value, fftt01, fftt02, fftt03, fftt04, fftt05;
+!stop;
 
-! stop;
+! fudge factors from 40m and on
+fftt07 := 1;
+! match, use_macro;
+! m1 : macro={
+! call, file="commands/TLp_ae_twiss.cmd";
+! };
+! constraint, expr=table(twiss,bpstp001,dx)=2.18;
+! constraint, expr=table(twiss,bpstp001,dy)=3;
+! constraint, expr=table(summ,betxmax)<100;
+! constraint, expr=table(summ,betymax)<100;
+! vary,name=dhrtt001a->e1,step=1e-3;
+! vary,name=dhrtt001b->e2,step=1e-3;
+! !vary,name=fftt02,step=1e-3;
+! !vary,name=fftt03,step=1e-3;
+! !vary,name=fftt04,step=1e-3;
+! !vary,name=fftt05,step=1e-3;
+
+! simplex, calls=1e3,tolerance=1e-6;
+! endmatch;
+
+!value, fftt07;!, fftt02, fftt03, fftt04, fftt05;
+!stop;
+
 
 ! ! trying some errors
 !select, flag=error,pattern="WCMTL001";

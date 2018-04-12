@@ -96,7 +96,7 @@ set ytics 1
 set mytics 5
 unset xlabel
 set xtics format ""
-set key left bottom
+set key left top
 # x rel
 p \
   filrel u 1:2 w lp lt 7 lw 6 ti frelti, \
