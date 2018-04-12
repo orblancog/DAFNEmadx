@@ -130,33 +130,62 @@ fftt09 := 1;
 fftt10 := 1;
 
 ! fudge factors for the last section
-fftp04 := 0.9;
+fftp04 := 1;
 ! match result
-fftt07 := 1.16996;
-dhstt001->e1 := -1.56029e-01;
-dhstt001->e2 := 1.55708e-01;
-match, use_macro;
-m1 : macro={
-call, file="commands/TLp_ae_twiss.cmd";
-};
-constraint, expr=table(twiss,bpstt007,dx)=-3;
-constraint, expr=table(twiss,bpstt007,dy)=1.1;
-constraint, expr=table(twiss,bpstt007,dpy)=0.64;
-constraint, expr=table(summ,betxmax)<80;
-constraint, expr=table(summ,betymax)<80;
-vary,name=dhstt001->e1,step=1e-3;
-vary,name=dhstt001->e2,step=1e-3;
-vary,name=fftt07,step=1e-3;
-!vary,name=dhrtt001a->e1,step=1e-3;
-!vary,name=dhrtt001b->e2,step=1e-3;
-!vary,name=fftt06,step=1e-3;
-!vary,name=fftt07,step=1e-3;
-!vary,name=fftt04,step=1e-3;
-!vary,name=fftt05,step=1e-3;
-simplex, calls=1e3,tolerance=1e-6;
-endmatch;
-value, fftt07;!, fftt02, fftt03, fftt04, fftt05;
-stop;
+!ktp01              =        1.888870459 ;
+!ktp02              =       -2.355334062 ;
+!ktp03              =        2.202762167 ;
+!ktp04              =       0.2380489919 ;
+!
+ktp01              =        1.888870459 ;
+ktp02              =       -2.355334062 ;
+ktp03              =        2.202762167 ;
+ktp04              =       0.2380489919 ;
+
+
+! match, use_macro;
+! m1 : macro={
+! call, file="commands/TLp_ae_twiss.cmd";
+! };
+! constraint, expr=table(twiss,fl1pl101,betx)=0.63;
+! constraint, expr=table(twiss,fl1pl101,bety)=1.51;
+! !constraint, expr=table(twiss,fl1pl101,alfx)=-0.77;
+! !constraint, expr=table(twiss,fl1pl101,alfy)=0.09;
+! constraint, expr=table(twiss,fl1pl101,dx)=-2.0;
+! constraint, expr=table(twiss,fl1pl101,dy)=-2.5;
+
+! ! constraint, expr=table(twiss,fl1tp002,betx)=11.81;
+! ! constraint, expr=table(twiss,fl1tp002,bety)=7.48;
+! ! constraint, expr=table(twiss,fl1tp002,alfx)=3.4;
+! ! constraint, expr=table(twiss,fl1tp002,alfy)=2.0;
+! ! constraint, expr=table(twiss,fl1tp002,dx)=-2.73;
+! ! constraint, expr=table(twiss,fl1tp002,dy)=2;
+
+
+! !constraint, expr=table(twiss,bpstt007,dy)=1.1;
+! !constraint, expr=table(twiss,bpstt007,dpy)=0.64;
+! constraint, expr=table(summ,betxmax)<80;
+! constraint, expr=table(summ,betymax)<80;
+! !vary,name=dhstt001->e1,step=1e-3;
+! !vary,name=dhstt001->e2,step=1e-3;
+! !vary,name=fftt07,step=1e-3;
+! !vary,name=dhrtt001a->e1,step=1e-3;
+! !vary,name=dhrtt001b->e2,step=1e-3;
+! !vary,name=fftt06,step=1e-3;
+! !vary,name=fftt07,step=1e-3;
+! !vary,name=fftt04,step=1e-3;
+! !vary,name=fftt05,step=1e-3;
+! !vary,name=ktt09,step=1e-3;
+! !vary,name=ktt10,step=1e-3;
+! vary,name=ktp01,step=1e-3;
+! vary,name=ktp02,step=1e-3;
+! vary,name=ktp03,step=1e-3;
+! vary,name=ktp04,step=1e-3;
+
+! simplex, calls=1e3,tolerance=1e-6;
+! endmatch;
+! value, ktp01, ktp02, ktp03, ktp04;
+! stop;
 
 
 

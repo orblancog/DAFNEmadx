@@ -70,8 +70,8 @@ endedit;
 use, sequence=e_ae;
 
 !chvtt006
-chhtt006 := -1;
-chvtt006->hkick := 1/eEnergy * 1.2475e-5*CHHTT006 + 1.011e-6;
+!chhtt006 := -1;
+!chvtt006->hkick := 1/eEnergy * 1.2475e-5*CHHTT006 + 1.011e-6;
 !use, sequence=e_ae, range=chvtt006/#e;
 
 !select, flag=error, full;
@@ -82,6 +82,19 @@ chvtt006->hkick := 1/eEnergy * 1.2475e-5*CHHTT006 + 1.011e-6;
 !esave, file=outputs/err.file;
 
 !stop;
+
+! fudge factors from TLp
+! fit senza ussare e2 della ypsilon
+fftt01             =                  1 ;
+fftt02             =        1.021877138 ;
+fftt03             =        1.147548618 ;
+fftt04             =        1.048984403 ;
+fftt05             =       0.8012521138 ;
+fftt06 := 1;
+fftt07 := 1;
+dhstt001->e1 := -6.74415e-02;
+
+
 
 
 
@@ -184,9 +197,9 @@ resplit,even;
 !ptc_observe, place="IP.1";
 call, file="commands/TLe_observe.ptc.madx";
 !set particles
-ptc_start, X=0, PX=0, Y=0, PY=0, T=0, PT=0;
+!ptc_start, X=0, PX=0, Y=0, PY=0, T=0, PT=0;
 !ptc_start, X=1e-3, PX=1e-3, Y=1e-3, PY=1e-3, T=1e-9, PT=1e-9;
-!call, file="outputs/madxInrays.madx";
+call, file="outputs/madxInrays.madx";
 !run
 !!norm_no is order of the normal form : 1=linear, 2 ...!
 Rpipe := 44e-3;

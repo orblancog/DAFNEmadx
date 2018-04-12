@@ -1,25 +1,25 @@
-!ptc_observe, place=D9;
-! ptc_observe, place=FL2A2001;
-! ptc_observe, place=FL2TR001;
-! ptc_observe, place=FL2TR002;
-! ptc_observe, place=FL2TT001;
-! ptc_observe, place=FL2TT002;
-! ptc_observe, place=FL1TT001;
-! ptc_observe, place=FL1TT002;
-! ptc_observe, place=FL1TT003;
-! ptc_observe, place=FL1TE001;
-! ptc_observe, place=FL1TE002;
-! ptc_observe, place=FL1TE003;
-! ptc_observe, place=FL1EL101;
+! flags
+ptc_observe, place=FL2A2001;
+ptc_observe, place=FL2TR001;
+ptc_observe, place=FL2TR002;
+ptc_observe, place=FL2TT001;
+ptc_observe, place=FL2TT002;
+ptc_observe, place=FL1TT001;
+ptc_observe, place=FL1TT002;
+ptc_observe, place=FL1TT003;
+ptc_observe, place=FL1TE001;
+ptc_observe, place=FL1TE002;
+ptc_observe, place=FL1TE003;
+ptc_observe, place=FL1EL101;
 
 !Striplines
 ptc_observe, place=BPSTT005;
 ptc_observe, place=BPSTT006;
 ptc_observe, place=BPSTT007;
-!ptc_observe, place=BPSTT008;
-!ptc_observe, place=BPSTT009;
-!ptc_observe, place=BPSTT010;
-!ptc_observe, place=BPSTT011;
+ptc_observe, place=BPSTT008;
+ptc_observe, place=BPSTT009;
+ptc_observe, place=BPSTT010;
+ptc_observe, place=BPSTT011;
 ptc_observe, place=BPSTE001;
 ptc_observe, place=BPSTE012;
 ptc_observe, place=BPSTE002;
