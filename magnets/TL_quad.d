@@ -42,9 +42,9 @@ pertp   =  1;
  QUATT006: quadrupole,l := ltbq/2, K1 :=  fftt06*ktt06;
 
  QUATT007: quadrupole,l := ltbq/2, K1 :=  -fftt07*ktt07;
- QUATT008: quadrupole,l := ltbq/2, K1 :=  -ktt08;
- QUATT009: quadrupole,l := ltbq/2, K1 :=  -ktt09;
- QUATT010: quadrupole,l := ltbq/2, K1 :=  -ktt10;
+ QUATT008: quadrupole,l := ltbq/2, K1 :=  -fftt08*ktt08;
+ QUATT009: quadrupole,l := ltbq/2, K1 :=  -fftt09*ktt09;
+ QUATT010: quadrupole,l := ltbq/2, K1 :=  -fftt10*ktt10;
  QUATT011: quadrupole,l := ltbq/2, K1 :=  -ktt11;
 
 ! in  TR
@@ -81,7 +81,7 @@ pertp   =  1;
  QUATP001: quadrupole,l := ltbq/2, K1 := ktp01;
  QUATP002: quadrupole,l := ltbq/2, K1 := ktp02;
  QUATP003: quadrupole,l := ltbq/2, K1 := ktp03;
- QUATP004: quadrupole,l := ltbq/2, K1 := ktp04;
+ QUATP004: quadrupole,l := ltbq/2, K1 := fftp04*ktp04;
 
 ! Quadrupole  k**2 [m**-2] as a function of the EEnergyergy [GeV] and
 ! power supply Current [A]

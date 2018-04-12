@@ -96,28 +96,70 @@ fftt05             =       0.8012521138 ;
 fftt06 := 1;
 fftt07 := 1;
 dhstt001->e1 := 6.74415e-02;
-
+! match result
+!fftt07 := 1.16996;
+!dhstt001->e1 := -1.56029e-01;
+!dhstt001->e2 := 1.55708e-01;
 ! match, use_macro;
 ! m1 : macro={
 ! call, file="commands/TLp_ae_twiss.cmd";
 ! };
-! constraint, expr=table(twiss,bpstp001,dx)=2.18;
-! constraint, expr=table(twiss,bpstp001,dy)=3;
+! constraint, expr=table(twiss,bpstt007,dx)=-3;
+! constraint, expr=table(twiss,bpstt007,dy)=1.1;
+! constraint, expr=table(twiss,bpstt007,dpy)=0.64;
 ! constraint, expr=table(summ,betxmax)<80;
 ! constraint, expr=table(summ,betymax)<80;
 ! vary,name=dhstt001->e1,step=1e-3;
+! vary,name=dhstt001->e2,step=1e-3;
+! vary,name=fftt07,step=1e-3;
 ! !vary,name=dhrtt001a->e1,step=1e-3;
 ! !vary,name=dhrtt001b->e2,step=1e-3;
 ! !vary,name=fftt06,step=1e-3;
 ! !vary,name=fftt07,step=1e-3;
 ! !vary,name=fftt04,step=1e-3;
 ! !vary,name=fftt05,step=1e-3;
-
 ! simplex, calls=1e3,tolerance=1e-6;
 ! endmatch;
+!value, fftt07;!, fftt02, fftt03, fftt04, fftt05;
+!stop;
 
-! !value, fftt07;!, fftt02, fftt03, fftt04, fftt05;
-! stop;
+
+! fudge factors from 45m and on
+fftt08 := 1.3;
+fftt09 := 1;
+fftt10 := 1;
+
+! fudge factors for the last section
+fftp04 := 0.9;
+! match result
+fftt07 := 1.16996;
+dhstt001->e1 := -1.56029e-01;
+dhstt001->e2 := 1.55708e-01;
+match, use_macro;
+m1 : macro={
+call, file="commands/TLp_ae_twiss.cmd";
+};
+constraint, expr=table(twiss,bpstt007,dx)=-3;
+constraint, expr=table(twiss,bpstt007,dy)=1.1;
+constraint, expr=table(twiss,bpstt007,dpy)=0.64;
+constraint, expr=table(summ,betxmax)<80;
+constraint, expr=table(summ,betymax)<80;
+vary,name=dhstt001->e1,step=1e-3;
+vary,name=dhstt001->e2,step=1e-3;
+vary,name=fftt07,step=1e-3;
+!vary,name=dhrtt001a->e1,step=1e-3;
+!vary,name=dhrtt001b->e2,step=1e-3;
+!vary,name=fftt06,step=1e-3;
+!vary,name=fftt07,step=1e-3;
+!vary,name=fftt04,step=1e-3;
+!vary,name=fftt05,step=1e-3;
+simplex, calls=1e3,tolerance=1e-6;
+endmatch;
+value, fftt07;!, fftt02, fftt03, fftt04, fftt05;
+stop;
+
+
+
 
 
 ! ! trying some errors
