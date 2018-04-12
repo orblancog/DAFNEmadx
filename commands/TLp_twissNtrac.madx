@@ -53,6 +53,41 @@ system, 'cp outputs/survey.dat outputs/TLp_survey.dat';
 !! FROM HERE ON the model is under experiment
 !! Twiss with initial betas
 
+! fudge factors in the quad strengths
+! !initial guess
+! fftt01 := 1;
+! fftt02 := 1;
+! fftt03 := 1.1;
+! fftt04 := 1;
+! fftt05 := 0.80;
+! fit res
+fftt01             =                  1 ;
+fftt02             =        1.023260694 ;
+fftt03             =        1.136260317 ;
+fftt04             =        1.042939285 ;
+fftt05             =        0.800490487 ;
+
+! match, use_macro;
+! m1 : macro={
+! call, file="commands/TLp_ae_twiss.cmd";
+! };
+! constraint, expr=table(twiss,bpstt003,dx)=0.4;
+! constraint, expr=table(twiss,bpstt003,dy)=1.4;
+! constraint, expr=table(summ,betxmax)<100;
+! constraint, expr=table(summ,betymax)<100;
+! !vary,name=fftt03,step=1e-3;
+! vary,name=fftt02,step=1e-3;
+! vary,name=fftt03,step=1e-3;
+! vary,name=fftt04,step=1e-3;
+! vary,name=fftt05,step=1e-3;
+
+! simplex, calls=1e3,tolerance=1e-6;
+! endmatch;
+
+! value, fftt01, fftt02, fftt03, fftt04, fftt05;
+
+! stop;
+
 ! ! trying some errors
 !select, flag=error,pattern="WCMTL001";
 !efcomp, dkn:={0,-10};

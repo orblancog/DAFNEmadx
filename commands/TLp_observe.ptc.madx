@@ -1,3 +1,17 @@
+! striplines
+ptc_observe, place=BPSTL001;
+ptc_observe, place=BPSTL002;
+ptc_observe, place=BPSTT001;
+ptc_observe, place=BPSTT002;
+ptc_observe, place=BPSTT003;
+ptc_observe, place=BPSTT004;
+ptc_observe, place=BPSTT005;
+ptc_observe, place=BPSTT006;
+ptc_observe, place=BPSTT007;
+ptc_observe, place=BPSTP001;
+ptc_observe, place=BPSTP002;
+
+! flags
 ptc_observe, place=FL2A1001;
 ptc_observe, place=FL2TL001;
 ptc_observe, place=FL2TL002;

@@ -169,7 +169,7 @@ ib36dm  := 120;
 c0b36d  := lb36d*clight/(1e9*eEnergy)*3.8349e-3;
 c1b36d  := lb36d*clight/(1e9*eEnergy)*1.1171e-2;
 e1b36d  := 0.6283185308;
-e2b36d  := 0;
+e2b36d  := 0.2*0.6283185308;
 k1b36d  := 0;
 
 ! DHRTP001
@@ -297,11 +297,11 @@ DHSTT001 : SBEND, L :=  lb45d/2.0,
 DVRTT001a: SBEND, L :=lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    :=  vdon*ab11d/2.0,
-	   E1:=0*e1b11d,E2:=0;
+	   E1:=e1b11d,E2:=0;
 DVRTT001b: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    :=  vdon*ab11d/2.0,
-	   E1:=0,E2:=0*e2b11d;
+	   E1:=0,E2:=e2b11d;
 DVRTT002a: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    := -vdon*ab11d/2.0,

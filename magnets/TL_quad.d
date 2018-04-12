@@ -33,13 +33,13 @@ pertp   =  1;
  QUATM009: quadrupole,L := ltbq/2, K1 := ktm09;
 
 ! in TT  Accum. extraction 
- QUATT001: quadrupole,l := ltaq/2, K1 := ktt01;
- QUATT002: quadrupole,l := ltaq/2, K1 := ktt02;
- QUATT003: quadrupole,l := ltaq/2, K1 := ktt03;
- QUATT004: quadrupole,l := ltaq/2, K1 := ktt04;
- QUATT005: quadrupole,l := ltaq/2, K1 := ktt05;
+ QUATT001: quadrupole,l := ltaq/2, K1 := fftt01*ktt01;
+ QUATT002: quadrupole,l := ltaq/2, K1 := fftt02*ktt02;
+ QUATT003: quadrupole,l := ltaq/2, K1 := fftt03*ktt03;
+ QUATT004: quadrupole,l := ltaq/2, K1 := fftt04*ktt04;
+ QUATT005: quadrupole,l := ltaq/2, K1 := fftt05*ktt05;
 
- QUATT006: quadrupole,l := ltbq/2, K1 :=   ktt06;
+ QUATT006: quadrupole,l := ltbq/2, K1 :=  ktt06;
 
  QUATT007: quadrupole,l := ltbq/2, K1 :=  -ktt07;
  QUATT008: quadrupole,l := ltbq/2, K1 :=  -ktt08;

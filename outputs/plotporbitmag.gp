@@ -13,14 +13,24 @@ col_dy=13
 col_dx=11
 
 filabs = 'TLp_20171116164126_ref_UFS.dat'
-filrel = 'TLp_20171116164404_DIPACC_612m611.dat'
+
+#filrel = 'TLp_20171116164404_DIPACC_612m611.dat'
+#filrel = 'TLp_20180328_18xxxx_DIPACC_610m610p5.dat'
+filrel = 'TLp_20180328_18xxxx_DIPACC_610p5m609p5.dat'
 #filrel = 'TLp_20171116164602_DIPACC_610m611.dat'
-frelti = 'TLp 2017/11/16 DIP ACC 612-611 A'
+
+#frelti = 'TLp 2018/MAR/28 DIP ACC 610-610.5 A'
+frelti = 'TLp 2018/MAR/28 DIP ACC 609.5-610.5 A'
 
 neoffset = 1.0
-eoffset  = 0.7e-3#0.3164e-4
+
+eoffset  = -0.7e-3#0.7e-3#0.3164e-4
+#eoffset  = -0.35e-3#0.7e-3#0.3164e-4
+
 ftwiss = 'tlp_ae.tls'
-ftwissti = '0.7x10^{-3} . {/Symbol h}_y model today'
+
+ftwissti = '-0.7x10^{-3} . {/Symbol h}_y model today'
+#ftwissti = '-0.35x10^{-3} . {/Symbol h}_y model today'
 
 ftwbend = '< grep -i bend '.ftwiss
 ftwquad = '< grep -i quad '.ftwiss
@@ -99,7 +109,7 @@ p \
   w lp lt 7 lw 3 dashtype '.' ti ftwissti,\
   ftwbps u (column(col_s)):(column(col_s)<30 ? \
   1/0:-1*(column(col_dx)*(neoffset*eoffset*1e3))) \
-  w lp lt 7 lw 3 dashtype '.-____' ti '-'.ftwissti
+  w lp lt 7 lw 3 dashtype '.-____' ti '-1x'.ftwissti
 
 
 set size 1,0.32
@@ -111,6 +121,9 @@ set ylabel "y [mm]" font ',20' offset -3
 set yrange [-3:3]
 set key left top
 set xtics format ""
+set xtics format "%2.0f"
+set xlabel "s [m]" offset 0,-1 font ',20'
+
 #unset yrange
 # y rel
 p \
@@ -120,18 +133,18 @@ p \
   w lp lt 7 lw 3 dashtype '.' ti ftwissti
 
 
-set size 1,0.32
-set origin 0,0
-set yrange [0:5]
-#unset yrange
-set key left top 
-set xtics format "%2.0f"
-set ylabel "sqrt(x^2+y^2)" font ',20' offset -3
-set xlabel "s [m]" offset 0,-1 font ',20'
-p \
-  filrel u 1:(sqrt($2*$2+$3*$3)) w lp lt 7 lw 6 ti frelti, \
-  ftwbps u (column(col_s)):\
-  (sqrt((column(col_dx)*column(col_dx)+column(col_dy)*column(col_dy)))*(neoffset*eoffset*1e3)) \
-  w lp lt 7 lw 3 dashtype '.' ti ftwissti
+# set size 1,0.32
+# set origin 0,0
+# set yrange [0:5]
+# #unset yrange
+# set key left top 
+# set xtics format "%2.0f"
+# set ylabel "sqrt(x^2+y^2)" font ',20' offset -3
+# set xlabel "s [m]" offset 0,-1 font ',20'
+# p \
+#   filrel u 1:(sqrt($2*$2+$3*$3)) w lp lt 7 lw 6 ti frelti, \
+#   ftwbps u (column(col_s)):\
+#   (sqrt((column(col_dx)*column(col_dx)+column(col_dy)*column(col_dy)))*(neoffset*eoffset*1e3)) \
+#   w lp lt 7 lw 3 dashtype '.' ti ftwissti
 
 unset multiplot
