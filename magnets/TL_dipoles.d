@@ -305,11 +305,11 @@ DVRTT001b: SBEND, L :=  lb11d/2.0,
 DVRTT002a: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
 	   ANGLE    := -vdon*ab11d/2.0,
-	   E1:=-0*e1b11d,E2:=0;
+	   E1:=-e1b11d,E2:=0;
 DVRTT002b: SBEND, L :=  lb11d/2.0,
 	   TILT     :=  twopi/4,
            ANGLE    := -vdon*ab11d/2.0,
-           E1:=0,E2:=-0*e2b11d;
+           E1:=0,E2:=-e2b11d;
 
 ! in DAFNE
 ! e+ tp
