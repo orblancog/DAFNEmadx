@@ -60,12 +60,18 @@ system, 'cp outputs/survey.dat outputs/TLp_survey.dat';
 ! fftt03 := 1.1;
 ! fftt04 := 1;
 ! fftt05 := 0.80;
-! fit res
+! ! fit res
+! fftt01             =                  1 ;
+! fftt02             =        1.023260694 ;
+! fftt03             =        1.136260317 ;
+! fftt04             =        1.042939285 ;
+! fftt05             =        0.800490487 ;
+! fit senza ussare e2 della ypsilon
 fftt01             =                  1 ;
-fftt02             =        1.023260694 ;
-fftt03             =        1.136260317 ;
-fftt04             =        1.042939285 ;
-fftt05             =        0.800490487 ;
+fftt02             =        1.021877138 ;
+fftt03             =        1.147548618 ;
+fftt04             =        1.048984403 ;
+fftt05             =       0.8012521138 ;
 
 ! match, use_macro;
 ! m1 : macro={
@@ -75,7 +81,7 @@ fftt05             =        0.800490487 ;
 ! constraint, expr=table(twiss,bpstt003,dy)=1.4;
 ! constraint, expr=table(summ,betxmax)<100;
 ! constraint, expr=table(summ,betymax)<100;
-! !vary,name=fftt03,step=1e-3;
+! vary,name=fftt03,step=1e-3;
 ! vary,name=fftt02,step=1e-3;
 ! vary,name=fftt03,step=1e-3;
 ! vary,name=fftt04,step=1e-3;

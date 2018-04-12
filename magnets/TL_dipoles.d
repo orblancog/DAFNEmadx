@@ -169,7 +169,7 @@ ib36dm  := 120;
 c0b36d  := lb36d*clight/(1e9*eEnergy)*3.8349e-3;
 c1b36d  := lb36d*clight/(1e9*eEnergy)*1.1171e-2;
 e1b36d  := 0.6283185308;
-e2b36d  := 0.2*0.6283185308;
+e2b36d  := 0;
 k1b36d  := 0;
 
 ! DHRTP001
