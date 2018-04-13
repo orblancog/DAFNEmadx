@@ -38,6 +38,8 @@ use, sequence= p_ae, range=#s/#e;
 ! For a quick comparison, open 
 !   $ gnuplot 
 !   gnuplot> load 'outputs/plotsurvey.gp'
+ffab34d := 1;
+
 system, 'rm -f outputs/survey.dat';
 select,flag=survey,class=sbend;
 select,flag=survey,class=quadrupole;
@@ -54,7 +56,7 @@ system, 'cp outputs/survey.dat outputs/TLp_survey.dat';
 !! Twiss with initial betas
 
 ! fudge factors in the dipoles
-ffab34d = 0.9;! 34deg at 90%
+ffab34d := 0.9;! 34deg at 90%
 
 ! fudge factors in the quad strengths
 ! ! ! !initial guess
@@ -99,10 +101,8 @@ fftt05             =       0.8012521138 ;
 fftt06 := 1;
 fftt07 := 1;
 dhstt001->e1 := 6.74415e-02;
-! match result
-!fftt07 := 1.16996;
-!dhstt001->e1 := -1.56029e-01;
-!dhstt001->e2 := 1.55708e-01;
+! !dhrtt001a->e1 :=  0.1;
+! ! match result
 ! match, use_macro;
 ! m1 : macro={
 ! call, file="commands/TLp_ae_twiss.cmd";
@@ -113,8 +113,10 @@ dhstt001->e1 := 6.74415e-02;
 ! constraint, expr=table(summ,betxmax)<80;
 ! constraint, expr=table(summ,betymax)<80;
 ! vary,name=dhstt001->e1,step=1e-3;
-! vary,name=dhstt001->e2,step=1e-3;
-! vary,name=fftt07,step=1e-3;
+! !vary,name=dhrtt001a->e1,step=1e-3;
+! !vary,name=dhrtt001b->e2,step=1e-3;
+! !vary,name=dhstt001->e2,step=1e-3;
+! !vary,name=fftt07,step=1e-3;
 ! !vary,name=dhrtt001a->e1,step=1e-3;
 ! !vary,name=dhrtt001b->e2,step=1e-3;
 ! !vary,name=fftt06,step=1e-3;
@@ -123,14 +125,15 @@ dhstt001->e1 := 6.74415e-02;
 ! !vary,name=fftt05,step=1e-3;
 ! simplex, calls=1e3,tolerance=1e-6;
 ! endmatch;
-!value, fftt07;!, fftt02, fftt03, fftt04, fftt05;
-!stop;
+! !value, fftt07;!, fftt02, fftt03, fftt04, fftt05;
+! stop;
 
 
 ! fudge factors from 45m and on
 fftt08 := 1;
 fftt09 := 1;
 fftt10 := 1;
+dvrtt001a->e1 := ab11d/2-0.2;
 
 ! fudge factors for the last section
 fftp04 := 1;

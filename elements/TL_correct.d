@@ -2,7 +2,7 @@
 !  March 2003
 
 ! orblancog .2016.09 hkick and vkick calculation
-cvhon = 0; !! turn on correctors
+cvhon = 1; !! turn on correctors
 
 ! DAFNE Technical Note : C-17, 
 !   Horizontal/Vertical correctors, pag.~8
@@ -129,3 +129,7 @@ ccvtall2 := cvhon*1.011e-6;
  ker7:     kicker,vkick= 0.;
  mst:      marker;
 RETURN;
+
+
+!value, chvtt006->hkick;
+!stop;
