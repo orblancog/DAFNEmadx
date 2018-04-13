@@ -53,20 +53,23 @@ system, 'cp outputs/survey.dat outputs/TLp_survey.dat';
 !! FROM HERE ON the model is under experiment
 !! Twiss with initial betas
 
+! fudge factors in the dipoles
+ffab34d = 0.9;! 34deg at 90%
+
 ! fudge factors in the quad strengths
-! ! !initial guess
-fftt01 := 1;
-fftt02 := 1;
-fftt03 := 1;
-fftt04 := 1;
-fftt05 := 1;
+! ! ! !initial guess
+! fftt01 := 1;
+! fftt02 := 1;
+! fftt03 := 1.1;
+! fftt04 := 1;
+! fftt05 := 0.8;
 ! ! fit res
 ! fftt01             =                  1 ;
 ! fftt02             =        1.023260694 ;
 ! fftt03             =        1.136260317 ;
 ! fftt04             =        1.042939285 ;
 ! fftt05             =        0.800490487 ;
-! ! fit senza ussare e2 della ypsilon
+! ! ! fit senza ussare e2 della ypsilon
 fftt01             =                  1 ;
 fftt02             =        1.021877138 ;
 fftt03             =        1.147548618 ;
@@ -80,7 +83,7 @@ fftt05             =       0.8012521138 ;
 ! constraint, expr=table(twiss,bpstt003,dy)=1.4;
 ! constraint, expr=table(summ,betxmax)<100;
 ! constraint, expr=table(summ,betymax)<100;
-! vary,name=fftt03,step=1e-3;
+! !vary,name=fftt03,step=1e-3;
 ! vary,name=fftt02,step=1e-3;
 ! vary,name=fftt03,step=1e-3;
 ! vary,name=fftt04,step=1e-3;
@@ -90,7 +93,7 @@ fftt05             =       0.8012521138 ;
 ! endmatch;
 
 ! value, fftt01, fftt02, fftt03, fftt04, fftt05;
-! stop;
+! ! stop;
 
 ! fudge factors from 40m and on
 fftt06 := 1;
