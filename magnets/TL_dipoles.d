@@ -56,7 +56,7 @@ k1b2d := 0;
 ! \alpha [rad], L [m]
 ! kickangle = Length*clight/(1e9*Energy[GeV]) * B[T](I[A])
 lb34d  := 1.233;	    
-ab34d  := 0.593411946;
+ab34d  := 0.593411946*0.9;
 ib34d  := 2082.1;
 ib34dm := 2300;
 e1b34d := 0;

@@ -22,7 +22,7 @@ select, flag=twiss, column=NAME, KEYWORD, S, L, BETX, BETY, ALFX, ALFY,
 !name,s,betx,bety,dx,dy,envx,envy, alfx,alfy,mux,RE56,
 !angle,k1l,l;
 !coguess, tolerance=1e10;
-twiss,deltap=0,sequence=p_ae,BETX=betxacc,BETY=betyacc,
+twiss,deltap=0.0e-2,sequence=p_ae,BETX=betxacc,BETY=betyacc,
   ALFX=alfxacc,ALFY=alfyacc,dx=dxacc,dy=dyacc,dpx=dpxacc,dpy=dpyacc,
   file="outputs/tlp_ae.tls",tolerance=1e-10;
 !stop;

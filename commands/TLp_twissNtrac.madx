@@ -54,19 +54,19 @@ system, 'cp outputs/survey.dat outputs/TLp_survey.dat';
 !! Twiss with initial betas
 
 ! fudge factors in the quad strengths
-! !initial guess
-! fftt01 := 1;
-! fftt02 := 1;
-! fftt03 := 1.1;
-! fftt04 := 1;
-! fftt05 := 0.80;
+! ! !initial guess
+fftt01 := 1;
+fftt02 := 1;
+fftt03 := 1;
+fftt04 := 1;
+fftt05 := 1;
 ! ! fit res
 ! fftt01             =                  1 ;
 ! fftt02             =        1.023260694 ;
 ! fftt03             =        1.136260317 ;
 ! fftt04             =        1.042939285 ;
 ! fftt05             =        0.800490487 ;
-! fit senza ussare e2 della ypsilon
+! ! fit senza ussare e2 della ypsilon
 fftt01             =                  1 ;
 fftt02             =        1.021877138 ;
 fftt03             =        1.147548618 ;
@@ -90,7 +90,7 @@ fftt05             =       0.8012521138 ;
 ! endmatch;
 
 ! value, fftt01, fftt02, fftt03, fftt04, fftt05;
-!stop;
+! stop;
 
 ! fudge factors from 40m and on
 fftt06 := 1;
@@ -125,7 +125,7 @@ dhstt001->e1 := 6.74415e-02;
 
 
 ! fudge factors from 45m and on
-fftt08 := 1.3;
+fftt08 := 1;
 fftt09 := 1;
 fftt10 := 1;
 
@@ -137,10 +137,11 @@ fftp04 := 1;
 !ktp03              =        2.202762167 ;
 !ktp04              =       0.2380489919 ;
 !
-ktp01              =        1.888870459 ;
-ktp02              =       -2.355334062 ;
-ktp03              =        2.202762167 ;
-ktp04              =       0.2380489919 ;
+
+! ktp01              =        1.888870459 ;
+! ktp02              =       -2.355334062 ;
+! ktp03              =        2.202762167 ;
+! ktp04              =       0.2380489919 ;
 
 
 ! match, use_macro;
