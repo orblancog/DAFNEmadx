@@ -38,6 +38,8 @@ use, sequence= p_ae, range=#s/#e;
 ! For a quick comparison, open 
 !   $ gnuplot 
 !   gnuplot> load 'outputs/plotsurvey.gp'
+
+!! fudge factor, initialized to 1 to preserve survey
 ffab34d := 1;
 
 system, 'rm -f outputs/survey.dat';
@@ -90,12 +92,11 @@ fftt05             =       0.8012521138 ;
 ! vary,name=fftt03,step=1e-3;
 ! vary,name=fftt04,step=1e-3;
 ! vary,name=fftt05,step=1e-3;
-
 ! simplex, calls=1e3,tolerance=1e-6;
 ! endmatch;
-
 ! value, fftt01, fftt02, fftt03, fftt04, fftt05;
 ! ! stop;
+
 
 ! fudge factors from 40m and on
 fftt06 := 1;
@@ -132,11 +133,72 @@ dhstt001->e1 := 6.74415e-02;
 ! fudge factors from 45m and on
 fftt08 := 1;
 fftt09 := 1;
-fftt10 := 1;
 dvrtt001a->e1 := ab11d/2-0.2;
+! match, use_macro;
+! m1 : macro={
+! call, file="commands/TLp_ae_twiss.cmd";
+! };
+! constraint, expr=table(twiss,bpstt007,dx)=-3;
+! constraint, expr=table(twiss,bpstt007,dy)=1.1;
+! constraint, expr=table(twiss,bpstt007,dpy)=0.64;
+! constraint, expr=table(summ,betxmax)<80;
+! constraint, expr=table(summ,betymax)<80;
+! vary,name=dhstt001->e1,step=1e-3;
+! !vary,name=dhrtt001a->e1,step=1e-3;
+! !vary,name=dhrtt001b->e2,step=1e-3;
+! !vary,name=dhstt001->e2,step=1e-3;
+! !vary,name=fftt07,step=1e-3;
+! !vary,name=dhrtt001a->e1,step=1e-3;
+! !vary,name=dhrtt001b->e2,step=1e-3;
+! !vary,name=fftt06,step=1e-3;
+! !vary,name=fftt07,step=1e-3;
+! !vary,name=fftt04,step=1e-3;
+! !vary,name=fftt05,step=1e-3;
+! simplex, calls=1e3,tolerance=1e-6;
+! endmatch;
+! !value, fftt07;!, fftt02, fftt03, fftt04, fftt05;
+! stop;
 
+
+! fudge factors for to match dispersion in the last section of the tt
 ! fudge factors for the last section
-fftp04 := 1;
+fftt10 := 1;
+fftt11 := 1;
+fftp04 := 1.2;
+! match result
+fftt10             =       0.7490595396 ;
+fftt11             =       0.7761291734 ;
+! match, use_macro;
+! m1 : macro={
+! call, file="commands/TLp_ae_twiss.cmd";
+! };
+! constraint, expr=table(twiss,bpstp001,dx)=2;
+! constraint, expr=table(twiss,bpstp001,dy)=2.7;
+! !constraint, expr=table(twiss,bpstp001,dpy)=0.64;
+! constraint, expr=table(summ,betxmax)<80;
+! constraint, expr=table(summ,betymax)<80;
+! vary,name=fftt10,step=1e-3;
+! vary,name=fftt11,step=1e-3;
+! !vary,name=dhrtt001a->e1,step=1e-3;
+! !vary,name=dhrtt001b->e2,step=1e-3;
+! !vary,name=dhstt001->e2,step=1e-3;
+! !vary,name=fftt07,step=1e-3;
+! !vary,name=dhrtt001a->e1,step=1e-3;
+! !vary,name=dhrtt001b->e2,step=1e-3;
+! !vary,name=fftt06,step=1e-3;
+! !vary,name=fftt07,step=1e-3;
+! !vary,name=fftt04,step=1e-3;
+! !vary,name=fftt05,step=1e-3;
+! simplex, calls=1e3,tolerance=1e-6;
+! endmatch;
+! !value, fftt07;!, fftt02, fftt03, fftt04, fftt05;
+! value, fftt10, fftt11;
+! stop;
+
+
+
+
+
 ! match result
 !ktp01              =        1.888870459 ;
 !ktp02              =       -2.355334062 ;
@@ -148,6 +210,8 @@ fftp04 := 1;
 ! ktp02              =       -2.355334062 ;
 ! ktp03              =        2.202762167 ;
 ! ktp04              =       0.2380489919 ;
+
+
 
 
 ! match, use_macro;

@@ -45,7 +45,7 @@ pertp   =  1;
  QUATT008: quadrupole,l := ltbq/2, K1 :=  -fftt08*ktt08;
  QUATT009: quadrupole,l := ltbq/2, K1 :=  -fftt09*ktt09;
  QUATT010: quadrupole,l := ltbq/2, K1 :=  -fftt10*ktt10;
- QUATT011: quadrupole,l := ltbq/2, K1 :=  -ktt11;
+ QUATT011: quadrupole,l := ltbq/2, K1 :=  -fftt11*ktt11;
 
 ! in  TR
  QUATR001: quadrupole,l := ltbq/2, K1 := ktr01;
