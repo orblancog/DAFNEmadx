@@ -1,6 +1,9 @@
 # this script plots an absolute orbit, a relative orbit
 # and the dispersion from the model multiplied by eoffset.
 # noffset is a scale factor, now fix to 1 :)
+#set terminal postscript eps enhanced color font ',20'
+#set output 'plottlpdispersion.eps'
+
 
 unset xrange
 unset yrange
@@ -36,6 +39,7 @@ ftwbend = '< grep -i bend '.ftwiss
 ftwquad = '< grep -i quad '.ftwiss
 ftwsext = '< grep -i sext '.ftwiss
 ftwbps  = '< grep -i BPS* '.ftwiss
+ftwall  =  ftwiss
 ftwflag  = '< grep -i fl[12]*'.' '.ftwiss
 ftwcorr  = '< grep -i ch[hv]*'.' '.ftwiss
 ftwwcm   = '< grep -i wcm*'.' '.ftwiss
@@ -60,6 +64,7 @@ unset ylabel
 unset ytics
 set style fill solid
 unset xlabel
+set xtics format ""
 set style line 1 lc rgb 'orange' pt 5   # square
 p ftwbend  u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ? -0.5:1/0):(column(col_l)) w boxes axis x1y1 lt 3 lw 1 ti '',\
   ftwbend  u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ?  0.5:1/0):(column(col_l)) w boxes axis x1y1 lt 3 lw 1 ti '',\
@@ -74,7 +79,7 @@ p ftwbend  u (column(col_s)-s0-column(col_l)/2):(column(col_angle) != 0 ? -0.5:1
 
 
 set size 1,0.32
-set origin 0,0.5
+set origin 0,0.57
 
 set xlabel "s [m]" offset 0,-1 font ',20'
 set ylabel "x [mm]" font ',20' offset -3
@@ -91,7 +96,7 @@ set mytics 10
 set grid
 # x rel
 #unset yrange
-set yrange [-3:3]
+set yrange [-4:4]
 set ytics 1
 set mytics 5
 unset xlabel
@@ -99,26 +104,26 @@ set xtics format ""
 set key left top
 # x rel
 p \
-  filrel u 1:2 w lp lt 7 lw 6 ti frelti, \
+  filrel u 1:2:(0.2) w errorbars lt 6 lw 3 ti frelti, \
   0 lw 3 lt -1 dashtype 2 ti '', \
-  ftwbps u (column(col_s)):(column(col_s)<10 ? \
+  ftwall u (column(col_s)):(column(col_s)<10 ? \
   (-1*column(col_dx)*(neoffset*eoffset*1e3)) : 1/0) \
-  w lp lt 7 lw 3 dashtype '.-____' ti '',\
-  ftwbps u (column(col_s)):(column(col_s)<30  && column(col_s)>10? \
+  w l lt 7 lw 3 dashtype '.-____' ti '',\
+  ftwall u (column(col_s)):(column(col_s)<30  && column(col_s)>10? \
   (column(col_dx)*(neoffset*eoffset*1e3)) : 1/0) \
-  w lp lt 7 lw 3 dashtype '.' ti ftwissti,\
-  ftwbps u (column(col_s)):(column(col_s)<30 ? \
+  w l lt 7 lw 3 dashtype '.' ti ftwissti,\
+  ftwall u (column(col_s)):(column(col_s)<30 ? \
   1/0:-1*(column(col_dx)*(neoffset*eoffset*1e3))) \
-  w lp lt 7 lw 3 dashtype '.-____' ti '-1x'.ftwissti
+  w l lt 7 lw 3 dashtype '.-____' ti '-1x'.ftwissti
 
 
 set size 1,0.32
-set origin 0,0.25
+set origin 0,0.34
 unset yrange
 set ytics 1
 set mytics 5
 set ylabel "y [mm]" font ',20' offset -3
-set yrange [-3:3]
+set yrange [-4:3.8]
 set key left top
 set xtics format ""
 set xtics format "%2.0f"
@@ -127,10 +132,10 @@ set xlabel "s [m]" offset 0,-1 font ',20'
 #unset yrange
 # y rel
 p \
-  filrel u 1:3 w lp lt 7 lw 6 ti frelti, \
+  filrel u 1:3:(0.2) w errorbars lt 6 lw 3 ti frelti, \
   0 lw 3 lt -1 dashtype 2 ti '', \
-  ftwbps u (column(col_s)):(column(col_dy)*(neoffset*eoffset*1e3)) \
-  w lp lt 7 lw 3 dashtype '.' ti ftwissti
+  ftwall u (column(col_s)):(column(col_dy)*(neoffset*eoffset*1e3)) \
+  w l lt 7 lw 3 dashtype '.' ti ftwissti
 
 
 # set size 1,0.32

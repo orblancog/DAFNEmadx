@@ -62,11 +62,11 @@ ffab34d := 0.9;! 34deg at 90%
 
 ! fudge factors in the quad strengths
 ! ! ! !initial guess
-! fftt01 := 1;
-! fftt02 := 1;
-! fftt03 := 1.1;
-! fftt04 := 1;
-! fftt05 := 0.8;
+fftt01 := 1;
+fftt02 := 1;
+fftt03 := 1;
+fftt04 := 1;
+fftt05 := 1;
 ! ! fit res
 ! fftt01             =                  1 ;
 ! fftt02             =        1.023260694 ;
@@ -79,6 +79,8 @@ fftt02             =        1.021877138 ;
 fftt03             =        1.147548618 ;
 fftt04             =        1.048984403 ;
 fftt05             =       0.8012521138 ;
+
+
 ! match, use_macro;
 ! m1 : macro={
 ! call, file="commands/TLp_ae_twiss.cmd";
@@ -101,7 +103,7 @@ fftt05             =       0.8012521138 ;
 ! fudge factors from 40m and on
 fftt06 := 1;
 fftt07 := 1;
-dhstt001->e1 := 6.74415e-02;
+dhstt001->e1 := 0.5*6.74415e-02;
 ! !dhrtt001a->e1 :=  0.1;
 ! ! match result
 ! match, use_macro;
@@ -166,7 +168,7 @@ fftt10 := 1;
 fftt11 := 1;
 fftp04 := 1.2;
 ! match result
-fftt10             =       0.7490595396 ;
+fftt10             =       0.8*0.7490595396 ;
 fftt11             =       0.7761291734 ;
 ! match, use_macro;
 ! m1 : macro={
@@ -194,6 +196,10 @@ fftt11             =       0.7761291734 ;
 ! !value, fftt07;!, fftt02, fftt03, fftt04, fftt05;
 ! value, fftt10, fftt11;
 ! stop;
+
+
+
+
 
 
 
@@ -289,6 +295,31 @@ fftt11             =       0.7761291734 ;
 !quatt009->k1       =       0.5722838729 ;
 !quatt010->k1       =        3.854291508 ;
 
+
+
+
+
+
+! alignment
+!select, flag=error, full;
+select, flag=error, clear;
+select, flag=error, pattern="QUATT001";
+ealign, dx := -0.5e-3, dy := 0.0e-3;
+select, flag=error, clear;
+select, flag=error, pattern="QUATT003";
+ealign, dx := 0.3e-3, dy := -0.0e-3;
+select, flag=error, clear;
+! !select, flag=error, pattern="QUATT003";
+! !ealign, dx := 0.0e-3, dy := 0.0e-3;
+! !efcomp, dkn={0.03e-3},dks={-0.03e-3};
+! esave, file=outputs/err.file;
+
+
+
+
+
+
+
 call, file="commands/TLp_savebeta.madx";! savebeta in flags...
 call, file="commands/TLp_ae_twiss.cmd";
 !stop;
@@ -359,6 +390,14 @@ call, file="commands/TLp_showbeta.madx";
 
 ! !stop;
 
+
+
+
+
+
+
+
+
 ! Generating particles 
 system, "ln -s outputs/TLp_betaSTART.txt betaSTART.txt";
 system, "ln -s outputs/TLp_beam0.txt beam0.txt";
@@ -372,6 +411,12 @@ system, "mv madxInrays.madx debug.txt trackTABLE outputs/";
 
 ! beggining track
 tkon := 0;! this switch activate the kickers modelling the dipoles
+!chhtt004 := 0.5;
+!chhtt006 := 2.5;
+!cvvtt004 := 3*0.5;
+!value, chvtt004->hkick;
+!stop;
+!chvtt004->vkick := -0.04e-3;
 ! NO purpuse tracking in PTC
 !set parameters
 !system, "rm -f track*";
@@ -379,18 +424,25 @@ ptc_create_universe;
   ptc_create_layout,model=2,method=6,nst=10,
 !exact;!,
 resplit,even;
+ptc_align;
 !!!! PTC MAP
 !   ptc_normal,icase=5,no=8,deltap=0.00;
 !!!! PTC TWISS
-!   select, flag=ptc_twiss,clear;
-!   select, flag=ptc_twiss,column=name,keyword,s,beta11, beta22, alfa11, alfa22;
-!   ptc_twiss,icase=5,closed_orbit,file="myDAFNE.ptctwiss",summary_file,table;
+   select, flag=ptc_twiss,clear;
+!select, flag=twiss, column=NAME, KEYWORD, S, L, BETX, BETY, ALFX, ALFY,
+!  MUX, MUY, DX, DPX, DY, DPY, ANGLE,K1L, K2L, K3L, K4L, envx, envy,k0l,ddx,ddy;
+
+   select, flag=ptc_twiss,column=name,keyword,s,L,beta11, beta22, alfa11, alfa22,
+   mu1,mu3, disp1,disp2,disp3,disp4,angle,k1l,k2l,k3l,k4l,envx,envy,k0l,disp1p,dip3p;
+   ptc_twiss,icase=5, betx=betxacc, bety=betyacc, 
+   alfx=alfxacc, alfy=alfyacc, dx=dxacc, dy=dyacc,
+   file="outputs/ptctwiss",summary_file,table;
 !ptc_observe, place="IP.1";
 call, file="commands/TLp_observe.ptc.madx";
 !set particles
-!ptc_start, X=0, PX=0, Y=0, PY=0, T=0, PT=0;
+ptc_start, X=0, PX=0, Y=0, PY=0, T=0, PT=-0.7e-3;
 !ptc_start, X=1e-3, PX=1e-3, Y=1e-3, PY=1e-3, T=1e-9, PT=1e-9;
-call, file="outputs/madxInrays.madx";
+!call, file="outputs/madxInrays.madx";
 !run
 !!norm_no is order of the normal form : 1=linear, 2 ...!
 Rpipe := 44e-3;
@@ -399,8 +451,7 @@ ptc_track, icase=6,turns=1,dump,onetable,element_by_element,
 maxaper={Rpipe,AngMax,Rpipe,AngMax,1,1},
 ! the t and pt vars do not change anything
 ! norm_no=4,
-file,
-radiation;
+file,radiation;
 
 !ptc_observe,place=#e;
 !ptc_trackline, turns=1,onetable,file;

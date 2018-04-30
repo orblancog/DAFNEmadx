@@ -11,7 +11,7 @@ ptc_observe, place=BPSTT007;
 ptc_observe, place=BPSTP001;
 ptc_observe, place=BPSTP002;
 
-! flags
+! ! flags
 ptc_observe, place=FL2A1001;
 ptc_observe, place=FL2TL001;
 ptc_observe, place=FL2TL002;
