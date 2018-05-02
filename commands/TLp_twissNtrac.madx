@@ -103,7 +103,7 @@ fftt05             =       0.8012521138 ;
 ! fudge factors from 40m and on
 fftt06 := 1;
 fftt07 := 1;
-dhstt001->e1 := 0.5*6.74415e-02;
+dhstt001->e1 := 0.6*6.74415e-02;
 ! !dhrtt001a->e1 :=  0.1;
 ! ! match result
 ! match, use_macro;
@@ -133,7 +133,7 @@ dhstt001->e1 := 0.5*6.74415e-02;
 
 
 ! fudge factors from 45m and on
-fftt08 := 1;
+fftt08 := 1.1;
 fftt09 := 1;
 dvrtt001a->e1 := ab11d/2-0.2;
 ! match, use_macro;
@@ -438,20 +438,29 @@ ptc_align;
    alfx=alfxacc, alfy=alfyacc, dx=dxacc, dy=dyacc,
    file="outputs/ptctwiss",summary_file,table;
 !ptc_observe, place="IP.1";
-call, file="commands/TLp_observe.ptc.madx";
 !set particles
-ptc_start, X=0, PX=0, Y=0, PY=0, T=0, PT=-0.7e-3;
-!ptc_start, X=1e-3, PX=1e-3, Y=1e-3, PY=1e-3, T=1e-9, PT=1e-9;
-!call, file="outputs/madxInrays.madx";
-!run
-!!norm_no is order of the normal form : 1=linear, 2 ...!
 Rpipe := 44e-3;
 AngMax := 1;
+call, file="commands/TLp_observe.ptc.madx";
+ptc_start, X=0, PX=0, Y=0, PY=0, T=0, PT=-0.7e-3;
+ptc_track, icase=6,turns=1,dump,onetable,element_by_element,
+maxaper={Rpipe,AngMax,Rpipe,AngMax,1,1},
+! the t and pt vars do not change anything
+! norm_no=4,
+file="tracktest",radiation;
+ptc_track_end;
+call, file="commands/TLp_observe.ptc.madx";
+call, file="outputs/madxInrays.madx";
 ptc_track, icase=6,turns=1,dump,onetable,element_by_element,
 maxaper={Rpipe,AngMax,Rpipe,AngMax,1,1},
 ! the t and pt vars do not change anything
 ! norm_no=4,
 file,radiation;
+
+!ptc_start, X=1e-3, PX=1e-3, Y=1e-3, PY=1e-3, T=1e-9, PT=1e-9;
+!call, file="outputs/madxInrays.madx";
+!run
+!!norm_no is order of the normal form : 1=linear, 2 ...!
 
 !ptc_observe,place=#e;
 !ptc_trackline, turns=1,onetable,file;
