@@ -86,25 +86,81 @@ use, sequence=e_ae;
 ! fudge factors from TLp
 ! fit senza ussare e2 della ypsilon
 fftt01             =                  1 ;
-fftt02             =        1.021877138 ;
-fftt03             =        1.147548618 ;
-fftt04             =        1.048984403 ;
-fftt05             =       0.8012521138 ;
+fftt02             = 1;!       1.021877138 ;
+fftt03             = 1;!       1.147548618 ;
+fftt04             = 1;!       1.048984403 ;
+fftt05             = 1;!      0.8012521138 ;
 fftt06 := 1;
 fftt07 := 1;
 fftt08 := 1;
 fftt09 := 1;
 fftt10 := 1;
 fftt11 := 1;
-dhstt001->e1 := -6.74415e-02;
+dhstt001->e1 := 6.74415e-02;
+
+fftt04             =        1.266792898 ;
+fftt05             =        1.068021857 ;
 
 
+dhptt001->e2       =       0.2033877426 ;
+dhptt001->angle    =       0.7674591003 ;
 
-
+!dhptt001->e1       =       0.1559003906 ;
+!dhptt001->angle = 0.9;
 
 call, file="commands/TLe_savebeta.madx";! savebeta in flags...
 call, file="commands/TLe_ae_twiss.cmd";
 call, file="commands/plotTLetwiss.madx";			  
+call, file="commands/TLe_showbeta.madx";
+!stop;
+
+! match, use_macro;
+! m1 : macro={
+! call, file="commands/TLe_ae_twiss.cmd";
+! };
+! constraint, expr=table(twiss,bpstt003,dx)=1.2;
+! constraint, expr=table(twiss,bpstt003,dy)=1.0;
+! constraint, expr=table(twiss,bpstt004,dx)=0.0;
+! constraint, expr=table(twiss,bpstt004,dy)=1.0;
+! constraint, expr=table(summ,betxmax)<100;
+! constraint, expr=table(summ,betymax)<100;
+! vary,name=fftt03,step=1e-3;
+! vary,name=fftt02,step=1e-3,lower=0.0,upper=1.5;
+! vary,name=fftt03,step=1e-3,lower=0.0,upper=1.5;
+! vary,name=fftt04,step=1e-3,lower=0.0,upper=1.5;
+! vary,name=fftt05,step=1e-3,lower=0.0,upper=1.5;
+! simplex, calls=1e3,tolerance=1e-6;
+! endmatch;
+! value, fftt01, fftt02, fftt03, fftt04, fftt05;
+! stop;
+
+match, use_macro;
+m1 : macro={
+call, file="commands/TLe_ae_twiss.cmd";
+};
+!constraint, expr=table(twiss,bpstt003,dx)=1.2;
+!constraint, expr=table(twiss,bpstt003,dy)=1.0;
+constraint, expr=table(twiss,bpstt004,dx)=0.0;
+constraint, expr=table(twiss,bpstt004,dy)=1.0;
+!constraint, expr=table(summ,betxmax)<100;
+!constraint, expr=table(summ,betymax)<100;
+!vary,name=fftt03,step=1e-3;
+vary,name=dhptt001->e2,step=1e-3;
+vary,name=dhptt001->angle,step=1e-3;
+!vary,name=fftt02,step=1e-3,lower=0.0,upper=1.5;
+!vary,name=fftt03,step=1e-3,lower=0.0,upper=1.5;
+!vary,name=fftt04,step=1e-3,lower=0.0,upper=1.5;
+!vary,name=fftt05,step=1e-3,lower=0.0,upper=1.5;
+simplex, calls=1e3,tolerance=1e-6;
+endmatch;
+!value, fftt01, fftt02, fftt03, fftt04, fftt05;
+value,dhptt001->e2;
+value,dhptt001->angle;
+stop;
+
+
+
+
 !stop;
 ! store twiss params in files
 !call, file="commands/TLe_showbeta.madx";

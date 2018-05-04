@@ -1,7 +1,24 @@
 savebeta,label=betaSTART,place=#s;
+savebeta,label=betaEND,place=#e;
+! striplines
+savebeta,label=betaBPSTR001,place=BPSTR001;
+savebeta,label=betaBPSTR002,place=BPSTR002;
+savebeta,label=betaBPSTT001,place=BPSTT001;
+savebeta,label=betaBPSTT002,place=BPSTT002;
+savebeta,label=betaBPSTT003,place=BPSTT003;
+savebeta,label=betaBPSTT004,place=BPSTT004;
+savebeta,label=betaBPSTT005,place=BPSTT005;
+savebeta,label=betaBPSTT006,place=BPSTT006;
+savebeta,label=betaBPSTT007,place=BPSTT007;
+savebeta,label=betaBPSTE001,place=BPSTE001;
+savebeta,label=betaBPSTE002,place=BPSTE002;
+savebeta,label=betaBPSTE003,place=BPSTE003;
+savebeta,label=betaBPSTE004,place=BPSTE004;
+savebeta,label=betaBPSTE005,place=BPSTE005;
+savebeta,label=betaBPSTE006,place=BPSTE006;
+
+! flags
 savebeta,label=betaFL2A2001,place=FL2A2001;
-!savebeta,label=betaFL2TR001,place=D8A;
-!savebeta,label=betaFL2TR001,place=CHVTR003;
 savebeta,label=betaFL2TR001,place=FL2TR001;
 savebeta,label=betaFL2TR002,place=FL2TR002;
 savebeta,label=betaFL2TT001,place=FL2TT001;

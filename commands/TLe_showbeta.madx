@@ -2,6 +2,54 @@
 system, "rm -f outputs/TLe_beta*txt outputs/beta*.txt outputs/beam0.txt";! get initial values
 assign, echo="outputs/TLe_beam0.txt";
 show, beam;
+! bps
+system, "rm -f outputs/TLe_betaBPSTR001.txt";
+assign,  echo="outputs/TLe_betaBPSTR001.txt";
+show, betaBPSTR001;
+system, "rm -f outputs/TLe_betaBPSTR002.txt";
+assign,  echo="outputs/TLe_betaBPSTR002.txt";
+show, betaBPSTR002;
+system, "rm -f outputs/TLe_betaBPSTT001.txt";
+assign,  echo="outputs/TLe_betaBPSTT001.txt";
+show, betaBPSTT001;
+system, "rm -f outputs/TLe_betaBPSTT002.txt";
+assign,  echo="outputs/TLe_betaBPSTT002.txt";
+show, betaBPSTT002;
+system, "rm -f outputs/TLe_betaBPSTT003.txt";
+assign,  echo="outputs/TLe_betaBPSTT003.txt";
+show, betaBPSTT003;
+system, "rm -f outputs/TLe_betaBPSTT004.txt";
+assign,  echo="outputs/TLe_betaBPSTT004.txt";
+show, betaBPSTT004;
+system, "rm -f outputs/TLe_betaBPSTT005.txt";
+assign,  echo="outputs/TLe_betaBPSTT005.txt";
+show, betaBPSTT005;
+system, "rm -f outputs/TLe_betaBPSTT006.txt";
+assign,  echo="outputs/TLe_betaBPSTT006.txt";
+show, betaBPSTT006;
+system, "rm -f outputs/TLe_betaBPSTT007.txt";
+assign,  echo="outputs/TLe_betaBPSTT007.txt";
+show, betaBPSTT007;
+system, "rm -f outputs/TLe_betaBPSTE001.txt";
+assign,  echo="outputs/TLe_betaBPSTE001.txt";
+show, betaBPSTE001;
+system, "rm -f outputs/TLe_betaBPSTE002.txt";
+assign,  echo="outputs/TLe_betaBPSTE002.txt";
+show, betaBPSTE002;
+system, "rm -f outputs/TLe_betaBPSTE003.txt";
+assign,  echo="outputs/TLe_betaBPSTE003.txt";
+show, betaBPSTE003;
+system, "rm -f outputs/TLe_betaBPSTE004.txt";
+assign,  echo="outputs/TLe_betaBPSTE004.txt";
+show, betaBPSTE004;
+system, "rm -f outputs/TLe_betaBPSTE005.txt";
+assign,  echo="outputs/TLe_betaBPSTE005.txt";
+show, betaBPSTE005;
+system, "rm -f outputs/TLe_betaBPSTE006.txt";
+assign,  echo="outputs/TLe_betaBPSTE006.txt";
+show, betaBPSTE006;
+
+! flags
 system, "rm -f outputs/TLe_betaSTART.txt";
 assign, echo="outputs/TLe_betaSTART.txt";
 show, betaSTART;
