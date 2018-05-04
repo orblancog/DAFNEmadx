@@ -261,10 +261,16 @@ DHYTT001b: SBEND, L :=  lb36d/2.0,
            ANGLE    := -apol*hdon*ab36d/2.0,
 	   K1       :=  k1b36d*abs(DHYTT001),
 	   E1:=0,E2:=-apol*e2b36d;
-DHPTT001 : SBEND, L :=  lb45d/2.0,
+DHPTT001a : SBEND, L :=  lb45d/2.0,
 	   TILT     :=  0,
 	   ANGLE    :=  hdon*ab45d/2.0,
-	   K1       :=  k1b45d*abs(DHPTT001);
+	   K1       :=  k1b45d*abs(DHPTT001),
+	   E1       := 0;
+DHPTT001b : SBEND, L :=  lb45d/2.0,
+	   TILT     :=  0,
+	   ANGLE    :=  hdon*ab45d/2.0,
+	   K1       :=  k1b45d*abs(DHPTT001),
+	   E2       := 0;
 
 ! in LINAC
 !tt
@@ -476,7 +482,7 @@ mDVRTR001: line=(DVRTR001a,DVRTR001k, DVRTR001b);
 mDVRTR002: line=(DVRTR002a,DVRTR002k, DVRTR002b);
 
 mDHYTT001: line=(DHYTT001a,DHYTT001k, DHYTT001b);
-mDHPTT001: line=(DHPTT001 ,DHPTT001k, DHPTT001);!
+mDHPTT001: line=(DHPTT001a,DHPTT001k, DHPTT001b);!
 
 ! in LINAC
 mDHPTT002: line=(DHPTT002a, DHPTT002k, DHPTT002b);
