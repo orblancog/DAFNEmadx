@@ -98,34 +98,96 @@ fftt10 := 1;
 fftt11 := 1;
 !dhstt001->e1 := 6.74415e-02;
 
-!fftt04             =        1.266792898 ;
-!fftt05             =        1.068021857 ;
+!dhytt001b->angle = -0.2;
 
+fftt01 := 0.8;
+fftt02 := 1.1;
+fftt03 := 1.1;
+
+fftt01             =       0.8897348369 ;
+fftt02             =        1.134905603 ;
+fftt03             =        1.020065464 ;
+fftt04             =        1.088667883 ;
+fftt05             =        1.031675833 ;
+
+!dhptt001->e1       =      -0.7641409461 ;
+!dhptt001->e2       =       0.7723073842 ;
+!dhptt001->e1       =      -0.7639692735 ;
+!dhptt001->e2       =       0.7247156354 ;
+
+!value, dhptt002a;
+!dhptt002a->e1  = 1;
+!stop;
+!dhptt001->e1       =       -0.717858189 ;
+!dhptt001->e2       =       0.6606860171 ;
+
+! matching dispersion at bpstt004
+!dhptt001->e1       =      -0.5098037589 ;
+!dhptt001->e2       =       0.5803136539 ;
+!dhptt001->e1       =      -0.7538906313 ;
+!dhptt001->e2       =       0.7896030589 ;
 
 !dhptt001->e2       =       0.2033877426 ;
-!dhptt001->angle    =       0.7674591003 ;
+!dhptt001->angle    =       0.5 ;
+
+!dhptt001->e1       =       -0.481983861 ;
+!dhptt001->e2       =       0.5718784955 ;
+!dhptt001->e2       =       0.2 ;
 
 !dhptt001->e1       =       0.1559003906 ;
-dhptt001->angle = 0.57;
+!dhptt001->angle = 0.57;
+!dvrtt001a->e1 =  ;
+
+!dvrtt001a->e1      =       -0.220802414 ;
+!dvrtt001a->e1      =       -0.288177414 ;
+
 
 call, file="commands/TLe_savebeta.madx";! savebeta in flags...
 call, file="commands/TLe_ae_twiss.cmd";
 call, file="commands/plotTLetwiss.madx";			  
 call, file="commands/TLe_showbeta.madx";
+!stop;
+
+
+! match bpstt002 dispersion
+match, use_macro;
+m1 : macro={
+call, file="commands/TLe_ae_twiss.cmd";
+};
+constraint, expr=table(twiss,bpstt002,dx)=-0.7;
+constraint, expr=table(twiss,bpstt002,dy)=-1.52;
+constraint, expr=table(twiss,bpstt003,dx)=1.15;
+constraint, expr=table(twiss,bpstt003,dy)=0.52;
+constraint, expr=table(twiss,bpstt004,dpy)=0.52;
+constraint, expr=table(twiss,fl2tt001,betx)=2.0;
+constraint, expr=table(twiss,fl2tt001,bety)=2.0;
+!constraint, expr=table(summ,betxmax)<100;
+!constraint, expr=table(summ,betymax)<100;
+!vary,name=fftt03,step=1e-3;
+vary,name=fftt01,step=1e-3,lower=0.0,upper=1.5;
+vary,name=fftt02,step=1e-3,lower=0.0,upper=1.5;
+vary,name=fftt03,step=1e-3,lower=0.0,upper=1.5;
+vary,name=fftt04,step=1e-3,lower=0.0,upper=1.5;
+vary,name=fftt05,step=1e-3,lower=0.0,upper=1.5;
+simplex, calls=2e3,tolerance=1e-6;
+endmatch;
+value, fftt01, fftt02, fftt03, fftt04, fftt05;
 stop;
 
+! ! match bpstt003 dispersion
 ! match, use_macro;
 ! m1 : macro={
 ! call, file="commands/TLe_ae_twiss.cmd";
 ! };
-! constraint, expr=table(twiss,bpstt003,dx)=1.2;
-! constraint, expr=table(twiss,bpstt003,dy)=1.0;
-! constraint, expr=table(twiss,bpstt004,dx)=0.0;
-! constraint, expr=table(twiss,bpstt004,dy)=1.0;
-! constraint, expr=table(summ,betxmax)<100;
-! constraint, expr=table(summ,betymax)<100;
-! vary,name=fftt03,step=1e-3;
-! vary,name=fftt02,step=1e-3,lower=0.0,upper=1.5;
+! constraint, expr=table(twiss,bpstt003,dx)=1.15;
+! constraint, expr=table(twiss,bpstt003,dy)=0.52;
+! constraint, expr=table(twiss,bpstt003,dpy)=0.0;
+! !constraint, expr=table(twiss,bpstt004,dx)=0.0;
+! !constraint, expr=table(twiss,bpstt004,dy)=1.0;
+! !constraint, expr=table(summ,betxmax)<100;
+! !constraint, expr=table(summ,betymax)<100;
+! !vary,name=fftt03,step=1e-3;
+! !vary,name=fftt02,step=1e-3,lower=0.0,upper=1.5;
 ! vary,name=fftt03,step=1e-3,lower=0.0,upper=1.5;
 ! vary,name=fftt04,step=1e-3,lower=0.0,upper=1.5;
 ! vary,name=fftt05,step=1e-3,lower=0.0,upper=1.5;
@@ -134,29 +196,87 @@ stop;
 ! value, fftt01, fftt02, fftt03, fftt04, fftt05;
 ! stop;
 
-match, use_macro;
-m1 : macro={
-call, file="commands/TLe_ae_twiss.cmd";
-};
-!constraint, expr=table(twiss,bpstt003,dx)=1.2;
-!constraint, expr=table(twiss,bpstt003,dy)=1.0;
-constraint, expr=table(twiss,bpstt004,dx)=0.0;
-constraint, expr=table(twiss,bpstt004,dy)=1.0;
-!constraint, expr=table(summ,betxmax)<100;
-!constraint, expr=table(summ,betymax)<100;
-!vary,name=fftt03,step=1e-3;
-vary,name=dhptt001->e2,step=1e-3;
-vary,name=dhptt001->angle,step=1e-3;
-!vary,name=fftt02,step=1e-3,lower=0.0,upper=1.5;
-!vary,name=fftt03,step=1e-3,lower=0.0,upper=1.5;
-!vary,name=fftt04,step=1e-3,lower=0.0,upper=1.5;
-!vary,name=fftt05,step=1e-3,lower=0.0,upper=1.5;
-simplex, calls=1e3,tolerance=1e-6;
-endmatch;
-!value, fftt01, fftt02, fftt03, fftt04, fftt05;
-value,dhptt001->e2;
-value,dhptt001->angle;
-stop;
+
+
+
+
+! ! match bpstt004 dispersion
+! match, use_macro;
+! m1 : macro={
+! call, file="commands/TLe_ae_twiss.cmd";
+! };
+! constraint, expr=table(twiss,bpstt004,dx)=0.30;
+! constraint, expr=table(twiss,bpstt004,dy)=0.52;
+! !constraint, expr=table(twiss,bpstt004,dpy)=2;
+! constraint, expr=table(twiss,bpstt005,dy)=0.52;
+! !constraint, expr=table(twiss,bpstt004,dx)=0.0;
+! !constraint, expr=table(twiss,bpstt004,dy)=1.0;
+! !constraint, expr=table(summ,betxmax)<100;
+! !constraint, expr=table(summ,betymax)<100;
+! !vary,name=fftt03,step=1e-3;
+! !vary,name=fftt02,step=1e-3,lower=0.0,upper=1.5;
+! vary,name=dhptt001->e1,step=1e-3;
+! vary,name=dhptt001->e2,step=1e-3;
+! !vary,name=fftt04,step=1e-3,lower=0.0,upper=1.5;
+! !vary,name=fftt05,step=1e-3,lower=0.0,upper=1.5;
+! simplex, calls=1e3,tolerance=1e-6;
+! endmatch;
+! value, dhptt001->e1;
+! value, dhptt001->e2;
+! stop;
+
+
+
+! match, use_macro;
+! m1 : macro={
+! call, file="commands/TLe_ae_twiss.cmd";
+! };
+! !constraint, expr=table(twiss,bpstt003,dx)=1.2;
+! !constraint, expr=table(twiss,bpstt003,dy)=1.0;
+! constraint, expr=table(twiss,bpstt004,dx)=0.0;
+! constraint, expr=table(twiss,bpstt004,dy)=1.0;
+! !constraint, expr=table(summ,betxmax)<100;
+! !constraint, expr=table(summ,betymax)<100;
+! !vary,name=fftt03,step=1e-3;
+! vary,name=dhptt001->e2,step=1e-3;
+! vary,name=dhptt001->angle,step=1e-3;
+! !vary,name=fftt02,step=1e-3,lower=0.0,upper=1.5;
+! !vary,name=fftt03,step=1e-3,lower=0.0,upper=1.5;
+! !vary,name=fftt04,step=1e-3,lower=0.0,upper=1.5;
+! !vary,name=fftt05,step=1e-3,lower=0.0,upper=1.5;
+! simplex, calls=1e3,tolerance=1e-6;
+! endmatch;
+! !value, fftt01, fftt02, fftt03, fftt04, fftt05;
+! value,dhptt001->e2;
+! value,dhptt001->angle;
+! stop;
+
+
+
+! ! matching dvrtt001
+! match, use_macro;
+! m1 : macro={
+! call, file="commands/TLe_ae_twiss.cmd";
+! };
+! !constraint, expr=table(twiss,bpstt003,dx)=1.2;
+! !constraint, expr=table(twiss,bpstt003,dy)=1.0;
+! constraint, expr=table(twiss,bpstt007,dx)=-2.0;
+! constraint, expr=table(twiss,bpstt007,dy)=-1.5;
+! !constraint, expr=table(summ,betxmax)<100;
+! !constraint, expr=table(summ,betymax)<100;
+! !vary,name=fftt03,step=1e-3;
+! vary,name=dvrtt001a->e1,step=1e-3;
+! !vary,name=dhptt001->angle,step=1e-3;
+! !vary,name=fftt02,step=1e-3,lower=0.0,upper=1.5;
+! !vary,name=fftt03,step=1e-3,lower=0.0,upper=1.5;
+! !vary,name=fftt04,step=1e-3,lower=0.0,upper=1.5;
+! !vary,name=fftt05,step=1e-3,lower=0.0,upper=1.5;
+! simplex, calls=1e3,tolerance=1e-6;
+! endmatch;
+! !value, fftt01, fftt02, fftt03, fftt04, fftt05;
+! value,dvrtt001a->e1;
+! value,dhptt001->angle;
+! stop;
 
 
 

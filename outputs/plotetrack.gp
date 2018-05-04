@@ -115,13 +115,13 @@ p \
   0 lw 3 lt -1 dashtype 2 ti '', \
   ftwall u (column(col_s)):(column(col_s)< 10 ? \
   (column(col_dx)*(neoffset*eoffset*1e3)) : 1/0) \
-  w lp lt 7 lw 3 dashtype '.' ti '',\
+  w l lt 7 lw 3 dashtype '.' ti '',\
   ftwall u (column(col_s)):(column(col_s)<30  && column(col_s)>10? \
   (column(col_dx)*(neoffset*eoffset*1e3)) : 1/0) \
-  w lp lt 7 lw 3 dashtype '.' ti ftwissti,\
+  w l lt 7 lw 3 dashtype '.' ti ftwissti,\
   ftwall u (column(col_s)):(column(col_s)<30 ? \
   1/0:-1*(column(col_dx)*(neoffset*eoffset*1e3))) \
-  w lp lt 7 lw 3 dashtype '.-____' ti '-1x'.ftwissti
+  w l lt 7 lw 3 dashtype '.-____' ti '-1x'.ftwissti
 
 
 set size 1,0.32
@@ -144,7 +144,7 @@ p \
   filrel u 1:3:(0.2) w errorbars lt 6 lw 3 ti frelti, \
   0 lw 3 lt -1 dashtype 2 ti '', \
   ftwall u (column(col_s)):(column(col_dy)*(neoffset*eoffset*1e3)) \
-  w lp lt 7 lw 3 dashtype '.' ti ftwissti
+  w l lt 7 lw 3 dashtype '.' ti ftwissti
 
 
 # set size 1,0.32
