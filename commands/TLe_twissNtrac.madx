@@ -98,98 +98,6 @@ fftt10 := 1;
 fftt11 := 1;
 
 
-fftt01             =       0.9031217195 ;
-fftt02             =        1.285326258 ;
-fftt03             =        1.127448829 ;
-fftt04             =       0.9269475561 ;
-fftt05             =        1.278314947 ;
-
-!dhptt001->e1       =      -0.3299227402 ;
-!dhptt001->e2       =       0.4977405257 ;
-
-!dhptt001->e1       =      -0.3546921648 ;
-!dhptt001->e2       =       0.4203163521 ;
-!value, dhptt001->angle;
-!dhptt001->angle    =  0.57;
-
-!dhptt001->e1       =      -0.7334063894 ;
-!dhptt001->e2       =       0.7826081042 ;
-!dhptt001->angle    =       0.2834707972 ;
-
-! fftt06             =       0.4749726076 ;
-! dhptt001->e1       =       0.4636263179 ;
-! dhptt001->e2       =      -0.3072893196 ;
-
-! fftt06             =       -1.268431624 ;
-! dhptt001->e1       =      -0.4060704343 ;
-! dhptt001->e2       =       0.5446081196 ;
-! dhptt001->angle    =         0.38512186 ;
-
-! fftt06             =       -1.371015729 ;
-! dhptt001->e1       =      -0.4530429507 ;
-! dhptt001->e2       =       0.5796107519 ;
-! dhptt001->angle    =       0.3724721656 ;
-
-! fftt06             =       -1.495422888 ;
-! dhptt001->e1       =      -0.4825781865 ;
-! dhptt001->e2       =       0.6021490906 ;
-! dhptt001->angle    =       0.3645483044 ;
-!fftt06 = 1;
-
-fftt01             =       0.9224518915 ;
-fftt02             =       0.9699344501 ;
-fftt03             =        1.085813647 ;
-fftt04             =        1.087477378 ;
-fftt05             =        1.278314947 ;
-
-!ARIABLE "TAR" SET TO   2.03769085e+00
-fftt01             =       0.9368539338 ;
-fftt02             =       0.9599119368 ;
-fftt03             =       0.9937340529 ;
-fftt04             =        1.062792347 ;
-fftt05             =        1.278314947 ;
-!dhptt001->angle    =       0.5208678883
-
-fftt01             =       0.9308526108 ;
-fftt02             =       0.9558839048 ;
-fftt03             =       0.9934829377 ;
-fftt04             =        1.063317355 ;
-fftt05             =        1.278314947 ;
-!dhptt001->angle    =       0.5210348488 ;
-
-fftt01             =         1.00213783 ;
-fftt02             =       0.7728088709 ;
-fftt03             =        1.079849574 ;
-fftt04             =        1.208093282 ;
-fftt05             =        1;!1.801613114 ;
-!dhptt001->angle    =       0.2420070719 ;
-
-fftt01             =       0.7686806262 ;
-fftt02             =       0.6305703838 ;
-fftt03             =        1.016094224 ;
-fftt04             =        1.225648729 ;
-!fftt05             =        1.925089991 ;
-dhptt001->angle    =             0.3927 ;
-
-fftt01             =       0.8336306315 ;
-fftt02             =         0.77497513 ;
-fftt03             =        1.012834385 ;
-fftt04             =        1.109626028 ;
-fftt05             =                  1 ;
-dhptt001->angle    =             0.3927 ;
-dhptt001a->e1       =      -0.1873068905 ;
-dhptt001b->e2       =       0.1158421467 ;
-!dhptt002a->e1 = 0.2;
-
-fftt01             =       0.8246079703 ;
-fftt02             =        0.757487578 ;
-fftt03             =         1.01062573 ;
-fftt04             =        1.113486761 ;
-fftt05             =                  1 ;
-dhptt001->angle    =                  0 ;
-dhptt001a->e1      =      -0.2256000817 ;
-dhptt001b->e2      =      0.07027972882 ;
-
 fftt01             =       0.9228151315 ;
 fftt02             =         1.07881012 ;
 fftt03             =         1.05638215 ;
@@ -197,51 +105,105 @@ fftt04             =        1.015349107 ;
 fftt05             =                  1 ;
 dhptt001a->e1      =      -0.4264387371 ;
 dhptt001b->e2      =       0.4167222268 ;
+!dhptt001b->angle   = 0.1;
+
+fftt01             =       0.9167358453 ;
+fftt02             =         1.11546319 ;
+fftt03             =        1.079419418 ;
+fftt04             =        1.009654903 ;
+fftt05             =                  1 ;
+dhptt001a->e1      =      -0.6940964813 ;
+dhptt001b->e2      =        1.162548305 ;
+!dhptt001a->angle   =        3.38164e-01 ;
+!dhptt001b->angle   =                0.1 ;
+
+fftt01             =       0.9192928393 ;
+fftt02             =        1.158265133 ;
+fftt03             =        1.092081589 ;
+fftt04             =        1.016832412 ;
+fftt05             =        1.245595514 ;
+dhptt001a->e1      =      -0.5369459576 ;
+dhptt001b->e2      =        1.160090149 ;
+dhptt001a->angle   =             0.3927 ;
+!dhptt001b->angle   =                0.1 ;
+
+fftt01             =       0.8690879973 ;
+fftt02             =        1.101088635 ;
+fftt03             =        1.103535713 ;
+fftt04             =        1.079213924 ;
+fftt05             =        1.2 ;
+dhptt001a->e1      =      -0.4597817429 ;
+dhptt001b->e2      =         1.12721511 ;
+dhptt001a->angle   =             0.3927 ;
+!dhptt001b->angle   =                0.1 ;
+
+fftt01             =        0.921203984 ;
+fftt02             =        1.225025783 ;
+fftt03             =        1.091168308 ;
+fftt04             =       0.9755270408 ;
+fftt05             =                1.2 ;
+dhptt001a->e1      =      -0.5667841825 ;
+dhptt001b->e2      =        1.186011743 ;
+dhptt001a->angle   =             0.3927 ;
+!dhptt001b->angle   =                0.1 ;
+
+fftt01             =        0.921203984 ;
+fftt02             =        1.225025783 ;
+fftt03             =        1.091168308 ;
+fftt04             =       0.9755270408 ;
+fftt05             =                1.2 ;
+dhptt001a->e1      =      -0.6210677209 ;
+dhptt001b->e2      =        1.570646655 ;
+dhptt001a->angle   =             0.3927 ;
+dhptt001b->angle   =    4.116185553e-05 ;
+
 
 call, file="commands/TLe_savebeta.madx";! savebeta in flags...
 call, file="commands/TLe_ae_twiss.cmd";
 call, file="commands/plotTLetwiss.madx";			  
 call, file="commands/TLe_showbeta.madx";
-!stop;
+stop;
 
 
-! ! match bpstt002 dispersion
-! match, use_macro;
-! m1 : macro={
-! call, file="commands/TLe_ae_twiss.cmd";
-! };
-! constraint, expr=table(twiss,bpstt002,dx)=-0.7;
-! constraint, expr=table(twiss,bpstt002,dy)=-1.52;
-! constraint, expr=table(twiss,bpstt003,dx)=1.15;
-! constraint, expr=table(twiss,bpstt003,dy)=0.52;
-! constraint, expr=table(twiss,bpstt004,dx)=0.0;
-! constraint, expr=table(twiss,bpstt004,dy)=0.52;
-! constraint, expr=table(twiss,fl2tt001,betx)<10.0;
-! constraint, expr=table(twiss,fl2tt001,bety)<6.0;
-! constraint, expr=table(twiss,fl2tt001,alfy)<0;
-! constraint, expr=table(twiss,fl2tt002,betx)<6.0;
-! constraint, expr=table(twiss,fl2tt002,bety)<6.0;
-! !constraint, expr=table(twiss,fl2tt002,betx)=1;
-! !constraint, expr=table(twiss,fl2tt002,bety)=1;
-! !constraint, expr=table(summ,betxmax)<100;
-! !constraint, expr=table(summ,betymax)<100;
-! !vary,name=fftt03,step=1e-3;
-! vary,name=fftt01,step=1e-3,lower=0.0,upper=1.5;
-! vary,name=fftt02,step=1e-3,lower=0.0,upper=1.5;
-! vary,name=fftt03,step=1e-3,lower=0.0,upper=1.5;
-! vary,name=fftt04,step=1e-3,lower=0.0,upper=1.5;
-! !vary,name=fftt05,step=1e-3,lower=0.0,upper=1.5;
-! vary,name=dhptt001a->e1,step=1e-3;
-! vary,name=dhptt001b->e2,step=1e-3;
-! !vary,name=dhptt001->angle, step=1e-3;
-! !vary,name=fftt05,step=1e-3,lower=0.0,upper=1.5;
-! simplex, calls=2e3,tolerance=1e-6;
-! endmatch;
-! value, fftt01, fftt02, fftt03, fftt04, fftt05;
-! !value,dhptt001->angle;
-! value,dhptt001a->e1;
-! value,dhptt001b->e2;
-! stop;
+! match bpstt002 dispersion
+match, use_macro;
+m1 : macro={
+call, file="commands/TLe_ae_twiss.cmd";
+};
+constraint, expr=table(twiss,bpstt002,dx)=-0.7;
+constraint, expr=table(twiss,bpstt002,dy)=-1.52;
+constraint, expr=table(twiss,bpstt003,dx)=1.15;
+constraint, expr=table(twiss,bpstt003,dy)*2=2*0.52;
+constraint, expr=table(twiss,bpstt004,dx)=0.0;
+constraint, expr=table(twiss,bpstt004,dy)=0.52;
+constraint, expr=table(twiss,fl2tt001,betx)<10.0;
+constraint, expr=table(twiss,fl2tt001,bety)<6.0;
+constraint, expr=table(twiss,fl2tt001,alfy)<0;
+constraint, expr=table(twiss,fl2tt002,betx)<6.0;
+constraint, expr=table(twiss,fl2tt002,bety)<6.0;
+!constraint, expr=table(twiss,fl2tt002,betx)=1;
+!constraint, expr=table(twiss,fl2tt002,bety)=1;
+!constraint, expr=table(summ,betxmax)<100;
+!constraint, expr=table(summ,betymax)<100;
+!vary,name=fftt03,step=1e-3;
+!vary,name=fftt01,step=1e-3,lower=0.0,upper=1.5;
+!vary,name=fftt02,step=1e-3,lower=0.0,upper=1.5;
+!vary,name=fftt03,step=1e-3,lower=0.0,upper=1.5;
+!vary,name=fftt04,step=1e-3,lower=0.0,upper=1.5;
+!vary,name=fftt05,step=1e-3,lower=0.0,upper=1.5;
+vary,name=dhptt001a->e1,step=1e-3;
+vary,name=dhptt001b->e2,step=1e-3;
+vary,name=dhptt001b->angle, step=1e-3;
+!vary,name=fftt05,step=1e-3,lower=0.0,upper=1.5;
+simplex, calls=2e3,tolerance=1e-6;
+endmatch;
+value, fftt01, fftt02, fftt03, fftt04, fftt05;
+!value,dhptt001->angle;
+value,dhptt001a->e1;
+value,dhptt001b->e2;
+value,dhptt001a->angle;
+value,dhptt001b->angle;
+stop;
 
 ! ! match bpstt003 dispersion
 ! match, use_macro;
