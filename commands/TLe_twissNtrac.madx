@@ -158,6 +158,20 @@ dhptt001a->angle   =             0.3927 ;
 dhptt001b->angle   =    4.116185553e-05 ;
 
 
+fftt01             =        0.921203984 ;
+fftt02             =        1.225025783 ;
+fftt03             =        1.091168308 ;
+fftt04             =       0.9755270408 ;
+fftt05             =                1.2 ;
+dhptt001a->e1      =      -0.6210677209 ;
+dhptt001b->e2      =        1.570646655 ;
+dhptt001a->angle   =             0.3927 ;
+dhptt001b->angle   =    4.116185553e-05 ;
+fftt10             =        0.775362946 ;
+fftt11             =       0.7149725132 ;
+dvrtt001a->e1      =      -0.1151357422 ;
+
+
 call, file="commands/TLe_savebeta.madx";! savebeta in flags...
 call, file="commands/TLe_ae_twiss.cmd";
 call, file="commands/plotTLetwiss.madx";			  
@@ -181,6 +195,18 @@ constraint, expr=table(twiss,fl2tt001,bety)<6.0;
 constraint, expr=table(twiss,fl2tt001,alfy)<0;
 constraint, expr=table(twiss,fl2tt002,betx)<6.0;
 constraint, expr=table(twiss,fl2tt002,bety)<6.0;
+
+!constraint, expr=table(twiss,fl1tt003,betx)<6.0;
+constraint, expr=table(twiss,fl1tt003,bety)<20.0;
+constraint, expr=table(twiss,fl1tt003,bety)<20.0;
+constraint, expr=table(twiss,bpstt007,dx)=-1.92;
+constraint, expr=table(twiss,bpstt007,dy)=-2.4;
+constraint, expr=table(twiss,bpste001,dx)=1;
+constraint, expr=table(twiss,bpste001,dy)=-3.4;
+constraint, expr=table(twiss,bpste012,dx)=4;
+constraint, expr=table(twiss,bpste012,dy)=1.8;
+
+
 !constraint, expr=table(twiss,fl2tt002,betx)=1;
 !constraint, expr=table(twiss,fl2tt002,bety)=1;
 !constraint, expr=table(summ,betxmax)<100;
@@ -191,10 +217,13 @@ constraint, expr=table(twiss,fl2tt002,bety)<6.0;
 !vary,name=fftt03,step=1e-3,lower=0.0,upper=1.5;
 !vary,name=fftt04,step=1e-3,lower=0.0,upper=1.5;
 !vary,name=fftt05,step=1e-3,lower=0.0,upper=1.5;
-vary,name=dhptt001a->e1,step=1e-3;
-vary,name=dhptt001b->e2,step=1e-3;
-vary,name=dhptt001b->angle, step=1e-3;
+!vary,name=dhptt001a->e1,step=1e-3;
+!vary,name=dhptt001b->e2,step=1e-3;
+!vary,name=dhptt001b->angle, step=1e-3;
 !vary,name=fftt05,step=1e-3,lower=0.0,upper=1.5;
+vary,name=dvrtt001a->e1, step=1e-3;
+vary,name=fftt10,step=1e-3;
+vary,name=fftt11,step=1e-3;
 simplex, calls=2e3,tolerance=1e-6;
 endmatch;
 value, fftt01, fftt02, fftt03, fftt04, fftt05;
@@ -203,6 +232,9 @@ value,dhptt001a->e1;
 value,dhptt001b->e2;
 value,dhptt001a->angle;
 value,dhptt001b->angle;
+value,fftt10;
+value,fftt11;
+value,dvrtt001a->e1;
 stop;
 
 ! ! match bpstt003 dispersion

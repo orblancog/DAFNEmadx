@@ -11,6 +11,7 @@ savebeta,label=betaBPSTT005,place=BPSTT005;
 savebeta,label=betaBPSTT006,place=BPSTT006;
 savebeta,label=betaBPSTT007,place=BPSTT007;
 savebeta,label=betaBPSTE001,place=BPSTE001;
+savebeta,label=betaBPSTE012,place=BPSTE012;
 savebeta,label=betaBPSTE002,place=BPSTE002;
 savebeta,label=betaBPSTE003,place=BPSTE003;
 savebeta,label=betaBPSTE004,place=BPSTE004;
