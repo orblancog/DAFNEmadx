@@ -103,7 +103,8 @@ fftt05             =       0.8012521138 ;
 ! fudge factors from 40m and on
 fftt06 := 1;
 fftt07 := 1;
-dhstt001->e1 := 0.6*6.74415e-02;
+dhstt001a->e1 := 0.5*6.74415e-02;
+!dhstt001b->angle := -0.3;
 ! !dhrtt001a->e1 :=  0.1;
 ! ! match result
 ! match, use_macro;
@@ -133,9 +134,10 @@ dhstt001->e1 := 0.6*6.74415e-02;
 
 
 ! fudge factors from 45m and on
-fftt08 := 1.1;
+fftt08 := 1.0;
 fftt09 := 1;
 dvrtt001a->e1 := ab11d/2-0.2;
+
 ! match, use_macro;
 ! m1 : macro={
 ! call, file="commands/TLp_ae_twiss.cmd";
@@ -168,7 +170,7 @@ fftt10 := 1;
 fftt11 := 1;
 fftp04 := 1.2;
 ! match result
-fftt10             =       0.8*0.7490595396 ;
+fftt10             =       0.7490595396 ;
 fftt11             =       0.7761291734 ;
 ! match, use_macro;
 ! m1 : macro={
@@ -309,6 +311,10 @@ select, flag=error, clear;
 select, flag=error, pattern="QUATT003";
 ealign, dx := 0.3e-3, dy := -0.0e-3;
 select, flag=error, clear;
+select, flag=error, clear;
+select, flag=error, pattern="QUATT008";
+ealign, dx := 0.7e-3, dy := -0.0e-3;
+select, flag=error, clear;
 ! !select, flag=error, pattern="QUATT003";
 ! !ealign, dx := 0.0e-3, dy := 0.0e-3;
 ! !efcomp, dkn={0.03e-3},dks={-0.03e-3};
@@ -436,7 +442,7 @@ ptc_align;
    mu1,mu3, disp1,disp2,disp3,disp4,angle,k1l,k2l,k3l,k4l,envx,envy,k0l,disp1p,dip3p;
    ptc_twiss,icase=5, betx=betxacc, bety=betyacc, 
    alfx=alfxacc, alfy=alfyacc, dx=dxacc, dy=dyacc,
-   file="outputs/ptctwiss",summary_file,table;
+   file="outputs/pptctwiss",summary_file,table;
 !ptc_observe, place="IP.1";
 !set particles
 Rpipe := 44e-3;
@@ -447,7 +453,7 @@ ptc_track, icase=6,turns=1,dump,onetable,element_by_element,
 maxaper={Rpipe,AngMax,Rpipe,AngMax,1,1},
 ! the t and pt vars do not change anything
 ! norm_no=4,
-file="tracktest",radiation;
+file="trackptest",radiation;
 ptc_track_end;
 call, file="commands/TLp_observe.ptc.madx";
 call, file="outputs/madxInrays.madx";

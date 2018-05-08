@@ -16,16 +16,13 @@ filabs = 'TLe_20170221122201_REFORB_15mA_inACC_dispersione.dat'
 
 #filrel = 'TLe_20170221122344_662M667_dispersione.dat'
 #frelti = 'dispersive orbit 20170221 MR RF 662M667'
-
 #filrel = 'TLe_20171116170432_DIPACC_615m614e.dat'
 #frelti = 'dispersive orbit 20170221 DIP ACC 615-614 A'
-
 #filrel = 'TLe_20171211121512_tledippdisp614p3m613p3.dat'
 #frelti = 'dispersive orbit 20171211 DIP ACC 614.3-613.3 A'
-
 filrel = 'TLe_20180328_18xxxx_DIPACC_613p2m613p7.dat
 frelti = '2018/MAR/28 DIP ACC 613.2-613.7 A'
-
+filtrack= 'tracketestone'
 
 #filrel  = 'TLe_20171116170550_DIPACC_613m614e.dat'
 #frelti  = 'dispersive orbit 20170221 DIP ACC 613-614 A'
@@ -33,8 +30,9 @@ frelti = '2018/MAR/28 DIP ACC 613.2-613.7 A'
 neoffset = 1.0
 eoffset  = -0.35e-3#0.3164e-4
 #eoffset  = 0.7e-3#0.3164e-4
-ftwiss = 'tle_ae.tls'
+ftwiss = 'eptctwiss'
 ftwissti = '-0.35x10^{-3} . {/Symbol h}_y model today'
+ftrackti = '-0.35x10^{-3} . {/Symbol h}_y track today'
 
 ftwbend  = '< grep -i bend'.' '.ftwiss
 ftwquad  = '< grep -i quad'.' '.ftwiss
@@ -121,7 +119,16 @@ p \
   w l lt 7 lw 3 dashtype '.' ti ftwissti,\
   ftwall u (column(col_s)):(column(col_s)<30 ? \
   1/0:-1*(column(col_dx)*(neoffset*eoffset*1e3))) \
-  w l lt 7 lw 3 dashtype '.-____' ti '-1x'.ftwissti
+  w l lt 7 lw 3 dashtype '.-____' ti '-1x'.ftwissti, \
+  filtrack u (column(col_ts)):(column(col_ts)<10 ? \
+  (-1*column(col_tx)*1e3) : 1/0) \
+  w p lt 1 lw 3 dashtype '.-____' ti '', \
+  filtrack u (column(col_ts)):(column(col_ts)<30  && column(col_ts)>10? \
+  (column(col_tx)*1e3) : 1/0) \
+  w p lt 1 lw 3 dashtype '.' ti ftrackti, \
+  filtrack u (column(col_ts)):(column(col_ts)<30 ? \
+  1/0:-1*(column(col_tx)*1e3)) \
+  w p lt 1 lw 3 dashtype '.-____' ti '-1x'.ftrackti
 
 
 set size 1,0.32
@@ -144,7 +151,9 @@ p \
   filrel u 1:3:(0.2) w errorbars lt 6 lw 3 ti frelti, \
   0 lw 3 lt -1 dashtype 2 ti '', \
   ftwall u (column(col_s)):(column(col_dy)*(neoffset*eoffset*1e3)) \
-  w l lt 7 lw 3 dashtype '.' ti ftwissti
+  w l lt 7 lw 3 dashtype '.' ti ftwissti, \
+  filtrack u (column(col_ts)):(column(col_ty)*1e3) \
+  w p lt 1 lw 3 dashtype '.' ti ftrackti
 
 
 # set size 1,0.32

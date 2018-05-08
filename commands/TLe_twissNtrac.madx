@@ -85,6 +85,7 @@ use, sequence=e_ae;
 
 ! fudge factors from TLp
 ! fit senza ussare e2 della ypsilon
+ffab34d := 1;
 fftt01             =                  1 ;
 fftt02             = 1;!       1.021877138 ;
 fftt03             = 1;!       1.147548618 ;
@@ -175,21 +176,19 @@ fftt10             =        0.775362946 ;
 fftt11             =       0.7149725132 ;
 dvrtt001a->e1      =      -0.1151357422 ;
 
+!dhrte001b->angle   = 0.35;
 
-!dhrte001a->e1      =       0.3442996502 ;
-!dhrte001b->e2      =      0.06170389102 ;
-!ffte03             =       0.4604864944 ;
-!ffte04             =       0.6226613987 ;
-!ffte104            =                  1 ;
-!ffte105            =                  1 ;
+ffte04             =       0.6591861082 ;
+ffte104            =        1.410474472 ;
+ffte105            =        4.731727255 ;
 
-!ffte03             =      0.02014985215 ;
-!ffte04             =       0.5733097504 ;
+ffte04             =        0.627892301 ;
+ffte104            =        1.605372986 ;
+ffte105            =         7.97191795 ;
 
-!dhrte001a->e1      =     -0.06686967918 ;
-!dhrte001b->e2      =       0.4009431961 ;
-!ffte03             =       0.4613716988 ;
-!ffte04             =       0.8287010111 ;
+ffte04             =       0.6104584247 ;
+ffte104            =        1.606083672 ;
+ffte105            =         8.04531742 ;
 
 call, file="commands/TLe_savebeta.madx";! savebeta in flags...
 call, file="commands/TLe_ae_twiss.cmd";
@@ -228,16 +227,16 @@ call, file="commands/TLe_showbeta.madx";
 ! constraint, expr=table(twiss,bpste012,dy)=1.1;
 ! constraint, expr=table(twiss,bpste002,dx)=3.7;
 ! constraint, expr=table(twiss,bpste002,dy)=2.8;
-! constraint, expr=table(twiss,bpste003,dx)=0.5;
-! constraint, expr=table(twiss,bpste003,dy)=-2.7;
-! !constraint, expr=table(twiss,bpste004,dx)=-0.5;
-! !constraint, expr=table(twiss,bpste004,dy)=1.3;
+! constraint, expr=table(twiss,bpste003,dx)=1.1;
+! constraint, expr=table(twiss,bpste003,dy)=-3.2;
+! constraint, expr=table(twiss,bpste004,dx)=-1;
+! constraint, expr=table(twiss,bpste004,dy)=1.8;
 
 
 ! !constraint, expr=table(twiss,fl2tt002,betx)=1;
 ! !constraint, expr=table(twiss,fl2tt002,bety)=1;
-! !constraint, expr=table(summ,betxmax)<100;
-! !constraint, expr=table(summ,betymax)<100;
+! constraint, expr=table(summ,betxmax)<100;
+! constraint, expr=table(summ,betymax)<100;
 ! !vary,name=fftt03,step=1e-3;
 ! !vary,name=fftt01,step=1e-3,lower=0.0,upper=1.5;
 ! !vary,name=fftt02,step=1e-3,lower=0.0,upper=1.5;
@@ -254,13 +253,13 @@ call, file="commands/TLe_showbeta.madx";
 ! !vary,name=fftt10,step=1e-3;
 ! !vary,name=fftt11,step=1e-3;
 
-! vary, name=dhrte001a->e1, step=1e-3;
-! vary, name=dhrte001b->e2, step=1e-3;
+! !vary, name=dhrte001a->e1, step=1e-3;
+! !vary, name=dhrte001b->e2, step=1e-3;
 ! !vary, name=dhrte001b->angle, step=1e-3;
-! vary, name=ffte03, step=1e-3, lower=0.0, upper=1.5;
+! !vary, name=ffte03, step=1e-3, lower=0.0, upper=1.5;
 ! vary, name=ffte04, step=1e-3, lower=0.0, upper=1.5;
-! !vary, name=ffte104, step=1e-3;
-! !vary, name=ffte105, step=1e-3;
+! vary, name=ffte104, step=1e-3;
+! vary, name=ffte105, step=1e-3;
 ! simplex, calls=2e3,tolerance=1e-6;
 ! endmatch;
 ! value, fftt01, fftt02, fftt03, fftt04, fftt05;
@@ -486,6 +485,28 @@ ptc_create_universe;
   ptc_create_layout,model=2,method=6,nst=10,
 !exact;!,
 resplit,even;
+!!!! PTC TWISS
+   select, flag=ptc_twiss,clear;
+!select, flag=twiss, column=NAME, KEYWORD, S, L, BETX, BETY, ALFX, ALFY,
+!  MUX, MUY, DX, DPX, DY, DPY, ANGLE,K1L, K2L, K3L, K4L, envx, envy,k0l,ddx,ddy;
+
+   select, flag=ptc_twiss,column=name,keyword,s,L,beta11, beta22, alfa11, alfa22,
+   mu1,mu3, disp1,disp2,disp3,disp4,angle,k1l,k2l,k3l,k4l,envx,envy,k0l,disp1p,dip3p;
+   ptc_twiss,icase=5, betx=betxacc, bety=betyacc, 
+   alfx=alfxacc, alfy=alfyacc, dx=dxacc, dy=dyacc,
+   file="outputs/eptctwiss",summary_file,table;
+
+
+Rpipe := 44e-3;
+AngMax := 1;
+call, file="commands/TLe_observe.ptc.madx";
+ptc_start, X=0, PX=0, Y=0, PY=0, T=0, PT=-0.35e-3;
+ptc_track, icase=6,turns=1,dump,onetable,element_by_element,
+maxaper={Rpipe,AngMax,Rpipe,AngMax,1,1},
+! the t and pt vars do not change anything
+! norm_no=4,
+file="tracketest",radiation;
+ptc_track_end;
 !!!! PTC MAP
 !   ptc_normal,icase=5,no=8,deltap=0.00;
 !!!! PTC TWISS
