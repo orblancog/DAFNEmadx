@@ -13,6 +13,8 @@ ptc_observe, place=FL1TE003;
 ptc_observe, place=FL1EL101;
 
 !Striplines
+ptc_observe, place=BPSTR001;
+ptc_observe, place=BPSTR002;
 ptc_observe, place=BPSTT001;
 ptc_observe, place=BPSTT002;
 ptc_observe, place=BPSTT003;

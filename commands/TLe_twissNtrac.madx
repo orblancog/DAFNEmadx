@@ -38,6 +38,8 @@ use, sequence= e_ae;
 ! For a quick comparison, open 
 !   $ gnuplot 
 !   gnuplot> load 'outputs/plotsurvey.gp'
+ffab34d := 1;
+
 select,flag=survey,class=sbend;
 select,flag=survey,class=quadrupole;
 select,flag=survey,class=kicker;
@@ -103,92 +105,92 @@ ffte104 := 1;
 ffte105 := 1;
 
 
-fftt01             =       0.9228151315 ;
-fftt02             =         1.07881012 ;
-fftt03             =         1.05638215 ;
-fftt04             =        1.015349107 ;
-fftt05             =                  1 ;
-dhptt001a->e1      =      -0.4264387371 ;
-dhptt001b->e2      =       0.4167222268 ;
-!dhptt001b->angle   = 0.1;
+! fftt01             =       0.9228151315 ;
+! fftt02             =         1.07881012 ;
+! fftt03             =         1.05638215 ;
+! fftt04             =        1.015349107 ;
+! fftt05             =                  1 ;
+! dhptt001a->e1      =      -0.4264387371 ;
+! dhptt001b->e2      =       0.4167222268 ;
+! !dhptt001b->angle   = 0.1;
 
 fftt01             =       0.9167358453 ;
 fftt02             =         1.11546319 ;
 fftt03             =        1.079419418 ;
 fftt04             =        1.009654903 ;
 fftt05             =                  1 ;
-dhptt001a->e1      =      -0.6940964813 ;
-dhptt001b->e2      =        1.162548305 ;
-!dhptt001a->angle   =        3.38164e-01 ;
-!dhptt001b->angle   =                0.1 ;
+! dhptt001a->e1      =      -0.6940964813 ;
+! dhptt001b->e2      =        1.162548305 ;
+! !dhptt001a->angle   =        3.38164e-01 ;
+! !dhptt001b->angle   =                0.1 ;
 
-fftt01             =       0.9192928393 ;
-fftt02             =        1.158265133 ;
-fftt03             =        1.092081589 ;
-fftt04             =        1.016832412 ;
-fftt05             =        1.245595514 ;
-dhptt001a->e1      =      -0.5369459576 ;
-dhptt001b->e2      =        1.160090149 ;
-dhptt001a->angle   =             0.3927 ;
-!dhptt001b->angle   =                0.1 ;
+! fftt01             =       0.9192928393 ;
+! fftt02             =        1.158265133 ;
+! fftt03             =        1.092081589 ;
+! fftt04             =        1.016832412 ;
+! fftt05             =        1.245595514 ;
+! dhptt001a->e1      =      -0.5369459576 ;
+! dhptt001b->e2      =        1.160090149 ;
+! dhptt001a->angle   =             0.3927 ;
+! !dhptt001b->angle   =                0.1 ;
 
-fftt01             =       0.8690879973 ;
-fftt02             =        1.101088635 ;
-fftt03             =        1.103535713 ;
-fftt04             =        1.079213924 ;
-fftt05             =        1.2 ;
-dhptt001a->e1      =      -0.4597817429 ;
-dhptt001b->e2      =         1.12721511 ;
-dhptt001a->angle   =             0.3927 ;
-!dhptt001b->angle   =                0.1 ;
+! fftt01             =       0.8690879973 ;
+! fftt02             =        1.101088635 ;
+! fftt03             =        1.103535713 ;
+! fftt04             =        1.079213924 ;
+! fftt05             =        1.2 ;
+! dhptt001a->e1      =      -0.4597817429 ;
+! dhptt001b->e2      =         1.12721511 ;
+! dhptt001a->angle   =             0.3927 ;
+! !dhptt001b->angle   =                0.1 ;
 
-fftt01             =        0.921203984 ;
-fftt02             =        1.225025783 ;
-fftt03             =        1.091168308 ;
-fftt04             =       0.9755270408 ;
-fftt05             =                1.2 ;
-dhptt001a->e1      =      -0.5667841825 ;
-dhptt001b->e2      =        1.186011743 ;
-dhptt001a->angle   =             0.3927 ;
-!dhptt001b->angle   =                0.1 ;
+! fftt01             =        0.921203984 ;
+! fftt02             =        1.225025783 ;
+! fftt03             =        1.091168308 ;
+! fftt04             =       0.9755270408 ;
+! fftt05             =                1.2 ;
+! dhptt001a->e1      =      -0.5667841825 ;
+! dhptt001b->e2      =        1.186011743 ;
+! dhptt001a->angle   =             0.3927 ;
+! !dhptt001b->angle   =                0.1 ;
 
-fftt01             =        0.921203984 ;
-fftt02             =        1.225025783 ;
-fftt03             =        1.091168308 ;
-fftt04             =       0.9755270408 ;
-fftt05             =                1.2 ;
-dhptt001a->e1      =      -0.6210677209 ;
-dhptt001b->e2      =        1.570646655 ;
-dhptt001a->angle   =             0.3927 ;
-dhptt001b->angle   =    4.116185553e-05 ;
+! fftt01             =        0.921203984 ;
+! fftt02             =        1.225025783 ;
+! fftt03             =        1.091168308 ;
+! fftt04             =       0.9755270408 ;
+! fftt05             =                1.2 ;
+! dhptt001a->e1      =      -0.6210677209 ;
+! dhptt001b->e2      =        1.570646655 ;
+! dhptt001a->angle   =             0.3927 ;
+! dhptt001b->angle   =    4.116185553e-05 ;
 
 
-fftt01             =        0.921203984 ;
-fftt02             =        1.225025783 ;
-fftt03             =        1.091168308 ;
-fftt04             =       0.9755270408 ;
-fftt05             =                1.2 ;
-dhptt001a->e1      =      -0.6210677209 ;
-dhptt001b->e2      =        1.570646655 ;
-dhptt001a->angle   =             0.3927 ;
-dhptt001b->angle   =    4.116185553e-05 ;
-fftt10             =        0.775362946 ;
-fftt11             =       0.7149725132 ;
-dvrtt001a->e1      =      -0.1151357422 ;
+! fftt01             =        0.921203984 ;
+! fftt02             =        1.225025783 ;
+! fftt03             =        1.091168308 ;
+! fftt04             =       0.9755270408 ;
+! fftt05             =                1.2 ;
+! dhptt001a->e1      =      -0.6210677209 ;
+! dhptt001b->e2      =        1.570646655 ;
+! dhptt001a->angle   =             0.3927 ;
+! dhptt001b->angle   =    4.116185553e-05 ;
+! fftt10             =        0.775362946 ;
+! fftt11             =       0.7149725132 ;
+! dvrtt001a->e1      =      -0.1151357422 ;
 
-!dhrte001b->angle   = 0.35;
+! !dhrte001b->angle   = 0.35;
 
-ffte04             =       0.6591861082 ;
-ffte104            =        1.410474472 ;
-ffte105            =        4.731727255 ;
+! ffte04             =       0.6591861082 ;
+! ffte104            =        1.410474472 ;
+! ffte105            =        4.731727255 ;
 
-ffte04             =        0.627892301 ;
-ffte104            =        1.605372986 ;
-ffte105            =         7.97191795 ;
+! ffte04             =        0.627892301 ;
+! ffte104            =        1.605372986 ;
+! ffte105            =         7.97191795 ;
 
-ffte04             =       0.6104584247 ;
-ffte104            =        1.606083672 ;
-ffte105            =         8.04531742 ;
+! ffte04             =       0.6104584247 ;
+! ffte104            =        1.606083672 ;
+! ffte105            =         8.04531742 ;
 
 call, file="commands/TLe_savebeta.madx";! savebeta in flags...
 call, file="commands/TLe_ae_twiss.cmd";
@@ -485,6 +487,7 @@ ptc_create_universe;
   ptc_create_layout,model=2,method=6,nst=10,
 !exact;!,
 resplit,even;
+ptc_align;
 !!!! PTC TWISS
    select, flag=ptc_twiss,clear;
 !select, flag=twiss, column=NAME, KEYWORD, S, L, BETX, BETY, ALFX, ALFY,

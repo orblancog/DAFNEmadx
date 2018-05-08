@@ -120,10 +120,7 @@ p \
   ftwall u (column(col_s)):(column(col_s)<30 ? \
   1/0:-1*(column(col_dx)*(neoffset*eoffset*1e3))) \
   w l lt 7 lw 3 dashtype '.-____' ti '-1x'.ftwissti, \
-  filtrack u (column(col_ts)):(column(col_ts)<10 ? \
-  (-1*column(col_tx)*1e3) : 1/0) \
-  w p lt 1 lw 3 dashtype '.-____' ti '', \
-  filtrack u (column(col_ts)):(column(col_ts)<30  && column(col_ts)>10? \
+  filtrack u (column(col_ts)):(column(col_ts)<30 ? \
   (column(col_tx)*1e3) : 1/0) \
   w p lt 1 lw 3 dashtype '.' ti ftrackti, \
   filtrack u (column(col_ts)):(column(col_ts)<30 ? \
