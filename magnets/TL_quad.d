@@ -68,9 +68,9 @@ pertp   =  1;
  QUATE004: quadrupole,l := ltbq/2, K1 := ffte04*kte04;
  QUATE005: quadrupole,l := ltbq/2, K1 := -kte05;
  QUATE006: quadrupole,l := ltbq/2, K1 := -kte06;
- QUATE007: quadrupole,l := ltbq/2, K1 := -kte07;
- QUATE008: quadrupole,l := ltbq/2, K1 := -kte08;
- QUATE009: quadrupole,l := ltbq/2, K1 := -kte09;
+ QUATE007: quadrupole,l := ltbq/2, K1 := kte07;
+ QUATE008: quadrupole,l := ltbq/2, K1 := kte08;
+ QUATE009: quadrupole,l := ltbq/2, K1 := kte09;
 
  QUATE104: quadrupole,l := lsq/2, K1 :=  ffte104*kte104;
  QUATE105: quadrupole,l := lsq/2, K1 :=  ffte105*kte105;
