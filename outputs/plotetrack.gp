@@ -20,7 +20,7 @@ filabs = 'TLe_20170221122201_REFORB_15mA_inACC_dispersione.dat'
 #frelti = 'dispersive orbit 20170221 DIP ACC 615-614 A'
 #filrel = 'TLe_20171211121512_tledippdisp614p3m613p3.dat'
 #frelti = 'dispersive orbit 20171211 DIP ACC 614.3-613.3 A'
-filrel = 'TLe_20180328_18xxxx_DIPACC_613p2m613p7.dat
+filrel = 'TLe_20180328_18xxxx_DIPACC_613p2m613p7.dat'
 frelti = '2018/MAR/28 DIP ACC 613.2-613.7 A'
 filtrack= 'tracketestone'
 

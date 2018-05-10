@@ -87,7 +87,7 @@ use, sequence=e_ae;
 
 ! fudge factors from TLp
 ! fit senza ussare e2 della ypsilon
-ffab34d := 0.9;
+ffab34d := 1;
 fftt01             =                  1 ;
 fftt02             = 1;!       1.021877138 ;
 fftt03             = 1;!       1.147548618 ;
