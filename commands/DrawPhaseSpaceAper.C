@@ -82,7 +82,7 @@ int DrawPhaseSpaceAper (const char * k, const int giro=-2) {//k is the flag name
   betafl->Append(k);
   betafl->Append(".txt");
   beta0in.open(betafl->Data());
-  if (beta0in == 0) {
+  if (!beta0in) {
     // if we cannot open the file, 
     // print an error message and return immediatly
     printf("Error: cannot open betaXXXX.txt!\n");
@@ -113,7 +113,7 @@ int DrawPhaseSpaceAper (const char * k, const int giro=-2) {//k is the flag name
   }
   // Reading beam info
   beam0in.open("beam0.txt");
-  if (beam0in == 0) {
+  if (!beam0in) {
     // if we cannot open the file, 
     // print an error message and return immediatly
     printf("Error: cannot open beam0.txt!\n");
@@ -198,7 +198,7 @@ int DrawPhaseSpaceAper (const char * k, const int giro=-2) {//k is the flag name
   //  betafl->Append(".txt");
   track0in.open(trackfl->Data());
   //  track0in.open("trackSTART");
-  if (track0in == 0) {
+  if (!track0in) {
     // if we cannot open the file, 
     // print an error message and return immediatly
     cout<<"Error: cannot open file "<<trackfl->Data()<<"\n";

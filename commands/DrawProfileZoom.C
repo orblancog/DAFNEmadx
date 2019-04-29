@@ -273,16 +273,16 @@ int DrawProfileZoom (const char * k, const char * invaxis = NULL) {//k is the fl
   //yaxis = trackh->GetYAxis();
   //  trackh->GetXAxis()->SetMaxDigits(8);
   
-  TPad *center_pad = new TPad("center_pad", "center_pad",0.0,0.0,0.6,0.6);
+  TPad * center_pad = new TPad("center_pad", "center_pad",0.0,0.0,0.6,0.6);
   center_pad->Draw();
 
-  right_pad = new TPad("right_pad", "right_pad",0.55,0.0,1.0,0.6);
+  TPad * right_pad = new TPad("right_pad", "right_pad",0.55,0.0,1.0,0.6);
   right_pad->Draw();
 
-  top_pad = new TPad("top_pad", "top_pad",0.0,0.55,0.6,1.0);
+  TPad * top_pad = new TPad("top_pad", "top_pad",0.0,0.55,0.6,1.0);
   top_pad->Draw();
 
-  diag_pad = new TPad("diag_pad", "diag_pad",0.55,0.55,1.0,1.0);
+  TPad * diag_pad = new TPad("diag_pad", "diag_pad",0.55,0.55,1.0,1.0);
   diag_pad->Draw();
 
 

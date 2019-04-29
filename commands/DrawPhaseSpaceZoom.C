@@ -81,12 +81,12 @@ int DrawPhaseSpaceZoom (const char * k) {//k is the flag name
   betafl->Append(k);
   betafl->Append(".txt");
   beta0in.open(betafl->Data());
-  if (beta0in == 0) {
+  if (!beta0in) {
     // if we cannot open the file, 
     // print an error message and return immediatly
     printf("Error: cannot open betaXXXX.txt!\n");
-    return 1;
-  }
+//    return 1;
+  }else{
   cout << "  ... reading file "<<betafl->Data()<<" (twiss params at input)"<<endl;
   beta0in >>  madx00 >> madx01 >> madx02 >> madx03;
   while(!beta0in.eof()){
@@ -109,15 +109,15 @@ int DrawPhaseSpaceZoom (const char * k) {//k is the flag name
   gammay = (1 + alfay*alfay )/betay;
   cout <<"    gammax "<<gammax<<endl;
   cout <<"    gammay "<<gammay<<endl;
-
+  }
   // Reading beam info
   beam0in.open("beam0.txt");
-  if (beam0in == 0) {
+  if (!beam0in) {
     // if we cannot open the file, 
     // print an error message and return immediatly
     printf("Error: cannot open beam0.txt!\n");
-    return 1;
-  }
+//    return 1;
+  }else{
   cout << "  ... reading file beam0.txt (beam params)"<<endl;
   beam0in >>  madx00 >> madx01 >> madx02 >> madx03;
   while(!beam0in.eof()){
@@ -156,7 +156,7 @@ int DrawPhaseSpaceZoom (const char * k) {//k is the flag name
   offsetx0 = etax*Energyspread;
   offsety0 = etay*Energyspread;
   //  sigmad0  = TMath::Sqrt(et*0);
-
+  }
   float scalehv=1e3;//mm
   Double_t w = 1800;
   Double_t h =  600;
@@ -193,11 +193,11 @@ int DrawPhaseSpaceZoom (const char * k) {//k is the flag name
   //  betafl->Append(".txt");
   track0in.open(trackfl->Data());
   //  track0in.open("trackSTART");
-  if (track0in == 0) {
+  if (!track0in) {
     // if we cannot open the file, 
     // print an error message and return immediatly
     cout<<"Error: cannot open file "<<trackfl->Data()<<"\n";
-    return 1;
+//    return 1;
   }
   cout << "  ... reading file "<<trackfl->Data()<<" (tracking results)"<<endl;
   //  track0in >>  madx00 >> madx01 >> madx02 >> madx03;
